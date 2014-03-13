@@ -3,6 +3,7 @@ import java.text.SimpleDateFormat;
 
 public class Aikatauluslotti {
 	
+	// nmoi
 	private int id;
 	private SimpleDateFormat pvm;
 	private String alkukello;
