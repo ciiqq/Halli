@@ -56,19 +56,3 @@ local.properties
 
 # TeXlipse plugin
 .texlipse
-
-Halli/.classpath
-
-Halli/.project
-
-Halli/.settings/org.eclipse.wst.common.component
-
-Halli/target/classes/fi/softala/bean/Aikatauluslotti.class
-
-Halli/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
-
-Halli/target/m2e-wtp/web-resources/META-INF/maven/fi.softala/koulutusjarjestelma/pom.properties
-
-Halli/target/m2e-wtp/web-resources/META-INF/maven/fi.softala/koulutusjarjestelma/pom.xml
-
-Halli/target/m2e-wtp/web-resources/META-INF/maven/fi.softala/koulutusjarjestelma/pom.xml
