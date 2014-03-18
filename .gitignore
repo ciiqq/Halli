@@ -56,3 +56,7 @@ local.properties
 
 # TeXlipse plugin
 .texlipse
+
+MANIFEST.MF
+pom.properties
+pom.xml
