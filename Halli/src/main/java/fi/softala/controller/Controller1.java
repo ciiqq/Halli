@@ -14,8 +14,12 @@ public class Controller1 {
 		return "testi2";
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	//Juhani iz da shit
 	//Haloo! 
+=======
+	//Juhani iz da shit :D
+>>>>>>> 6ca72b53525d66a81e7a7999e55545079fbbe491
 =======
 	//Juhani iz da shit :D
 >>>>>>> 6ca72b53525d66a81e7a7999e55545079fbbe491
