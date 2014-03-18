@@ -13,5 +13,10 @@ public class Controller1 {
 	public String getCreateForm() {
 		return "testi2";
 	}
+	
+	@RequestMapping(value="kouluttajien_lisays", method=RequestMethod.GET)
+	public String kouluttajienLisaysSivu() {
+		return "kouluttajien_lisays/lisays";
+	}
 }
 
