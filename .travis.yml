@@ -1,4 +1,4 @@
 language: java
-script: mvn --file Halli/pom.xml
+script: mvn test --file Halli/pom.xml
 after_success:
   - mvn clean test jacoco:report coveralls:jacoco
