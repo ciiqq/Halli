@@ -60,3 +60,6 @@ local.properties
 MANIFEST.MF
 pom.properties
 pom.xml
+*MANIFEST.MF
+*pom.properties
+*pom.xml
