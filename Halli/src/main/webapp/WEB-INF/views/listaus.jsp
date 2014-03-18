@@ -18,6 +18,7 @@
 	<th colspan="2"> </th>
 	<tr><td>Aihe:</td><td><c:out value="${k.aihe}"/></td></tr>
 	<tr><td>Kuvaus:</td><td><c:out value="${k.kuvaus}"/></td></tr>
+	<tr><td>Lähtötaso:</td><td><c:out value="${k.lahtotaso}"/></td></tr>
 	<tr><td>Kellonaika:</td><td><c:out value="${k.suomiKlo}"/></td></tr>
 	<tr><td>Päivämäärä:</td><td><c:out value="${k.suomiPvm}"/></td></tr>
 	<tr><td>Paikka:</td><td><c:out value="${k.paikka}"/></td></tr>
