@@ -1,4 +1,4 @@
 language: java
-install: mvn install
+script: mvn --file halli/pom.xml
 after_success:
   - mvn clean test jacoco:report coveralls:jacoco
