@@ -16,6 +16,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import fi.softala.bean.Aikatauluslotti;
+import java.text.SimpleDateFormat;
 
 @Repository
 public class AikatauluslottiDAOSpringJdbcImpl implements AikatauluslottiDAO {
@@ -32,47 +33,48 @@ public class AikatauluslottiDAOSpringJdbcImpl implements AikatauluslottiDAO {
 	}
 
 	/**
-	 * Tallettaa parametrina annetun henkil√∂n tietokantaan. Tietokannan
+	 * Tallettaa parametrina annetun henkilˆn tietokantaan. Tietokannan
 	 * generoima id asetetaan parametrina annettuun olioon.
 	 */
-	public void talleta(Aikatauluslotti h) {
+	public void talleta(Aikatauluslotti a) {
 		final String sql = "insert into aikatauluslotti(pvm, alkukello, loppukello, kouluttajaid, opettajaid) values(?,?,?,?,?)";
 
-		// anonyymi sis√§luokka tarvitsee vakioina v√§litett√§v√§t arvot,
-		// jotta roskien keruu onnistuu t√§m√§n metodin suorituksen p√§√§ttyess√§.
-		final String pvm = h.getPvm();
-		final String alkukello = h.getAlkukello();
-		final String loppukello = h.getLoppukello();
-		final int kouluttajaid = h.getKouluttajaId();
-		final int opettajaid = h.getOpettajaId();
-
-		// jdbc pist√§√§ generoidun id:n t√§nne talteen
+		// anonyymi sis‰luokka tarvitsee vakioina v‰litett‰v‰t arvot,
+		// jotta roskien keruu onnistuu t‰m‰n metodin suorituksen p‰‰ttyess‰.
+		final SimpleDateFormat pvm = a.getPvm();
+		final String alkukello = a.getAlkukello();
+		final String loppukello = a.getLoppukello();
+		final String koulutustila = a.getKoulutustila();
+		final int koulutusid = a.getKoulutus().getId();
+		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+		final String date = DATE_FORMAT.format(pvm);
+		// jdbc pist‰‰ generoidun id:n t‰nne talteen
 		KeyHolder idHolder = new GeneratedKeyHolder();
 
-		// suoritetaan p√§ivitys itse m√§√§ritellyll√§ PreparedStatementCreatorilla
+		// suoritetaan p‰ivitys itse m‰‰ritellyll‰ PreparedStatementCreatorilla
 		// ja KeyHolderilla
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(
 					Connection connection) throws SQLException {
 				PreparedStatement ps = connection.prepareStatement(sql,
 						new String[] { "id" });
-				ps.setString(1, pvm);
+				ps.setString (1, date);
 				ps.setString(2, alkukello);
 				ps.setString(3, loppukello);
-				ps.setInt(4, kouluttajaid);
-				ps.setInt(5, opettajaid);
+				ps.setString(4, koulutustila);
+				ps.setInt(5, koulutusid);
 				return ps;
 			}
 		}, idHolder);
 
 		// tallennetaan id takaisin beaniin, koska
-		// kutsujalla pit√§isi olla viittaus samaiseen olioon
-		h.setId(idHolder.getKey().intValue());
+		// kutsujalla pit‰isi olla viittaus samaiseen olioon
+		a.setId(idHolder.getKey().intValue());
 
 	}
 
 	public Aikatauluslotti etsi(int id) {
-		String sql = "select pvm, alkukello,loppukello,kouluttajaid,opettajaid from henkilo where id = ?";
+		String sql = "select pvm, alkukello,loppukello,koulutustila,koulutus_id from henkilo where id = ?";
 		Object[] parametrit = new Object[] { id };
 		RowMapper<Aikatauluslotti> mapper = new AikatauluslottiRowMapper();
 
@@ -88,7 +90,7 @@ public class AikatauluslottiDAOSpringJdbcImpl implements AikatauluslottiDAO {
 
 	public List<Aikatauluslotti> haeKaikki() {
 
-		String sql = "select id, pvm, alkukello, loppukello, kouluttajaid, opettajaid from henkilo";
+		String sql = "select aika_id, pvm, alkukello, loppukello, koulutustila, koulutus_id from aikatauluslotti";
 		RowMapper<Aikatauluslotti> mapper = new AikatauluslottiRowMapper();
 		List<Aikatauluslotti> aikatauluslotit = jdbcTemplate.query(sql, mapper);
 

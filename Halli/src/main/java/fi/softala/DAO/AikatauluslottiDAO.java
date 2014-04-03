@@ -1,7 +1,7 @@
-package softala;
+package fi.softala.DAO;
 
 import java.util.List;
-import softala.Aikatauluslotti;
+import fi.softala.bean.Aikatauluslotti;
 
 public interface AikatauluslottiDAO {
 
