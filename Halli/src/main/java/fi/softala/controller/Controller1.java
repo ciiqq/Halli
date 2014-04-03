@@ -13,5 +13,10 @@ public class Controller1 {
 	public String getCreateForm() {
 		return "testi2";
 	}
+
+	//Juhani iz da shit :D
+	//HALOO T. JUHANI
+	//TESTATAAN LISÄÄ T. JUHANI
+ //test t kale
 }
 
