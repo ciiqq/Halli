@@ -75,6 +75,7 @@ body {
 	padding-left: 8px;
 	padding-right: 8px;
 	list-style: none;
+	cursor:pointer;
 }
 
 .list ul li:hover {

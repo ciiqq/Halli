@@ -41,8 +41,7 @@
 		<div class="fifty list">
 		<ul>
 		<c:forEach items="${koulutukset}" var="k">
-		<input type="checkbox" name="valittu" id="valittu" value="${k.aihe}"/>
-		<li divid="<c:out value="${k.aihe}"/>" class="aihe"><c:out value="${k.aihe}"/> <span class="pvm"><c:out value="${k.suomiPvm}"/></span></li>
+		<li divid="<c:out value="${k.aihe}"/>" class="aihe"><input type="checkbox" name="valittu" id="valittu" value="${k.aihe}"/><c:out value="${k.aihe}"/> <span class="pvm"><c:out value="${k.suomiPvm}"/></span></li>
 		</c:forEach>
 		</ul>
 		</div>
