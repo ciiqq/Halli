@@ -39,9 +39,14 @@ body {
 	width: 100%;
 }
 
+.pvm {
+	float:right;
+	font-weight:bold;
+}
+
 .main {
 	margin-left: 100px;
-	background-color: #F2F2F7;
+	background-color: #8F9096;
 }
 
 .clearfix:after {
