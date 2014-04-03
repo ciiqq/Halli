@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -36,6 +37,15 @@ public class KoulutusController {
 			
 			return "naytakoulutukset";
 		}
+		
+		
+		@RequestMapping(value="{id}", method=RequestMethod.GET)
+		public String naytaKoulutus(Model model, @PathVariable Integer id){
+			
+			return "placeholder";
+		}
+		
+		
 
 		
 	}
