@@ -60,3 +60,7 @@ local.properties
 MANIFEST.MF
 pom.properties
 pom.xml
+*.properties
+Halli/target/m2e-wtp/web-resources/META-INF/maven/fi.softala/koulutusjarjestelma/pom.xml
+Halli/target/classes/fi/softala/bean/Aikatauluslotti.class
+*.xml
