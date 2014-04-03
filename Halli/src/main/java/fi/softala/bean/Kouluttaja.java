@@ -16,6 +16,14 @@ public class Kouluttaja {
 		suola = null;
 	}
 	
+	public Kouluttaja(String etunimi, String sukunimi, String opiskelijanro) {
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		this.opiskelijanro = opiskelijanro;
+		this.salasana = null;
+		this.suola = null;
+	}
+
 	public Kouluttaja(String onro, String enimi, String snimi, String ssana, String suola) {
 		this.opiskelijanro = onro;
 		this.etunimi = enimi;

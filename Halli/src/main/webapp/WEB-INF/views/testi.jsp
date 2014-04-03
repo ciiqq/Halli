@@ -15,7 +15,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="#">Ensimmäinen</a>
+                        <a href="kouluttajien_lisays">Ensimmäinen</a>
                     </li>
                     <li>
                         <a href="#">Toinen</a>
