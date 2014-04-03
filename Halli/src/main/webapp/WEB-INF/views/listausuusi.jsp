@@ -41,11 +41,47 @@
 		<div class="fifty list">
 		<ul>
 		<c:forEach items="${koulutukset}" var="k">
-		<div divid="<c:out value="${k.aihe}"/>" class="aihe"><li><c:out value="${k.aihe}"/> <c:out value="${k.suomiPvm}"/></li></div>
+		<li divid="<c:out value="${k.aihe}"/>" class="aihe"><c:out value="${k.aihe}"/> <span class="pvm"><c:out value="${k.suomiPvm}"/></span></li>
 		</c:forEach>
 		</ul>
 		</div>
 		<div class="fifty details">
+		
+				<table id="Placeholder">
+			<tr>
+				<td class="bold">Nimi</td>
+				<td>Tyhjä</td>
+			</tr>
+			<tr>
+				<td class="bold">Kouluttajat</td>
+				<td>Tyhjä</td>
+			</tr>
+			<tr>
+				<td class="bold">Päivämäärä</td>
+				<td>Tyhjä</td>
+			</tr>
+			<tr>
+				<td class="bold">Aika</td>
+				<td>Tyhjä</td>
+			</tr>
+			<tr>
+				<td class="bold">Avainsanat</td>
+				<td>Tyhjä</td>
+			</tr>
+			<tr>
+				<td class="bold">Taso</td>
+				<td>Tyhjä</td>
+			</tr>
+			<tr>
+				<td class="bold">Tila</td>
+				<td>Tyhjä</td>
+			</tr>
+			<tr>
+				<td class="bold">Kuvaus</td>
+				<td>Tyhjä<br><br><br><br><br><br><br><br><br><br></td>
+			</tr>
+			</table>
+		
 		<c:forEach items="${koulutukset}" var="k">
 		<table id="<c:out value="${k.aihe}"/>" style="display:none">
 			<tr>
@@ -95,8 +131,10 @@
 	<script>
      $(document).ready(function() {
     	 $(".aihe").click(function(){
+    		$(".aihe").removeClass("active");
+    		$(this).addClass("active");
     		var divId = $(this).attr("divId");
-      		$("#"+divId).toggle();
+      		$("#"+divId).show();
       		$("#"+divId).siblings().hide();
     	 });
      });
