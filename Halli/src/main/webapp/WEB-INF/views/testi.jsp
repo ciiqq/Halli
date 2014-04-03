@@ -35,6 +35,7 @@
     </nav>
     <div class="container">
         <a class="btn btn-primary" href="testaus/uusi">Testaa</a>
+        <a href="koulutuslistaus">Listaus</a>
     </div>
     <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>

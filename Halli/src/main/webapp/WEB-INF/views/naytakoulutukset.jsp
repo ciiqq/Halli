@@ -17,7 +17,7 @@
 	<c:forEach var="apumuuttuja" items="${koulutukset}">
 		<tr>
 			<td>
-				${apumuuttuja.nimi}
+				${apumuuttuja.pvm}
 			</td>
 		</tr>
 		<tr>

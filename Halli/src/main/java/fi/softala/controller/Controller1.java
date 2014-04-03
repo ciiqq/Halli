@@ -14,9 +14,6 @@ public class Controller1 {
 		return "testi2";
 	}
 
-	//Juhani iz da shit :D
-	//HALOO T. JUHANI
-	//TESTATAAN LISÄÄ T. JUHANI
- //test t kale
+
 }
 
