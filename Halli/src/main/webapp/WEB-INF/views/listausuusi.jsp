@@ -41,7 +41,7 @@
 		<div class="fifty list">
 		<ul>
 		<c:forEach items="${koulutukset}" var="k">
-		<div divid="<c:out value="${k.aihe}"/>" class="aihe"><li><c:out value="${k.aihe}"/></li></div>
+		<div divid="<c:out value="${k.aihe}"/>" class="aihe"><li><c:out value="${k.aihe}"/> <c:out value="${k.suomiPvm}"/></li></div>
 		</c:forEach>
 		</ul>
 		</div>
@@ -55,6 +55,10 @@
 			<tr>
 				<td class="bold">Kouluttajat</td>
 				<td><c:forEach items="${k.kouluttajat}" var="koul"><c:out value="${koul.etunimi} "/><c:out value="${koul.sukunimi} "/></c:forEach></td>
+			</tr>
+			<tr>
+				<td class="bold">Päivämäärä</td>
+				<td><c:out value="${k.suomiPvm}"/></td>
 			</tr>
 			<tr>
 				<td class="bold">Aika</td>
