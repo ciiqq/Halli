@@ -1,0 +1,117 @@
+/* html5doctor.com Reset v1.6.1 - http://cssreset.com */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}
+
+/* http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.container {
+	background-color: #4C4D57;
+}
+
+.fifty {
+	width: 50%;
+	float: left;
+}
+
+.side-menu {
+	background-color: #4C4D57;
+	float: left;
+	width: 100px;
+	left: 100px;
+	margin-left: -100px;
+	overflow-y: auto;
+	position: relative;
+	color: white;
+}
+
+.mainwrapper {
+	width: 100%;
+}
+
+.main {
+	margin-left: 100px;
+	background-color: #F2F2F7;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.list {
+	background-color: #8F9096;
+	color: white;
+}
+
+.list .active {
+	background-color: #F2F2F7;
+	color: black;
+}
+
+.list .active:hover {
+	background-color: #F2F2F7;
+}
+
+.list ul li {
+	height: 32px;
+	line-height: 32px;
+	padding-left: 8px;
+	padding-right: 8px;
+	list-style: none;
+}
+
+.list ul li:hover {
+	background-color: #808186;
+}
+
+.details {
+	background-color: #F2F2F7;
+	padding: 8px;
+}
+
+.details table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+.details table tr td {
+	padding: 4px;
+}
+
+.bottom-bar {
+	background-color: #F2F2F7;
+	height: 32px;
+	line-height: 32px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.nav-item {
+	padding: 16px;
+}
+
+.nav-text {
+	text-align: center;
+}
+
+.nav-icon {
+	background-image: url("../images/placeholder-icon.png");
+	height: 40px;
+	width: 40px;
+	margin: 0 auto;
+	margin-bottom: 8px;
+}

@@ -38,6 +38,6 @@ public class KoulutusHakuController {
 	public String listaaKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeKaikki();
 		model.addAttribute("koulutukset", koulutukset);
-		return "listaus";
+		return "listausuusi";
 	}
 }
