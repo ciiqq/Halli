@@ -48,37 +48,10 @@
 		<div class="fifty details">
 		
 				<table id="Placeholder">
+
 			<tr>
-				<td class="bold">Nimi</td>
-				<td>Tyhjä</td>
-			</tr>
-			<tr>
-				<td class="bold">Kouluttajat</td>
-				<td>Tyhjä</td>
-			</tr>
-			<tr>
-				<td class="bold">Päivämäärä</td>
-				<td>Tyhjä</td>
-			</tr>
-			<tr>
-				<td class="bold">Aika</td>
-				<td>Tyhjä</td>
-			</tr>
-			<tr>
-				<td class="bold">Avainsanat</td>
-				<td>Tyhjä</td>
-			</tr>
-			<tr>
-				<td class="bold">Taso</td>
-				<td>Tyhjä</td>
-			</tr>
-			<tr>
-				<td class="bold">Tila</td>
-				<td>Tyhjä</td>
-			</tr>
-			<tr>
-				<td class="bold">Kuvaus</td>
-				<td>Tyhjä<br><br><br><br><br><br><br><br><br><br></td>
+				<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+				<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 			</tr>
 			</table>
 		
