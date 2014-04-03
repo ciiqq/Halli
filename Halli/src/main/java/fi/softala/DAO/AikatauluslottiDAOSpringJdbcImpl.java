@@ -1,4 +1,4 @@
-package softala;
+package fi.softala.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +15,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import softala.Aikatauluslotti;
+import fi.softala.bean.Aikatauluslotti;
 
 @Repository
 public class AikatauluslottiDAOSpringJdbcImpl implements AikatauluslottiDAO {
