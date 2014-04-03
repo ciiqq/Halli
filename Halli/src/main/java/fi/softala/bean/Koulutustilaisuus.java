@@ -15,7 +15,7 @@ public class Koulutustilaisuus {
 	private String aihe;
 	private String kuvaus;
 	private String lahtotaso;
-	private boolean nakyvyys;
+	private int nakyvyys;
 	private String suomiPvm;
 	private String suomiKlo;
 	private String paikka;
@@ -58,11 +58,11 @@ public class Koulutustilaisuus {
 	}
 
 
-	public boolean isNakyvyys() {
+	public int isNakyvyys() {
 		return nakyvyys;
 	}
 
-	public void setNakyvyys(boolean nakyvyys) {
+	public void setNakyvyys(int nakyvyys) {
 		this.nakyvyys = nakyvyys;
 	}
 
