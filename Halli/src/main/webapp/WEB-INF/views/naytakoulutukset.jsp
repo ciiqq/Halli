@@ -21,38 +21,21 @@
   <!-- Table -->
   <table class="table">
   <tr>
-  			<th>Päivämäärä</th>
+  			<th>Aika</th>
   			<th>Aihe</th>
-  			<th>Kuvaus</th>
-  			<th>Lähtötaso</th>
-  			<th>Alkaa kello</th>
-  			<th>Loppuu kello</th>
+  			
   		</tr>
   
   <c:forEach var="slotti" items="${koulutukset}">
   		
 		<tr>
 			<td>
-				${slotti.pvm}
+				<p>${slotti.pvm} klo. ${slotti.alkukello} - ${slotti.loppukello}
 			</td>
 			
 			<td>
 				${slotti.koulutus.aihe}
-			</td>
-			<td>
-				${slotti.koulutus.kuvaus}
-			</td>
-			<td>
-				${slotti.koulutus.lahtotaso}
-			</td>
-			
-			<td>
-				${slotti.alkukello}
-			</td>
-			
-			<td>
-				${slotti.loppukello}
-			</td>		
+			</td>				
 			
 		
 			<td>
