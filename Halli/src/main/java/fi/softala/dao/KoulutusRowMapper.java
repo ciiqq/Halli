@@ -14,10 +14,11 @@ public class KoulutusRowMapper implements RowMapper<Aikatauluslotti> {
 	public Aikatauluslotti mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Aikatauluslotti at = new Aikatauluslotti();
 		
-		SimpleDateFormat suomiKello = new SimpleDateFormat("HH:mm");
+		SimpleDateFormat suomiKello = new SimpleDateFormat("H:mm");
+		
 	
-		at.setAlkukello(suomiKello.format(rs.getString("asl.alkukello")));
-		at.setLoppukello(suomiKello.format(rs.getString("asl.loppukello")));
+		at.setAlkukello(rs.getString("asl.alkukello"));
+		at.setLoppukello(rs.getString("asl.loppukello"));
 		at.setKoulutustila(rs.getString("asl.koulutustila"));
 		
 		String pvm = rs.getString("asl.pvm");
