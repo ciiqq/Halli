@@ -12,13 +12,13 @@ INSERT INTO opettaja (opettaja_id, etunimi, sukunimi, salasana, suola)
 VALUES (2, "Naskali", "Nakke", "derpadurpa", "222222");
 
 INSERT INTO aikatauluslotti (aika_id, pvm, alkukello, loppukello, koulutustila, koulutus_id)
-VALUES (2, "2014-04-03", "12:00:00", "14:00:00", "5007", 2);
+VALUES (2, "2014-04-03", "12:00", "14:00", "5007", 2);
 
 INSERT INTO aikatauluslotti (aika_id, pvm, alkukello, loppukello, koulutustila, koulutus_id)
-VALUES (3, "2014-04-04", "12:00:00", "14:00:00", "5007", 3);
+VALUES (3, "2014-04-04", "12:00", "14:00", "5007", 3);
 
 INSERT INTO aikatauluslotti (aika_id, pvm, alkukello, loppukello, koulutustila, koulutus_id)
-VALUES (4, "2014-04-05", "12:00:00", "14:00:00", "5007", 4);
+VALUES (4, "2014-04-05", "12:00", "14:00", "5007", 4);
 
 INSERT INTO avainsana (avainsana_id, avainsana)
 VALUES (1, "jQuery");

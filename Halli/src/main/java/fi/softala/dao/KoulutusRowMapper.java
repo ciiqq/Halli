@@ -2,6 +2,7 @@ package fi.softala.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import org.springframework.jdbc.core.RowMapper;
 
@@ -12,6 +13,9 @@ public class KoulutusRowMapper implements RowMapper<Aikatauluslotti> {
 
 	public Aikatauluslotti mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Aikatauluslotti at = new Aikatauluslotti();
+		
+		SimpleDateFormat suomiKello = new SimpleDateFormat("H:mm");
+		
 	
 		at.setAlkukello(rs.getString("asl.alkukello"));
 		at.setLoppukello(rs.getString("asl.loppukello"));
