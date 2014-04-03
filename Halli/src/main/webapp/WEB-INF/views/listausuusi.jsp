@@ -41,6 +41,7 @@
 		<div class="fifty list">
 		<ul>
 		<c:forEach items="${koulutukset}" var="k">
+		<input type="checkbox" name="valittu" id="valittu" value="${k.aihe}"/>
 		<div divid="<c:out value="${k.aihe}"/>" class="aihe"><li><c:out value="${k.aihe}"/> <c:out value="${k.suomiPvm}"/></li></div>
 		</c:forEach>
 		</ul>
@@ -85,7 +86,7 @@
 		</div>
 		</div>
 		<div class="bottom-bar">
-			moi oon bottom bar
+			moi oon bottom bar<button type="submit" name="vahvista" class="vahvistus">Vahvista ilmoittautumiset</button>
 		</div>
 		
 	</div>
@@ -98,8 +99,21 @@
     		var divId = $(this).attr("divId");
       		$("#"+divId).toggle();
       		$("#"+divId).siblings().hide();
-    	 });
+     	 });
+    	 var valitutLista = function (){
+    		 var kaikkiCheckboxit = document.getElementsByName("valittu"); 
+    		 var valitut = [];
+    		 for (var i=0; i < kaikkiCheckboxit.length; i++ ) {
+    		 if (kaikkiCheckboxit[i].checked) {
+    		 valitut.push(kaikkiCheckboxit[i].value);
+    		 }
+    		 }
+    		 console.log(valitut);	 
+    	 }; 
+        $(".vahvistus").click(function(){
+           	valitutLista();	 
+        });
      });
-    </script>
+   </script>
 </body>
 </html>
