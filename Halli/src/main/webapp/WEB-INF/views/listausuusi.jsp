@@ -44,6 +44,7 @@
                             </div>
                     </div>
                     <div class="main clearfix">
+                    <div class="top-bar">Halli: Koulutusten hallinta- ja ilmoittautumisjärjestelmä</div>
                             <div class="fifty list">
                                     <ul>
                                             <c:forEach items="${koulutukset}" var="k">
@@ -133,12 +134,13 @@
                                             </table>
                                     </c:forEach>
                             </div>
-                    </div>
-                    <div class="bottom-bar">
+                                                <div class="bottom-bar">
                             moi oon bottom bar
                             <button type="submit" name="vahvista" href="#lightbox_sisalto" class="vahvistus" disabled>Vahvista
                             ilmoittautumiset</button>
             </div>
+                    </div>
+
             </div>
 
          <!-- lightboxin sisältö -->
@@ -157,66 +159,7 @@
                     src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
             <script src="<%=request.getContextPath()%>/resources/js/jquery.colorbox.js"></script>
      
-            <script type="application/javascript">
-                   
-        $(document).ready(function() {
-           
-            $(".aihe").click(function(){
-                    $(".aihe").removeClass("active");
-                    $(this).addClass("active");
-                    var divId = $(this).attr("divId");
-                    $("#"+divId).show();
-                    $("#"+divId).siblings().hide();
-                    });
-             
-                    $(".lisaa").click(function() { 
-                    var value = $(this).prop("value");
-                    var checkboxit = document.getElementsByName("box");
-     
-                            for (var i = 0; i < checkboxit.length; i++) {
-                                    if(checkboxit[i].value === value) {
-                                            if(!checkboxit[i].checked) {
-                                                    checkboxit[i].checked = true;
-                                                    $(this).html("POISTA KOULUTUS");
-                                    }else{
-                                    checkboxit[i].checked = false;
-                                            $(this).html("LISÄÄ KOULUTUS");
-                                    }
-                                    }
-                            }      
-                    if (tarkasta()) {
-                             $(".vahvistus").removeAttr("disabled");
-                    } else {
-                            $(".vahvistus").attr("disabled", "disabled");
-                    }      
-            });
-             
-                    var tarkasta = function() {
-                    var checkboxit = document.getElementsByName("box");
-                    var onkoValittu = false;
-                    for (var i = 0; i < checkboxit.length; i++) {
-                            if (checkboxit[i].checked) {
-                                    onkoValittu = true;
-                            }
-                    }
-                    return onkoValittu;
-            };
-             
-            $(".vahvistus").click(function() {
-            	$(".vahvistus").colorbox({inline:true, width:"75%", height:"35%"});
-              
-                    var checkboxit = document.getElementsByName("box");
-                            var aiheet = document.getElementsByName("aihe");
-     
-                    for (var i = 0; i < checkboxit.length; i++) {
-                            if (checkboxit[i].checked) {
-                            var aihe = aiheet[i].value;
-                                    $("<p>").text(aihe).appendTo("#valitut");
-                            }
-                    }
-            });
-            });  
-            </script>
+            <script type="application/javascript" src="<%=request.getContextPath()%>/resources/js/script.js""></script>
     </body>
     </html>
 
