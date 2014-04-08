@@ -15,6 +15,7 @@
 	<meta name="author" content="Haaga-Helia">
 
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/style.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/colorbox.css">
 
 	<!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -93,13 +94,28 @@
 		</c:forEach>
 		</div>
 		</div>
+		<!-- lightboxin sisältö -->
+		
+		<div style='display:none'>
+			<div id='lightbox_sisalto' style='padding:10px; background:#fff;'>
+			<p>tässä ois sisältö jou mään</p>
+			<ul>
+			
+			</ul>
+			
+			</div>
+		</div>
+		
+		<!-- lightboxin sisältö päättyy -->
+		
 		<div class="bottom-bar">
-			moi oon bottom bar<button type="submit" name="vahvista" class="vahvistus">Vahvista ilmoittautumiset</button>
+			moi oon bottom bar<button type="submit" name="vahvista" href="#lightbox_sisalto" class="vahvistus">Vahvista ilmoittautumiset</button>
 		</div>
 		
 	</div>
 	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/jquery.colorbox.js"></script>
 
 	<script>
      $(document).ready(function() {
@@ -121,7 +137,10 @@
     		 console.log(valitut);	 
     	 }; 
         $(".vahvistus").click(function(){
-           	valitutLista();	 
+           	valitutLista();
+           	$(".vahvistus").colorbox({inline:true, width:"75%", height:"35%"});
+
+           	
         });
      });
    </script>
