@@ -145,19 +145,11 @@
          <!-- lightboxin sisältö -->
 			
 			<div style='display:none'>
-<<<<<<< HEAD
 				<div id='lightbox_sisalto' style='padding:20px; background:#fff;'>
-				<p>Olet valinnut seuraavat luennot:</p><br/>
-				<div id="valitut"></div>
-				<br/>
-				<p>Anna nimesi ja opiskelijatunnuksesi, jotta pääset ilmoittautumaan</p>
-				
-=======
-				<div id='lightbox_sisalto' style='padding:10px; background:#fff;'>
-				<p>Olet valinnut seuraavat koulutukset:</p>
+				<p>Olet valinnut seuraavat koulutukset:</p><br/>
 				<div id="valitut">
 				</div>
-				<br /><p>Anna vielä tietosi ilmoittautumista varten:</p>
+				<br /><p>Anna vielä tietosi ilmoittautumista varten:</p><br/>
 				<form action="ilmoittaudu_koulutukseen" method="get">
 				<table>
 				<tr><td>Etunimi:</td><td><input type="text" name="etunimi"></td></tr>
@@ -166,7 +158,6 @@
 				<tr><td><input type="submit" value="Ilmoittaudu koulutuksiin" /></td></tr>
 				</table>
 				</form>
->>>>>>> b81381b236991d65ebedb69d5dc034e5a499f331
 				</div>
 			</div>
 			
