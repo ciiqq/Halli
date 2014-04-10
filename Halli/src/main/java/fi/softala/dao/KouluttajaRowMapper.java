@@ -11,7 +11,7 @@ public class KouluttajaRowMapper implements RowMapper<Kouluttaja> {
 
 	public Kouluttaja mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Kouluttaja k = new Kouluttaja();
-		k.setOpiskelijanro(rs.getString("opiskelijanro"));
+		k.setOpiskelijanro("a"+rs.getString("opiskelijanro"));
 		k.setEtunimi(rs.getString("etunimi"));
 		k.setSukunimi(rs.getString("sukunimi"));
 
