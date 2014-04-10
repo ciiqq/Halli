@@ -135,7 +135,6 @@
                                     </c:forEach>
                             </div>
                                                 <div class="bottom-bar">
-                            moi oon bottom bar
                             <button type="submit" name="vahvista" href="#lightbox_sisalto" class="vahvistus" disabled>Vahvista
                             ilmoittautumiset</button>
             </div>
