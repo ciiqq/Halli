@@ -100,17 +100,21 @@ body {
 	padding-right: 16px;
 }
 
-.details table {
-	width: 100%;
-	table-layout: fixed;
+.table-container {
 	background-color: white;
+	padding: 8px;
 	-moz-box-shadow:    0px 2px 0px 0px rgba(0,0,0,0.05);
 	-webkit-box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.05);
 	box-shadow:         0px 2px 0px 0px rgba(0,0,0,0.05);
 }
 
+.details table {
+	width: 100%;
+	table-layout: fixed;
+}
+
 .details table tr td {
-	padding: 4px;
+	padding: 8px;
 }
 
 input[type="checkbox"] {    

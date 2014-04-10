@@ -10,6 +10,7 @@
      
     <html lang="en">
     <head>
+
     <meta charset="utf-8">
      
     <title>Halli</title>
@@ -88,9 +89,10 @@
      
                                     <c:forEach items="${koulutukset}" var="k">
                                     <input type="hidden" name="aihe" value="${k.aihe}"/>
-                                            <table id="<c:out value="${k.id}"/>" style="display: none">
+                                    		<div class="table-container" id="<c:out value="${k.id}"/>" style="display: none">
+                                            <table>
                                                     <tr>
-                                                            <td class="bold">Nimi</td>
+                                                            <td class="bold">Aihe</td>
                                                             <td><c:out value="${k.aihe}" /></td>
                                                     </tr>
                                                     <tr>
@@ -105,7 +107,7 @@
                                                             <td><c:out value="${k.suomiPvm}" /></td>
                                                     </tr>
                                                     <tr>
-                                                            <td class="bold">Aika</td>
+                                                            <td class="bold">Kellonaika</td>
                                                             <td><c:out value="${k.suomiKlo}" /></td>
                                                     </tr>
                                                     <tr>
@@ -115,11 +117,11 @@
                                                                     </c:forEach></td>
                                                     </tr>
                                                     <tr>
-                                                            <td class="bold">Taso</td>
+                                                            <td class="bold">Lähtötaso</td>
                                                             <td><c:out value="${k.lahtotaso}" /></td>
                                                     </tr>
                                                     <tr>
-                                                            <td class="bold">Tila</td>
+                                                            <td class="bold">Paikka</td>
                                                             <td><c:out value="${k.paikka}" /></td>
                                                     </tr>
                                                     <tr>
@@ -131,6 +133,7 @@
                                                             <td><button type="button" value="${k.id}" class="lisaa">Valitse koulutus</button></td>
                                                     </tr>
                                             </table>
+                                            </div>
                                     </c:forEach>
                             </div>
                                                 <div class="bottom-bar">
@@ -149,7 +152,7 @@
 				<div id="valitut">
 				</div>
 				<br /><p>Anna vielä tietosi ilmoittautumista varten:</p><br/>
-				<form action="ilmoittaudu_koulutukseen" method="get">
+				<form id="ilmoittautuminen">
 				<table>
 				<tr><td>Etunimi:</td><td><input type="text" name="etunimi"></td></tr>
 				<tr><td>Sukunimi:</td><td><input type="text" name="sukunimi"></td></tr>
@@ -166,7 +169,10 @@
             <script
                     src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
             <script src="<%=request.getContextPath()%>/resources/js/jquery.colorbox.js"></script>
+            
+            <script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
      
+            <script src="<%=request.getContextPath()%>/resources/js/additional-methods.js"></script>
             <script type="application/javascript" src="<%=request.getContextPath()%>/resources/js/script.js"></script>
     </body>
     </html>

@@ -1,21 +1,49 @@
 $(document).ready(function() {
 
-	// GET BROWSER WINDOW HEIGHT
+	//Hae ikkunan korkeus
 	var valikkojenkorkeus = 96;
 	var nykyinenkorkeus = $(window).height();
-	// SET HEIGHT OF SIDEBAR AND CONTENT ELEMENTS
 	$('.details').css('height', nykyinenkorkeus - valikkojenkorkeus);
 
-	// ON RESIZE OF WINDOW
+	//Ikkunan koon muuttuessa, suorita funktio
 	$(window).resize(function() {
 
-		// GET NEW HEIGHT
-		var nykyinenkorkeus = $(window).height();
-		// RESIZE BOTH ELEMENTS TO NEW HEIGHT
+		//Hae uusi ikkunan korkeus
+		var nykyinenkorkeus = $(window).height();	
 		$('.details').css('height', nykyinenkorkeus - valikkojenkorkeus);
 
 	});
-
+	//jQuery-validointi
+        $("#ilmoittautuminen").validate({
+        rules :{
+            etunimi : {
+                required : true
+            },
+            sukunimi : {
+                required : true
+            },
+            opiskelijanro : {
+                required : true,
+                minlength: 7,
+                maxlength: 8
+            },
+        },
+        messages :{
+            etunimi : {
+                required : 'Syötä etunimi'
+            },
+            sukunimi : {
+                required : 'Syötä sukunimi'
+                
+            },
+            opiskelijanro : {
+                required : 'Syötä opiskelijanumero',
+                minlength : 'Anna opiskelijanumero oikeassa muodossa',
+                maxlength : 'Anna opiskelijanumero oikeassa muodossa'
+            },
+        }
+        });
+        
 	$(".aihe").click(function() {
 		$(".aihe").removeClass("active");
 		$(this).addClass("active");
