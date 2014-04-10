@@ -146,8 +146,11 @@
          <!-- lightboxin sisältö -->
 			
 			<div style='display:none'>
-				<div id='lightbox_sisalto' style='padding:10px; background:#fff;'>
+				<div id='lightbox_sisalto' style='padding:20px; background:#fff;'>
+				<p>Olet valinnut seuraavat luennot:</p><br/>
 				<div id="valitut"></div>
+				<br/>
+				<p>Anna nimesi ja opiskelijatunnuksesi, jotta pääset ilmoittautumaan</p>
 				
 				</div>
 			</div>
