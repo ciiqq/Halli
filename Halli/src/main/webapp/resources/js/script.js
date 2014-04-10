@@ -32,10 +32,10 @@ $(document).ready(function() {
                                 if(checkboxit[i].value === value) {
                                         if(!checkboxit[i].checked) {
                                                 checkboxit[i].checked = true;
-                                                $(this).html("POISTA KOULUTUS");
+                                                $(this).html("Poista valinta");
                             }else{
                             checkboxit[i].checked = false;
-                                    $(this).html("LISÄÄ KOULUTUS");
+                                    $(this).html("Valitse koulutus");
                             }
                             }
                     }      
