@@ -147,8 +147,18 @@
 			
 			<div style='display:none'>
 				<div id='lightbox_sisalto' style='padding:10px; background:#fff;'>
-				<div id="valitut"></div>
-				
+				<p>Olet valinnut seuraavat koulutukset:</p>
+				<div id="valitut">
+				</div>
+				<br /><p>Anna vielä tietosi ilmoittautumista varten:</p>
+				<form action="ilmoittaudu_koulutukseen" method="get">
+				<table>
+				<tr><td>Etunimi:</td><td><input type="text" name="etunimi"></td></tr>
+				<tr><td>Sukunimi:</td><td><input type="text" name="sukunimi"></td></tr>
+				<tr><td>Opiskelijanumero:</td><td><input type="text" name="opiskelijanro"></td></tr>
+				<tr><td><input type="submit" value="Ilmoittaudu" /></td></tr>
+				</table>
+				</form>
 				</div>
 			</div>
 			
