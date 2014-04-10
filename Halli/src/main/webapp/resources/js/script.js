@@ -35,7 +35,7 @@ $(document).ready(function() {
                                                 $(this).html("POISTA KOULUTUS");
                             }else{
                             checkboxit[i].checked = false;
-                                    $(this).html("LISâ‚¬â‚¬ KOULUTUS");
+                                    $(this).html("LISÄÄ KOULUTUS");
                             }
                             }
                     }      

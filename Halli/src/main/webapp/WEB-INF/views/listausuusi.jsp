@@ -48,7 +48,7 @@
                             <div class="fifty list">
                                     <ul>
                                             <c:forEach items="${koulutukset}" var="k">
-                                                    <li divid="<c:out value="${k.aihe}"/>" class="aihe"><input
+                                                    <li divid="<c:out value="${k.id}"/>" class="aihe"><input
                                                             type="checkbox" name="box" class="box" value="${k.id}" disabled />
                                                     <c:out value="${k.aihe}" /> <span class="pvm"><c:out
                                                                             value="${k.suomiPvm}" /></span></li>
@@ -88,7 +88,7 @@
      
                                     <c:forEach items="${koulutukset}" var="k">
                                     <input type="hidden" name="aihe" value="${k.aihe}"/>
-                                            <table id="<c:out value="${k.aihe}"/>" style="display: none">
+                                            <table id="<c:out value="${k.id}"/>" style="display: none">
                                                     <tr>
                                                             <td class="bold">Nimi</td>
                                                             <td><c:out value="${k.aihe}" /></td>
@@ -159,7 +159,7 @@
                     src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
             <script src="<%=request.getContextPath()%>/resources/js/jquery.colorbox.js"></script>
      
-            <script type="application/javascript" src="<%=request.getContextPath()%>/resources/js/script.js""></script>
+            <script type="application/javascript" src="<%=request.getContextPath()%>/resources/js/script.js"></script>
     </body>
     </html>
 
