@@ -23,7 +23,9 @@ $(document).ready(function() {
                 required : true
             },
             opiskelijanro : {
-                required : true
+                required : true,
+                minlength: 7,
+                maxlength: 8
             },
         },
         messages :{
@@ -32,9 +34,12 @@ $(document).ready(function() {
             },
             sukunimi : {
                 required : 'Syötä sukunimi'
+                
             },
             opiskelijanro : {
-                required : 'Syötä opiskelijanumero'
+                required : 'Syötä opiskelijanumero',
+                minlength : 'Anna opiskelijanumero oikeassa muodossa',
+                maxlength : 'Anna opiskelijanumero oikeassa muodossa'
             },
         }
         });
