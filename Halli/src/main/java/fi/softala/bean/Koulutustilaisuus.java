@@ -23,6 +23,8 @@ public class Koulutustilaisuus {
 	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
 	private List<String> avainsanat = new ArrayList<String>();
 	
+	
+	
 	public int getId() {
 		return id;
 	}
