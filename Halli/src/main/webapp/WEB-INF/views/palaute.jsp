@@ -19,12 +19,13 @@
 	<h1>Palautteet</h1>
 
 	<table border="1">
-		<c:forEach items="${palautteet}" var="palautteet">
-			<tr> 
+	<tr> 
 			<td>Id</td>
 			<td>Arvosana</td>
 			<td>Palaute</td>
 			</tr>
+		<c:forEach items="${palautteet}" var="palautteet">
+		
 			<tr>
 				<td><c:out value="${palautteet.palaute_id}" /></td>
 				<td><c:out value="${palautteet.arvosana}" /></td>
