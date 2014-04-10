@@ -6,17 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
-<title>Insert title here</title>
+<title>Koulutustiedot</title>
 </head>
 <body>
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
   
-  <div class="panel-heading">${koulutus.kt.aihe}</div>
+  <div class="panel-heading">${ks.koulutus.aihe}</div>
   
   <div class="panel-body">    
-    <p>${koulutus.kt.kuvaus}</p>    
+    <p>${ks.koulutus.kuvaus}</p>    
   </div>
 
   <!-- Table -->
@@ -24,32 +24,32 @@
   
   <tr>
     	<th>Päivämäärä</th>
-    	<td>${koulutus.pvm}</td> 
+    	<td>${ks.pvm}</td> 
     </tr>
   	
   	<tr> 
   		<th>Alkaa</th>
-  		<td>${koulutus.alkukello} </td>
+  		<td>${ks.alkukello} </td>
   	</tr>
   	
   	<tr>  	
 		<th>Loppuu</th>	  
-	    <td>${koulutus.loppukello}</td>    
+	    <td>${ks.loppukello}</td>    
     </tr>
     
     <tr>
-    	<th>Koulutustila</th>
-    	<td>${koulutus.koulutustila}</td> 
+    	<th>kstila</th>
+    	<td>${ks.koulutustila}</td> 
     </tr>
     
     <tr>
     	<th>Lähtötaso</th>
-    	<td>${koulutus.lahtotaso}</td> 
+    	<td>${ks.koulutus.lahtotaso}</td> 
     </tr>
     
     <tr>
     	<th>Näkyvyys</th>
-    	<td>${koulutus.nakyvyys}</td> 
+    	<td>${ks.koulutus.nakyvyys}</td> 
     </tr>
     
   </table>

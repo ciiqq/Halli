@@ -40,7 +40,7 @@
 			
 		
 			<td>
-				<a href="${slotti.koulutus.id}"><input class="btn btn-primary" type="button" value="koulutukseen" name="lista/${slotti.koulutus.id}"></a>
+				<a href="koulutuslistaus/${slotti.id}"><input class="btn btn-primary" type="button" value="koulutukseen" name="lista/${slotti.id}"></a>
 			</td>
 			
 		</tr>
