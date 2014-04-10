@@ -96,13 +96,13 @@ body {
 	padding: 8px;
 	border-radius: 3px;
 	color: white;
-	padding-left: 16px;
-	padding-right: 16px;
+	width: 128px;
 }
 
 .table-container {
 	background-color: white;
 	padding: 8px;
+	border-radius: 3px;
 	-moz-box-shadow:    0px 2px 0px 0px rgba(0,0,0,0.05);
 	-webkit-box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.05);
 	box-shadow:         0px 2px 0px 0px rgba(0,0,0,0.05);
@@ -165,6 +165,11 @@ input[type="checkbox"]:checked:after {
 	padding-right: 16px;
 }
 
+.bottom-bar button:disabled {
+	background-color: #80CCCC;
+	color: #004C4C;
+}
+
 .bold {
 	font-weight: bold;
 }
@@ -191,4 +196,13 @@ input[type="checkbox"]:checked:after {
 	background-color: #009999;
 	color:white;
 	padding-left: 16px;
+}
+
+#cboxClose {
+	background: url(../images/close.png) no-repeat !important;
+	opacity: 0.66 !important;
+}
+
+#cboxClose:hover {
+	opacity: 1 !important;
 }
