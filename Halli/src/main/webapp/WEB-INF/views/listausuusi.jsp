@@ -92,7 +92,7 @@
                                     		<div class="table-container" id="<c:out value="${k.id}"/>" style="display: none">
                                             <table>
                                                     <tr>
-                                                            <td class="bold">Nimi</td>
+                                                            <td class="bold">Aihe</td>
                                                             <td><c:out value="${k.aihe}" /></td>
                                                     </tr>
                                                     <tr>
@@ -107,7 +107,7 @@
                                                             <td><c:out value="${k.suomiPvm}" /></td>
                                                     </tr>
                                                     <tr>
-                                                            <td class="bold">Aika</td>
+                                                            <td class="bold">Kellonaika</td>
                                                             <td><c:out value="${k.suomiKlo}" /></td>
                                                     </tr>
                                                     <tr>
@@ -117,11 +117,11 @@
                                                                     </c:forEach></td>
                                                     </tr>
                                                     <tr>
-                                                            <td class="bold">Taso</td>
+                                                            <td class="bold">Lähtölaso</td>
                                                             <td><c:out value="${k.lahtotaso}" /></td>
                                                     </tr>
                                                     <tr>
-                                                            <td class="bold">Tila</td>
+                                                            <td class="bold">Paikka</td>
                                                             <td><c:out value="${k.paikka}" /></td>
                                                     </tr>
                                                     <tr>
