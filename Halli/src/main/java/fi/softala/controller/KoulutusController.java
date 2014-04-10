@@ -39,11 +39,15 @@ public class KoulutusController {
 		}
 		
 		
-		@RequestMapping(value="{id}", method=RequestMethod.GET)
-		public String naytaKoulutus(Model model, @PathVariable Integer id){
-			
-			return "placeholder";
-		}
+		 //Tämä metodi kuuntelee valuessa olevaa osoitetta naytakoulutukset.jsp:ltä.	
+		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.GET)
+	    public String siirryKoulutukseen(Model model, @PathVariable Integer DaoId) {
+	       Aikatauluslotti koulutus = dao.haeKoulutus(DaoId);
+	        
+	        model.addAttribute("ks", koulutus);
+	        
+	        return "koulutustiedot";
+	    } 
 		
 		
 

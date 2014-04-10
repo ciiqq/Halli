@@ -40,8 +40,9 @@
 			
 		
 			<td>
-				<input class="btn btn-primary" type="button" value="koulutukseen" name="${slotti.koulutus.id}">
+				<input class="btn btn-primary" type="button" value="koulutukseen" name="lista/${slotti.koulutus.id}">
 			</td>
+			
 		</tr>
 			
 	</c:forEach>
