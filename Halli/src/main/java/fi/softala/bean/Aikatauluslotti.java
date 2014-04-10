@@ -14,6 +14,14 @@ public class Aikatauluslotti {
 	public Aikatauluslotti() {
 		super();
 	}
+	
+
+	public Aikatauluslotti(Koulutustilaisuus koulutus) {
+		super();
+		this.koulutus = koulutus;
+	}
+
+
 
 	public Aikatauluslotti(int id, String pvm, String alkukello,
 			String loppukello, String koulutustila, Koulutustilaisuus koulutus) {
