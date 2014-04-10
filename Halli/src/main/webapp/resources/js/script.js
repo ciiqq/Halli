@@ -25,7 +25,8 @@ $(document).ready(function() {
             opiskelijanro : {
                 required : true,
                 minlength: 7,
-                maxlength: 8
+                maxlength: 8,
+                pattern: "[a]*\\d{7}"
             },
         },
         messages :{
@@ -39,7 +40,8 @@ $(document).ready(function() {
             opiskelijanro : {
                 required : 'Syötä opiskelijanumero',
                 minlength : 'Anna opiskelijanumero oikeassa muodossa',
-                maxlength : 'Anna opiskelijanumero oikeassa muodossa'
+                maxlength : 'Anna opiskelijanumero oikeassa muodossa',
+                pattern : "Opiskelijanumero väärässä muodossa"
             },
         }
         });
