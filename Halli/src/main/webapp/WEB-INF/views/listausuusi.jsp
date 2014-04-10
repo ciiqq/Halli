@@ -10,6 +10,7 @@
      
     <html lang="en">
     <head>
+
     <meta charset="utf-8">
      
     <title>Halli</title>
@@ -151,7 +152,7 @@
 				<div id="valitut">
 				</div>
 				<br /><p>Anna vielä tietosi ilmoittautumista varten:</p><br/>
-				<form action="ilmoittaudu_koulutukseen" method="get">
+				<form id="ilmoittautuminen">
 				<table>
 				<tr><td>Etunimi:</td><td><input type="text" name="etunimi"></td></tr>
 				<tr><td>Sukunimi:</td><td><input type="text" name="sukunimi"></td></tr>
@@ -168,7 +169,10 @@
             <script
                     src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
             <script src="<%=request.getContextPath()%>/resources/js/jquery.colorbox.js"></script>
+            
+            <script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
      
+            <script src="<%=request.getContextPath()%>/resources/js/additional-methods.js"></script>
             <script type="application/javascript" src="<%=request.getContextPath()%>/resources/js/script.js"></script>
     </body>
     </html>

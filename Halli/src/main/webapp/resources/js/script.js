@@ -15,6 +15,33 @@ $(document).ready(function() {
 		$('.details').css('height', nykyinenkorkeus - valikkojenkorkeus);
 
 	});
+	//kälviksen kommentti
+	$(document).ready(function(){
+        $("#ilmoittautuminen").validate({
+        rules :{
+            etunimi : {
+                required : true
+            },
+            sukunimi : {
+                required : true
+            },
+            opiskelijanro : {
+                required : true
+            },
+        },
+        messages :{
+            etunimi : {
+                required : 'Syötä etunimi'
+            },
+            sukunimi : {
+                required : 'Syötä sukunimi'
+            },
+            opiskelijanro : {
+                required : 'Syötä opiskelijanumero'
+            },
+        }
+        });
+    });
 	
     $(".aihe").click(function(){
             $(".aihe").removeClass("active");
