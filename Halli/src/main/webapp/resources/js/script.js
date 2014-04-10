@@ -1,21 +1,19 @@
 $(document).ready(function() {
 
-	//GET BROWSER WINDOW HEIGHT
+	//Hae ikkunan korkeus
 	var valikkojenkorkeus = 96;
 	var nykyinenkorkeus = $(window).height();
-	//SET HEIGHT OF SIDEBAR AND CONTENT ELEMENTS
 	$('.details').css('height', nykyinenkorkeus - valikkojenkorkeus);
 
-	//ON RESIZE OF WINDOW
+	//Ikkunan koon muuttuessa, suorita funktio
 	$(window).resize(function() {
 
-		//GET NEW HEIGHT
+		//Hae uusi ikkunan korkeus
 		var nykyinenkorkeus = $(window).height();	
-		//RESIZE BOTH ELEMENTS TO NEW HEIGHT
 		$('.details').css('height', nykyinenkorkeus - valikkojenkorkeus);
 
 	});
-	//kälviksen kommentti
+	//jQuery-validointi
         $("#ilmoittautuminen").validate({
         rules :{
             etunimi : {

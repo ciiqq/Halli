@@ -117,7 +117,7 @@
                                                                     </c:forEach></td>
                                                     </tr>
                                                     <tr>
-                                                            <td class="bold">Lähtölaso</td>
+                                                            <td class="bold">Lähtötaso</td>
                                                             <td><c:out value="${k.lahtotaso}" /></td>
                                                     </tr>
                                                     <tr>
