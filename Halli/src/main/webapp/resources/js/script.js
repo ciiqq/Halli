@@ -58,7 +58,7 @@ $(document).ready(function() {
     };
      
     $(".vahvistus").click(function() {
-    	$(".vahvistus").colorbox({inline:true, width:"75%", height:"35%"});
+    	$(".vahvistus").colorbox({inline:true, width:"45%", height:"70%"});
       
             var checkboxit = document.getElementsByName("box");
                     var aiheet = document.getElementsByName("aihe");
