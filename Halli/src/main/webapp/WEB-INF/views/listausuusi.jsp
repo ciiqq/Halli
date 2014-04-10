@@ -129,8 +129,7 @@
                                                     </tr>
                                                     <tr>
                                                             <td></td>
-                                                            <td><button type="button" value="${k.id}" class="lisaa">LISÄÄ
-                                                                            KOULUTUS</button></td>
+                                                            <td><button type="button" value="${k.id}" class="lisaa">Valitse koulutus</button></td>
                                                     </tr>
                                             </table>
                                     </c:forEach>
