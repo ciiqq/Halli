@@ -10,7 +10,6 @@
 <%@ page import="fi.softala.dao.PalauteDAOimpl" %>
 <%@ page import="fi.softala.dao.PalauteRowMapper" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,16 +19,16 @@
 	<h1>Palautteet</h1>
 
 	<table border="1">
-		<c:forEach items="${kaikkipalautteet}" var="kaikkipalautteet">
+		<c:forEach items="${palautteet}" var="palautteet">
 			<tr> 
 			<td>Id</td>
 			<td>Arvosana</td>
 			<td>Palaute</td>
 			</tr>
 			<tr>
-				<td><c:out value="${kaikkipalautteet.palaute_id}" /></td>
-				<td><c:out value="${kaikkipalautteet.arvosana}" /></td>
-				<td><c:out value="${kaikkipalautteet.palauteteksti}" /></td>
+				<td><c:out value="${palautteet.palaute_id}" /></td>
+				<td><c:out value="${palautteet.arvosana}" /></td>
+				<td><c:out value="${palautteet.palauteteksti}" /></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -37,5 +36,3 @@
 
 </body>
 </html>
-
-
