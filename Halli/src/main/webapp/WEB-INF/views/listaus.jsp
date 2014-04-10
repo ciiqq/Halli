@@ -8,27 +8,25 @@
 <html>
 <head>
 <title>Koulutusten listaus</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
 </head>
 <body>
 
-<c:forEach items="${koulutukset}" var="k">
-	<c:out value="Aihe: ${k.aihe}"/><br/>
-	<c:out value="Kuvaus: ${k.kuvaus}"/><br/>
-	<c:out value="Klo: ${k.suomiKlo}"/><br/>
-	<c:out value="Pvm: ${k.suomiPvm}"/><br/>
-	<c:out value="Paikka: ${k.paikka}"/><br/>
-	
-	<c:out value="Kouluttajat: "/>
-	<c:forEach items="${k.kouluttajat}" var="koul">
-	<c:out value="${koul.etunimi} "/>
-	<c:out value="${koul.sukunimi}"/><br/>
-	</c:forEach>
-	
-	<c:out value="Avainsanat: "/>
-	<c:forEach items="${k.avainsanat}" var="a">
-	<c:out value="${a} "/>
-	</c:forEach>	
-</c:forEach>
 
+<table class="table table-bordered table-striped">
+<c:forEach items="${koulutukset}" var="k">
+	<th colspan="2"> </th>
+	<tr><td>Aihe:</td><td><c:out value="${k.aihe}"/></td></tr>
+	<tr><td>Kuvaus:</td><td><c:out value="${k.kuvaus}"/></td></tr>
+	<tr><td>Lähtötaso:</td><td><c:out value="${k.lahtotaso}"/></td></tr>
+	<tr><td>Kellonaika:</td><td><c:out value="${k.suomiKlo}"/></td></tr>
+	<tr><td>Päivämäärä:</td><td><c:out value="${k.suomiPvm}"/></td></tr>
+	<tr><td>Paikka:</td><td><c:out value="${k.paikka}"/></td></tr>
+	<tr><td>Kouluttajat:</td><td><c:forEach items="${k.kouluttajat}" var="koul"><c:out value="${koul.etunimi} "/><c:out value="${koul.sukunimi} "/></c:forEach></td></tr>
+	<tr><td>Avainsanat:</td><td><c:forEach items="${k.avainsanat}" var="a"><span class="label label-primary"><c:out value="${a}"/></span> </c:forEach></td></tr>
+</c:forEach>
+</table>
+
+<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 </body>
 </html>
