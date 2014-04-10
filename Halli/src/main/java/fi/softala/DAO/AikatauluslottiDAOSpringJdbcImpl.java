@@ -37,7 +37,7 @@ public class AikatauluslottiDAOSpringJdbcImpl implements AikatauluslottiDAO {
 	 * generoima id asetetaan parametrina annettuun olioon.
 	 */
 	public void talleta(Aikatauluslotti a) {
-		final String sql = "insert into aikatauluslotti(pvm, alkukello, loppukello, kouluttajaid, opettajaid) values(?,?,?,?,?)";
+		final String sql = "insert into aikatauluslotti(pvm, alkukello, loppukello, koulutustila, koulutusid) values(?,?,?,?,?)";
 
 		// anonyymi sis‰luokka tarvitsee vakioina v‰litett‰v‰t arvot,
 		// jotta roskien keruu onnistuu t‰m‰n metodin suorituksen p‰‰ttyess‰.
@@ -74,7 +74,7 @@ public class AikatauluslottiDAOSpringJdbcImpl implements AikatauluslottiDAO {
 	}
 
 	public Aikatauluslotti etsi(int id) {
-		String sql = "select pvm, alkukello,loppukello,koulutustila,koulutus_id from henkilo where id = ?";
+		String sql = "select pvm, alkukello, loppukello, koulutustila, koulutus_id from henkilo where id = ?";
 		Object[] parametrit = new Object[] { id };
 		RowMapper<Aikatauluslotti> mapper = new AikatauluslottiRowMapper();
 
