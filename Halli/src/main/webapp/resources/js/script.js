@@ -16,6 +16,33 @@ $(document).ready(function() {
 
 	});
 	
+	$(document).ready(function(){
+        $("#ilmoittautuminen").validate({
+        rules :{
+            etunimi : {
+                required : true
+            },
+            sukunimi : {
+                required : true
+            },
+            opiskelijanro : {
+                required : true
+            },
+        },
+        messages :{
+            etunimi : {
+                required : 'Syötä etunimi'
+            },
+            sukunimi : {
+                required : 'Syötä sukunimi'
+            },
+            opiskelijanro : {
+                required : 'Syötä opiskelijanumero'
+            },
+        }
+        });
+    });
+	
     $(".aihe").click(function(){
             $(".aihe").removeClass("active");
             $(this).addClass("active");
@@ -35,7 +62,7 @@ $(document).ready(function() {
                                                 $(this).html("POISTA KOULUTUS");
                             }else{
                             checkboxit[i].checked = false;
-                                    $(this).html("LIS�� KOULUTUS");
+                                    $(this).html("LIS�� KOULUTUS");
                             }
                             }
                     }      
