@@ -9,7 +9,7 @@
 	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -35,13 +35,11 @@
 			data-target="#palauteModal">Anna palautetta</button>
 
 		<!-- Palauteikkuna Modal -->
-		<div class="modal fade" id="palauteModal" tabindex="-1" role="dialog"
-			aria-labelledby="AnnaPalautetta" aria-hidden="true">
+		<div class="modal fade" id="palauteModal" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title" id="palauteModal">Anna palautetta</h4>
 					</div>
 					<div class="modal-body">
@@ -61,8 +59,8 @@
 							<form:textarea path="palauteteksti" rows="8" cols="50"
 								maxlength="400" class="form-control"></form:textarea>
 							<br>
-							<form:label path="opiskelijanumero">Opiskelijanumero</form:label><br>
-							<form:input path="opiskelijanumero" />
+							<form:label path="opiskelijanumero">Opiskelijanumero (ainoastaan numero ilman a alkua)</form:label><br>
+							<form:input path="opiskelijanumero" placeholder="1234567"/>
 						</form:form>
 					</div>
 					<div class="modal-footer">

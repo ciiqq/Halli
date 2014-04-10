@@ -6,13 +6,13 @@ public class Palaute {
 	private int palaute_id;
 	private int arvosana;
 	private String palauteteksti;
-	private String opiskelijanumero;
+	private int opiskelijanumero;
 	
-	public String getOpiskelijanumero() {
+	public int getOpiskelijanumero() {
 		return opiskelijanumero;
 	}
 
-	public void setOpiskelijanumero(String opiskelijanumero) {
+	public void setOpiskelijanumero(int opiskelijanumero) {
 		this.opiskelijanumero = opiskelijanumero;
 	}
 
