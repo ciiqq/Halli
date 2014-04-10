@@ -46,7 +46,7 @@ $(document).ready(function() {
                 required : 'Syötä opiskelijanumero',
                 minlength : 'Anna opiskelijanumero oikeassa muodossa',
                 maxlength : 'Anna opiskelijanumero oikeassa muodossa',
-                pattern : "Opiskelijanumero väärässä muodossa"
+                pattern : "Opiskelijanumero väärässä muodossa!"
             },
         }
         });
