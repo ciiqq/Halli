@@ -88,7 +88,8 @@
      
                                     <c:forEach items="${koulutukset}" var="k">
                                     <input type="hidden" name="aihe" value="${k.aihe}"/>
-                                            <table id="<c:out value="${k.id}"/>" style="display: none">
+                                    		<div class="table-container" id="<c:out value="${k.id}"/>" style="display: none">
+                                            <table>
                                                     <tr>
                                                             <td class="bold">Nimi</td>
                                                             <td><c:out value="${k.aihe}" /></td>
@@ -131,6 +132,7 @@
                                                             <td><button type="button" value="${k.id}" class="lisaa">Valitse koulutus</button></td>
                                                     </tr>
                                             </table>
+                                            </div>
                                     </c:forEach>
                             </div>
                                                 <div class="bottom-bar">
