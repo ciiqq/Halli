@@ -15,7 +15,7 @@ $(document).ready(function() {
 		$('.details').css('height', nykyinenkorkeus - valikkojenkorkeus);
 
 	});
-	
+	//kälviksen kommentti
 	$(document).ready(function(){
         $("#ilmoittautuminen").validate({
         rules :{
