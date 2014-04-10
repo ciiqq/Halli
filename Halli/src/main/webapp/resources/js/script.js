@@ -14,13 +14,16 @@ $(document).ready(function() {
 
 	});
 	//jQuery-validointi
+	
         $("#ilmoittautuminen").validate({
         rules :{
             etunimi : {
-                required : true
+                required : true,
+                letterswithbasicpunc: true
             },
             sukunimi : {
-                required : true
+                required : true,
+                letterswithbasicpunc: true
             },
             opiskelijanro : {
                 required : true,
@@ -31,10 +34,12 @@ $(document).ready(function() {
         },
         messages :{
             etunimi : {
-                required : 'Syötä etunimi'
+                required : 'Syötä etunimi',
+                letterswithbasicpunc: 'Etunimessä saa olla vain kirjaimia'
             },
             sukunimi : {
-                required : 'Syötä sukunimi'
+                required : 'Syötä sukunimi',
+                letterswithbasicpunc: 'Sukunimessä saa olla vain kirjaimia'
                 
             },
             opiskelijanro : {
