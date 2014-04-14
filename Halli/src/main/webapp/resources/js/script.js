@@ -101,8 +101,7 @@ $(document).ready(function() {
 	$(".vahvistus").click(function() {
 		$(".vahvistus").colorbox({
 			inline : true,
-			width : "45%",
-			height : "70%"
+			width : "50%",
 		});
 
 		var checkboxit = document.getElementsByName("box");

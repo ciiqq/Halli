@@ -113,7 +113,7 @@
                                                     <tr>
                                                             <td class="bold">Avainsanat</td>
                                                             <td><c:forEach items="${k.avainsanat}" var="a">
-                                                                            <span class="label label-primary"><c:out value="${a}" /></span>
+                                                                            <span class="tagi"><c:out value="${a}" /></span>
                                                                     </c:forEach></td>
                                                     </tr>
                                                     <tr>
@@ -148,6 +148,7 @@
 			
 			<div style='display:none'>
 				<div id='lightbox_sisalto' style='padding:20px; background:#fff;'>
+				<div class="lightbox-inner-sisalto">
 				<p>Olet valinnut seuraavat koulutukset:</p><br/>
 				<div id="valitut">
 				</div>
@@ -157,8 +158,12 @@
 				<tr><td>Etunimi:</td><td><input type="text" name="etunimi"></td></tr>
 				<tr><td>Sukunimi:</td><td><input type="text" name="sukunimi"></td></tr>
 				<tr><td>Opiskelijanumero:</td><td><input type="text" name="opiskelijanro"></td></tr>
-				<tr><td><input type="submit" value="Ilmoittaudu koulutuksiin" /></td></tr>
 				</table>
+				</div>
+				
+								<div class="modal-controls clearfix">
+				<input type="submit" value="Ilmoittaudu koulutuksiin" />
+				<input type="button" onclick="$.colorbox.close()" value="Sulje ikkuna" /></div>
 				</form>
 				</div>
 			</div>

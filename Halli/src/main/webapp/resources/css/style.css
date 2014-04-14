@@ -59,6 +59,7 @@ body {
 
 .list {
 	color: black;
+	padding-right: 4px;
 }
 
 .list .active {
@@ -88,6 +89,7 @@ body {
 
 .details {
 	overflow-y: scroll;
+	padding-left: 4px;
 }
 
 .details button {
@@ -101,7 +103,7 @@ body {
 
 .table-container {
 	background-color: white;
-	padding: 8px;
+	padding: 4px;
 	border-radius: 3px;
 	-moz-box-shadow:    0px 2px 0px 0px rgba(0,0,0,0.05);
 	-webkit-box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.05);
@@ -110,7 +112,7 @@ body {
 
 .details table {
 	width: 100%;
-	table-layout: fixed;
+	//table-layout: fixed;
 }
 
 .details table tr td {
@@ -198,6 +200,13 @@ input[type="checkbox"]:checked:after {
 	padding-left: 16px;
 }
 
+.modal-controls {
+	width: 100%;
+	background-color: #F2F2F7;
+	bottom:0;
+	padding: 8px;
+}
+
 #cboxClose {
 	background: url(../images/close.png) no-repeat !important;
 	opacity: 0.66 !important;
@@ -205,4 +214,46 @@ input[type="checkbox"]:checked:after {
 
 #cboxClose:hover {
 	opacity: 1 !important;
+}
+
+#cboxOverlay {
+	background-color:rgba(0, 0, 0, 0.5) !important;
+}
+
+#colorbox {
+	border: none !important;
+	border-radius: 3px !important;
+}
+
+#cboxLoadedContent {
+	padding:0 !important;
+	margin:0 !important;
+}
+
+#lightbox_sisalto {
+	padding:0 !important;
+}
+
+.lightbox-inner-sisalto {
+	padding:12px;
+}
+
+.modal-controls input {
+	background-color: #00B3D0;
+	border: 0;
+	padding: 8px;
+	border-radius: 3px;
+	color: white;
+	float: right;
+	margin-left: 8px;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.tagi {
+	background-color: #0080C7;
+	color: white;
+	padding: 4px;
+	font-size: 14px;
+	border-radius: 2px;
 }
