@@ -250,6 +250,11 @@ input[type="checkbox"]:checked:after {
 	padding-right: 16px;
 }
 
+/* placeholder */
+.modal-controls input:disabled {
+	background-color: gray;
+}
+
 .tagi {
 	background-color: #0080C7;
 	color: white;
