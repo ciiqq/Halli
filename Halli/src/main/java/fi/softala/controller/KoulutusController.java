@@ -35,11 +35,11 @@ public class KoulutusController {
 			
 			model.addAttribute("koulutukset", koulutuslista);
 			
-			return "naytakoulutukset";
+			return "koulutuslista";
 		}
 		
 		
-		 //Tämä metodi kuuntelee valuessa olevaa osoitetta naytakoulutukset.jsp:ltä.	
+		 //Tämä metodi kuuntelee valuessa olevaa osoitetta koulutuslistat.jsp:ltä.	
 		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.GET)
 	    public String siirryKoulutukseen(Model model, @PathVariable Integer DaoId) {
 	       Aikatauluslotti koulutus = dao.haeKoulutus(DaoId);
