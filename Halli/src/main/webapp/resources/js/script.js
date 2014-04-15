@@ -57,7 +57,7 @@ $(document).ready(function() {
 			},
 			opiskelijanro : {
 				required : '',
-				minlength : 'Anna opiskelijanumero oikeassa muodossa',
+				minlength : '',
 				maxlength : 'Anna opiskelijanumero oikeassa muodossa',
 				pattern : "Anna opiskelijanumero oikeassa muodossa"
 			},
