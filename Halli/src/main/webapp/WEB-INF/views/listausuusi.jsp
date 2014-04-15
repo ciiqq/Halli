@@ -158,22 +158,26 @@
 				<br />
 				<p>Anna vielä tietosi ilmoittautumista varten:</p>
 				<br />
+				
 				<form id="ilmoittautuminen">
-					<table>
-						<tr>
-							<td>Etunimi:</td>
-							<td><input type="text" name="etunimi"></td>
-						</tr>
-						<tr>
-							<td>Sukunimi:</td>
-							<td><input type="text" name="sukunimi"></td>
-						</tr>
-						<tr>
-							<td>Opiskelijanumero:</td>
-							<td><input type="text" name="opiskelijanro"></td>
-						</tr>
-					</table>
-			</div>
+				
+				<table>
+				  <tr>
+				    <td>Etunimi</td>
+				    <td>Sukunimi</td>
+				  </tr>
+				  <tr>
+				    <td><input type="text" name="etunimi"></td>
+				    <td><input type="text" name="sukunimi"></td>
+				  </tr>
+				  <tr>
+				    <td colspan="2">Opiskelijanumero</td>
+				  </tr>
+				  <tr>
+				    <td colspan="2"><input type="text" name="opiskelijanro"></td>
+				  </tr>
+				</table>
+				</div>
 
 			<div class="modal-controls clearfix">
 				<input type="submit" value="Ilmoittaudu koulutuksiin"

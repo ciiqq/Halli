@@ -26,6 +26,31 @@ body {
 	padding: 8px;
 }
 
+label.error {
+	background-color: #eda234;
+	width: 100%;
+	display: block !important;
+	padding: 4px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	color: white;
+	border-radius: 2px;
+}
+
+#ilmoittautuminen table {
+
+}
+
+input[type="text"], textarea {
+	width: 100%;
+	border: 1px solid #a8a8a8;
+	padding: 4px;
+}
+
+#ilmoittautuminen table tr td {
+	padding: 4px;
+}
+
 .side-menu {
 	background-color: #2C3B41;
 	float: left;
