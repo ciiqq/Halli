@@ -58,36 +58,7 @@
 				</ul>
 			</div>
 			<div class="fifty details">
-
-				<table id="Placeholder">
-
-					<tr>
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-					</tr>
-				</table>
-
+				<div class="table-container" style="opacity:0.5;"><span style="display:block;text-align:center;margin-top:96px;margin-bottom:96px;">Valitse koulutus vasemmalta :)</span></div>
 				<c:forEach items="${koulutukset}" var="k">
 					<input type="hidden" name="aihe" value="${k.aihe}" />
 					<div class="table-container" id="<c:out value="${k.id}"/>"
@@ -158,22 +129,26 @@
 				<br />
 				<p>Anna vielä tietosi ilmoittautumista varten:</p>
 				<br />
+				
 				<form id="ilmoittautuminen">
-					<table>
-						<tr>
-							<td>Etunimi:</td>
-							<td><input type="text" name="etunimi"></td>
-						</tr>
-						<tr>
-							<td>Sukunimi:</td>
-							<td><input type="text" name="sukunimi"></td>
-						</tr>
-						<tr>
-							<td>Opiskelijanumero:</td>
-							<td><input type="text" name="opiskelijanro"></td>
-						</tr>
-					</table>
-			</div>
+				
+				<table>
+				  <tr>
+				    <td>Etunimi</td>
+				    <td>Sukunimi</td>
+				  </tr>
+				  <tr>
+				    <td><input type="text" name="etunimi"></td>
+				    <td><input type="text" name="sukunimi"></td>
+				  </tr>
+				  <tr>
+				    <td colspan="2">Opiskelijanumero</td>
+				  </tr>
+				  <tr>
+				    <td colspan="2"><input type="text" name="opiskelijanro"></td>
+				  </tr>
+				</table>
+				</div>
 
 			<div class="modal-controls clearfix">
 				<input type="submit" value="Ilmoittaudu koulutuksiin"

@@ -16,6 +16,18 @@ $(document).ready(function() {
 	// jQuery-validointi
 
 	$("#ilmoittautuminen").validate({
+	    invalidHandler: function(form, validator) {
+	        var errors = validator.numberOfInvalids();
+	        if (errors) {
+	            $.colorbox.resize();
+	        } else {
+	        	$.colorbox.resize();
+	        }
+	    },
+	    success: function(label) {
+	    	$(label).remove();
+	    	$.colorbox.resize();
+	    },
 		rules : {
 			etunimi : {
 				required : true,
@@ -32,23 +44,24 @@ $(document).ready(function() {
 				pattern : "[a]*\\d{7}"
 			},
 		},
+		wrapper: "div",		
 		messages : {
 			etunimi : {
-				required : 'Syötä etunimi',
+				required : '',
 				letterswithbasicpunc : 'Etunimessä saa olla vain kirjaimia'
 			},
 			sukunimi : {
-				required : 'Syötä sukunimi',
+				required : '',
 				letterswithbasicpunc : 'Sukunimessä saa olla vain kirjaimia'
 
 			},
 			opiskelijanro : {
-				required : 'Syötä opiskelijanumero',
-				minlength : 'Anna opiskelijanumero oikeassa muodossa',
+				required : '',
+				minlength : '',
 				maxlength : 'Anna opiskelijanumero oikeassa muodossa',
 				pattern : "Anna opiskelijanumero oikeassa muodossa"
 			},
-		}
+		}	
 	});
 
 	// Tarkastaa formin jokaisella näppäimen painalluksessa ja kun hiiri
@@ -123,7 +136,7 @@ $(document).ready(function() {
 		for (var i = 0; i < checkboxit.length; i++) {
 			if (checkboxit[i].checked) {
 				var aihe = aiheet[i].value;
-				$("<p>").text(aihe).appendTo("#valitut"); // Lisätään aihe valitut diviin
+				$("<li>").text(aihe).appendTo("#valitut"); // Lisätään aihe valitut diviin
 			}
 		}
 	});
