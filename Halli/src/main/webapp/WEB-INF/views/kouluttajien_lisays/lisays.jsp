@@ -16,11 +16,11 @@
 <h1>Kouluttajien lisäys</h1>
 
 <div>
-	<form action="" method="post">
+	<form action="lisaaLista" method="post" enctype="multipart/form-data">
 		<table>
 		
 		<tr>
-			<td><input type="file" name="kouluttaLista" /></td>
+			<td><input type="file" name="kouluttajaLista" /></td>
 		</tr>
 		
 		<tr>
