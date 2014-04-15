@@ -58,36 +58,7 @@
 				</ul>
 			</div>
 			<div class="fifty details">
-
-				<table id="Placeholder">
-
-					<tr>
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-					</tr>
-				</table>
-
+				<div class="table-container" style="opacity:0.5;"><span style="display:block;text-align:center;margin-top:96px;margin-bottom:96px;">Valitse koulutus oikealta :)</span></div>
 				<c:forEach items="${koulutukset}" var="k">
 					<input type="hidden" name="aihe" value="${k.aihe}" />
 					<div class="table-container" id="<c:out value="${k.id}"/>"
