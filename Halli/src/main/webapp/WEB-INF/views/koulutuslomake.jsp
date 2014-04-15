@@ -52,11 +52,11 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-8 col-md-6"> 
                             <label>Ohjaaja</label>
-                            <input type="text" class="form-control" disabled placeholder="Matti Meikalainen">                           
+                            <input type="text" class="form-control" disabled>                           
                         </div> 
                         <div class="col-xs-12 col-sm-8 col-md-6"> 
                             <label>Luokkatila</label>
-                            <input type="text" class="form-control" disabled placeholder="Matti Meikalainen">                           
+                            <input type="text" class="form-control" disabled>                           
                         </div> 
                     </div>
             </div>
