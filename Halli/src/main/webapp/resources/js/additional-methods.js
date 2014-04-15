@@ -1,6 +1,6 @@
 /*! jQuery Validation Plugin - v1.11.0 - 2/4/2013
 * https://github.com/jzaefferer/jquery-validation
-* Copyright (c) 2013 Jörn Zaefferer; Licensed MIT */
+* Copyright (c) 2013 J��rn Zaefferer; Licensed MIT */
 
 /*!
  * jQuery Validation Plugin 1.11.0
@@ -8,7 +8,7 @@
  * http://bassistance.de/jquery-plugins/jquery-plugin-validation/
  * http://docs.jquery.com/Plugins/Validation
  *
- * Copyright 2013 Jörn Zaefferer
+ * Copyright 2013 J��rn Zaefferer
  * Released under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  */
@@ -38,7 +38,7 @@
 }());
 
 jQuery.validator.addMethod("letterswithbasicpunc", function(value, element) {
-	return this.optional(element) || /^[a-z\-.,()'"\s]+$/i.test(value);
+	return this.optional(element) || /^[a-zåäö\-.,()'"\s]+$/i.test(value);
 }, "Letters or punctuation only please");
 
 jQuery.validator.addMethod("alphanumeric", function(value, element) {

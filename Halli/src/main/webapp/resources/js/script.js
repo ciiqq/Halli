@@ -1,49 +1,67 @@
 $(document).ready(function() {
 
-	//Hae ikkunan korkeus
+	// Hae ikkunan korkeus
 	var valikkojenkorkeus = 96;
 	var nykyinenkorkeus = $(window).height();
 	$('.details').css('height', nykyinenkorkeus - valikkojenkorkeus);
 
-	//Ikkunan koon muuttuessa, suorita funktio
+	// Ikkunan koon muuttuessa, suorita funktio
 	$(window).resize(function() {
 
-		//Hae uusi ikkunan korkeus
-		var nykyinenkorkeus = $(window).height();	
+		// Hae uusi ikkunan korkeus
+		var nykyinenkorkeus = $(window).height();
 		$('.details').css('height', nykyinenkorkeus - valikkojenkorkeus);
 
 	});
-	//jQuery-validointi
-        $("#ilmoittautuminen").validate({
-        rules :{
-            etunimi : {
-                required : true
-            },
-            sukunimi : {
-                required : true
-            },
-            opiskelijanro : {
-                required : true,
-                minlength: 7,
-                maxlength: 8
-            },
-        },
-        messages :{
-            etunimi : {
-                required : 'Syötä etunimi'
-            },
-            sukunimi : {
-                required : 'Syötä sukunimi'
-                
-            },
-            opiskelijanro : {
-                required : 'Syötä opiskelijanumero',
-                minlength : 'Anna opiskelijanumero oikeassa muodossa',
-                maxlength : 'Anna opiskelijanumero oikeassa muodossa'
-            },
-        }
-        });
-        
+	// jQuery-validointi
+
+	$("#ilmoittautuminen").validate({
+		rules : {
+			etunimi : {
+				required : true,
+				letterswithbasicpunc : true
+			},
+			sukunimi : {
+				required : true,
+				letterswithbasicpunc : true
+			},
+			opiskelijanro : {
+				required : true,
+				minlength : 7,
+				maxlength : 8,
+				pattern : "[a]*\\d{7}"
+			},
+		},
+		messages : {
+			etunimi : {
+				required : 'Syötä etunimi',
+				letterswithbasicpunc : 'Etunimessä saa olla vain kirjaimia'
+			},
+			sukunimi : {
+				required : 'Syötä sukunimi',
+				letterswithbasicpunc : 'Sukunimessä saa olla vain kirjaimia'
+
+			},
+			opiskelijanro : {
+				required : 'Syötä opiskelijanumero',
+				minlength : 'Anna opiskelijanumero oikeassa muodossa',
+				maxlength : 'Anna opiskelijanumero oikeassa muodossa',
+				pattern : "Anna opiskelijanumero oikeassa muodossa"
+			},
+		}
+	});
+
+	// Tarkastaa formin jokaisella näppäimen painalluksessa ja kun hiiri
+	// siirretään pois input kentästä
+	$("#ilmoittautuminen input").bind("keydown keyup mouseleave", function() {
+		var validi = $("#ilmoittautuminen").valid();
+		if (validi) {
+			$("#ilmoittaudu").prop("disabled", false);
+		} else {
+			$("#ilmoittaudu").prop("disabled", true);
+		}
+	});
+
 	$(".aihe").click(function() {
 		$(".aihe").removeClass("active");
 		$(this).addClass("active");
@@ -69,11 +87,12 @@ $(document).ready(function() {
 				}
 			}
 		}
-		// Jos yksikin checkbox on valittu, palautetaan true, 
+		// Jos yksikin checkbox on valittu, palautetaan true,
 		// jolloin disabled attribuutti poistetaan vahvistuspainikkeelta
 		if (tarkasta()) {
 			$(".vahvistus").removeAttr("disabled");
-		// Jos yhtään checkboxia ei ole valittu, disabled attribuutti lisätään vahvistuspainikkeelle
+		// Jos yhtään checkboxia ei ole valittu, disabled attribuutti
+		// lisätään vahvistuspainikkeelle
 		} else {
 			$(".vahvistus").attr("disabled", "disabled");
 		}
@@ -94,8 +113,7 @@ $(document).ready(function() {
 	$(".vahvistus").click(function() {
 		$(".vahvistus").colorbox({
 			inline : true,
-			width : "45%",
-			height : "70%"
+			width : "50%",
 		});
 
 		var checkboxit = document.getElementsByName("box");
