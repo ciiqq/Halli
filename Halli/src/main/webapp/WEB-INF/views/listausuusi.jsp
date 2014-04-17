@@ -48,6 +48,7 @@
 			<div class="top-bar">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
 			<div class="fifty list">
+			<form id="haku"><input type="search" name="haku" value="Suodata koulutuksia hakusanan perusteella"></form>
 				<ul>
 					<c:forEach items="${koulutukset}" var="k">
 						<li divid="<c:out value="${k.id}"/>" class="aihe"><input
@@ -64,6 +65,9 @@
 					<div class="table-container" id="<c:out value="${k.id}"/>"
 						style="display: none">
 						<table>
+							<tr>
+								<td class="tiedot" colspan="2">KOULUTUKSEN TIEDOT</td>
+							</tr>
 							<tr>
 								<td class="bold">Aihe</td>
 								<td><c:out value="${k.aihe}" /></td>
