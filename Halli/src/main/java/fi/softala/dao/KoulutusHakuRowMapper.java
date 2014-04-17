@@ -20,6 +20,7 @@ public class KoulutusHakuRowMapper implements RowMapper<Koulutustilaisuus> {
 		k.setPaikka(rs.getString("koulutustila"));
 		k.setSuomiPvm(Date.valueOf(rs.getString("pvm")));
 		k.setSuomiKlo(Time.valueOf(rs.getString("alkukello")));
+		k.setSuomiLoppuKlo(Time.valueOf(rs.getString("loppukello")));
 		
 		return k;
 	}

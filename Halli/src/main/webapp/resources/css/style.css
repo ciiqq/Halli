@@ -51,6 +51,18 @@ input[type="text"], textarea {
 	padding: 4px;
 }
 
+input[type="search"], textarea {
+	width:100%;
+	margin:2px;
+	height:32px;
+	border-radius: 2px;
+	border:0px;
+	/* Rectangle 1 copy 2: */
+	background: #FFFFFF;
+	-moz-box-shadow:    0px 2px 0px 0px rgba(0,0,0,0.05);
+	box-shadow:         0px 2px 0px 0px rgba(0,0,0,0.05);
+}
+
 #ilmoittautuminen table tr td {
 	padding: 4px;
 }
@@ -203,6 +215,13 @@ input[type="checkbox"]:checked:after {
 
 .bold {
 	font-weight: bold;
+}
+
+.tiedot {
+	font-weight: bold;
+	background-color:#A4A4A4;
+	color:#FFF;
+	padding:15px;
 }
 
 .nav-item {
