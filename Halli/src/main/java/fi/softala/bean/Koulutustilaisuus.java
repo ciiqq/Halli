@@ -17,6 +17,7 @@ public class Koulutustilaisuus {
 	private String lahtotaso;
 	private boolean nakyvyys;
 	private String suomiPvm;
+	private String suomiLoppuKlo;
 	private String suomiKlo;
 	private String paikka;
 	private Opettaja ope; // opettajabean tŠhŠn
@@ -84,6 +85,16 @@ public class Koulutustilaisuus {
 	// Hyödyntämällä java.sql.Time -kirjastoa
 	public void setSuomiKlo(Time suomiKlo) {
 		this.suomiKlo = suomiKloMuotoilu.format(suomiKlo);
+	}
+	
+	public String getSuomiLoppuKlo() {
+		return suomiLoppuKlo;
+	}
+
+	// Käytetään SQL kellonajan muuttamisessa suomalaiseksi
+	// Hyödyntämällä java.sql.Time -kirjastoa
+	public void setSuomiLoppuKlo(Time suomiLoppuKlo) {
+		this.suomiLoppuKlo = suomiKloMuotoilu.format(suomiLoppuKlo);
 	}
 
 	public Opettaja getOpe() {
