@@ -1,5 +1,5 @@
-ÔªøINSERT INTO kouluttaja (opiskelijanro, etunimi, sukunimi, salasana, suola)
-VALUES (1101234, 'Maija', 'Matilainen', 'hyvingeneroitupassu', 'suolatius'), (1201234, 'Ossi', 'Osaava', 'testipassu_hyvin_generoitu', 'suolakin'), (1202341, 'Samu', 'Sammakko', 'kosiomatkallaa_uah_uah', 'sakusuola'), (1202342, 'Harri', 'H√§m√§l√§inen', 'tarpeellinentesti', 'testisuola'), (1204321, 'Tiina', 'Taitava', 'salasanageneraattori', 'suolatettu'), (1234567, 'Matti', 'Meikalainen', 'abc123', '123abc');
+INSERT INTO kouluttaja (opiskelijanro, etunimi, sukunimi, salasana, suola)
+VALUES (1101234, 'Maija', 'Matilainen', 'hyvingeneroitupassu', 'suolatius'), (1201234, 'Ossi', 'Osaava', 'testipassu_hyvin_generoitu', 'suolakin'), (1202341, 'Samu', 'Sammakko', 'kosiomatkallaa_uah_uah', 'sakusuola'), (1202342, 'Harri', 'H‰m‰l‰inen', 'tarpeellinentesti', 'testisuola'), (1204321, 'Tiina', 'Taitava', 'salasanageneraattori', 'suolatettu'), (1234567, 'Matti', 'Meikalainen', 'abc123', '123abc');
 
 INSERT INTO opettaja (etunimi, sukunimi, salasana, suola)
 VALUES ('Jukka', 'Testi', 'Jukka123', '123Jukka'), ('Aila', 'Avulias', 'salasanajeejee', 'suola'), ('Pekka', 'Kuusisto', 'geneerinensalasana', 'suola'), ('Simo', 'Silmu', 'generoitupassu', 'suola'), ('Saija', 'Sulava', 'passupassupassu', 'suola');
