@@ -81,7 +81,7 @@
 							</tr>
 							<tr>
 								<td class="bold">Kellonaika</td>
-								<td><c:out value="${k.suomiKlo}" /></td>
+								<td><c:out value="${k.suomiKlo}" /> - <c:out value="${k.suomiLoppuKlo}" /></td>
 							</tr>
 							<tr>
 								<td class="bold">Avainsanat</td>
