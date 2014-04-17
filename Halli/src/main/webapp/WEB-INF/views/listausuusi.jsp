@@ -132,6 +132,8 @@
 				
 				<form id="ilmoittautuminen">
 				
+				<input type="hidden" id="valitutkoulutukset" />
+				
 				<table>
 				  <tr>
 				    <td>Etunimi</td>

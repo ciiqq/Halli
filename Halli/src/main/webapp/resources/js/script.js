@@ -131,13 +131,26 @@ $(document).ready(function() {
 
 		var checkboxit = document.getElementsByName("box");
 		var aiheet = document.getElementsByName("aihe");
+		var valitutidt = new Array();
 		$("#valitut").empty(); // Tyhjennetään valitut id:llä oleva div
 
 		for (var i = 0; i < checkboxit.length; i++) {
 			if (checkboxit[i].checked) {
 				var aihe = aiheet[i].value;
+				var id = checkboxit[i].value;
 				$("<li>").text(aihe).appendTo("#valitut"); // Lisätään aihe valitut diviin
+				valitutidt[i] = checkboxit[i].value;
 			}
 		}
+		var valuestringi = "";
+		for (var i = 0; i < valitutidt.length; i++){
+			if (valitutidt[i] !== undefined){
+			valuestringi = valuestringi + valitutidt[i] + ",";
+			}
+		}
+		
+		str = valuestringi.substring(0, valuestringi.length - 1);
+		
+		$("#valitutkoulutukset").val(str);
 	});
 });
