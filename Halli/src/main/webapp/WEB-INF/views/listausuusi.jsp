@@ -99,7 +99,7 @@
 							</tr>
 							<tr>
 								<td class="bold">Kuvaus</td>
-								<td><c:out value="${k.kuvaus}" /></td>
+								<td><p><c:out value="${k.kuvaus}" /></p></td>
 							</tr>
 							<tr>
 								<td></td>
@@ -125,7 +125,7 @@
 			<div class="lightbox-inner-sisalto">
 				<p>Olet valinnut seuraavat koulutukset:</p>
 				<br />
-				<div id="valitut"></div>
+				<ul id="valitut"></ul>
 				<br />
 				<p>Anna vielä tietosi ilmoittautumista varten:</p>
 				<br />
