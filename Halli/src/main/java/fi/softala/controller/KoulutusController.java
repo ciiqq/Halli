@@ -10,12 +10,14 @@ import javax.inject.Inject;
 
 
 
+
 import java.util.List;
 import java.util.ArrayList;
 
 import fi.softala.bean.Kouluttaja;
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.service.KoulutustilaisuusService;
+import fi.softala.service.KoulutustilaisuusServiceImpl;
 
 @Controller
 @RequestMapping (value="/koulutus")
@@ -28,6 +30,12 @@ public class KoulutusController {
 			KoulutustilaisuusService koulutustilaisuusService) {
 		this.koulutustilaisuusService = koulutustilaisuusService;
 	}
+
+	public KoulutustilaisuusService getKoulutustilaisuusService() {
+		return koulutustilaisuusService;
+	}
+
+
 
 	@RequestMapping (value="/uusi", method=RequestMethod.GET)
 	public String getCreateForm(Model model) {
