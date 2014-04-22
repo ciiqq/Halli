@@ -38,7 +38,7 @@
     </tr>
     
     <tr>
-    	<th>kstila</th>
+    	<th>Koulutustila</th>
     	<td>${ks.koulutustila}</td> 
     </tr>
     
