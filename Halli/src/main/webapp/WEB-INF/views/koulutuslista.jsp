@@ -36,7 +36,9 @@
 			
 			<td>
 				${slotti.koulutus.aihe}
-			</td>				
+			</td>
+			
+							
 			
 		
 			<td>
