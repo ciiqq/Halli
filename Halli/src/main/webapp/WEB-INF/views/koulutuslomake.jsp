@@ -145,7 +145,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Peruuta</button>
-        <button type="button" class="btn btn-primary">Lisää valittu</button>
+        <button type="button" class="btn btn-primary">Lisää kouluttaja</button>
       </div>
     </form>
     </div>
