@@ -16,7 +16,7 @@
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modalmanager.js"></script>
 <title>Koulutustiedot</title>
 </head>
-<body>
+<body style="text-align: center; margin: 0 auto; width: 900px;">
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
@@ -64,6 +64,7 @@
 </div>
 <a class="btn btn-primary" href="../koulutuslistaus">Takaisin listaukseen</a>
 <a type="button" class="btn btn-primary"  href="#test_modal" data-toggle="modal">Muokkaa</a>
+
 
 
 

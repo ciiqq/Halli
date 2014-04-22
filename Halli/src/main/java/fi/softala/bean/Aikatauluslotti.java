@@ -1,14 +1,30 @@
 package fi.softala.bean;
 import java.text.SimpleDateFormat;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class Aikatauluslotti {
 	
-	// nmoi
 	private int id;
+	
+	@NotNull
+	@Pattern(regexp = "\\d{2}.\\d{2}.\\d{4}")
 	private String pvm;
+	
+	@NotNull
+	@Pattern(regexp = "\\d{2}:\\d{2}")
 	private String alkukello;
+	
+	@NotNull
+	@Pattern(regexp = "\\d{2}:\\d{2}")
 	private String loppukello;
+	
+	@NotNull
+	@Size(min=4, max=5)
 	private String koulutustila;
+	
 	private Koulutustilaisuus koulutus;
 	
 	public Aikatauluslotti() {

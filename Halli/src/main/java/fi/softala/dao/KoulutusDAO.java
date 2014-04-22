@@ -9,4 +9,6 @@ public interface KoulutusDAO {
 	public List<Aikatauluslotti> haeKoulutukset();
 
 	public Aikatauluslotti haeKoulutus(int id);
+	
+	public void paivitaKoulutus(Aikatauluslotti aikatauluslotti);
 }
