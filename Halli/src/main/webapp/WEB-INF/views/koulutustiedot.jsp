@@ -6,6 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap-modal.css">
+<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/bootstrap-modal.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/bootstrap-modalmanager.js"></script>
 <title>Koulutustiedot</title>
 </head>
 <body>
@@ -55,9 +60,21 @@
   </table>
 </div>
 
+<a type="button" class="btn" style="width:100%;" href="#test_modal" data-toggle="modal">Muokkaa</a>
 
+<div class="modal fade" id="test_modal">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h3><c:out value="${ks.koulutus.aihe}" /></h3>
+  </div>
+  <div class="modal-body">
+    <p>Test Modal</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    <a href="#" class="btn btn-primary">Save Changes</a>
+  </div>
+</div>
 
-	<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 </body>
 </html>
