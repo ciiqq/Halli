@@ -48,6 +48,7 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 	}
 	
 	public List<Koulutustilaisuus> haeValitut(String ehto) {
+		ehto = "%"+ehto+"%";
 		Object[] parametrit = new Object[] {ehto, ehto, ehto, ehto, ehto, ehto};
 		String sql = "SELECT k.*, ast.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
