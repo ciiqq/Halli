@@ -3,9 +3,12 @@ package fi.softala.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,7 +44,7 @@ public class KoulutusController {
 		}
 		
 		
-		 //Tämä metodi kuuntelee valuessa olevaa osoitetta koulutuslistat.jsp:ltä.	
+		//Tämä metodi kuuntelee valuessa olevaa osoitetta koulutuslistat.jsp:ltä.	
 		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.GET)
 	    public String siirryKoulutukseen(Model model, @PathVariable Integer DaoId) {
 	       Aikatauluslotti koulutus = dao.haeKoulutus(DaoId);
@@ -52,6 +55,23 @@ public class KoulutusController {
 	    } 
 		
 		
+		
+		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.POST)
+		public String muokkaaKoulutusta(Model model, @Valid @ModelAttribute("muokattavaKoulutus") Aikatauluslotti aikatauluslotti, BindingResult bindingResult){
+			
+			if(bindingResult.hasErrors()) {
+				return "koulutustiedot";
+			}
+			
+			dao.paivitaKoulutus(aikatauluslotti);
+//			model.addAttribute("ks", aikatauluslotti);
+			
+			return "redirect:/koulutustiedot";
+		}
+		
+
+		
+
 
 		
 	}
