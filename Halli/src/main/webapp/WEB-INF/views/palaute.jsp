@@ -7,6 +7,14 @@
 <title>Palaute</title>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
+<style>
+	.error {
+    	color:red;
+	}
+	.valid {
+    	color:green;
+	}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top">
@@ -29,6 +37,14 @@
 			</div>
 		</div>
 	</nav>
+	
+	<div class="alert alert-succes alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert">
+		&times;
+		</button>
+		Palaute lähetetty.
+	</div>
+	
 	<div class="container">
 		<a class="btn btn-primary" href="testaus/uusi">Testaa</a>
 		<button class="btn btn-primary" data-toggle="modal"
@@ -44,9 +60,10 @@
 					</div>
 					<div class="modal-body">
 						<form:form modelAttribute="palaute" id="palauteForm" method="post">
-								<form:label path="arvosana">Arvosana</form:label><br>
-								<form:select path="arvosana" class="form-control">
-								<option value="" disabled selected>Valitse arvosana</option>
+							<form:label path="arvosana">Arvosana</form:label>
+							<br>
+							<form:select path="arvosana" class="form-control">
+								<option value="">Valitse arvosana</option>
 								<form:option value="1">1 - Heikko</form:option>
 								<form:option value="2">2 - Kohtalainen</form:option>
 								<form:option value="3">3 - Hyvä</form:option>
@@ -59,8 +76,9 @@
 							<form:textarea path="palauteteksti" rows="8" cols="50"
 								maxlength="400" class="form-control"></form:textarea>
 							<br>
-							<form:label path="opiskelijanumero">Opiskelijanumero (ainoastaan numero ilman a alkua)</form:label><br>
-							<form:input path="opiskelijanumero" placeholder="1234567"/>
+							<form:label path="opiskelijanumero">Opiskelijanumero (ainoastaan numero ilman a alkua)</form:label>
+							<br>
+							<form:input path="opiskelijanumero" placeholder="1234567" />
 						</form:form>
 					</div>
 					<div class="modal-footer">
@@ -75,22 +93,52 @@
 		<!-- /Palauteikkuna Modal -->
 	</div>
 	<!-- /container -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+	<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 	<script>
 		$(document).ready(function() {
-			$('#lahetaButton').click(function() {
-				$('#palauteForm').submit();
-			});
-			$('#peruutaButton').click(function() {
-				$('#palauteForm').each(function() {
-					this.reset();
+			$(".alert").hide();
+			$("#palauteForm").validate({
+			    
+		        // Specify the validation rules
+		        rules: {
+		            palauteteksti: {
+		                required: true,
+		                minlength: 5,
+		                maxlength: 400
+		            },
+		            opiskelijanumero: {
+		                required: true,
+		                minlength: 7,
+		                maxlength: 8
+		            },
+		            arvosana: {
+		            	required: true
+		            }
+		        },
+		        
+		        // Specify the validation error messages
+		        messages: {
+		        	palauteteksti: "Kirjoita palautteesi",
+		            opiskelijanumero: "Kirjoita opiskelijanumerosi",
+		            arvosana: {
+		                required: "Valitse haluamasi numero arvosanaksi",
+		                }
+		            }
+		        });
+				$('#lahetaButton').click(function() {
+					$('#palauteForm').submit();
+					$(".alert").show();
+				});
+
+				$('#peruutaButton').click(function() {
+					$('#palauteForm').each(function() {
+						this.reset();
+					});
 				});
 			});
-		});
 	</script>
 </body>
 </html>
