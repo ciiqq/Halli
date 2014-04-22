@@ -25,26 +25,48 @@ $(document).ready(function() {
             });
      
             $(".lisaa").click(function() { 
-            var value = $(this).prop("value");
-            var checkboxit = document.getElementsByName("box");
- 
-                        for (var i = 0; i < checkboxit.length; i++) {
-                                if(checkboxit[i].value === value) {
-                                        if(!checkboxit[i].checked) {
-                                                checkboxit[i].checked = true;
-                                                $(this).html("POISTA KOULUTUS");
-                            }else{
-                            checkboxit[i].checked = false;
-                                    $(this).html("LISÄÄ KOULUTUS");
-                            }
-                            }
-                    }      
-            if (tarkasta()) {
-                     $(".vahvistus").removeAttr("disabled");
-            } else {
-                    $(".vahvistus").attr("disabled", "disabled");
-            }      
-    });
+	            var value = $(this).prop("value");
+	            var checkboxit = document.getElementsByName("box");
+	 
+	                        for (var i = 0; i < checkboxit.length; i++) {
+	                                if(checkboxit[i].value === value) {
+	                                        if(!checkboxit[i].checked) {
+	                                                checkboxit[i].checked = true;
+	                                                $(this).html("POISTA KOULUTUS");
+	                            }else{
+	                            checkboxit[i].checked = false;
+	                                    $(this).html("LIS&Auml;&Auml; KOULUTUS");
+	                            }
+	                            }
+	                    }      
+	            if (tarkasta()) {
+	                     $(".vahvistus").removeAttr("disabled");
+	            } else {
+	                    $(".vahvistus").attr("disabled", "disabled");
+	            }      
+            });
+            // Sama homma koulutuksien vahvistukselle, mutta eri tekstillŠ
+            $(".vahvista").click(function() { 
+	            var value = $(this).prop("value");
+	            var checkboxit = document.getElementsByName("box");
+	 
+	                        for (var i = 0; i < checkboxit.length; i++) {
+	                                if(checkboxit[i].value === value) {
+	                                        if(!checkboxit[i].checked) {
+	                                                checkboxit[i].checked = true;
+	                                                $(this).html("POISTA VALINTA");
+	                            }else{
+	                            checkboxit[i].checked = false;
+	                                    $(this).html("VAHVISTA KOULUTUS");
+	                            }
+	                            }
+	                    }      
+	            if (tarkasta()) {
+	                     $(".vahvistus").removeAttr("disabled");
+	            } else {
+	                    $(".vahvistus").attr("disabled", "disabled");
+	            }      
+            });
      
             var tarkasta = function() {
             var checkboxit = document.getElementsByName("box");
@@ -70,4 +92,14 @@ $(document).ready(function() {
                     }
             }
     });
+    // Valituille koulutuksille vahvistus
+    $(".koulutuksienVahvistus").click(function() {
+    	
+    });  
+    // Kaikille vahvistamattomille koulutuksille vahvistus
+    $(".kaikkienKoulutuksienVahvistus").click(function() {
+    	
+    }); 
+    
+    
     });  

@@ -24,7 +24,7 @@
              
     <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-            <![endif]-->
+    <![endif]-->
     </head>
      
     <body>
@@ -128,16 +128,15 @@
                                                     </tr>
                                                     <tr>
                                                             <td></td>
-                                                            <td><button type="button" value="${k.id}" class="lisaa">LISÄÄ
+                                                            <td><button type="button" value="${k.id}" class="vahvista">VAHVISTA
                                                                             KOULUTUS</button></td>
                                                     </tr>
                                             </table>
                                     </c:forEach>
                             </div>
-                                                <div class="bottom-bar">
-                            moi oon bottom bar
-                            <button type="submit" name="vahvista" href="#lightbox_sisalto" class="vahvistus" disabled>Vahvista
-                            ilmoittautumiset</button>
+                            <div class="bottom-bar">
+                            <button type="submit" name="vahvista" href="#" class="koulutuksienVahvistus" disabled>Vahvista ja julkaise valitut koulutukset</button>
+                            <button type="submit" name="vahvistaKaikki" href="#" class="kaikkienKoulutuksienVahvistus">Vahvista ja julkaise kaikki koulutukset</button>
             </div>
                     </div>
 
@@ -163,12 +162,9 @@
 			</div>
 			
 		<!-- lightboxin sisältö päättyy -->
-            <script
-                    src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-            <script
-                    src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
+            <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+            <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
             <script src="<%=request.getContextPath()%>/resources/js/jquery.colorbox.js"></script>
-     
             <script type="application/javascript" src="<%=request.getContextPath()%>/resources/js/script.js"></script>
     </body>
     </html>
