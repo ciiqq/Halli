@@ -55,8 +55,8 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 
 	public void paivitaKoulutus(Aikatauluslotti as) {
 		final String sql = "UPDATE aikatauluslotti asl"
-						+ " INNER JOIN koulutus kt ON asl.koulutus_id = k.koulutus_id SET asl.pvm = ?, asl.alkukello = ?, asl.loppukello = ?, asl.koulutustila = ?, kt.aihe = ?, kt.kuvaus = ?, kt.lahtotaso = ?, kt.nakyvyys = ?"
-						+ " WHERE koulutus_id = ?;";
+						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id SET asl.pvm = ?, asl.alkukello = ?, asl.loppukello = ?, asl.koulutustila = ?, kt.aihe = ?, kt.kuvaus = ?, kt.lahtotaso = ?, kt.nakyvyys = ?"
+						+ " WHERE asl.aika_id = ?;";
 		
 		Object[] parametrit = new Object[] {as.getPvm(), as.getAlkukello(), as.getLoppukello(), as.getKoulutustila(), as.getKoulutus().getAihe(), as.getKoulutus().getKuvaus(), as.getKoulutus().getLahtotaso(), as.getKoulutus().getNakyvyys(), as.getId()};
 		

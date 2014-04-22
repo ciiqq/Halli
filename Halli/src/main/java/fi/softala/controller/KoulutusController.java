@@ -51,22 +51,27 @@ public class KoulutusController {
 	        
 	        model.addAttribute("ks", koulutus);
 	        
+	        Aikatauluslotti slotti = new Aikatauluslotti();
+	        model.addAttribute("muokattavaKoulutus", slotti);
+	        
 	        return "koulutustiedot";
 	    } 
 		
 		
 		
 		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.POST)
-		public String muokkaaKoulutusta(Model model, @Valid @ModelAttribute("muokattavaKoulutus") Aikatauluslotti aikatauluslotti, BindingResult bindingResult){
+		public String muokkaaKoulutusta(Model model, @PathVariable Integer DaoId, @Valid @ModelAttribute("muokattavaKoulutus") Aikatauluslotti aikatauluslotti, BindingResult bindingResult){
 			
-			if(bindingResult.hasErrors()) {
+			/*if(bindingResult.hasErrors()) {
 				return "koulutustiedot";
-			}
+			}*/
+			
+			aikatauluslotti.setId(DaoId);
 			
 			dao.paivitaKoulutus(aikatauluslotti);
 //			model.addAttribute("ks", aikatauluslotti);
 			
-			return "redirect:/koulutustiedot";
+			return "redirect:/koulutuslistaus/" + DaoId;
 		}
 		
 
