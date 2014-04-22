@@ -106,7 +106,7 @@
                                                     </tr>
                                                     <tr>
                                                             <td class="bold">Aika</td>
-                                                            <td><c:out value="${k.suomiKlo}" /></td>
+                                                            <td><c:out value="${k.suomiKloAlku}" /> - <c:out value="${k.suomiKloLoppu }" /></td>
                                                     </tr>
                                                     <tr>
                                                             <td class="bold">Avainsanat</td>

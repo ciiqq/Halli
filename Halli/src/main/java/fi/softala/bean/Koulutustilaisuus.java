@@ -17,9 +17,10 @@ public class Koulutustilaisuus {
 	private String lahtotaso;
 	private int nakyvyys;
 	private String suomiPvm;
-	private String suomiKlo;
+	private String suomiKloAlku;
+	private String suomiKloLoppu;
 	private String paikka;
-	private Opettaja ope; // opettajabean tŠhŠn
+	private Opettaja ope; // opettajabean tähän
 	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
 	private List<String> avainsanat = new ArrayList<String>();
 	
@@ -76,14 +77,24 @@ public class Koulutustilaisuus {
 		this.suomiPvm = suomiPvmMuotoilu.format(suomiPvm);
 	}
 
-	public String getSuomiKlo() {
-		return suomiKlo;
+	public String getSuomiKloAlku() {
+		return suomiKloAlku;
 	}
 
 	// Käytetään SQL kellonajan muuttamisessa suomalaiseksi
 	// Hyödyntämällä java.sql.Time -kirjastoa
-	public void setSuomiKlo(Time suomiKlo) {
-		this.suomiKlo = suomiKloMuotoilu.format(suomiKlo);
+	public void setSuomiKloAlku(Time suomiKloAlku) {
+		this.suomiKloAlku = suomiKloMuotoilu.format(suomiKloAlku);
+	}
+
+	public String getSuomiKloLoppu() {
+		return suomiKloLoppu;
+	}
+
+	// Käytetään SQL kellonajan muuttamisessa suomalaiseksi
+	// Hyödyntämällä java.sql.Time -kirjastoa
+	public void setSuomiKloLoppu(Time suomiKloLoppu) {
+		this.suomiKloLoppu = suomiKloMuotoilu.format(suomiKloLoppu);
 	}
 
 	public Opettaja getOpe() {
