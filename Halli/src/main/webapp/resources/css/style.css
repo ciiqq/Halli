@@ -13,6 +13,7 @@ html, body {
 
 body {
 	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
 }
 
 .container {
@@ -51,16 +52,33 @@ input[type="text"], textarea {
 	padding: 4px;
 }
 
-input[type="search"], textarea {
-	width:100%;
-	margin:2px;
+#haku {
 	height:32px;
 	border-radius: 2px;
 	border:0px;
-	/* Rectangle 1 copy 2: */
 	background: #FFFFFF;
 	-moz-box-shadow:    0px 2px 0px 0px rgba(0,0,0,0.05);
 	box-shadow:         0px 2px 0px 0px rgba(0,0,0,0.05);
+	margin-bottom: 6px;
+}
+
+#haku input[type="text"] {
+	border:0;
+	//background-color: red;
+	width: 90%;
+	height:32px;
+	font-size: 16px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+#haku input[type="submit"] {
+	background-color: red;
+	max-width: 16px;
+}
+
+
+#haku input[type="text"]:focus {
+	outline: 0;
 }
 
 #ilmoittautuminen table tr td {
