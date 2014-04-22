@@ -48,7 +48,11 @@
 			<div class="top-bar">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
 			<div class="fifty list">
+<<<<<<< HEAD
 			<form id="haku" action="hakutulokset" method="get"><input type="search" name="haku" value="Suodata koulutuksia hakusanan perusteella"></form>
+=======
+			<form id="haku"><input type="text" name="haku" placeholder="Suodata koulutuksia hakusanan perusteella"><input type="submit" value="Submit"></form>
+>>>>>>> branch 'tiimi3-selailu-ilmoittautuminen' of https://github.com/ciiqq/Halli.git
 				<ul>
 					<c:forEach items="${koulutukset}" var="k">
 						<li divid="<c:out value="${k.id}"/>" class="aihe"><input
