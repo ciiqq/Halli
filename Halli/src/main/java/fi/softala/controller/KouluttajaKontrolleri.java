@@ -37,29 +37,40 @@ public class KouluttajaKontrolleri {
 	
 	
 	@RequestMapping(value="kouluttajien_lisays", method=RequestMethod.GET)
-	public String kouluttajienLisaysSivu(Model model, Model model2) {
+	public String kouluttajienLisaysSivu(Model model) {
 		Kouluttaja kouluttaja = new Kouluttaja();
 		model.addAttribute("kouluttaja", kouluttaja);
-		model2.addAttribute("excel", "");
 		
 		return "kouluttajien_lisays/lisays";
 	}
 	
 	@RequestMapping(value="kouluttajien_lisays", method=RequestMethod.POST)
-	public String lisaaKouluttaja(@ModelAttribute(value="kouluttaja") Kouluttaja kouluttaja) {
+	public String lisaaKouluttaja(@ModelAttribute(value="kouluttaja") Kouluttaja kouluttaja, Model model) {
+		
+		List<Kouluttaja> k = new ArrayList<Kouluttaja>();
+		k.add(kouluttaja);
 		
 		if(dao.kouluttajanHaku(Integer.parseInt(kouluttaja.getOpiskelijanro())) == null ){
 			dao.kouluttajanLisays(kouluttaja);
 			System.out.println("Kouluttaja lisätty!");
 			System.out.println(kouluttaja);
+			
+			model.addAttribute("lisatyt", k);
+			k = null;
+			model.addAttribute("eiLisatyt", k);
 		}
 		
 		else{
 			System.out.println("Kouluttaja tällä opiskelijanumerolla on jo kannassa.");
+			
+			model.addAttribute("eiLisatyt", k);
+			k = null;
+			model.addAttribute("lisatyt", k);
+			
 		}
 		
 
-		return "kouluttajien_lisays/lisays";
+		return "kouluttajien_lisays/lisattyd";
 	}
 	
 	@RequestMapping(value="lisaaLista", method=RequestMethod.POST)
@@ -88,13 +99,13 @@ public class KouluttajaKontrolleri {
 			dao.kouluttajanLisays(lisataan.get(i));
 		}
 		
-		//Testiä varten kolme seuraavaa riviä
-		System.out.println("\n\n*****Nyt se loppu*****\n\n");
-		Kouluttaja kouluttaja = new Kouluttaja();
-		model.addAttribute("kouluttaja", kouluttaja);	
+		//Annetaan modelille listat lisätyistä ja ei lisätyistä kouluttajista
+		model.addAttribute("lisatyt", lisataan);
+		model.addAttribute("eiLisatyt", eiLisata);
 		
 		
-		return "kouluttajien_lisays/lisays";
+		return "kouluttajien_lisays/lisattyd";
 	}
+	
 }
 
