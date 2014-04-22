@@ -142,14 +142,21 @@ $(document).ready(function() {
 				valitutidt[i] = checkboxit[i].value;
 			}
 		}
-		var valuestringi = "";
+		
+		/*hups olipas pöhkö koodi ;) */
+		var oikeatvaluet = new Array();
+		var k = 0;
+		var muuttuja;
 		for (var i = 0; i < valitutidt.length; i++){
 			if (valitutidt[i] !== undefined){
-			valuestringi = valuestringi + valitutidt[i] + ",";
+				muuttuja = valitutidt[i];
+				oikeatvaluet[k] = muuttuja;
+				k++;
 			}
 		}
 		
-		str = valuestringi.substring(0, valuestringi.length - 1);
+		
+		str = oikeatvaluet.join();
 		
 		$("#valitutkoulutukset").val(str);
 	});
