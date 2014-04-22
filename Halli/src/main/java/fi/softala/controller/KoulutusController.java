@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import fi.softala.bean.Aikatauluslotti;
 import fi.softala.dao.KoulutusDAO;
 
-
+/*
+ * Testi
+ */
 
 @Controller
 public class KoulutusController {
