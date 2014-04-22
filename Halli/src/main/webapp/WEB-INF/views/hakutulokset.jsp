@@ -1,13 +1,10 @@
-
-
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@page pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
 
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -26,9 +23,8 @@
 <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
-</head>
-
 <body>
+
 	<div class="container">
 		<div class="side-menu">
 			<div class="nav-item">
@@ -48,7 +44,7 @@
 			<div class="top-bar">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
 			<div class="fifty list">
-			<form id="haku" action="hakutulokset"><input type="text" name="haku" placeholder="Suodata koulutuksia hakusanan perusteella"><input type="submit" value="Submit"></form>
+			<form id="haku" action="hakutulokset" method="get"><input type="search" name="haku" value="Suodata koulutuksia hakusanan perusteella"></form>
 				<ul>
 					<c:forEach items="${koulutukset}" var="k">
 						<li divid="<c:out value="${k.id}"/>" class="aihe"><input
@@ -183,4 +179,3 @@
 		src="<%=request.getContextPath()%>/resources/js/script.js"></script>
 </body>
 </html>
-
