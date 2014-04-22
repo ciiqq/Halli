@@ -20,6 +20,12 @@ public class Osallistuja {
 		this.etunimi = enimi;
 		this.sukunimi = snimi;
 	}
+	
+	public Osallistuja (String onro, String enimi, String snimi){
+		this.opiskelijanro = onro;
+		this.etunimi = enimi;
+		this.sukunimi = snimi;
+	}
 
 	public int getId() {
 		return id;
