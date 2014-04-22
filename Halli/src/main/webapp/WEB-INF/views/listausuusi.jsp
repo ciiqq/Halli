@@ -48,7 +48,7 @@
 			<div class="top-bar">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
 			<div class="fifty list">
-			<form id="haku"><input type="search" name="haku" value="Suodata koulutuksia hakusanan perusteella"></form>
+			<form id="haku" action="hakutulokset" method="get"><input type="search" name="haku" value="Suodata koulutuksia hakusanan perusteella"></form>
 				<ul>
 					<c:forEach items="${koulutukset}" var="k">
 						<li divid="<c:out value="${k.id}"/>" class="aihe"><input

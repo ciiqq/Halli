@@ -7,5 +7,6 @@ import fi.softala.bean.Koulutustilaisuus;
 public interface KoulutusHakuService {
 	
 	List<Koulutustilaisuus> haeKaikki();
+	List<Koulutustilaisuus> haeValitut(String ehto);
 
 }

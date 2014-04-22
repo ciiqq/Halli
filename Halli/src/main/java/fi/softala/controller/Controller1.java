@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping (value="/testaus")
+@RequestMapping (value="/koulutukset")
 public class Controller1 {
 	
 	@RequestMapping(value="uusi", method=RequestMethod.GET)
