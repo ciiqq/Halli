@@ -13,7 +13,7 @@
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modalmanager.js"></script>
 <title>Koulutustiedot</title>
 </head>
-<body>
+<body style="text-align: center; margin: 0 auto; width: 900px;">
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
@@ -60,7 +60,7 @@
   </table>
 </div>
 
-<a type="button" class="btn" style="width:100%;" href="#test_modal" data-toggle="modal">Muokkaa</a>
+<a type="button" class="btn btn-primary" style="width:50%; text-align:center;" href="#test_modal" data-toggle="modal">Muokkaa</a>
 
 <div class="modal fade" id="test_modal">
   <div class="modal-header">

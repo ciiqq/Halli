@@ -6,20 +6,28 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
 public class Koulutustilaisuus {
 	
 	private SimpleDateFormat suomiPvmMuotoilu = new SimpleDateFormat("dd.MM.yyyy");
 	private SimpleDateFormat suomiKloMuotoilu = new SimpleDateFormat("HH.mm");
 	
 	private int id;
+	
+	@Size(min=5, max=50)
 	private String aihe;
+	
+	@Min(value=20)
 	private String kuvaus;
+	
+	@Size()
 	private String lahtotaso;
 	private boolean nakyvyys;
 	private String suomiPvm;
 	private String suomiKlo;
-	private String paikka;
-	private Opettaja ope; // opettajabean tähän
+	private Opettaja ope;
 	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
 	private List<String> avainsanat = new ArrayList<String>();
 	
@@ -60,7 +68,7 @@ public class Koulutustilaisuus {
 	}
 
 
-	public boolean isNakyvyys() {
+	public boolean getNakyvyys() {
 		return nakyvyys;
 	}
 
@@ -119,11 +127,4 @@ public class Koulutustilaisuus {
 				+ ", nakyvyys=" + nakyvyys + ", ope=" + ope + "]";
 	}
 
-	public String getPaikka() {
-		return paikka;
-	}
-
-	public void setPaikka(String paikka) {
-		this.paikka = paikka;
-	}
 }
