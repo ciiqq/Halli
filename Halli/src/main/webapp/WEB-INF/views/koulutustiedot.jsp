@@ -15,6 +15,10 @@
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modal.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modalmanager.js"></script>
 
+<!-- Avaa Modal valikko, mikäli muokkauskentässä on virheitä -->
+<c:if test="${avaaModal != null }">
+	<script src="<%=request.getContextPath()%>/resources/js/modalAvaus.js"></script>
+</c:if>
 
 <title>Koulutustiedot</title>
 </head>
@@ -65,7 +69,7 @@
   </table>
 </div>
 <a class="btn btn-primary" href="../koulutuslistaus">Takaisin listaukseen</a>
-<a type="button" class="btn btn-primary"  href="#test_modal" data-toggle="modal">Muokkaa</a>
+<a id="muokkausPainike" type="button" class="btn btn-primary"  href="#test_modal" data-toggle="modal">Muokkaa</a>
 
 
 

@@ -62,9 +62,14 @@ public class KoulutusController {
 		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.POST)
 		public String muokkaaKoulutusta(Model model, @PathVariable Integer DaoId, @Valid @ModelAttribute("muokattavaKoulutus") Aikatauluslotti aikatauluslotti, BindingResult bindingResult){
 			
-			/*if(bindingResult.hasErrors()) {
+			if(bindingResult.hasErrors()) {
+				Aikatauluslotti koulutus = dao.haeKoulutus(DaoId);
+		        
+		        model.addAttribute("ks", koulutus);
+		        model.addAttribute("avaaModal", "avaaModal");
+				
 				return "koulutustiedot";
-			}*/
+			}
 			
 			aikatauluslotti.setId(DaoId);
 			
