@@ -1,6 +1,7 @@
 package fi.softala.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -38,6 +39,7 @@ public class KouluttajaKontrolleri {
 	
 	@RequestMapping(value="lisays", method=RequestMethod.GET)
 	public String kouluttajienLisaysSivu(Model model) {
+		//Tyhjä kouluttaja oletuksena
 		Kouluttaja kouluttaja = new Kouluttaja();
 		model.addAttribute("kouluttaja", kouluttaja);
 		
@@ -47,14 +49,17 @@ public class KouluttajaKontrolleri {
 	@RequestMapping(value="lisaaKouluttaja", method=RequestMethod.POST)
 	public String lisaaKouluttaja(@ModelAttribute(value="kouluttaja") @Valid Kouluttaja kouluttaja, BindingResult result, Model model){
 		
+		//Validointi tarkistus
 		if(result.hasErrors()){
 			return "kouluttajien_lisays/lisays";
 		}
 		else{
-			List<Kouluttaja> k = new ArrayList<Kouluttaja>();
+			//Lista tietokantaa varten
+			List<Kouluttaja> k = new LinkedList<Kouluttaja>();
 			k.add(kouluttaja);
 			
-			if(dao.kouluttajanHaku(Integer.parseInt(kouluttaja.getOpiskelijanro())) == null ){
+			//Jos opiskelijanumerolla ei löydy opiskelijaa, lisätään se kantaan
+			if(dao.kouluttajanHaku(kouluttaja.getOpiskelijanro()) == null ){
 				dao.kouluttajanLisays(kouluttaja);
 				System.out.println("Kouluttaja lisätty!");
 				System.out.println(kouluttaja);
@@ -63,7 +68,7 @@ public class KouluttajaKontrolleri {
 				k = null;
 				model.addAttribute("eiLisatyt", k);
 			}
-			
+			//Jos opiskelija löytyy, ei sitä lisätä kantaan
 			else{
 				System.out.println("Kouluttaja tällä opiskelijanumerolla on jo kannassa.");
 				
@@ -93,7 +98,7 @@ public class KouluttajaKontrolleri {
 		
 		//Tarkistetaan systeemistä listan opiskelijat
 		for (int i = 0; i < kouluttajat.size(); i++){
-			if(dao.kouluttajanHaku(Integer.parseInt(kouluttajat.get(i).getOpiskelijanro())) == null ){
+			if(dao.kouluttajanHaku(kouluttajat.get(i).getOpiskelijanro()) == null ){
 				lisataan.add(kouluttajat.get(i));
 			}else{
 				eiLisata.add(kouluttajat.get(i));
