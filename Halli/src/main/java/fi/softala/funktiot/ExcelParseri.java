@@ -1,4 +1,4 @@
-package fi.softala.bean;
+package fi.softala.funktiot;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -15,6 +15,8 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.springframework.web.multipart.MultipartFile;
+
+import fi.softala.bean.Kouluttaja;
 
 public abstract class ExcelParseri {
 	

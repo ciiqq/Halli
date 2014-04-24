@@ -34,20 +34,20 @@
 
 
 <div>
-	<form:form modelAttribute="kouluttaja" method="post">
+	<form:form action="lisaaKouluttaja" modelAttribute="kouluttaja" method="post">
 		  	<fieldset>		
 				<legend>Kouluttajan tiedot</legend>
 				<p>
 					<form:label	path="etunimi">Etunimi</form:label><br/>
-					<form:input path="etunimi" />		
+					<form:input path="etunimi"/><form:errors path="etunimi"/>
 				</p>
 				<p>	
 					<form:label path="sukunimi">Sukunimi</form:label><br/>
-					<form:input path="sukunimi" />
+					<form:input path="sukunimi"/><form:errors path="sukunimi"/>
 				</p>
 				<p>	
 					<form:label path="opiskelijanro">Opiskelijanumero</form:label><br/>
-					<form:input path="opiskelijanro" />
+					<form:input path="opiskelijanro"/><form:errors path="opiskelijanro"/>
 				</p>
 				<p>	
 					<button type="submit">Lisää</button>

@@ -1,4 +1,4 @@
-package fi.softala.bean;
+package fi.softala.funktiot;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

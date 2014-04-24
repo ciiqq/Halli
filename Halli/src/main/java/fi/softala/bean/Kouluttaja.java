@@ -1,10 +1,20 @@
 package fi.softala.bean;
 
+import javax.validation.constraints.*;
+
+import fi.softala.funktiot.FormatoiNimi;
+
 public class Kouluttaja {
 	
+	@Pattern(regexp = "\\d{7}")
 	private String opiskelijanro;
+	
+	@Size(min = 2, max = 50)
 	private String etunimi;
+	
+	@Size(min = 2, max = 50)
 	private String sukunimi;
+	
 	private String salasana;
 	private String suola;
 	
@@ -17,8 +27,8 @@ public class Kouluttaja {
 	}
 	
 	public Kouluttaja(String etunimi, String sukunimi, String opiskelijanro) {
-		this.etunimi = etunimi;
-		this.sukunimi = sukunimi;
+		this.etunimi = FormatoiNimi.isoAlkukirjain(etunimi);
+		this.sukunimi = FormatoiNimi.isoAlkukirjain(sukunimi);
 		this.opiskelijanro = opiskelijanro;
 		this.salasana = null;
 		this.suola = null;
@@ -26,8 +36,8 @@ public class Kouluttaja {
 
 	public Kouluttaja(String onro, String enimi, String snimi, String ssana, String suola) {
 		this.opiskelijanro = onro;
-		this.etunimi = enimi;
-		this.sukunimi = snimi;
+		this.etunimi = FormatoiNimi.isoAlkukirjain(enimi);
+		this.sukunimi = FormatoiNimi.isoAlkukirjain(snimi);;
 		this.salasana = ssana;
 		this.suola = suola;
 	}
@@ -45,7 +55,7 @@ public class Kouluttaja {
 	}
 
 	public void setEtunimi(String etunimi) {
-		this.etunimi = etunimi;
+		this.etunimi = FormatoiNimi.isoAlkukirjain(etunimi);;
 	}
 
 	public String getSukunimi() {
@@ -53,7 +63,7 @@ public class Kouluttaja {
 	}
 
 	public void setSukunimi(String sukunimi) {
-		this.sukunimi = sukunimi;
+		this.sukunimi = FormatoiNimi.isoAlkukirjain(sukunimi);;
 	}
 
 	public String getSalasana() {
