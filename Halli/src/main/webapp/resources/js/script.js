@@ -62,22 +62,22 @@ $(document).ready(function() {
 	                            }
 	                    }      
 	            if (tarkasta()) {
-	                     $(".vahvistus").removeAttr("disabled");
+	                     $(".koulutuksienVahvistus").removeAttr("disabled");
 	            } else {
-	                    $(".vahvistus").attr("disabled", "disabled");
+	                    $(".koulutuksienVahvistus").attr("disabled", "disabled");
 	            }      
             });
      
             var tarkasta = function() {
-            var checkboxit = document.getElementsByName("box");
-            var onkoValittu = false;
-            for (var i = 0; i < checkboxit.length; i++) {
-                    if (checkboxit[i].checked) {
-                            onkoValittu = true;
-                    }
-            }
-            return onkoValittu;
-    };
+	            var checkboxit = document.getElementsByName("box");
+	            var onkoValittu = false;
+	            for (var i = 0; i < checkboxit.length; i++) {
+	                    if (checkboxit[i].checked) {
+	                            onkoValittu = true;
+	                    }
+	            }
+	            return onkoValittu;
+            };
      
     $(".vahvistus").click(function() {
     	$(".vahvistus").colorbox({inline:true, width:"75%", height:"35%"});
@@ -92,12 +92,18 @@ $(document).ready(function() {
                     }
             }
     });
+    
+    
     // Valituille koulutuksille vahvistus
     $(".koulutuksienVahvistus").click(function() {
-    	
+    	$('#koulutukset').submit();
     });  
+    
+    
     // Kaikille vahvistamattomille koulutuksille vahvistus
     $(".kaikkienKoulutuksienVahvistus").click(function() {
+    	
+    	
     	
     }); 
     
