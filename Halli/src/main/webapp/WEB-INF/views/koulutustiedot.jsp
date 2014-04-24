@@ -41,8 +41,8 @@
 </head>
 
 
+<body>
 
-<body style="text-align: center; margin: 0 auto; width: 900px;">
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
@@ -89,9 +89,15 @@
   </table>
 </div>
 <a class="btn btn-primary" href="../koulutuslistaus">Takaisin listaukseen</a>
-<a id="muokkausPainike" type="button" class="btn btn-primary"  href="#test_modal" data-toggle="modal">Muokkaa</a>
+<a id="muokkausPainike" type="button" class="btn btn-primary"  href="#test_modal" data-toggle="modal">Muokkaa</a><br /><br />
 
 
+<!-- Jos muokkaus onnistui, n‰ytet‰‰n k‰ytt‰j‰lle teksti siit‰ -->
+<c:if test="${muokkausOnnistui != null}">
+	<div id="mop" class="btn btn-success btn-lg">
+		<c:out value="${muokkausOnnistui}" />
+	</div>
+</c:if>
 
 
 
@@ -105,13 +111,15 @@
       </div>
        <form:form id="modal-form" modelAttribute="muokattavaKoulutus"  method="POST">
       <div class="modal-body">
-                   
+
+
            <table class="table">
       
         
 			  <tr>
 			  	<th><form:label path="koulutus.aihe">Aihe</form:label></th>	 		  
 			  	<td><form:input path="koulutus.aihe" value="${ks.koulutus.aihe}"/>  </td> 
+			  	<td><form:errors path="koulutus.aihe"></form:errors></td>
 			  	
 			  </tr>  
 			  
@@ -123,6 +131,7 @@
 			  
 			  <tr>
 			    <th><form:label path="pvm">P‰iv‰m‰‰r‰</form:label></th>
+
 			  	<td><form:input path="pvm" style="position: relative; z-index: 100000;" id="datepicker" value="${ks.pvm}"/> </td> 
 			  </tr>
 			  	
@@ -134,11 +143,27 @@
 			  	<tr>  	
 					<th><form:label path="loppukello">Loppuu</form:label></th>
 			  		<td><form:input path="loppukello" class="timepicker" value="${ks.loppukello}"/> </td>    
-			    </tr>
+			  	<td><form:input path="pvm" value="${ks.pvm}"/> </td> 
+			  	<td><form:errors path="pvm"></form:errors></td>
+			  </tr>
+			  	
+			  	<tr> 
+			  		<th><form:label path="alkukello">Alkaa</form:label></th>
+			  		<td><form:input path="alkukello" value="${ks.alkukello}"/></td> 
+			  		<td><form:errors path="alkukello"></form:errors></td>
+			  	</tr>
+			  	
+			  	<tr>  	
+					<th><form:label path="loppukello">Loppuu</form:label></th>
+			  		<td><form:input path="loppukello" value="${ks.loppukello}"/> </td>
+			  		<td><form:errors path="loppukello"></form:errors></td>
+
+				</tr>
 			    
 			    <tr>
 			    	<th><form:label path="koulutustila">Koulutustila</form:label></th>
 			  	<td><form:input path="koulutustila" value="${ks.koulutustila}"/></td> 
+			  	<td><form:errors path="koulutustila"></form:errors></td>
 			    </tr>
 			    
 			    <tr>
