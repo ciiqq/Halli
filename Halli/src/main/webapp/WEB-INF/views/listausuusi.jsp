@@ -144,7 +144,7 @@
 				<p>Anna vielä tietosi ilmoittautumista varten:</p>
 				<br />
 				
-				<form id="ilmoittautuminen" action="ilmoittaudu">
+				<form id="ilmoittautuminen" action="ilmoittaudu" name="ilmoittaudu">
 				
 				<input type="hidden" id="valitutkoulutukset" name="valitutkoulutukset" />
 				
@@ -168,8 +168,8 @@
 
 
 			<div class="modaalin-kontrollit clearfix">
-				<input type="submit" value="Ilmoittaudu koulutuksiin"
-					id="ilmoittaudu" disabled /> 
+				<button type="submit"
+					id="ilmoittaudu" disabled > Ilmoittaudu koulutuksiin</button>
 
 				<input type="button"
 					onclick="$.colorbox.close()" value="Sulje ikkuna" />

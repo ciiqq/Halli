@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.service.KoulutusHakuService;
+import fi.softala.bean.Osallistuja;
+import fi.softala.service.OsallistujaService;
 
 /**
  * 
@@ -34,6 +36,9 @@ public class KoulutusHakuController {
 	public void setService(KoulutusHakuService service) {
 		this.hakuservice = service;
 	}
+	
+	@Inject
+	private OsallistujaService osallistujaservice;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listaaKoulutuksetTulevat(Model model) {
@@ -63,7 +68,6 @@ public class KoulutusHakuController {
 		System.out.println(ehto);
 		return "listausuusi";
 	}
-<<<<<<< HEAD
 
 	@RequestMapping(value="ilmoittaudu", method=RequestMethod.GET)
 	public String talletaOsallistuja(Model model, HttpServletRequest request){
@@ -78,6 +82,4 @@ public class KoulutusHakuController {
 		osallistujaservice.tallenna(osallistuja, osallistumiset);
 		return "listausuusi";
 	}
-=======
->>>>>>> ace243fbf63081e71f18e2b985c91dfcd29132f8
 }
