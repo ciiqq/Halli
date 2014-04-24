@@ -42,7 +42,7 @@
 			
 		
 			<td>
-				<a href="koulutuslistaus/${slotti.id}"><input class="btn btn-primary" type="button" value="koulutukseen" name="lista/${slotti.id}"></a>
+				<a href="koulutuslistaus/${slotti.id}"><input class="btn btn-primary" type="button" value="Koulutukseen" name="lista/${slotti.id}"></a>
 			</td>
 			
 		</tr>
