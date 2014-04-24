@@ -75,12 +75,10 @@ public class KoulutusController {
 			
 			//DEBUG
 			System.out.println("meni läpi");
-			System.out.println(aikatauluslotti.getPvm());
 			
 			aikatauluslotti.setId(DaoId);
 			
 			dao.paivitaKoulutus(aikatauluslotti);
-//			model.addAttribute("ks", aikatauluslotti);
 			
 			reAts.addFlashAttribute("muokkausOnnistui", "Koulutuksen muokkaus onnistui!");
 			

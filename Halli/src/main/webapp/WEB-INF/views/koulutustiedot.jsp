@@ -126,39 +126,27 @@
 			  <tr>
 			  	<th><form:label path="koulutus.kuvaus">Kuvaus</form:label></th>
 			  	<td><form:input path="koulutus.kuvaus" value="${ks.koulutus.kuvaus}"/> </td>
+			  	<td><form:errors path="koulutus.kuvaus"></form:errors></td>
 			  	
 			  </tr>    
 			  
 			  <tr>
 			    <th><form:label path="pvm">Päivämäärä</form:label></th>
-
-			  	<td><form:input path="pvm" style="position: relative; z-index: 100000;" id="datepicker" value="${ks.pvm}"/> </td> 
+			  	<td><form:input path="pvm" style="position: relative; z-index: 100000;" id="datepicker" value="${ks.pvm}"/> </td>
+			  	<td><form:errors path="pvm"></form:errors></td> 
 			  </tr>
 			  	
 			  <tr> 
 			  	<th><form:label path="alkukello">Alkaa</form:label></th>
-			  	<td><form:input path="alkukello" style="position: relative; z-index: 100000;" class="timepicker" value="${ks.alkukello}"/></td> 
+			  	<td><form:input path="alkukello" style="position: relative; z-index: 100000;" class="timepicker" value="${ks.alkukello}"/></td>
+			  	<td><form:errors path="alkukello"></form:errors></td> 
 			  </tr>
 			  	
 			  	<tr>  	
 					<th><form:label path="loppukello">Loppuu</form:label></th>
 			  		<td><form:input path="loppukello" class="timepicker" value="${ks.loppukello}"/> </td>    
-			  		<td><form:input path="pvm" value="${ks.pvm}"/> </td> 
-			  		<td><form:errors path="pvm"></form:errors></td>
-			  </tr>
-			  	
-			  	<tr> 
-			  		<th><form:label path="alkukello">Alkaa</form:label></th>
-			  		<td><form:input path="alkukello" value="${ks.alkukello}"/></td> 
-			  		<td><form:errors path="alkukello"></form:errors></td>
-			  	</tr>
-			  	
-			  	<tr>  	
-					<th><form:label path="loppukello">Loppuu</form:label></th>
-			  		<td><form:input path="loppukello" value="${ks.loppukello}"/> </td>
 			  		<td><form:errors path="loppukello"></form:errors></td>
-
-				</tr>
+			  </tr>
 			    
 			    <tr>
 			    	<th><form:label path="koulutustila">Koulutustila</form:label></th>
@@ -168,12 +156,14 @@
 			    
 			    <tr>
 			    	<th><form:label path="koulutus.lahtotaso">Lähtötaso</form:label></th>
-			  	<td><form:input path="koulutus.lahtotaso" value="${ks.koulutus.lahtotaso}"/> </td> 
+			  	<td><form:input path="koulutus.lahtotaso" value="${ks.koulutus.lahtotaso}"/> </td>
+			  	<td><form:errors path="koulutus.lahtotaso"></form:errors></td>
 			    </tr>
 			    
 			    <tr>
 			    	<th><form:label path="koulutus.nakyvyys">Näkyvyys</form:label></th>
 			  	<td><form:input path="koulutus.nakyvyys" value="${ks.koulutus.nakyvyys}"/> </td> 
+			  	<td><form:errors path="koulutus.nakyvyys"></form:errors></td>
 			    </tr>
 			    
 			    </table>
