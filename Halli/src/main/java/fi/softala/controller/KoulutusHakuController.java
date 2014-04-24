@@ -16,7 +16,7 @@ import fi.softala.service.KoulutusHakuService;
 /**
  * 
  * @author Timo Kottonen
- * @author ...
+ * @author Teemu Kälviäinen
  *
  */
 
@@ -36,8 +36,14 @@ public class KoulutusHakuController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String listaaKoulutukset(Model model) {
-		List<Koulutustilaisuus> koulutukset = hakuservice.haeKaikki();
+	public String listaaKoulutuksetTulevat(Model model) {
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeTulevat();
+		model.addAttribute("koulutukset", koulutukset);
+		return "listausuusi";
+	}
+	@RequestMapping(value = "/menneet", method = RequestMethod.GET)
+	public String listaaKoulutuksetMenneet(Model model) {
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeMenneet();
 		model.addAttribute("koulutukset", koulutukset);
 		return "listausuusi";
 	}
@@ -45,6 +51,14 @@ public class KoulutusHakuController {
 	public String naytaHakutulokset(Model model, HttpServletRequest httpRequest) {
 		String ehto = httpRequest.getParameter("haku");
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeValitut(ehto);
+		model.addAttribute("koulutukset", koulutukset);
+		System.out.println(ehto);
+		return "listausuusi";
+	}
+	@RequestMapping(value="avainsana", method=RequestMethod.GET)
+	public String naytaAvainsana(Model model, HttpServletRequest httpRequest) {
+		String ehto = httpRequest.getParameter("avainsana");
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeAvainsana(ehto);
 		model.addAttribute("koulutukset", koulutukset);
 		System.out.println(ehto);
 		return "listausuusi";

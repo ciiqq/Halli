@@ -31,14 +31,18 @@
 <body>
 	<div class="container">
 		<div class="sivumenu">
+			<a href="./">
 			<div class="nav-item">
 				<div class="nav-icon tulevat"></div>
 				<div class="nav-text">Tulevat luennot</div>
 			</div>
+			</a>
+			<a href="./menneet">
 			<div class="nav-item">
 				<div class="nav-icon menneet"></div>
 				<div class="nav-text">Menneet luennot</div>
 			</div>
+			</a>
 			<div class="nav-item">
 				<div class="nav-icon palaute"></div>
 				<div class="nav-text">Anna palautetta</div>
@@ -50,6 +54,9 @@
 			<div class="fifty lista">
 			<form id="haku" action="hakutulokset"><input type="text" name="haku" placeholder="Suodata koulutuksia hakusanan perusteella"><input type="submit" value=" "></form>
 				<ul>
+					<c:if test="${empty koulutukset}">
+						<c:out value="Koulutuksia ei löytynyt" />
+					</c:if>
 					<c:forEach items="${koulutukset}" var="k">
 						<li divid="<c:out value="${k.id}"/>" class="aihe"><input
 							type="checkbox" name="box" class="box" value="${k.id}" disabled />
@@ -93,7 +100,7 @@
 							<tr>
 								<td class="bold">Avainsanat</td>
 								<td><c:forEach items="${k.avainsanat}" var="a">
-										<span class="tagi"><c:out value="${a}" /></span>
+										<span class="tagi"><a href="avainsana?avainsana=${a}" class="tagi"><c:out value="${a}" /></a></span>
 									</c:forEach></td>
 							</tr>
 							<tr>
