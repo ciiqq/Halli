@@ -143,8 +143,8 @@
 			  	<tr>  	
 					<th><form:label path="loppukello">Loppuu</form:label></th>
 			  		<td><form:input path="loppukello" class="timepicker" value="${ks.loppukello}"/> </td>    
-			  	<td><form:input path="pvm" value="${ks.pvm}"/> </td> 
-			  	<td><form:errors path="pvm"></form:errors></td>
+			  		<td><form:input path="pvm" value="${ks.pvm}"/> </td> 
+			  		<td><form:errors path="pvm"></form:errors></td>
 			  </tr>
 			  	
 			  	<tr> 
