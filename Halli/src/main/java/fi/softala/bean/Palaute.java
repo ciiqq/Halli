@@ -6,6 +6,7 @@ public class Palaute {
 	private int palaute_id;
 	private int arvosana;
 	private String palauteteksti;
+	private String opiskelijanro;
 	
 	public int getPalaute_id() {
 		return palaute_id;
@@ -35,6 +36,14 @@ public class Palaute {
 	public String toString() {
 		return "PalauteImpl [palaute_id=" + palaute_id + ", arvosana=" + arvosana + ", palauteteksti="
 				+ palauteteksti + "]";
+	}
+
+	public String getOpiskelijanro() {
+		return opiskelijanro;
+	}
+
+	public void setOpiskelijanro(String opiskelijanro) {
+		this.opiskelijanro = opiskelijanro;
 	}
 	
 	
