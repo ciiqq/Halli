@@ -32,15 +32,15 @@
 	<div class="container">
 		<div class="sivumenu">
 			<div class="nav-item">
-				<div class="nav-icon"></div>
+				<div class="nav-icon tulevat"></div>
 				<div class="nav-text">Tulevat luennot</div>
 			</div>
 			<div class="nav-item">
-				<div class="nav-icon"></div>
+				<div class="nav-icon menneet"></div>
 				<div class="nav-text">Menneet luennot</div>
 			</div>
 			<div class="nav-item">
-				<div class="nav-icon"></div>
+				<div class="nav-icon palaute"></div>
 				<div class="nav-text">Anna palautetta</div>
 			</div>
 		</div>

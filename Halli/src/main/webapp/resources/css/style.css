@@ -167,6 +167,7 @@ input[type="text"], textarea {
 	border-radius: 3px;
 	color: white;
 	width: 128px;
+	cursor:pointer;
 }
 
 .table-container {
@@ -233,11 +234,13 @@ input[type="checkbox"]:checked:after {
 	border-radius: 3px;
 	padding-left: 16px;
 	padding-right: 16px;
+	cursor:pointer;
 }
 
 .alapalkki button:disabled {
 	background-color: #80CCCC;
 	color: #004C4C;
+	cursor:default;
 }
 
 .bold {
@@ -260,11 +263,22 @@ input[type="checkbox"]:checked:after {
 }
 
 .nav-icon {
-	background-image: url("../images/placeholder-icon.png");
-	height: 40px;
-	width: 40px;
+	height: 45px;
+	width: 45px;
 	margin: 0 auto;
 	margin-bottom: 8px;
+}
+
+.tulevat {
+	background-image: url("../images/tulevat.png");
+}
+
+.menneet {
+	background-image: url("../images/menneet.png");
+}
+
+.palaute {
+	background-image: url("../images/palaute.png");
 }
 
 .ylapalkki {
