@@ -38,7 +38,7 @@ public class Osallistuja {
 
 	public String getOpiskelijanro() {
 		if (opiskelijanro.length() == 8){
-			opiskelijanro = opiskelijanro.substring(0, 7);
+			opiskelijanro = opiskelijanro.substring(1, 8);
 			return opiskelijanro;
 		}
 		else{

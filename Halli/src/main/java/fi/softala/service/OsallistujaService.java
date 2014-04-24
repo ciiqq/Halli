@@ -1,9 +1,9 @@
 package fi.softala.service;
 
-
+import fi.softala.bean.Osallistuja;
 
 public interface OsallistujaService {
 	
-	public abstract void talleta();
+	public void tallenna(Osallistuja osallistuja, String osallistumiset);
 	
 }

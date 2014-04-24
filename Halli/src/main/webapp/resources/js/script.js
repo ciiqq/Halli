@@ -158,6 +158,7 @@ $(document).ready(function() {
 		
 		str = oikeatvaluet.join();
 		
-		$("#valitutkoulutukset").val(str);
+		//$("#valitutkoulutukset").val(str);
+		document.getElementById("valitutkoulutukset").value = str;
 	});
 });

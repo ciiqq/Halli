@@ -134,9 +134,9 @@
 				<p>Anna vielä tietosi ilmoittautumista varten:</p>
 				<br />
 				
-				<form id="ilmoittautuminen">
+				<form id="ilmoittautuminen" action="ilmoittaudu">
 				
-				<input type="hidden" id="valitutkoulutukset" />
+				<input type="hidden" id="valitutkoulutukset" name="valitutkoulutukset" />
 				
 				<table>
 				  <tr>
@@ -157,8 +157,8 @@
 				</div>
 
 			<div class="modal-controls clearfix">
-				<input type="submit" value="Ilmoittaudu koulutuksiin"
-					id="ilmoittaudu" disabled /> 
+				<button type="submit" value="ilmoittaudu"
+					id="ilmoittaudu" disabled > Ilmoittaudu</button>
 				<input type="button"
 					onclick="$.colorbox.close()" value="Sulje ikkuna" />
 			</div>
