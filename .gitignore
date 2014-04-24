@@ -26,6 +26,9 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
+### Java ###
+*.class
+
 ### Maven ###
 pom.xml.tag
 pom.xml.releaseBackup
