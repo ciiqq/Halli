@@ -45,5 +45,9 @@ public class KoulutusHakuServiceImpl implements KoulutusHakuService {
 		List<Koulutustilaisuus> koulutukset = dao.haeValitut(ehto);
 		return koulutukset;
 	}
-
+	
+	public List<Koulutustilaisuus> haeAvainsana(String ehto) {
+		List<Koulutustilaisuus> koulutukset = dao.haeAvainsana(ehto);
+		return koulutukset;
+	}
 }

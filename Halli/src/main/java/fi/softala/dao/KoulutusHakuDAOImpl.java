@@ -51,19 +51,20 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 	}
 	
 	public List<Koulutustilaisuus> haeMenneet() {
-		String sql = "SELECT k.*, ast.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
+		String sql = "SELECT k.*, ats.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
 				+ "JOIN koulutuksenKouluttaja kk ON k.koulutus_id = kk.koulutus_id "
 				+ "JOIN kouluttaja ko ON ko.opiskelijanro = kk.opiskelijanro "
-				+ "JOIN aikatauluslotti ast ON ast.koulutus_id = k.koulutus_id "
+				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
 				+ "WHERE ast.pvm <= curdate() "
 				+ "UNION ALL "
-				+ "SELECT k.*, ast.*, '', '', '', 0 kouluttaja_true, a.avainsana "
+				+ "SELECT k.*, ats.*, '', '', '', 0 kouluttaja_true, a.avainsana "
 				+ "FROM koulutustilaisuus k "
 				+ "JOIN koulutuksenAvainsana ka ON ka.koulutus_id = k.koulutus_id "
 				+ "JOIN avainsana a ON a.avainsana_id = ka.avainsana_id "
-				+ "JOIN aikatauluslotti ast ON ast.koulutus_id = k.koulutus_id "
-				+ "WHERE ast.pvm <= curdate();";
+				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
+				+ "WHERE ats.pvm <= curdate() "
+				+ "ORDER BY pvm, alkukello;";
 		List<Koulutustilaisuus> koulutukset = jt.query(sql,
 				new KoulutusHakuRsE());
 		return koulutukset;

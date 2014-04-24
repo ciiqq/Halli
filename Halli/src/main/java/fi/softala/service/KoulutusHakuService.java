@@ -9,5 +9,6 @@ public interface KoulutusHakuService {
 	List<Koulutustilaisuus> haeMenneet();
 	List<Koulutustilaisuus> haeTulevat();
 	List<Koulutustilaisuus> haeValitut(String ehto);
+	List<Koulutustilaisuus> haeAvainsana(String ehto);
 
 }
