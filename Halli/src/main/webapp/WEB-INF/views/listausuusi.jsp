@@ -30,26 +30,33 @@
 
 <body>
 	<div class="container">
-		<div class="side-menu">
+		<div class="sivumenu">
+			<a href="./">
 			<div class="nav-item">
-				<div class="nav-icon"></div>
+				<div class="nav-icon tulevat"></div>
 				<div class="nav-text">Tulevat luennot</div>
 			</div>
+			</a>
+			<a href="./menneet">
 			<div class="nav-item">
-				<div class="nav-icon"></div>
+				<div class="nav-icon menneet"></div>
 				<div class="nav-text">Menneet luennot</div>
 			</div>
+			</a>
 			<div class="nav-item">
-				<div class="nav-icon"></div>
+				<div class="nav-icon palaute"></div>
 				<div class="nav-text">Anna palautetta</div>
 			</div>
 		</div>
 		<div class="main clearfix">
-			<div class="top-bar">Halli: Koulutusten hallinta- ja
+			<div class="ylapalkki">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
-			<div class="fifty list">
-			<form id="haku" action="hakutulokset"><input type="text" name="haku" placeholder="Suodata koulutuksia hakusanan perusteella"><input type="submit" value="Submit"></form>
+			<div class="fifty lista">
+			<form id="haku" action="hakutulokset"><input type="text" name="haku" placeholder="Suodata koulutuksia hakusanan perusteella"><input type="submit" value=" "></form>
 				<ul>
+					<c:if test="${empty koulutukset}">
+						<c:out value="Koulutuksia ei löytynyt" />
+					</c:if>
 					<c:forEach items="${koulutukset}" var="k">
 						<li divid="<c:out value="${k.id}"/>" class="aihe"><input
 							type="checkbox" name="box" class="box" value="${k.id}" disabled />
@@ -58,7 +65,7 @@
 					</c:forEach>
 				</ul>
 			</div>
-			<div class="fifty details">
+			<div class="fifty tiedot">
 				<div class="table-container" style="opacity:0.5;"><span style="display:block;text-align:center;margin-top:96px;margin-bottom:96px;">Valitse koulutus vasemmalta :)</span></div>
 				<c:forEach items="${koulutukset}" var="k">
 					<input type="hidden" name="aihe" value="${k.aihe}" />
@@ -66,7 +73,7 @@
 						style="display: none">
 						<table>
 							<tr>
-								<td class="tiedot" colspan="2">KOULUTUKSEN TIEDOT</td>
+								<td class="tiedotx" colspan="2">KOULUTUKSEN TIEDOT</td>
 							</tr>
 							<tr>
 								<td class="bold">Aihe</td>
@@ -74,9 +81,12 @@
 							</tr>
 							<tr>
 								<td class="bold">Kouluttajat</td>
-								<td><c:forEach items="${k.kouluttajat}" var="koul">
+								<td><c:forEach items="${k.kouluttajat}" var="koul" varStatus="loopStatus">
 										<c:out value="${koul.etunimi} " />
-										<c:out value="${koul.sukunimi} " />
+										<c:out value="${koul.sukunimi}" />
+										<c:if test="${!loopStatus.last}">
+										<c:out value=", " />
+										</c:if>
 									</c:forEach></td>
 							</tr>
 							<tr>
@@ -90,7 +100,7 @@
 							<tr>
 								<td class="bold">Avainsanat</td>
 								<td><c:forEach items="${k.avainsanat}" var="a">
-										<span class="tagi"><c:out value="${a}" /></span>
+										<span class="tagi"><a href="avainsana?avainsana=${a}" class="tagi"><c:out value="${a}" /></a></span>
 									</c:forEach></td>
 							</tr>
 							<tr>
@@ -114,7 +124,7 @@
 					</div>
 				</c:forEach>
 			</div>
-			<div class="bottom-bar">
+			<div class="alapalkki">
 				<button type="submit" name="vahvista" href="#lightbox_sisalto"
 					class="vahvistus" disabled>Vahvista ilmoittautumiset</button>
 			</div>
@@ -156,9 +166,15 @@
 				</table>
 				</div>
 
+<<<<<<< HEAD
 			<div class="modal-controls clearfix">
 				<button type="submit" value="ilmoittaudu"
 					id="ilmoittaudu" disabled > Ilmoittaudu</button>
+=======
+			<div class="modaalin-kontrollit clearfix">
+				<input type="submit" value="Ilmoittaudu koulutuksiin"
+					id="ilmoittaudu" disabled /> 
+>>>>>>> refs/remotes/origin/tiimi3-selailu-ilmoittautuminen
 				<input type="button"
 					onclick="$.colorbox.close()" value="Sulje ikkuna" />
 			</div>

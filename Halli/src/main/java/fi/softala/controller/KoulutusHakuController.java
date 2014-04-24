@@ -7,19 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.service.KoulutusHakuService;
-import fi.softala.bean.Osallistuja;
-import fi.softala.service.OsallistujaService;
 
 /**
  * 
  * @author Timo Kottonen
- * @author ...
+ * @author Teemu Kälviäinen
  *
  */
 
@@ -37,13 +34,16 @@ public class KoulutusHakuController {
 	public void setService(KoulutusHakuService service) {
 		this.hakuservice = service;
 	}
-	
-	@Inject
-	private OsallistujaService osallistujaservice;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String listaaKoulutukset(Model model) {
-		List<Koulutustilaisuus> koulutukset = hakuservice.haeKaikki();
+	public String listaaKoulutuksetTulevat(Model model) {
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeTulevat();
+		model.addAttribute("koulutukset", koulutukset);
+		return "listausuusi";
+	}
+	@RequestMapping(value = "/menneet", method = RequestMethod.GET)
+	public String listaaKoulutuksetMenneet(Model model) {
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeMenneet();
 		model.addAttribute("koulutukset", koulutukset);
 		return "listausuusi";
 	}
@@ -55,7 +55,15 @@ public class KoulutusHakuController {
 		System.out.println(ehto);
 		return "listausuusi";
 	}
-	
+	@RequestMapping(value="avainsana", method=RequestMethod.GET)
+	public String naytaAvainsana(Model model, HttpServletRequest httpRequest) {
+		String ehto = httpRequest.getParameter("avainsana");
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeAvainsana(ehto);
+		model.addAttribute("koulutukset", koulutukset);
+		System.out.println(ehto);
+		return "listausuusi";
+	}
+
 	@RequestMapping(value="ilmoittaudu", method=RequestMethod.GET)
 	public String talletaOsallistuja(Model model, HttpServletRequest request){
 		String osallistumiset = request.getParameter("valitutkoulutukset");
@@ -69,5 +77,4 @@ public class KoulutusHakuController {
 		osallistujaservice.tallenna(osallistuja, osallistumiset);
 		return "listausuusi";
 	}
-
 }
