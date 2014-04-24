@@ -3,6 +3,7 @@ package fi.softala.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +39,14 @@ public class KoulutusHakuController {
 	public String listaaKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeKaikki();
 		model.addAttribute("koulutukset", koulutukset);
+		return "listausuusi";
+	}
+	@RequestMapping(value="hakutulokset", method=RequestMethod.GET)
+	public String naytaHakutulokset(Model model, HttpServletRequest httpRequest) {
+		String ehto = httpRequest.getParameter("haku");
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeValitut(ehto);
+		model.addAttribute("koulutukset", koulutukset);
+		System.out.println(ehto);
 		return "listausuusi";
 	}
 }
