@@ -15,12 +15,18 @@
 <html>
 <head>
 <title>Palautteet</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
 </head>
 <body>
-	<h1>Palautteet</h1>
 
-	<table border="1">
-		<tr>
+<div class="container">
+	<h1>Palautteet</h1>
+	</div>
+	
+<div class="container">
+<tbody>
+	<table class="table table-hover">
+		<tr class="active">
 			<td>Id</td>
 			<td>Arvosana</td>
 			<td>Palaute</td>
@@ -33,8 +39,10 @@
 			</tr>
 		</c:forEach>
 	</table>
-
-
+	</tbody>
+</div>
+<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 </body>
 </html>
 
