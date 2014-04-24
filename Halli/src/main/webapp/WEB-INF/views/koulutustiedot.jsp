@@ -10,10 +10,27 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap-modal.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/koulutuslistaustyylit.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/jquery-ui-1.10.4.min.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/jquery.timepicker.css">
+
+
+
 <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/jquery-ui-1.10.4.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/jquery.timepicker.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modal.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modalmanager.js"></script>
+
+<script> 
+ 	$(document).ready(function() {
+ 		$( "#datepicker" ).datepicker({dateFormat: 'dd.mm.yy'});
+ 		$( ".timepicker" ).timepicker({ 'timeFormat': 'H:i', 
+ 			'minTime': '07:00',
+ 			'maxTime': '21:00'
+ 		});
+ 	});
+ </script>
 
 <!-- Avaa Modal valikko, mik‰li muokkauskent‰ss‰ on virheit‰ -->
 <c:if test="${avaaModal != null }">
@@ -22,6 +39,9 @@
 
 <title>Koulutustiedot</title>
 </head>
+
+
+
 <body style="text-align: center; margin: 0 auto; width: 900px;">
 
 <div class="panel panel-default">
@@ -85,16 +105,7 @@
       </div>
        <form:form id="modal-form" modelAttribute="muokattavaKoulutus"  method="POST">
       <div class="modal-body">
-        
-        
-        
-        
-        <%--  <form:form commandName="juuh" action="${pageContext.request.contextPath}/controllerinValue" method="POST">
-          <form:input path="nimi"/> <form:errors path="nimi" />
-          jne
-          <input type="submit" value="Muokkaa koulutusta TMS??">
-           </form:form>--%>
-           
+                   
            <table class="table">
       
         
@@ -112,17 +123,17 @@
 			  
 			  <tr>
 			    <th><form:label path="pvm">P‰iv‰m‰‰r‰</form:label></th>
-			  	<td><form:input path="pvm" value="${ks.pvm}"/> </td> 
+			  	<td><form:input path="pvm" style="position: relative; z-index: 100000;" id="datepicker" value="${ks.pvm}"/> </td> 
 			  </tr>
 			  	
-			  	<tr> 
-			  		<th><form:label path="alkukello">Alkaa</form:label></th>
-			  	<td><form:input path="alkukello" value="${ks.alkukello}"/></td> 
-			  	</tr>
+			  <tr> 
+			  	<th><form:label path="alkukello">Alkaa</form:label></th>
+			  	<td><form:input path="alkukello" style="position: relative; z-index: 100000;" class="timepicker" value="${ks.alkukello}"/></td> 
+			  </tr>
 			  	
 			  	<tr>  	
 					<th><form:label path="loppukello">Loppuu</form:label></th>
-			  		<td><form:input path="loppukello" value="${ks.loppukello}"/> </td>    
+			  		<td><form:input path="loppukello" class="timepicker" value="${ks.loppukello}"/> </td>    
 			    </tr>
 			    
 			    <tr>

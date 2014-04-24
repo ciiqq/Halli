@@ -16,8 +16,11 @@ public class KoulutusRowMapper implements RowMapper<Aikatauluslotti> {
 		
 		at.setId(rs.getInt("asl.aika_id"));
 	
-		at.setAlkukello(rs.getString("asl.alkukello"));
-		at.setLoppukello(rs.getString("asl.loppukello"));
+		String alkukello = rs.getString("asl.alkukello");
+		String loppukello = rs.getString("asl.loppukello");
+		
+		at.setAlkukello(alkukello.substring(0,5));
+		at.setLoppukello(loppukello.substring(0, 5));
 		at.setKoulutustila(rs.getString("asl.koulutustila"));
 		
 		String pvm = rs.getString("asl.pvm");
