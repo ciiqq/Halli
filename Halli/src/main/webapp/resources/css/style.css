@@ -358,16 +358,12 @@ input[type="checkbox"]:checked:after {
 	text-decoration:none;
     color: white;
 }
-<<<<<<< HEAD
-
-=======
 a:link,
 a:visited,
 a:hover {
 	text-decoration:none;
     color: white;
 }
->>>>>>> ace243fbf63081e71f18e2b985c91dfcd29132f8
 p {
 	line-height: 120%;
 }
