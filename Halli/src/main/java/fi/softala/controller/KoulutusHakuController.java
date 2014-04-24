@@ -36,8 +36,14 @@ public class KoulutusHakuController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String listaaKoulutukset(Model model) {
-		List<Koulutustilaisuus> koulutukset = hakuservice.haeKaikki();
+	public String listaaKoulutuksetTulevat(Model model) {
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeTulevat();
+		model.addAttribute("koulutukset", koulutukset);
+		return "listausuusi";
+	}
+	@RequestMapping(value = "/menneet", method = RequestMethod.GET)
+	public String listaaKoulutuksetMenneet(Model model) {
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeMenneet();
 		model.addAttribute("koulutukset", koulutukset);
 		return "listausuusi";
 	}

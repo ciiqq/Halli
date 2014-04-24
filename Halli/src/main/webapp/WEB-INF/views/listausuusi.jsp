@@ -31,14 +31,18 @@
 <body>
 	<div class="container">
 		<div class="sivumenu">
+			<a href="./">
 			<div class="nav-item">
 				<div class="nav-icon"></div>
 				<div class="nav-text">Tulevat luennot</div>
 			</div>
+			</a>
+			<a href="./menneet">
 			<div class="nav-item">
 				<div class="nav-icon"></div>
 				<div class="nav-text">Menneet luennot</div>
 			</div>
+			</a>
 			<div class="nav-item">
 				<div class="nav-icon"></div>
 				<div class="nav-text">Anna palautetta</div>
