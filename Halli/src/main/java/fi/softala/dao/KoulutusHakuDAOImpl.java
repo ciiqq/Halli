@@ -1,5 +1,6 @@
 package fi.softala.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -56,6 +57,9 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 				+ "JOIN avainsana ON koulutuksenAvainsana.avainsana_id  = avainsana.avainsana_id "
 				+ "WHERE koulutustilaisuus.kuvaus LIKE ? OR koulutustilaisuus.aihe LIKE ? OR avainsana.avainsana LIKE ?";
 		List<Integer> koulutusIdt = jt.query(sqlIdt, parametrit, new IdHakuRowMapper());
+		if(koulutusIdt.size() == 0){
+			return new ArrayList<Koulutustilaisuus>();
+		}
 		for (int i=0; i<koulutusIdt.size(); i++){
 			if (koulutusIdt.size()==1){			
 				idLause = idLause + ""+koulutusIdt.get(i)+" ";
