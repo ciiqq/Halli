@@ -25,6 +25,7 @@ public class Aikatauluslotti {
 	@Size(min=4, max=5)
 	private String koulutustila;
 	
+	
 	private Koulutustilaisuus koulutus;
 	
 	public Aikatauluslotti() {

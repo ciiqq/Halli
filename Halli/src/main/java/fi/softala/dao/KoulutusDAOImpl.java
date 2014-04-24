@@ -58,6 +58,11 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id SET asl.pvm = ?, asl.alkukello = ?, asl.loppukello = ?, asl.koulutustila = ?, kt.aihe = ?, kt.kuvaus = ?, kt.lahtotaso = ?, kt.nakyvyys = ?"
 						+ " WHERE asl.aika_id = ?;";
 		
+		//Muutetaan takaisin SQL-muotoon
+		String asConvert = as.getPvm().replace(".", "-");
+		String[] suomiPvm = asConvert.split("-");
+		as.setPvm(suomiPvm[2] + "-" + suomiPvm[1] + "-" + suomiPvm[0]);	
+		
 		Object[] parametrit = new Object[] {as.getPvm(), as.getAlkukello(), as.getLoppukello(), as.getKoulutustila(), as.getKoulutus().getAihe(), as.getKoulutus().getKuvaus(), as.getKoulutus().getLahtotaso(), as.getKoulutus().getNakyvyys(), as.getId()};
 		
 		jdbcTemplate.update(sql, parametrit);

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fi.softala.bean.Aikatauluslotti;
 import fi.softala.dao.KoulutusDAO;
@@ -60,7 +61,8 @@ public class KoulutusController {
 		
 		
 		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.POST)
-		public String muokkaaKoulutusta(Model model, @PathVariable Integer DaoId, @Valid @ModelAttribute("muokattavaKoulutus") Aikatauluslotti aikatauluslotti, BindingResult bindingResult){
+		public String muokkaaKoulutusta(Model model, @PathVariable Integer DaoId, @Valid @ModelAttribute("muokattavaKoulutus") Aikatauluslotti aikatauluslotti,
+				BindingResult bindingResult, final RedirectAttributes reAts){
 			
 			if(bindingResult.hasErrors()) {
 				Aikatauluslotti koulutus = dao.haeKoulutus(DaoId);
@@ -71,12 +73,16 @@ public class KoulutusController {
 				return "koulutustiedot";
 			}
 			
+			//DEBUG
 			System.out.println("meni läpi");
+			System.out.println(aikatauluslotti.getPvm());
 			
 			aikatauluslotti.setId(DaoId);
 			
 			dao.paivitaKoulutus(aikatauluslotti);
 //			model.addAttribute("ks", aikatauluslotti);
+			
+			reAts.addFlashAttribute("muokkausOnnistui", "Koulutuksen muokkaus onnistui!");
 			
 			return "redirect:/koulutuslistaus/" + DaoId;
 		}
