@@ -42,19 +42,19 @@ public class KoulutusHakuControllerTest {
 
 		// mockaa KoulutusHakuController
 		this.mockMvc = MockMvcBuilders.standaloneSetup(this.controller).build();
-		Mockito.when(service.haeKaikki()).thenReturn(
+		Mockito.when(service.haeTulevat()).thenReturn(
 				new ArrayList<Koulutustilaisuus>());
 	}
 	// Tarkastaa, että haetaan lista koulutustilaisuus olioita
 	@Test
 	public void haeKoulutuksia() throws Exception {
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
-				.get("/koulutukset/testi");
+				.get("/");
 		mockMvc.perform(requestBuilder)
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.model().size(1))
 				.andExpect(MockMvcResultMatchers.view().name("listausuusi"));
 		// Tarkasta, että haeKaikki()-metodia on kutsuttu yhden kerran
-		verify(service, times(1)).haeKaikki();
+		verify(service, times(1)).haeTulevat();
 	}
 }

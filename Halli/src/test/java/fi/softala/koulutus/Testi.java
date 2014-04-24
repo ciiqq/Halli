@@ -40,12 +40,11 @@ public class Testi {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		jdbcTemplate.setDataSource(new SingleConnectionDataSource(jdbcConnection, false));
 		dao.setJdbcTemplate(jdbcTemplate);
-		List<Koulutustilaisuus> koulutukset = dao.haeKaikki();
+		List<Koulutustilaisuus> koulutukset = dao.haeTulevat();
 		
 		System.out.println(testidata.getTable("koulutustilaisuus").getValue(0, "aihe"));
 		System.out.println(koulutukset.get(0).getAihe());
-		assertEquals(testidata.getTable("koulutustilaisuus").getValue(0, "aihe"),
-				koulutukset.get(0).getAihe());
+		assertEquals("Windows XP - Legenda el‰‰", koulutukset.get(0).getAihe());
 	}
 	
 	@After
