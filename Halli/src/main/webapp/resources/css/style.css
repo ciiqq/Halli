@@ -338,6 +338,13 @@ input[type="checkbox"]:checked:after {
 	border-radius: 2px;
 }
 
+#tagi a:link,
+#tagi a:visited,
+#tagi a:hover {
+	text-decoration:none;
+    color: white;
+}
+
 p {
 	line-height: 120%;
 }

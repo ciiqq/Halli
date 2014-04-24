@@ -96,7 +96,7 @@
 							<tr>
 								<td class="bold">Avainsanat</td>
 								<td><c:forEach items="${k.avainsanat}" var="a">
-										<span class="tagi"><c:out value="${a}" /></span>
+										<span class="tagi"><a href="avainsana?avainsana=${a}" class="tagi"><c:out value="${a}" /></a></span>
 									</c:forEach></td>
 							</tr>
 							<tr>
