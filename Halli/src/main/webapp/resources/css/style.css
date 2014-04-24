@@ -327,7 +327,7 @@ input[type="checkbox"]:checked:after {
 	padding:12px;
 }
 
-.modaalin-kontrollit input {
+.modaalin-kontrollit input, .modaalin-kontrollit button {
 	background-color: #00B3D0;
 	border: 0;
 	padding: 8px;
@@ -340,7 +340,7 @@ input[type="checkbox"]:checked:after {
 }
 
 /* placeholder */
-.modaalin-kontrollit input:disabled {
+.modaalin-kontrollit button:disabled {
 	background-color: gray;
 }
 
