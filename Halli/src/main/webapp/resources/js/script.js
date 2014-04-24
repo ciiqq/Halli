@@ -14,7 +14,47 @@ $(document).ready(function() {
 
 	});
 	// jQuery-validointi
-
+	$.validator.addMethod("nimiValidointi", function(value, element) {
+		value = $.trim(value);
+		for (var i = 0; i < value.length; i++) {
+			if (value[i] == "-") {
+				if (i == 0 || i == value.length - 1) {
+					return false;
+				} else if (value[i+1] == '-') {
+					return false;
+				}
+			} else if (!(/[a-öA-Ö]/.test(value[i]))){
+				return false;
+			}
+		}
+		return true;
+	}, "Nimessä saa olla vain kirjaimia ja väliviiva kahden nimen välissä");
+	
+	$.validator.addMethod("opiskelijanumeroValidointi", function(value, element) {
+		value = $.trim(value);
+		if(value.length != 7 && value.length != 8){
+			return false;
+		}
+		if(value.length == 7){
+			for (var i = 0; i < value.length; i++) {
+				if (!(/[0-9]/.test(value[i]))){
+					return false;
+				}
+			}
+		} else{
+			if(value[0]!="a" && value[0]!="A"){
+				return false;
+			}
+				
+			for (var i = 1; i < value.length; i++) {
+				if (!(/[0-9]/.test(value[i]))){
+					return false;
+				}
+			}
+		}
+		return true;
+	}, "Anna opiskelijanumero oikeassa muodossa");
+	
 	$("#ilmoittautuminen").validate({
 	    invalidHandler: function(form, validator) {
 	        var errors = validator.numberOfInvalids();
@@ -31,35 +71,31 @@ $(document).ready(function() {
 		rules : {
 			etunimi : {
 				required : true,
-				letterswithbasicpunc : true
+				nimiValidointi : true
 			},
 			sukunimi : {
 				required : true,
-				letterswithbasicpunc : true
+				nimiValidointi : true
 			},
 			opiskelijanro : {
 				required : true,
-				minlength : 7,
-				maxlength : 8,
-				pattern : "[a]*\\d{7}"
+				opiskelijanumeroValidointi : true
 			},
 		},
 		wrapper: "div",		
 		messages : {
 			etunimi : {
 				required : '',
-				letterswithbasicpunc : 'Etunimessä saa olla vain kirjaimia'
+				nimiValidointi : 'Etunimessä saa olla vain kirjaimia ja väliviiva kahden nimen välissä'
 			},
 			sukunimi : {
 				required : '',
-				letterswithbasicpunc : 'Sukunimessä saa olla vain kirjaimia'
+				nimiValidointi : 'Sukunimessä saa olla vain kirjaimia ja väliviiva kahden nimen välissä'
 
 			},
 			opiskelijanro : {
 				required : '',
-				minlength : '',
-				maxlength : 'Anna opiskelijanumero oikeassa muodossa',
-				pattern : "Anna opiskelijanumero oikeassa muodossa"
+				opiskelijanumeroValidointi : 'Anna opiskelijanumero oikeassa muodossa'
 			},
 		}	
 	});
