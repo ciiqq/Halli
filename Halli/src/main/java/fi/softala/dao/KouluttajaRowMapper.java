@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import fi.softala.bean.Kouluttaja;
 
-public class KouluttajaRowMapper implements RowMapper<Kouluttaja> {
+public class KouluttajaRowMapper implements RowMapper<Kouluttaja>{
 
 	public Kouluttaja mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Kouluttaja k = new Kouluttaja();
