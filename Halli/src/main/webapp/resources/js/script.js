@@ -3,14 +3,14 @@ $(document).ready(function() {
 	// Hae ikkunan korkeus
 	var valikkojenkorkeus = 96;
 	var nykyinenkorkeus = $(window).height();
-	$('.details').css('height', nykyinenkorkeus - valikkojenkorkeus);
+	$('.tiedot').css('height', nykyinenkorkeus - valikkojenkorkeus);
 
 	// Ikkunan koon muuttuessa, suorita funktio
 	$(window).resize(function() {
 
 		// Hae uusi ikkunan korkeus
 		var nykyinenkorkeus = $(window).height();
-		$('.details').css('height', nykyinenkorkeus - valikkojenkorkeus);
+		$('.tiedot').css('height', nykyinenkorkeus - valikkojenkorkeus);
 
 	});
 	// jQuery-validointi
