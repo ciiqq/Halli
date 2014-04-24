@@ -166,15 +166,11 @@
 				</table>
 				</div>
 
-<<<<<<< HEAD
-			<div class="modal-controls clearfix">
-				<button type="submit" value="ilmoittaudu"
-					id="ilmoittaudu" disabled > Ilmoittaudu</button>
-=======
+
 			<div class="modaalin-kontrollit clearfix">
 				<input type="submit" value="Ilmoittaudu koulutuksiin"
 					id="ilmoittaudu" disabled /> 
->>>>>>> refs/remotes/origin/tiimi3-selailu-ilmoittautuminen
+
 				<input type="button"
 					onclick="$.colorbox.close()" value="Sulje ikkuna" />
 			</div>

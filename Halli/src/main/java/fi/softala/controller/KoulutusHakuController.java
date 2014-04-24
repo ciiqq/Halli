@@ -63,6 +63,7 @@ public class KoulutusHakuController {
 		System.out.println(ehto);
 		return "listausuusi";
 	}
+<<<<<<< HEAD
 
 	@RequestMapping(value="ilmoittaudu", method=RequestMethod.GET)
 	public String talletaOsallistuja(Model model, HttpServletRequest request){
@@ -77,4 +78,6 @@ public class KoulutusHakuController {
 		osallistujaservice.tallenna(osallistuja, osallistumiset);
 		return "listausuusi";
 	}
+=======
+>>>>>>> ace243fbf63081e71f18e2b985c91dfcd29132f8
 }
