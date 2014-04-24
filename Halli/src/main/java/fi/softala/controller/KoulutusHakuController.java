@@ -21,7 +21,7 @@ import fi.softala.service.KoulutusHakuService;
  */
 
 @Controller
-@RequestMapping(value = "/koulutukset")
+@RequestMapping(value = "/")
 public class KoulutusHakuController {
 
 	@Inject
@@ -35,7 +35,7 @@ public class KoulutusHakuController {
 		this.hakuservice = service;
 	}
 
-	@RequestMapping(value = "testi", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listaaKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeKaikki();
 		model.addAttribute("koulutukset", koulutukset);
