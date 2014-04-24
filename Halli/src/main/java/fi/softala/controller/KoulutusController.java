@@ -71,6 +71,8 @@ public class KoulutusController {
 				return "koulutustiedot";
 			}
 			
+			System.out.println("meni läpi");
+			
 			aikatauluslotti.setId(DaoId);
 			
 			dao.paivitaKoulutus(aikatauluslotti);

@@ -81,7 +81,7 @@
       <div class="modal-header">
       <h3><c:out value="${ks.koulutus.aihe}" /></h3>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title"><c:out value="${ks.pvm}" />, <c:out value="${ks.alkukello}" />-<c:out value="${ks.loppukello}" /></h4>
       </div>
        <form:form id="modal-form" modelAttribute="muokattavaKoulutus"  method="POST">
       <div class="modal-body">

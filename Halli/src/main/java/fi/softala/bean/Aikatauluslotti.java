@@ -14,11 +14,11 @@ public class Aikatauluslotti {
 	private String pvm;
 	
 	@NotNull
-	@Pattern(regexp = "\\d{2}:\\d{2}")
+	@Pattern(regexp = "\\d{2}:\\d{2}:\\d{2}")
 	private String alkukello;
 	
 	@NotNull
-	@Pattern(regexp = "\\d{2}:\\d{2}")
+	@Pattern(regexp = "\\d{2}:\\d{2}:\\d{2}")
 	private String loppukello;
 	
 	@NotNull
