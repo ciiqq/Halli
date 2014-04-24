@@ -14,6 +14,8 @@
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modal.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modalmanager.js"></script>
+
+
 <title>Koulutustiedot</title>
 </head>
 <body style="text-align: center; margin: 0 auto; width: 900px;">
@@ -77,6 +79,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">Modal title</h4>
       </div>
+       <form:form id="modal-form" modelAttribute="muokattavaKoulutus"  method="POST">
       <div class="modal-body">
         
         
@@ -89,8 +92,7 @@
            </form:form>--%>
            
            <table class="table">
-           
-        <form:form modelAttribute="muokattavaKoulutus"  method="POST">
+      
         
 			  <tr>
 			  	<th><form:label path="koulutus.aihe">Aihe</form:label></th>	 		  
@@ -134,16 +136,20 @@
 			  	<td><form:input path="koulutus.nakyvyys" value="${ks.koulutus.nakyvyys}"/> </td> 
 			    </tr>
 			    
-			    <div class="modal-footer">
-			    <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
-        	<button type="submit" class="btn btn-primary">Tallenna muutokset</button>
-        	 </div>
+			    </table>
 			    
-		</form:form>    
+		  
     
-  </table>
+ 
+  
+  			<div class="modal-footer">
+			    <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+        	<button id="modal-form-submit2" type="submit" class="btn btn-primary">Tallenna muutokset</button>
+        	 </div>
+ 	
+
       </div>
-      
+      </form:form> 
       	
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
