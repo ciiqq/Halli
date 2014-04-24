@@ -94,9 +94,9 @@
 
 <!-- Jos muokkaus onnistui, näytetään käyttäjälle teksti siitä -->
 <c:if test="${muokkausOnnistui != null}">
-	<div id="mop" class="btn btn-success btn-lg">
+	<p id="mop" class="text-success bg-success" style="padding: 30px; font-size: 2em;">
 		<c:out value="${muokkausOnnistui}" />
-	</div>
+	</p>
 </c:if>
 
 
