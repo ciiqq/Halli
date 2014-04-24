@@ -85,7 +85,7 @@ input[type="text"], textarea {
 	padding: 4px;
 }
 
-.side-menu {
+.sivumenu {
 	background-color: #2C3B41;
 	float: left;
 	width: 100px;
@@ -116,22 +116,22 @@ input[type="text"], textarea {
   clear: both;
 }
 
-.list {
+.lista {
 	color: black;
 	padding-right: 4px;
 }
 
-.list .active {
+.lista .active {
 	background-color: #00B3D0;
 	color: white;
 	border-radius: 3px;
 }
 
-.list .active:hover {
+.lista .active:hover {
 	background-color: #00B3D0;
 }
 
-.list ul li {
+.lista ul li {
 	height: 32px;
 	line-height: 32px;
 	padding-left: 8px;
@@ -141,17 +141,17 @@ input[type="text"], textarea {
 	margin-bottom: 4px;
 }
 
-.list ul li:hover {
+.lista ul li:hover {
 	background-color: #76D2E0;
 	border-radius: 3px;
 }
 
-.details {
+.tiedot {
 	overflow-y: scroll;
 	padding-left: 4px;
 }
 
-.details button {
+.tiedot button {
 	background-color: #00B3D0;
 	border: 0;
 	padding: 8px;
@@ -169,12 +169,12 @@ input[type="text"], textarea {
 	box-shadow:         0px 2px 0px 0px rgba(0,0,0,0.05);
 }
 
-.details table {
+.tiedot table {
 	width: 100%;
 	//table-layout: fixed;
 }
 
-.details table tr td {
+.tiedot table tr td {
 	padding: 8px;
 }
 
@@ -203,7 +203,7 @@ input[type="checkbox"]:checked:after {
 	background-image:url('../images/checkmark-white.png');
 }
 
-.bottom-bar {
+.alapalkki {
 	height: 48px;
 	line-height: 48px;
 	background-color: #009999;
@@ -212,7 +212,7 @@ input[type="checkbox"]:checked:after {
 	float:left;
 }
 
-.bottom-bar button {
+.alapalkki button {
 	background-color: white;
 	border: 0;
 	color: black;
@@ -226,7 +226,7 @@ input[type="checkbox"]:checked:after {
 	padding-right: 16px;
 }
 
-.bottom-bar button:disabled {
+.alapalkki button:disabled {
 	background-color: #80CCCC;
 	color: #004C4C;
 }
@@ -235,7 +235,7 @@ input[type="checkbox"]:checked:after {
 	font-weight: bold;
 }
 
-.tiedot {
+.tiedotx {
 	font-weight: bold;
 	background-color:#A4A4A4;
 	color:#FFF;
@@ -258,7 +258,7 @@ input[type="checkbox"]:checked:after {
 	margin-bottom: 8px;
 }
 
-.top-bar {
+.ylapalkki {
 	height: 48px;
 	line-height: 48px;
 	background-color: #009999;
@@ -266,7 +266,7 @@ input[type="checkbox"]:checked:after {
 	padding-left: 16px;
 }
 
-.modal-controls {
+.modaalin-kontrollit {
 	width: 100%;
 	background-color: #F2F2F7;
 	bottom:0;
@@ -304,7 +304,7 @@ input[type="checkbox"]:checked:after {
 	padding:12px;
 }
 
-.modal-controls input {
+.modaalin-kontrollit input {
 	background-color: #00B3D0;
 	border: 0;
 	padding: 8px;
@@ -317,7 +317,7 @@ input[type="checkbox"]:checked:after {
 }
 
 /* placeholder */
-.modal-controls input:disabled {
+.modaalin-kontrollit input:disabled {
 	background-color: gray;
 }
 

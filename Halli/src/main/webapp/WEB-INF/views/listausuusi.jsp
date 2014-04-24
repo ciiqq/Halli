@@ -30,7 +30,7 @@
 
 <body>
 	<div class="container">
-		<div class="side-menu">
+		<div class="sivumenu">
 			<div class="nav-item">
 				<div class="nav-icon"></div>
 				<div class="nav-text">Tulevat luennot</div>
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<div class="main clearfix">
-			<div class="top-bar">Halli: Koulutusten hallinta- ja
+			<div class="ylapalkki">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
 			<div class="fifty list">
 			<form id="haku" action="hakutulokset"><input type="text" name="haku" placeholder="Suodata koulutuksia hakusanan perusteella"><input type="submit" value="Submit"></form>
@@ -58,7 +58,7 @@
 					</c:forEach>
 				</ul>
 			</div>
-			<div class="fifty details">
+			<div class="fifty tiedot">
 				<div class="table-container" style="opacity:0.5;"><span style="display:block;text-align:center;margin-top:96px;margin-bottom:96px;">Valitse koulutus vasemmalta :)</span></div>
 				<c:forEach items="${koulutukset}" var="k">
 					<input type="hidden" name="aihe" value="${k.aihe}" />
@@ -66,7 +66,7 @@
 						style="display: none">
 						<table>
 							<tr>
-								<td class="tiedot" colspan="2">KOULUTUKSEN TIEDOT</td>
+								<td class="tiedotx" colspan="2">KOULUTUKSEN TIEDOT</td>
 							</tr>
 							<tr>
 								<td class="bold">Aihe</td>
@@ -74,9 +74,12 @@
 							</tr>
 							<tr>
 								<td class="bold">Kouluttajat</td>
-								<td><c:forEach items="${k.kouluttajat}" var="koul">
+								<td><c:forEach items="${k.kouluttajat}" var="koul" varStatus="loopStatus">
 										<c:out value="${koul.etunimi} " />
-										<c:out value="${koul.sukunimi} " />
+										<c:out value="${koul.sukunimi}" />
+										<c:if test="${!loopStatus.last}">
+										<c:out value=", " />
+										</c:if>
 									</c:forEach></td>
 							</tr>
 							<tr>
@@ -114,7 +117,7 @@
 					</div>
 				</c:forEach>
 			</div>
-			<div class="bottom-bar">
+			<div class="alapalkki">
 				<button type="submit" name="vahvista" href="#lightbox_sisalto"
 					class="vahvistus" disabled>Vahvista ilmoittautumiset</button>
 			</div>
@@ -156,7 +159,7 @@
 				</table>
 				</div>
 
-			<div class="modal-controls clearfix">
+			<div class="modaalin-kontrollit clearfix">
 				<input type="submit" value="Ilmoittaudu koulutuksiin"
 					id="ilmoittaudu" disabled /> 
 				<input type="button"
