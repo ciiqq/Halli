@@ -358,7 +358,12 @@ input[type="checkbox"]:checked:after {
 	text-decoration:none;
     color: white;
 }
-
+a:link,
+a:visited,
+a:hover {
+	text-decoration:none;
+    color: white;
+}
 p {
 	line-height: 120%;
 }
