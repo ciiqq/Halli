@@ -19,7 +19,7 @@
         <div class="row"> <!-- Aihe ja ajankohta inputit alkaa -->
             <div class="col-xs-12 col-sm-8 col-md-8">
                 <label>Koulutuksen aihe</label>
-                <form:input class="form-control" path="aihe"></form:input>
+                <form:input class="form-control" path="aihe" placeholder="Anna aihe" maxlength="50"></form:input>
                     <div class="row">
                         <div class="col-xs-12 col-sm-8 col-md-8"> 
                             <label>Kouluttajat</label>
@@ -75,8 +75,8 @@
                 <form:textarea class="form-control" rows="4" cols="50" style="resize:none;" path="kuvaus"></form:textarea>                      
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6"> 
-                <label>Oppimismenetelmät</label>
-                <form:textarea class="form-control" rows="4" cols="50" style="resize:none;" path="oppimismenetelmat"></form:textarea>                      
+                <label>Koulutusmenetelmät</label>
+                <form:textarea placeholder="Koulutuksessa käytettävät välineet ja menetelmät" class="form-control" rows="4" cols="50" style="resize:none;" path="koulutusmenetelmat"></form:textarea>                      
             </div> 
         </div>
         <div class="row">
@@ -86,7 +86,7 @@
             </div> 
              <div class="col-xs-6 col-sm-6 col-md-6">
                 <label>Avainsanat</label>
-                <form:textarea class="form-control" rows="4" cols="50" style="resize:none;" path="avainsanat[0]"></form:textarea>
+                <form:textarea placeholder="Avainsanat pilkulla eroteltuina" class="form-control" rows="4" cols="50" style="resize:none;" path="avainsanat[0]"></form:textarea>
             </div> 
         </div>
         <div class="row">

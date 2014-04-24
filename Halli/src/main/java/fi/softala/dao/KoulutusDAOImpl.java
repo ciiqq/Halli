@@ -44,8 +44,8 @@ public class KoulutusDAOImpl implements KoulutusDAO {
 		return null;
 	}
 
-	public void tallennaKoulussuunnitelma(Koulutustilaisuus koulutustilaisuus) { //TODO Testaamatta!
-		final String sql = "insert into koulutustilaisuus(aihe, kuvaus, lahtotaso, nakyvyys, oppimistavoitteet, oppimismenetelmat) values(?,?,?,?,?,?)";
+	public void tallennaKoulussuunnitelma(Koulutustilaisuus koulutustilaisuus) {
+		final String sql = "insert into koulutustilaisuus(aihe, kuvaus, lahtotaso, nakyvyys, koulutusmenetelmat) values(?,?,?,?,?)";
 
 		// anonyymi sisäluokka tarvitsee vakioina välitettävät arvot,
 		// jotta roskien keruu onnistuu tämän metodin suorituksen päättyessä.
@@ -53,8 +53,7 @@ public class KoulutusDAOImpl implements KoulutusDAO {
 		final String kuvaus = koulutustilaisuus.getKuvaus();
 		final String lahtotaso = koulutustilaisuus.getLahtotaso();
 		final boolean nakyvyys = false;
-		final String oppimistavoitteet = koulutustilaisuus.getOppimistavoitteet();
-		final String oppimismentetelmat = koulutustilaisuus.getOppimismenetelmat();
+		final String koulutusmentetelmat = koulutustilaisuus.getKoulutusmenetelmat();
 
 		// jdbc pistää generoidun id:n tänne talteen
 		KeyHolder idHolder = new GeneratedKeyHolder();
@@ -70,8 +69,7 @@ public class KoulutusDAOImpl implements KoulutusDAO {
 				ps.setString(2, kuvaus);
 				ps.setString(3, lahtotaso);
 				ps.setBoolean(4, nakyvyys);
-				ps.setString(5, oppimistavoitteet);
-				ps.setString(6, oppimismentetelmat);
+				ps.setString(5, koulutusmentetelmat);
 				return ps;
 			}
 		}, idHolder);
@@ -79,6 +77,45 @@ public class KoulutusDAOImpl implements KoulutusDAO {
 		// tallennetaan id takaisin beaniin, koska
 		// kutsujalla pitäisi olla viittaus samaiseen olioon
 		koulutustilaisuus.setId(idHolder.getKey().intValue());
+	}
+	
+	public void tallennaAvainsana(final String avainsana, final int koulutustilaisuusId) {
+		final String sqlLisaaSana = "insert into avainsana(avainsana) values (?);";
+		final String sqlLiitaSanaKoulutukseen = "insert into koulutuksenAvainsana(avainsana_id, koulutus_id) values (?,?)";
+		
+		final String sana = avainsana;
+		
+
+		KeyHolder idHolder = new GeneratedKeyHolder();
+		
+		
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(
+					Connection connection) throws SQLException {
+				PreparedStatement ps = connection.prepareStatement(sqlLisaaSana,
+						new String[] { "id" });
+				ps.setString(1, sana);
+				return ps;
+			}
+		}, idHolder);
+		
+		
+		
+		if (idHolder.getKey() != null) {
+			final int sanaId = idHolder.getKey().intValue();
+			jdbcTemplate.update(new PreparedStatementCreator() {
+				public PreparedStatement createPreparedStatement(
+						Connection connection) throws SQLException {
+					PreparedStatement ps = connection.prepareStatement(sqlLiitaSanaKoulutukseen);
+					ps.setInt(1, sanaId);
+					ps.setInt(2, koulutustilaisuusId);
+					return ps;
+				}
+			});						
+		}
+		
+		
+		
 	}
 	
 	

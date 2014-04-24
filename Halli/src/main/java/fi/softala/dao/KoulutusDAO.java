@@ -13,5 +13,7 @@ public interface KoulutusDAO {
 	public abstract List<Koulutustilaisuus> haeKaikki();
 	
 	public void tallennaKoulussuunnitelma(Koulutustilaisuus koulutustilaisuus);
+	
+	public void tallennaAvainsana(String avainsana, int koulutustilaisuusId);
 
 }

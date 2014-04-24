@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Koulutustilaisuus {
@@ -21,10 +22,13 @@ public class Koulutustilaisuus {
 	private String aikaPaiva;
 	private String paikka;
 	private Opettaja ope; // opettajabean t�h�n
-	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
-	private List<String> avainsanat = new ArrayList<String>();
-	private String oppimistavoitteet;
-	private String oppimismenetelmat;
+	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>(3);
+	private List<String> avainsanat = new LinkedList<String>();
+	private String koulutusmenetelmat;
+	
+	
+
+	
 
 	public int getId() {
 		return id;
@@ -152,20 +156,12 @@ public class Koulutustilaisuus {
 		this.aikaPaiva = aikaPaiva;
 	}
 
-	public String getOppimistavoitteet() {
-		return oppimistavoitteet;
+	public String getKoulutusmenetelmat() {
+		return koulutusmenetelmat;
 	}
 
-	public void setOppimistavoitteet(String oppimistavoitteet) {
-		this.oppimistavoitteet = oppimistavoitteet;
-	}
-
-	public String getOppimismenetelmat() {
-		return oppimismenetelmat;
-	}
-
-	public void setOppimismenetelmat(String oppimismenetelmat) {
-		this.oppimismenetelmat = oppimismenetelmat;
+	public void setKoulutusmenetelmat(String koulutusmenetelmat) {
+		this.koulutusmenetelmat = koulutusmenetelmat;
 	}
 
 	public void setSuomiPvm(String suomiPvm) {

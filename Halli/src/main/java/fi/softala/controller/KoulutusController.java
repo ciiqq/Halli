@@ -31,12 +31,6 @@ public class KoulutusController {
 		this.koulutustilaisuusService = koulutustilaisuusService;
 	}
 
-	public KoulutustilaisuusService getKoulutustilaisuusService() {
-		return koulutustilaisuusService;
-	}
-
-
-
 	@RequestMapping (value="/uusi", method=RequestMethod.GET)
 	public String getCreateForm(Model model) {
 		Koulutustilaisuus kt = new Koulutustilaisuus();
@@ -49,7 +43,7 @@ public class KoulutusController {
 
 	@RequestMapping (value="/uusi", method=RequestMethod.POST)
 	public String saveCreateForm( @ModelAttribute(value="koulutustilaisuus") Koulutustilaisuus koulutustilaisuus) {
-		koulutustilaisuusService.tallennaKoulutustilaisuus(koulutustilaisuus);		
+		koulutustilaisuusService.tallennaUusiKoulutustilaisuus(koulutustilaisuus);		
 		return "koulutuslomake";
 	}
 }

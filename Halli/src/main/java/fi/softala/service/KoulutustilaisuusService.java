@@ -5,6 +5,6 @@ import fi.softala.dao.KoulutusDAO;
 
 public interface KoulutustilaisuusService {
 	
-	public void tallennaKoulutustilaisuus(Koulutustilaisuus koulutustilaisuus);	
+	public void tallennaUusiKoulutustilaisuus(Koulutustilaisuus koulutustilaisuus);	
 
 }
