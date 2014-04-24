@@ -74,9 +74,12 @@
 							</tr>
 							<tr>
 								<td class="bold">Kouluttajat</td>
-								<td><c:forEach items="${k.kouluttajat}" var="koul">
+								<td><c:forEach items="${k.kouluttajat}" var="koul" varStatus="loopStatus">
 										<c:out value="${koul.etunimi} " />
-										<c:out value="${koul.sukunimi} " />
+										<c:out value="${koul.sukunimi}" />
+										<c:if test="${!loopStatus.last}">
+										<c:out value=", " />
+										</c:if>
 									</c:forEach></td>
 							</tr>
 							<tr>
