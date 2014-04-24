@@ -47,8 +47,8 @@
 		<div class="main clearfix">
 			<div class="ylapalkki">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
-			<div class="fifty list">
-			<form id="haku" action="hakutulokset"><input type="text" name="haku" placeholder="Suodata koulutuksia hakusanan perusteella"><input type="submit" value="Submit"></form>
+			<div class="fifty lista">
+			<form id="haku" action="hakutulokset"><input type="text" name="haku" placeholder="Suodata koulutuksia hakusanan perusteella"><input type="submit" value=" "></form>
 				<ul>
 					<c:forEach items="${koulutukset}" var="k">
 						<li divid="<c:out value="${k.id}"/>" class="aihe"><input
