@@ -30,7 +30,28 @@ if(kuukaudenEkaPaiva==1) { /* su ma ti ke to pe la -> ma ti ke to pe la su */
 
 
 <body>
+
+
+
+	
 	<table>
+	<form action="vaihdakuukausi" method="get">
+	<tr>
+	
+ 	<td><input type="submit" value="edellinen"></td>
+ 	<td><input type="text" name="fname"></td>
+  	<td><input type="submit" value="seuraava"></td>
+
+	</tr>
+	
+	</form> 
+	</table>
+	
+	
+	<table>
+	
+	<form action="vaihdakuukausi" method="get">
+
 		<tr>
 		<td>ma</td>
 		<td>ti</td>
@@ -54,7 +75,7 @@ if(kuukaudenEkaPaiva==1) { /* su ma ti ke to pe la -> ma ti ke to pe la su */
 							paiva++;
 							if(paiva<=kuukaudenVikaPaiva) {
 					%>
-							<%= paiva %>
+								<input type="submit" name="paivays" value="<%=paiva %>"></input>
 						<%	} else 
 								ok=1;
 					} %>
@@ -62,7 +83,7 @@ if(kuukaudenEkaPaiva==1) { /* su ma ti ke to pe la -> ma ti ke to pe la su */
 				<% } %>
 				</tr> 
 			<% } %>
-	
+	</form>
 	</table>
 </body>
 </html>

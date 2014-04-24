@@ -12,14 +12,31 @@ import fi.softala.DAO.AikatauluslottiDAO;
 
 import javax.inject.Inject;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping (value="/aikatauluslotti")
 public class Aikatauluslottikontrolleri {
 	@Inject
 	AikatauluslottiDAO dao;
-		
-	@RequestMapping(value="aikatauluslottilista2", method=RequestMethod.GET)
+
+	@RequestMapping(value="lisaa", method=RequestMethod.GET)
+	public String aikatauluslottiLisaa(Model model) { /* JariK 20140319 */
+		List<Aikatauluslotti> aikatauluslotit = dao.haeKaikki();
+ 		model.addAttribute("aikatauluslotit", aikatauluslotit);
+		return "aikatauluslottilisaa";
+	}
+	@RequestMapping(value="vaihdakuukausi", method=RequestMethod.GET)
+	public String vaihdakuukausi(Model model, HttpServletRequest request) { /* JariK 20140319 */
+		String vvvvkk = (String)request.getSession().getAttribute("vvvvkk");
+		return "aikatauluslottilisaa";
+	}	
+	@RequestMapping(value="lista2", method=RequestMethod.GET)
 	public String aikatauluslottiLista(Model model) { /* JariK 20140319 */
 		List<Aikatauluslotti> aikatauluslotit = dao.haeKaikki();
  		model.addAttribute("aikatauluslotit", aikatauluslotit);

@@ -25,24 +25,30 @@
 <tbody>
 <c:forEach items="${aikatauluslotit}" var="slotti">
 	<tr>
+		<form action="listanrivi" method="get">
 		<td><input type="text" value="${slotti.id}" name="id" readonly/></td>
 		<td><input type="text" value="${slotti.pvm}" name="pvm" readonly/></td>
 		<td><input type="text" value="${slotti.alkukello}" name="alkukello" readonly/></td>
 		<td><input type="text" value="${slotti.loppukello}" name="loppukello" readonly/></td>
 		<td><input type="text" value="${slotti.koulutustila}" name="koulutustila" readonly/></td>
 		<td><input type="text" value="${slotti.koulutus}" name="koulutusid" readonly/></td>
-		
+		<td><input type="submit" value="muokkaa"></td>
+		<td><input type="submit" value="poista"> </td>
 		<%-- <td><c:out value="${slotti.id}"/></td> --%>
 		<%-- <td><c:out value="${slotti.pvm}"/></td> --%>
 		<%-- <td><c:out value="${slotti.alkukello}"/></td> --%>
 		<%-- <td><c:out value="${slotti.loppukello}"/></td> --%>
 		<%-- <td><c:out value="${slotti.kouluttjaid}"/></td> --%>
 		<%-- <td><c:out value="${slotti.opettajaid}"/></td> --%>
-		
+		</form>
 	</tr>
 </c:forEach>
 </tbody>
 </table>
+
+<form action="tallennalista" method="get">
+<input type="submit" value="tallenna">
+</form>
 
 </body>
 </html>
