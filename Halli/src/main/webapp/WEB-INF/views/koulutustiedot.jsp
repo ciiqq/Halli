@@ -132,13 +132,13 @@
 			  
 			  <tr>
 			    <th><form:label path="pvm">P‰iv‰m‰‰r‰</form:label></th>
-			  	<td><form:input path="pvm" style="position: relative; z-index: 100000;" id="datepicker" value="${ks.pvm}"/> </td>
+			  	<td><form:input path="pvm" class="zDepth" id="datepicker" value="${ks.pvm}"/> </td>
 			  	<td><form:errors path="pvm"></form:errors></td> 
 			  </tr>
 			  	
 			  <tr> 
 			  	<th><form:label path="alkukello">Alkaa</form:label></th>
-			  	<td><form:input path="alkukello" style="position: relative; z-index: 100000;" class="timepicker" value="${ks.alkukello}"/></td>
+			  	<td><form:input path="alkukello" class="timepicker zDepth" value="${ks.alkukello}"/></td>
 			  	<td><form:errors path="alkukello"></form:errors></td> 
 			  </tr>
 			  	
@@ -162,8 +162,8 @@
 			    
 			    <tr>
 			    	<th><form:label path="koulutus.nakyvyys">N‰kyvyys</form:label></th>
-			  	<td><form:input path="koulutus.nakyvyys" value="${ks.koulutus.nakyvyys}"/> </td> 
-			  	<td><form:errors path="koulutus.nakyvyys"></form:errors></td>
+			  		<td><form:input path="koulutus.nakyvyys" value="${ks.koulutus.nakyvyys}"/> </td> 
+			  		<td><form:errors path="koulutus.nakyvyys"></form:errors></td>
 			    </tr>
 			    
 			    </table>
