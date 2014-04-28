@@ -1,5 +1,3 @@
-	
-
     <%@page contentType="text/html;charset=UTF-8"%>
     <%@page pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -46,6 +44,7 @@
                     <div class="main clearfix">
                     <div class="top-bar">Halli: Koulutusten hallinta- ja ilmoittautumisjärjestelmä</div>
                             <div class="fifty list">
+                            	<form id="koulutukset" action="vahvistakoulutus" method="POST" >
                                     <ul>
                                             <c:forEach items="${koulutukset}" var="k">
                                                     <li divid="<c:out value="${k.id}"/>" class="aihe"><input
@@ -54,6 +53,7 @@
                                                                             value="${k.suomiPvm}" /></span></li>
                                             </c:forEach>
                                     </ul>
+                                </form>
                             </div>
                             <div class="fifty details">
      
@@ -136,9 +136,9 @@
                             </div>
                             <div class="bottom-bar">
                             <button type="submit" name="vahvista" href="#" class="koulutuksienVahvistus" disabled>Vahvista ja julkaise valitut koulutukset</button>
-                            <button type="submit" name="vahvistaKaikki" href="#" class="kaikkienKoulutuksienVahvistus">Vahvista ja julkaise kaikki koulutukset</button>
+                            <button type="submit" name="vahvistaKaikki" href="VahvistaKaikkiKoulutukset" class="kaikkienKoulutuksienVahvistus">Vahvista ja julkaise kaikki koulutukset</button>
             </div>
-                    </div>
+            </div>
 
             </div>
 
