@@ -6,54 +6,18 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>Koulutusjarjestelma</name>
-	
+
 	<properties>
 		<spring.version>4.0.0.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
-	<build>
-		<plugins>
-		
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<format>xml</format>
-					<maxmem>256m</maxmem>
-					<!-- aggregated reports for multi-module projects -->
-					<aggregate>true</aggregate>
-				</configuration>
-			</plugin>
-			
-			<plugin>
-			     <groupId>org.eluder.coveralls</groupId>
-			     <artifactId>coveralls-maven-plugin</artifactId>
-			     <version>2.2.0</version>
-				<configuration>
-					<sourceDirectories>
-						<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
-					</sourceDirectories>
-				</configuration>
-			</plugin>
-			
-		</plugins>
-	
-	</build>
-	
 	<dependencies>
-	
+                    
 		<dependency>
 			<groupId>org.codehaus.mojo</groupId>
 			<artifactId>cobertura-maven-plugin</artifactId>
 			<version>2.6</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.eluder.coveralls</groupId>
-			<artifactId>coveralls-maven-plugin</artifactId>
-			<version>2.2.0</version>
 		</dependency>
 		
 		<dependency>
@@ -130,7 +94,11 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>2.4.9</version>
+		</dependency>
 
 	</dependencies>
 </project>
