@@ -1,7 +1,9 @@
 package fi.softala.service;
 
 import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
+
 import fi.softala.dao.KoulutusVahvistusDAO;
 
 /**
@@ -17,8 +19,9 @@ public class KoulutuksenVahvistusServiceImpl implements KoulutuksenVahvistusServ
 	@Inject
 	private KoulutusVahvistusDAO dao;
 
-	public void VahvistaKoulutus(int kID) {
-		dao.VahvistaKoulutus(kID);
+	public void VahvistaKoulutus(String vahvistettavat) {
+		String[] idTaulukko = vahvistettavat.split(",");
+		dao.VahvistaKoulutus(idTaulukko);
 	}
 
 	public void VahvistaKaikkiKoulutukset() {

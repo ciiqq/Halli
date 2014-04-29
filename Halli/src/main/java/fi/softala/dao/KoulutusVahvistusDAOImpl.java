@@ -27,14 +27,13 @@ public class KoulutusVahvistusDAOImpl implements KoulutusVahvistusDAO {
 		this.jt = jdbcTemplate;
 	}
 
-	public void VahvistaKoulutus(final int kID) {
-		String sql = "UPDATE koulutustilaisuus SET nakyvyys = 1 WHERE koulutus_id = ?";
-		jt.update(sql,  new PreparedStatementSetter() {
-            public void setValues(PreparedStatement preparedStatement) throws
-            SQLException {
-              preparedStatement.setInt(1, kID);
-          }
-        });
+	public void VahvistaKoulutus(String[] vahvistettavat) {
+		String sql = "";
+
+		for (int i = 0; i < vahvistettavat.length; i++) {
+			sql = "UPDATE koulutustilaisuus SET nakyvyys = 1 WHERE koulutus_id = "+vahvistettavat[i];
+			jt.update(sql);
+		}
 	}
 
 	public void VahvistaKaikkiKoulutukset() {

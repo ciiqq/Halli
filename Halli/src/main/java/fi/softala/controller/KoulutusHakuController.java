@@ -1,6 +1,5 @@
 package fi.softala.controller;
 
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,7 +22,7 @@ import fi.softala.service.KoulutusHakuService;
  */
 
 @Controller
-@RequestMapping(value = "/koulutukset")
+@RequestMapping(value = "/")
 public class KoulutusHakuController {
 
 	@Inject
@@ -40,7 +39,7 @@ public class KoulutusHakuController {
 		this.vahvistusservice = service;
 	}
 	
-	@RequestMapping(value = "vahvistamattomat", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listaaVahvistamattomatKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeVahvistamattomat();
 		model.addAttribute("koulutukset", koulutukset);
@@ -48,10 +47,10 @@ public class KoulutusHakuController {
 	}
 	
 	@RequestMapping(value = "vahvistakoulutus", method = RequestMethod.POST)
-	public String VahvistaKoulutus(HttpServletRequest req) {
-		Enumeration<String> checkboxasd = req.getParameterNames();
-		System.out.println(checkboxasd);
-		vahvistusservice.VahvistaKoulutus(0);
+	public String VahvistaKoulutus(Model model, HttpServletRequest request){
+		String vahvistettavat = request.getParameter("valitutkoulutukset");
+
+		vahvistusservice.VahvistaKoulutus(vahvistettavat);
 		return "vahvistamattomatkoulutukset";
 	}
 	
