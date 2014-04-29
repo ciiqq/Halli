@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -38,12 +39,22 @@
 		</div>
 	</nav>
 	
-	<div class="alert alert-succes alert-dismissable">
-		<button type="button" class="close" data-dismiss="alert">
-		&times;
-		</button>
-		Palaute lähetetty.
-	</div>
+<!-- 	Vanha ilmoitus -->
+<!-- 	<div class="alert alert-succes alert-dismissable"> -->
+<!-- 		<button type="button" class="close" data-dismiss="alert"> -->
+<!-- 		&times; -->
+<!-- 		</button> -->
+<!-- 		Palaute lähetetty. -->
+<!-- 	</div> -->
+
+<c:if test="${onnistunutviesti != null}">
+	<div class="alert alert-success"><c:out value="${onnistunutviesti}"></c:out></div>
+</c:if>
+
+<c:if test="${virheviesti != null}">
+	<div class="alert alert-danger"><c:out value="${virheviesti}"></c:out></div>
+</c:if>
+	
 	
 	<div class="container">
 		<a class="btn btn-primary" href="testaus/uusi">Testaa</a>
@@ -63,7 +74,7 @@
 							<form:label path="arvosana">Arvosana</form:label>
 							<br>
 							<form:select path="arvosana" class="form-control">
-								<option value="">Valitse arvosana</option>
+								<option value=""disabled selected>Valitse arvosana</option>
 								<form:option value="1">1 - Heikko</form:option>
 								<form:option value="2">2 - Kohtalainen</form:option>
 								<form:option value="3">3 - Hyvä</form:option>
@@ -78,7 +89,7 @@
 							<br>
 							<form:label path="opiskelijanumero">Opiskelijanumero (ainoastaan numero ilman a alkua)</form:label>
 							<br>
-							<form:input path="opiskelijanumero" placeholder="1234567" />
+							<form:input path="opiskelijanumero" placeholder="1234567" maxlength="7" class="form-control" />
 						</form:form>
 					</div>
 					<div class="modal-footer">
@@ -99,7 +110,6 @@
 	<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 	<script>
 		$(document).ready(function() {
-			$(".alert").hide();
 			$("#palauteForm").validate({
 			    
 		        // Specify the validation rules
@@ -112,7 +122,8 @@
 		            opiskelijanumero: {
 		                required: true,
 		                minlength: 7,
-		                maxlength: 8
+		                maxlength: 7,
+		                number: true
 		            },
 		            arvosana: {
 		            	required: true
@@ -123,14 +134,11 @@
 		        messages: {
 		        	palauteteksti: "Kirjoita palautteesi",
 		            opiskelijanumero: "Kirjoita opiskelijanumerosi",
-		            arvosana: {
-		                required: "Valitse haluamasi numero arvosanaksi",
-		                }
+		            arvosana: "Valitse haluamasi numero arvosanaksi",
 		            }
 		        });
 				$('#lahetaButton').click(function() {
 					$('#palauteForm').submit();
-					$(".alert").show();
 				});
 
 				$('#peruutaButton').click(function() {

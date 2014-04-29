@@ -37,9 +37,17 @@ public class Controller1 {
 		return "palaute";
 	}
 	@RequestMapping(value="palaute", method=RequestMethod.POST)
-	public String create(@ModelAttribute(value="palaute") Palaute palaute) {
-		dao.talletaPalaute(palaute);
-		return "redirect:/testaus/palaute";
+	public String create(@ModelAttribute(value="palaute") Palaute palaute, Model model) {
+		try {
+			dao.talletaPalaute(palaute);
+			model.addAttribute("onnistunutviesti", "Palautteen lähetys onnistui");	
+			return "palaute";
+		} catch (Exception e) {
+			// TODO: handle exception
+			model.addAttribute("virheviesti", "Palautteen lähetys ei onnistunut");
+			return "palaute";
+		}
+
 	}
 }
 
