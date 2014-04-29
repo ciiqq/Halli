@@ -96,21 +96,14 @@ $(document).ready(function() {
     
     // Valituille koulutuksille vahvistus
     $(".koulutuksienVahvistus").click(function() {
-    	$(".vahvistus").colorbox({
-			inline : true,
-			width : "50%",
-		});
 
 		var checkboxit = document.getElementsByName("box");
-		var aiheet = document.getElementsByName("aihe");
 		var valitutidt = new Array();
 		$("#valitut").empty();
 
 		for (var i = 0; i < checkboxit.length; i++) {
 			if (checkboxit[i].checked) {
-				var aihe = aiheet[i].value;
 				var id = checkboxit[i].value;
-				$("<li>").text(aihe).appendTo("#valitut");
 				valitutidt[i] = checkboxit[i].value;
 			}
 		}
@@ -127,19 +120,16 @@ $(document).ready(function() {
 		}
 		
 		str = oikeatvaluet.join();
-		document.getElementById("valitutkoulutukset").value = str;  
+		document.getElementById("valitutkoulutukset").value = str;
+		
+		$("#koulutukset").submit();
+		
     });
-		
-		
-		
-    
-    
+	
     // Kaikille vahvistamattomille koulutuksille vahvistus
     $(".kaikkienKoulutuksienVahvistus").click(function() {
     	
     	
     	
     }); 
-    
-    
 });  

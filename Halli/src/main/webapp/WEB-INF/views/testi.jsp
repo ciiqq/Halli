@@ -8,7 +8,7 @@
 <body>
 
 ...
-<a href="koulutukset/vahvistamattomat">Vahvistamattomat koulutukset</a><br>
+<a href="vahvistamattomat">Vahvistamattomat koulutukset</a><br>
 
 
 </body>

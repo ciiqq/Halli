@@ -39,7 +39,7 @@ public class KoulutusHakuController {
 		this.vahvistusservice = service;
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "vahvistamattomat", method = RequestMethod.GET)
 	public String listaaVahvistamattomatKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeVahvistamattomat();
 		model.addAttribute("koulutukset", koulutukset);
@@ -55,8 +55,9 @@ public class KoulutusHakuController {
 	}
 	
 	@RequestMapping(value = "VahvistaKaikkiKoulutukset")
-	public void VahvistaKaikkiKoulutukset() {
+	public String VahvistaKaikkiKoulutukset() {
 		vahvistusservice.VahvistaKaikkiKoulutukset();
+		return "vahvistamattomatkoulutukset";
 	}
 	
 	@RequestMapping(value = "uusi_ui", method = RequestMethod.GET)

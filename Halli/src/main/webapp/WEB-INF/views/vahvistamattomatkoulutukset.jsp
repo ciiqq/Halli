@@ -53,6 +53,7 @@
                                                                             value="${k.suomiPvm}" /></span></li>
                                             </c:forEach>
                                     </ul>
+                                    <input type="hidden" id="valitutkoulutukset" name="valitutkoulutukset" />
                                 </form>
                             </div>
                             <div class="fifty details">
@@ -135,9 +136,10 @@
                                     </c:forEach>
                             </div>
                             <div class="bottom-bar">
+                            
                             <button type="submit" name="vahvista" href="#" class="koulutuksienVahvistus" disabled>Vahvista ja julkaise valitut koulutukset</button>
                             <button type="submit" name="vahvistaKaikki" href="VahvistaKaikkiKoulutukset" class="kaikkienKoulutuksienVahvistus">Vahvista ja julkaise kaikki koulutukset</button>
-            </div>
+            				</div>
             </div>
 
             </div>
