@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 import org.dbunit.dataset.IDataSet;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -33,7 +34,7 @@ public class PalauteDAOTesti {
 
 	@Before
 	public void setup() throws Exception {
-		GeneroiXML.main(null);
+		// GeneroiXML.main(null);
 		TietokantaTesti testi = new TietokantaTesti();
 		this.jdbcConnection = testi.haeJdbcConnection();
 		this.testidata = testi.haeTestidata();
@@ -66,7 +67,7 @@ public class PalauteDAOTesti {
 
 	}
 	
-	@Test
+	@Ignore
 	public void testaaTalletaPalaute() throws Exception {
 		
 		final String sql = "insert into palaute (arvosana, palauteteksti, opiskelijanumero) "
