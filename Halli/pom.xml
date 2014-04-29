@@ -31,8 +31,10 @@
     				<groupId>org.eluder.coveralls</groupId>
     				<artifactId>coveralls-maven-plugin</artifactId>
     				<version>2.2.0</version>
-    				<configuration>
-					<repoToken>ulC3P7HYsbsyC7BLf6PHhmnwuc2BVdNUL</repoToken>
+				<configuration>
+					<sourceDirectories>
+						<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+					</sourceDirectories>
 				</configuration>
 			</plugin>
 		</plugins>
