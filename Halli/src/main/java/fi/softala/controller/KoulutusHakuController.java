@@ -17,7 +17,7 @@ import fi.softala.service.KoulutusHakuService;
 
 /**
  * 
- * @author Miro MetsŠnheimo
+ * @author Miro Metsï¿½nheimo
  * @author ...
  *
  */
@@ -58,5 +58,12 @@ public class KoulutusHakuController {
 	@RequestMapping(value = "VahvistaKaikkiKoulutukset")
 	public void VahvistaKaikkiKoulutukset() {
 		vahvistusservice.VahvistaKaikkiKoulutukset();
+	}
+	
+	@RequestMapping(value = "uusi_ui", method = RequestMethod.GET)
+	public String listaaVahvistamattomatKoulutuksetUusiUi(Model model) {
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeVahvistamattomat();
+		model.addAttribute("koulutukset", koulutukset);
+		return "vahvistamattomat_uusi_ui";
 	}
 }
