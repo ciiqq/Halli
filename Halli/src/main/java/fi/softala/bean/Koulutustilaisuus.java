@@ -20,7 +20,7 @@ public class Koulutustilaisuus {
 	private String suomiKloAlku;
 	private String suomiKloLoppu;
 	private String paikka;
-	private Opettaja ope; // opettajabean tähän
+	private Opettaja ope;
 	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
 	private List<String> avainsanat = new ArrayList<String>();
 	

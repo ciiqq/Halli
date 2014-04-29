@@ -42,7 +42,7 @@
                             </div>
                     </div>
                     <div class="main clearfix">
-                    <div class="top-bar">Halli: Koulutusten hallinta- ja ilmoittautumisjärjestelmä</div>
+                    <div class="top-bar">Halli: Koulutusten hallinta- ja ilmoittautumisjärjestelmä - VAHVISTAMATTOMAT KOULUTUKSET</div>
                             <div class="fifty list">
                             	<form id="koulutukset" action="vahvistakoulutus" method="POST" >
                                     <ul>
