@@ -13,11 +13,7 @@
 	</properties>
 	
 	<dependencies>
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> FETCH_HEAD
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
