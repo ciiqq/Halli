@@ -13,14 +13,32 @@
 	</properties>
 	
 	<build>
+		
 		<plugins>
+		
+			
+			<plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>cobertura-maven-plugin</artifactId>
+			    <version>2.6</version>
+			    <configuration>
+			        <format>xml</format>
+			        <maxmem>256m</maxmem>
+			        <!-- aggregated reports for multi-module projects -->
+			        <aggregate>true</aggregate>
+			    </configuration>
+			</plugin>
+		
+		
 			<plugin>
     				<groupId>org.eluder.coveralls</groupId>
     				<artifactId>coveralls-maven-plugin</artifactId>
     				<version>2.2.0</version>
     				<configuration>
-					<repoToken>ulC3P7HYsbsyC7BLf6PHhmnwuc2BVdNUL</repoToken>
-				</configuration>
+	    				<sourceDirectories>
+			                	<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+			                </sourceDirectories>
+		                </configuration>
 			</plugin>
 		</plugins>
 
@@ -28,10 +46,17 @@
 	
 	<dependencies>
 	
+
+		<dependency>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>cobertura-maven-plugin</artifactId>
+			<version>2.6</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.eluder.coveralls</groupId>
 			<artifactId>coveralls-maven-plugin</artifactId>
-			<version>1.2.0</version>
+			<version>2.2.0</version>
 		</dependency>
 		
 		<dependency>
