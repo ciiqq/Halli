@@ -1,2 +1,4 @@
 language: java
 script: mvn test --file Halli/pom.xml
+after_success:
+  - mvn clean --file Halli/pom.xml cobertura:cobertura coveralls:cobertura
