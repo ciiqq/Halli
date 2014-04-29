@@ -26,29 +26,21 @@ public class Aikatauluslotti {
 	private String koulutustila;
 	
 	
-	private Koulutustilaisuus koulutus;
-	
 	public Aikatauluslotti() {
 		super();
 	}
 	
 
-	public Aikatauluslotti(Koulutustilaisuus koulutus) {
-		super();
-		this.koulutus = koulutus;
-	}
-
 
 
 	public Aikatauluslotti(int id, String pvm, String alkukello,
-			String loppukello, String koulutustila, Koulutustilaisuus koulutus) {
+			String loppukello, String koulutustila) {
 		super();
 		this.id = id;
 		this.pvm = pvm;
 		this.alkukello = alkukello;
 		this.loppukello = loppukello;
 		this.koulutustila = koulutustila;
-		this.koulutus = koulutus;
 	}
 
 	public int getId() {
@@ -91,18 +83,11 @@ public class Aikatauluslotti {
 		this.koulutustila = koulutustila;
 	}
 
-	public Koulutustilaisuus getKoulutus() {
-		return koulutus;
-	}
-
-	public void setKoulutus(Koulutustilaisuus koulutus) {
-		this.koulutus = koulutus;
-	}
 
 	@Override
 	public String toString() {
 		return "Aikatauluslotti [id=" + id + ", pvm=" + pvm + ", alkukello="
 				+ alkukello + ", loppukello=" + loppukello + ", koulutustila="
-				+ koulutustila + ", koulutus=" + koulutus + "]";
+				+ koulutustila + "]";
 	}
 }

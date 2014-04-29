@@ -27,22 +27,22 @@
   			
   		</tr>
   
-  <c:forEach var="slotti" items="${koulutukset}">
+  <c:forEach var="kt" items="${koulutukset}">
   		
 		<tr>
 			<td>
-				<p>${slotti.pvm} klo. ${slotti.alkukello} - ${slotti.loppukello}
+				<p>${kt.aikaslotti.pvm} klo. ${kt.aikaslotti.alkukello} - ${kt.aikaslotti.loppukello}
 			</td>
 			
 			<td>
-				${slotti.koulutus.aihe}
+				${kt.aihe}
 			</td>
 			
 							
 			
 		
 			<td>
-				<a href="koulutuslistaus/${slotti.id}"><input class="btn btn-primary" type="button" value="Koulutukseen" name="lista/${slotti.id}"></a>
+				<a href="koulutuslistaus/${kt.id}"><input class="btn btn-primary" type="button" value="Koulutukseen" name="lista/${kt.id}"></a>
 			</td>
 			
 		</tr>

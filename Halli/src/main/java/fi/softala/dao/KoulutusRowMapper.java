@@ -8,14 +8,22 @@ import org.springframework.jdbc.core.RowMapper;
 import fi.softala.bean.Aikatauluslotti;
 import fi.softala.bean.Koulutustilaisuus;
 
-public class KoulutusRowMapper implements RowMapper<Aikatauluslotti> {
+public class KoulutusRowMapper implements RowMapper<Koulutustilaisuus> {
 
-	public Aikatauluslotti mapRow(ResultSet rs, int rowNum) throws SQLException {
+	public Koulutustilaisuus mapRow(ResultSet rs, int rowNum) throws SQLException {
+		Koulutustilaisuus kt = new Koulutustilaisuus();
+		
+		kt.setId(rs.getInt("kt.koulutus_id"));
+		kt.setAihe(rs.getString("kt.aihe"));
+		kt.setKuvaus(rs.getString("kt.kuvaus"));
+		kt.setLahtotaso(rs.getString("kt.lahtotaso"));
+		kt.setNakyvyys(rs.getBoolean("kt.nakyvyys"));
+		
+		
 		Aikatauluslotti at = new Aikatauluslotti();
 		
-		
 		at.setId(rs.getInt("asl.aika_id"));
-	
+		
 		String alkukello = rs.getString("asl.alkukello");
 		String loppukello = rs.getString("asl.loppukello");
 		
@@ -29,16 +37,9 @@ public class KoulutusRowMapper implements RowMapper<Aikatauluslotti> {
 		
 		at.setPvm(suomiPvm[2] + "." + suomiPvm[1] + "." + suomiPvm[0]);
 		
-		Koulutustilaisuus kt = new Koulutustilaisuus();
+		kt.setAikaslotti(at);
 		
-		kt.setAihe(rs.getString("kt.aihe"));
-		kt.setKuvaus(rs.getString("kt.kuvaus"));
-		kt.setLahtotaso(rs.getString("kt.lahtotaso"));
-		kt.setNakyvyys(rs.getBoolean("kt.nakyvyys"));
-		
-		at.setKoulutus(kt);
-		
-		return at;
+		return kt;
 	}
 
 }

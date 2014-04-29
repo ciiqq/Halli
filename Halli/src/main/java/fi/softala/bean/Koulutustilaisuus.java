@@ -30,9 +30,18 @@ public class Koulutustilaisuus {
 	private Opettaja ope;
 	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
 	private List<String> avainsanat = new ArrayList<String>();
+	private Aikatauluslotti aikaslotti;
 	
 	
 	
+	public Aikatauluslotti getAikaslotti() {
+		return aikaslotti;
+	}
+
+	public void setAikaslotti(Aikatauluslotti aikaslotti) {
+		this.aikaslotti = aikaslotti;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -122,9 +131,15 @@ public class Koulutustilaisuus {
 
 	@Override
 	public String toString() {
-		return "KoulutustilaisuusImpl [id=" + id + ", aihe=" + aihe
-				+ ", kuvaus=" + kuvaus + ", lahtotaso=" + lahtotaso
-				+ ", nakyvyys=" + nakyvyys + ", ope=" + ope + "]";
+		return "Koulutustilaisuus [suomiPvmMuotoilu=" + suomiPvmMuotoilu
+				+ ", suomiKloMuotoilu=" + suomiKloMuotoilu + ", id=" + id
+				+ ", aihe=" + aihe + ", kuvaus=" + kuvaus + ", lahtotaso="
+				+ lahtotaso + ", nakyvyys=" + nakyvyys + ", suomiPvm="
+				+ suomiPvm + ", suomiKlo=" + suomiKlo + ", ope=" + ope
+				+ ", kouluttajat=" + kouluttajat + ", avainsanat=" + avainsanat
+				+ ", aikaslotti=" + aikaslotti + "]";
 	}
+
+
 
 }

@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import fi.softala.bean.Aikatauluslotti;
+import fi.softala.bean.Koulutustilaisuus;
 @Repository
 public class KoulutusDAOImpl implements KoulutusDAO{
 	
@@ -28,42 +29,42 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 
 
 
-	public List<Aikatauluslotti> haeKoulutukset() {
-		final String sql = "SELECT asl.aika_id, asl.pvm, asl.alkukello, asl.loppukello, asl.koulutustila, kt.aihe, kt.kuvaus, kt.lahtotaso, kt.nakyvyys FROM aikatauluslotti asl JOIN koulutustilaisuus kt ON " +
+	public List<Koulutustilaisuus> haeKoulutukset() {
+		final String sql = "SELECT kt.koulutus_id, asl.aika_id, asl.pvm, asl.alkukello, asl.loppukello, asl.koulutustila, kt.aihe, kt.kuvaus, kt.lahtotaso, kt.nakyvyys FROM koulutustilaisuus kt JOIN aikatauluslotti asl ON " +
 							"asl.koulutus_id = kt.koulutus_id;";
 		
-		RowMapper<Aikatauluslotti> rm = new KoulutusRowMapper();
+		RowMapper<Koulutustilaisuus> rm = new KoulutusRowMapper();
 		
-		List<Aikatauluslotti> koulutuslista = jdbcTemplate.query(sql, rm);
+		List<Koulutustilaisuus> koulutuslista = jdbcTemplate.query(sql, rm);
 		
 		return koulutuslista;
 	}
 	
-	public Aikatauluslotti haeKoulutus(int id) {
-		final String sql = "SELECT asl.aika_id, asl.pvm, asl.alkukello, asl.loppukello, asl.koulutustila, kt.aihe, kt.kuvaus, kt.lahtotaso, kt.nakyvyys FROM aikatauluslotti asl JOIN koulutustilaisuus kt ON " +
-				"asl.koulutus_id = kt.koulutus_id WHERE asl.aika_id = ?;";
+	public Koulutustilaisuus haeKoulutus(int id) {
+		final String sql = "SELECT kt.koulutus_id, asl.aika_id, asl.pvm, asl.alkukello, asl.loppukello, asl.koulutustila, kt.aihe, kt.kuvaus, kt.lahtotaso, kt.nakyvyys FROM koulutustilaisuus kt JOIN aikatauluslotti asl ON " +
+				"asl.koulutus_id = kt.koulutus_id WHERE kt.koulutus_id = ?;";
 		Object[] parametrit = new Object[] { id };
 		
-		RowMapper<Aikatauluslotti> rm = new KoulutusRowMapper();
+		RowMapper<Koulutustilaisuus> rm = new KoulutusRowMapper();
 		
-		Aikatauluslotti koulutus = jdbcTemplate.queryForObject(sql, parametrit, rm);
+		Koulutustilaisuus koulutus = jdbcTemplate.queryForObject(sql, parametrit, rm);
 		
 		return koulutus;
 	}
 
 
 
-	public void paivitaKoulutus(Aikatauluslotti as) {
+	public void paivitaKoulutus(Koulutustilaisuus kt) {
 		final String sql = "UPDATE aikatauluslotti asl"
 						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id SET asl.pvm = ?, asl.alkukello = ?, asl.loppukello = ?, asl.koulutustila = ?, kt.aihe = ?, kt.kuvaus = ?, kt.lahtotaso = ?, kt.nakyvyys = ?"
 						+ " WHERE asl.aika_id = ?;";
 		
 		//Muutetaan takaisin SQL-muotoon
-		String asConvert = as.getPvm().replace(".", "-");
+		String asConvert = kt.getAikaslotti().getPvm().replace(".", "-");
 		String[] suomiPvm = asConvert.split("-");
-		as.setPvm(suomiPvm[2] + "-" + suomiPvm[1] + "-" + suomiPvm[0]);	
+		kt.getAikaslotti().setPvm(suomiPvm[2] + "-" + suomiPvm[1] + "-" + suomiPvm[0]);	
 		
-		Object[] parametrit = new Object[] {as.getPvm(), as.getAlkukello(), as.getLoppukello(), as.getKoulutustila(), as.getKoulutus().getAihe(), as.getKoulutus().getKuvaus(), as.getKoulutus().getLahtotaso(), as.getKoulutus().getNakyvyys(), as.getId()};
+		Object[] parametrit = new Object[] {kt.getAikaslotti().getPvm(), kt.getAikaslotti().getAlkukello(), kt.getAikaslotti().getLoppukello(), kt.getAikaslotti().getKoulutustila(), kt.getAihe(), kt.getKuvaus(), kt.getLahtotaso(), kt.getNakyvyys(), kt.getId()};
 		
 		jdbcTemplate.update(sql, parametrit);
 		

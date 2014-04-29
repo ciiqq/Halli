@@ -2,13 +2,13 @@ package fi.softala.dao;
 
 import java.util.List;
 
-import fi.softala.bean.Aikatauluslotti;
+import fi.softala.bean.Koulutustilaisuus;
 
 public interface KoulutusDAO {
 	
-	public List<Aikatauluslotti> haeKoulutukset();
+	public List<Koulutustilaisuus> haeKoulutukset();
 
-	public Aikatauluslotti haeKoulutus(int id);
+	public Koulutustilaisuus haeKoulutus(int id);
 	
-	public void paivitaKoulutus(Aikatauluslotti aikatauluslotti);
+	public void paivitaKoulutus(Koulutustilaisuus koulutus);
 }

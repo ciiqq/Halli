@@ -47,10 +47,10 @@
 <div class="panel panel-default">
   <!-- Default panel contents -->
   
-  <div class="panel-heading">${ks.koulutus.aihe}</div>
+  <div class="panel-heading">${ks.aihe}</div>
   
   <div class="panel-body">    
-    <p>${ks.koulutus.kuvaus}</p>    
+    <p>${ks.kuvaus}</p>    
   </div>
 
   <!-- Table -->
@@ -58,33 +58,34 @@
   
   <tr>
     	<th>Päivämäärä</th>
-    	<td>${ks.pvm}</td> 
+    	<td>${ks.aikaslotti.pvm}</td> 
     </tr>
   	
   	<tr> 
   		<th>Alkaa</th>
-  		<td>${ks.alkukello} </td>
+  		<td>${ks.aikaslotti.alkukello} </td>
   	</tr>
   	
   	<tr>  	
 		<th>Loppuu</th>	  
-	    <td>${ks.loppukello}</td>    
+	    <td>${ks.aikaslotti.loppukello}</td>    
     </tr>
     
     <tr>
     	<th>Koulutustila</th>
-    	<td>${ks.koulutustila}</td> 
+    	<td>${ks.aikaslotti.koulutustila}</td> 
     </tr>
     
     <tr>
     	<th>Lähtötaso</th>
-    	<td>${ks.koulutus.lahtotaso}</td> 
+    	<td>${ks.lahtotaso}</td> 
     </tr>
     
+    <!--
     <tr>
     	<th>Näkyvyys</th>
-    	<td>${ks.koulutus.nakyvyys}</td> 
-    </tr>
+    	<td>${ks.nakyvyys}</td> 
+    </tr> -->
     
   </table>
 </div>
@@ -105,9 +106,9 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-      <h3><c:out value="${ks.koulutus.aihe}" /></h3>
+      <h3><c:out value="${ks.aihe}" /></h3>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"><c:out value="${ks.pvm}" />, <c:out value="${ks.alkukello}" />-<c:out value="${ks.loppukello}" /></h4>
+        <h4 class="modal-title"><c:out value="${ks.aikaslotti.pvm}" />, <c:out value="${ks.aikaslotti.alkukello}" />-<c:out value="${ks.aikaslotti.loppukello}" /></h4>
       </div>
        <form:form id="modal-form" modelAttribute="muokattavaKoulutus"  method="POST">
       <div class="modal-body">
@@ -117,54 +118,54 @@
       
         
 			  <tr>
-			  	<th><form:label path="koulutus.aihe">Aihe</form:label></th>	 		  
-			  	<td><form:input path="koulutus.aihe" value="${ks.koulutus.aihe}"/>  </td> 
-			  	<td><form:errors path="koulutus.aihe"></form:errors></td>
+			  	<th><form:label path="aihe">Aihe</form:label></th>	 		  
+			  	<td><form:input path="aihe" value="${ks.aihe}"/>  </td> 
+			  	<td><form:errors path="aihe"></form:errors></td>
 			  	
 			  </tr>  
 			  
 			  <tr>
-			  	<th><form:label path="koulutus.kuvaus">Kuvaus</form:label></th>
-			  	<td><form:input path="koulutus.kuvaus" value="${ks.koulutus.kuvaus}"/> </td>
-			  	<td><form:errors path="koulutus.kuvaus"></form:errors></td>
+			  	<th><form:label path="kuvaus">Kuvaus</form:label></th>
+			  	<td><form:input path="kuvaus" value="${ks.kuvaus}"/> </td>
+			  	<td><form:errors path="kuvaus"></form:errors></td>
 			  	
 			  </tr>    
 			  
 			  <tr>
-			    <th><form:label path="pvm">Päivämäärä</form:label></th>
-			  	<td><form:input path="pvm" class="zDepth" id="datepicker" value="${ks.pvm}"/> </td>
-			  	<td><form:errors path="pvm"></form:errors></td> 
+			    <th><form:label path="aikaslotti.pvm">Päivämäärä</form:label></th>
+			  	<td><form:input path="aikaslotti.pvm" class="zDepth" id="datepicker" value="${ks.aikaslotti.pvm}"/> </td>
+			  	<td><form:errors path="aikaslotti.pvm"></form:errors></td> 
 			  </tr>
 			  	
 			  <tr> 
-			  	<th><form:label path="alkukello">Alkaa</form:label></th>
-			  	<td><form:input path="alkukello" class="timepicker zDepth" value="${ks.alkukello}"/></td>
-			  	<td><form:errors path="alkukello"></form:errors></td> 
+			  	<th><form:label path="aikaslotti.alkukello">Alkaa</form:label></th>
+			  	<td><form:input path="aikaslotti.alkukello" class="timepicker zDepth" value="${ks.aikaslotti.alkukello}"/></td>
+			  	<td><form:errors path="aikaslotti.alkukello"></form:errors></td> 
 			  </tr>
 			  	
 			  	<tr>  	
-					<th><form:label path="loppukello">Loppuu</form:label></th>
-			  		<td><form:input path="loppukello" class="timepicker" value="${ks.loppukello}"/> </td>    
-			  		<td><form:errors path="loppukello"></form:errors></td>
+					<th><form:label path="aikaslotti.loppukello">Loppuu</form:label></th>
+			  		<td><form:input path="aikaslotti.loppukello" class="timepicker" value="${ks.aikaslotti.loppukello}"/> </td>    
+			  		<td><form:errors path="aikaslotti.loppukello"></form:errors></td>
 			  </tr>
 			    
 			    <tr>
-			    	<th><form:label path="koulutustila">Koulutustila</form:label></th>
-			  	<td><form:input path="koulutustila" value="${ks.koulutustila}"/></td> 
-			  	<td><form:errors path="koulutustila"></form:errors></td>
+			    	<th><form:label path="aikaslotti.koulutustila">Koulutustila</form:label></th>
+			  	<td><form:input path="aikaslotti.koulutustila" value="${ks.aikaslotti.koulutustila}"/></td> 
+			  	<td><form:errors path="aikaslotti.koulutustila"></form:errors></td>
 			    </tr>
 			    
 			    <tr>
-			    	<th><form:label path="koulutus.lahtotaso">Lähtötaso</form:label></th>
-			  	<td><form:input path="koulutus.lahtotaso" value="${ks.koulutus.lahtotaso}"/> </td>
-			  	<td><form:errors path="koulutus.lahtotaso"></form:errors></td>
+			    	<th><form:label path="lahtotaso">Lähtötaso</form:label></th>
+			  	<td><form:input path="lahtotaso" value="${ks.lahtotaso}"/> </td>
+			  	<td><form:errors path="lahtotaso"></form:errors></td>
 			    </tr>
 			    
-			    <tr>
-			    	<th><form:label path="koulutus.nakyvyys">Näkyvyys</form:label></th>
-			  		<td><form:input path="koulutus.nakyvyys" value="${ks.koulutus.nakyvyys}"/> </td> 
-			  		<td><form:errors path="koulutus.nakyvyys"></form:errors></td>
-			    </tr>
+			   <!--  <tr>
+			    	<th><form:label path="nakyvyys">Näkyvyys</form:label></th>
+			  		<td><form:input path="nakyvyys" value="${ks.nakyvyys}"/> </td> 
+			  		<td><form:errors path="nakyvyys"></form:errors></td>
+			    </tr> -->
 			    
 			    </table>
 			    

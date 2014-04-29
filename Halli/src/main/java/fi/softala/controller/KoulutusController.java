@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fi.softala.bean.Aikatauluslotti;
+import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.dao.KoulutusDAO;
 
 /*
@@ -37,7 +38,7 @@ public class KoulutusController {
 		
 		@RequestMapping(value="/koulutuslistaus", method=RequestMethod.GET)
 		public String getCreateForm(Model model) {
-			List<Aikatauluslotti> koulutuslista = dao.haeKoulutukset();
+			List<Koulutustilaisuus> koulutuslista = dao.haeKoulutukset();
 			
 			model.addAttribute("koulutukset", koulutuslista);
 			
@@ -48,12 +49,12 @@ public class KoulutusController {
 		//Tämä metodi kuuntelee valuessa olevaa osoitetta koulutuslistat.jsp:ltä.	
 		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.GET)
 	    public String siirryKoulutukseen(Model model, @PathVariable Integer DaoId) {
-	       Aikatauluslotti koulutus = dao.haeKoulutus(DaoId);
+	       Koulutustilaisuus koulutus = dao.haeKoulutus(DaoId);
 	        
 	        model.addAttribute("ks", koulutus);
 	        
-	        Aikatauluslotti slotti = new Aikatauluslotti();
-	        model.addAttribute("muokattavaKoulutus", slotti);
+	        Koulutustilaisuus koulutusTemplate = new Koulutustilaisuus();
+	        model.addAttribute("muokattavaKoulutus", koulutusTemplate);
 	        
 	        return "koulutustiedot";
 	    } 
@@ -61,13 +62,13 @@ public class KoulutusController {
 		
 		
 		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.POST)
-		public String muokkaaKoulutusta(Model model, @PathVariable Integer DaoId, @Valid @ModelAttribute("muokattavaKoulutus") Aikatauluslotti aikatauluslotti,
+		public String muokkaaKoulutusta(Model model, @PathVariable Integer DaoId, @Valid @ModelAttribute("muokattavaKoulutus") Koulutustilaisuus koulutus,
 				BindingResult bindingResult, final RedirectAttributes reAts){
 			
 			if(bindingResult.hasErrors()) {
-				Aikatauluslotti koulutus = dao.haeKoulutus(DaoId);
+				Koulutustilaisuus virheellinenKoulutus = dao.haeKoulutus(DaoId);
 		        
-		        model.addAttribute("ks", koulutus);
+		        model.addAttribute("ks", virheellinenKoulutus);
 		        model.addAttribute("avaaModal", "avaaModal");
 				
 				return "koulutustiedot";
@@ -76,9 +77,9 @@ public class KoulutusController {
 			//DEBUG
 			System.out.println("meni läpi");
 			
-			aikatauluslotti.setId(DaoId);
+			koulutus.setId(DaoId);
 			
-			dao.paivitaKoulutus(aikatauluslotti);
+			dao.paivitaKoulutus(koulutus);
 			
 			reAts.addFlashAttribute("muokkausOnnistui", "Koulutuksen muokkaus onnistui!");
 			
