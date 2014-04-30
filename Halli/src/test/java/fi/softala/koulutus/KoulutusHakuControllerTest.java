@@ -45,7 +45,7 @@ public class KoulutusHakuControllerTest {
 		Mockito.when(service.haeTulevat()).thenReturn(
 				new ArrayList<Koulutustilaisuus>());
 	}
-	// Tarkastaa, ett‰ haetaan lista koulutustilaisuus olioita
+	// Tarkastaa, ett√§ haetaan lista koulutustilaisuus olioita
 	@Test
 	public void haeKoulutuksia() throws Exception {
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
@@ -54,7 +54,7 @@ public class KoulutusHakuControllerTest {
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.model().size(1))
 				.andExpect(MockMvcResultMatchers.view().name("listausuusi"));
-		// Tarkasta, ett‰ haeKaikki()-metodia on kutsuttu yhden kerran
+		// Tarkasta, ett√§ haeKaikki()-metodia on kutsuttu yhden kerran
 		verify(service, times(1)).haeTulevat();
 	}
 }
