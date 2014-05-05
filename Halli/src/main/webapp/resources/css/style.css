@@ -1,0 +1,334 @@
+/* html5doctor.com Reset v1.6.1 - http://cssreset.com */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}
+
+/* http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
+}
+
+.container {
+	background-color: #EDF1F2;
+	height: 100%;
+}
+
+.fifty {
+	width: 50%;
+	float: left;
+	padding: 8px;
+}
+
+label.error {
+	background-color: #eda234;
+	width: 100%;
+	display: block !important;
+	padding: 4px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	color: white;
+	border-radius: 2px;
+}
+
+#ilmoittautuminen table {
+
+}
+
+#valitut li {
+	margin-left: 16px;
+}
+
+input[type="text"], textarea {
+	width: 100%;
+	border: 1px solid #a8a8a8;
+	padding: 4px;
+}
+
+#haku {
+	height:32px;
+	border-radius: 2px;
+	border:0px;
+	background: #FFFFFF;
+	-moz-box-shadow:    0px 2px 0px 0px rgba(0,0,0,0.05);
+	box-shadow:         0px 2px 0px 0px rgba(0,0,0,0.05);
+	margin-bottom: 6px;
+}
+
+#haku input[type="text"] {
+	border:0;
+	//background-color: red;
+	width: 90%;
+	height:32px;
+	font-size: 16px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+#haku input[type="submit"] {
+	background-color: red;
+	max-width: 16px;
+}
+
+
+#haku input[type="text"]:focus {
+	outline: 0;
+}
+
+#ilmoittautuminen table tr td {
+	padding: 4px;
+}
+
+.sivumenu {
+	background-color: #2C3B41;
+	float: left;
+	width: 100px;
+	left: 100px;
+	margin-left: -100px;
+	overflow-y: auto;
+	position: relative;
+	color: white;
+	height: 100%;
+}
+
+.mainwrapper {
+	width: 100%;
+}
+
+.pvm {
+	float:right;
+	font-weight:bold;
+}
+
+.main {
+	margin-left: 100px;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lista {
+	color: black;
+	padding-right: 4px;
+}
+
+.lista .active {
+	background-color: #00B3D0;
+	color: white;
+	border-radius: 3px;
+}
+
+.lista .active:hover {
+	background-color: #00B3D0;
+}
+
+.lista ul li {
+	height: 32px;
+	line-height: 32px;
+	padding-left: 8px;
+	padding-right: 8px;
+	list-style: none;
+	cursor:pointer;
+	margin-bottom: 4px;
+}
+
+.lista ul li:hover {
+	background-color: #76D2E0;
+	border-radius: 3px;
+}
+
+.tiedot {
+	overflow-y: scroll;
+	padding-left: 4px;
+}
+
+.tiedot button {
+	background-color: #00B3D0;
+	border: 0;
+	padding: 8px;
+	border-radius: 3px;
+	color: white;
+	width: 128px;
+}
+
+.table-container {
+	background-color: white;
+	padding: 4px;
+	border-radius: 3px;
+	-moz-box-shadow:    0px 2px 0px 0px rgba(0,0,0,0.05);
+	-webkit-box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.05);
+	box-shadow:         0px 2px 0px 0px rgba(0,0,0,0.05);
+}
+
+.tiedot table {
+	width: 100%;
+	//table-layout: fixed;
+}
+
+.tiedot table tr td {
+	padding: 8px;
+}
+
+input[type="checkbox"] {    
+    opacity: 1;
+    vertical-align: middle;
+	-webkit-appearance: none;
+	-moz-appearance:    none;
+	appearance:         none;
+}
+
+input[type="checkbox"]:after {    
+    min-height: 18px;
+    min-width: 18px;
+    content: "";
+    display:block;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+input[type="checkbox"]:checked:after {
+	background-image:url('../images/checkmark.png');
+}
+
+.active input[type="checkbox"]:checked:after {
+	background-image:url('../images/checkmark-white.png');
+}
+
+.alapalkki {
+	height: 48px;
+	line-height: 48px;
+	background-color: #009999;
+	display:block;
+	width: 100%;
+	float:left;
+}
+
+.alapalkki button {
+	background-color: white;
+	border: 0;
+	color: black;
+	margin-left: auto;
+	margin-right: auto;
+	display:block;
+	height: 32px;
+	margin-top: 8px;
+	border-radius: 3px;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.alapalkki button:disabled {
+	background-color: #80CCCC;
+	color: #004C4C;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.tiedotx {
+	font-weight: bold;
+	background-color:#A4A4A4;
+	color:#FFF;
+	padding:15px;
+}
+
+.nav-item {
+	padding: 16px;
+}
+
+.nav-text {
+	text-align: center;
+}
+
+.nav-icon {
+	background-image: url("../images/placeholder-icon.png");
+	height: 40px;
+	width: 40px;
+	margin: 0 auto;
+	margin-bottom: 8px;
+}
+
+.ylapalkki {
+	height: 48px;
+	line-height: 48px;
+	background-color: #009999;
+	color:white;
+	padding-left: 16px;
+}
+
+.modaalin-kontrollit {
+	width: 100%;
+	background-color: #F2F2F7;
+	bottom:0;
+	padding: 8px;
+}
+
+#cboxClose {
+	background: url(../images/close.png) no-repeat !important;
+	opacity: 0.66 !important;
+}
+
+#cboxClose:hover {
+	opacity: 1 !important;
+}
+
+#cboxOverlay {
+	background-color:rgba(0, 0, 0, 0.5) !important;
+}
+
+#colorbox {
+	border: none !important;
+	border-radius: 3px !important;
+}
+
+#cboxLoadedContent {
+	padding:0 !important;
+	margin:0 !important;
+}
+
+#lightbox_sisalto {
+	padding:0 !important;
+}
+
+.lightbox-inner-sisalto {
+	padding:12px;
+}
+
+.modaalin-kontrollit input {
+	background-color: #00B3D0;
+	border: 0;
+	padding: 8px;
+	border-radius: 3px;
+	color: white;
+	float: right;
+	margin-left: 8px;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+/* placeholder */
+.modaalin-kontrollit input:disabled {
+	background-color: gray;
+}
+
+.tagi {
+	background-color: #0080C7;
+	color: white;
+	padding: 4px;
+	font-size: 14px;
+	border-radius: 2px;
+}
+
+p {
+	line-height: 120%;
+}
