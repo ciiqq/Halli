@@ -22,8 +22,8 @@ public class Koulutustilaisuus {
 	private String aikaPaiva;
 	private String paikka;
 	private Opettaja ope; // opettajabean t�h�n
-	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>(3);
-	private List<String> avainsanat = new LinkedList<String>();
+	private List<Kouluttaja> kouluttajat;
+	private List<String> avainsanat;
 	private String koulutusmenetelmat;
 	
 	

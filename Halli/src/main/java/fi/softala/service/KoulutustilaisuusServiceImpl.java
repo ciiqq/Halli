@@ -20,6 +20,7 @@ public class KoulutustilaisuusServiceImpl implements KoulutustilaisuusService {
 	private KoulutusDAO koulutusDao;
 
 	public void tallennaUusiKoulutustilaisuus(Koulutustilaisuus koulutustilaisuus) {
+		koulutustilaisuus.setNakyvyys(false);
 		koulutusDao.tallennaKoulussuunnitelma(koulutustilaisuus);
 
 		pilkoJaTallennaKoulutuksenAvainsanat(koulutustilaisuus);

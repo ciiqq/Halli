@@ -52,7 +52,7 @@ public class KoulutusDAOImpl implements KoulutusDAO {
 		final String aihe = koulutustilaisuus.getAihe();
 		final String kuvaus = koulutustilaisuus.getKuvaus();
 		final String lahtotaso = koulutustilaisuus.getLahtotaso();
-		final boolean nakyvyys = false;
+		final boolean nakyvyys = koulutustilaisuus.isNakyvyys();
 		final String koulutusmentetelmat = koulutustilaisuus.getKoulutusmenetelmat();
 
 		// jdbc pistää generoidun id:n tänne talteen

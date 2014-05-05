@@ -12,7 +12,10 @@
 <title>Koulutuslomake</title>
     <!-- Styles -->
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/style.css">
+<!-- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/style.css">  -->
+
+
+
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
@@ -55,7 +58,7 @@
                     <div class="row">   
                         <div class="col-xs-12 col-sm-8 col-md-4">
                             <div class="">
-                                <form:input class="form-control" disabled="true" path="kouluttajat[0]"></form:input>
+                                <form:input class="form-control" disabled="true" path="kouluttajat[0]" ></form:input>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-4">
@@ -171,9 +174,18 @@
             <div class="form-group">
                 <table class="table">
                     <thead>
-                        <th>Opiskelija</th>
+                    	<th></th>
+                        <th>Etunimi</th>
+                        <th>Sukunimi</th>
                     <tbody>
                         <!-- Varattu vapaiden samalla toteutuksella olevien opiskelijoiden listaukseen -->
+						  <c:forEach items="${kouluttajat}" var="kouluttaja" varStatus="status">
+							<tr class="kouluttaja" style="cursor:pointer;" >								
+								<td><c:out value="${status.count}. " /></td>
+								<td><c:out value="${kouluttaja.etunimi}"/></td>
+								<td><c:out value="${kouluttaja.sukunimi}"/></td>
+							</tr>
+						</c:forEach>
                     </tbody>    
                 </table>
             </div>
@@ -181,7 +193,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Peruuta</button>
-        <button type="button" class="btn btn-primary">Lis�� kouluttaja</button>
+        <button type="button" class="btn btn-primary">Lisää kouluttaja</button>
       </div>
     </form>
     </div>
@@ -189,5 +201,6 @@
 </div>
     <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/koulutuslomake.js"></script>
 </body>
 </html>
