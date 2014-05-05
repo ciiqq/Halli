@@ -1,47 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
   <opettaja opettaja_id="1" etunimi="Olli" sukunimi="Opettaja" salasana="password2" suola="asdf"/>
-  <opettaja opettaja_id="2" etunimi="Olli" sukunimi="Opettaja" salasana="password2" suola="asdf"/>
-  <koulutustilaisuus koulutus_id="2" aihe="jQueryn alkeet" kuvaus="jQuery luento aliquip tietohallinto scrum master tietohallinto virtual window qui MyNet Visio dolore dolor in cupidatat in tietohallinto culpa MyNet cupidatat cillum dolore officia eu user story laborum culpa laboris cillum qui elit kontrolleri magna aliqua in nostrud product backlog do sint vesiputousmalli retrospektiivi do liveCD pariatur oliopeli laborum ut framework VDI culpa tietomalli laboris Visio sunt sunt incididunt framework in veniam nisi id pariatur sed proident WinhaWille minim mockup in eclipse virtual window p&#228;&#228;avain sint pariatur MVC laborum quis in cupidatat sunt consequat nulla aute quis definition of done tietomalli laboris qui ssh-putki kohdeluokka sunt excepteur vesiputousmalli vesiputousmalli BPMN indeksi qui " lahtotaso="Alkeet" nakyvyys="0" arvioiva_ope="1"/>
-  <koulutustilaisuus koulutus_id="3" aihe="Scrum-projektikehys ohjelmistokehitysprojektissa" kuvaus="Rakennetaan legoilla magna esse indeksi minim pariatur non culpa irure ketter&#228; kehitys ssh-putki consequat dolore raportointipohja MariaDB enim raportointipohja tempor ut tempor qui adipisicing sed relaatio beani definition of done in et kontrolleri tietohallinto innodb sprintti laborum ut in UML indeksi innodb in olio mollit product backlog MyNet minim dolore officia relaatio ssh-putki Moodle MariaDB MariaDB irure est consequat laborum olio aliqua excepteur MVC incididunt Access minim nulla inkrementti ullamco oliopeli esse sprintti MVC in elit anim ex laboris framework k&#228;ytt&#228;j&#228;tarina Visio aliquip culpa quis aute tempor occaecat incididunt VDI framework aute nostrud ullamco ad " lahtotaso="haastava" nakyvyys="1" arvioiva_ope="1"/>
-  <koulutustilaisuus koulutus_id="5" aihe="Git-versionhallinta: mik&#228; se on?" kuvaus="Git tutuksi ai vitsi et on pitk&#228; UML ad veniam rajapinta ullamco aliquip oliopeli Tomcat mollit ssh-putki officia excepteur laboris ut veniam in sprintti indeksi sopimusmalli non elit dolore incididunt magna Access minim product backlog user story taulu labore occaecat Access in velit aliqua taulu vaatimusm&#228;&#228;rittely est vesiputousmalli duis sed proident ex tempor product owner in adipisicing veniam innodb excepteur dolore rajapinta nostrud backlog item anim tietomalli consequat Visio officia mollit esse MyNet MariaDB adipisicing nostrud MariaDB esse dolore dolore reprehenderit ullamco incididunt culpa pariatur sopimusmalli eiusmod in ullamco et in quis testitapaus incididunt SQL Server MariaDB virtual window taulu nostrud ut uimarata VDI esse eiusmod user story ad Git tutuksi UML ad veniam rajapinta ullamco aliquip oliopeli Tomcat mollit ssh-putki officia excepteur laboris ut veniam in sprintti indeksi sopimusmalli non elit dolore incididunt magna Access minim product backlog user story taulu labore occaecat Access in velit aliqua taulu vaatimusm&#228;&#228;rittely est vesiputousmalli duis sed proident ex tempor product owner in adipisicing veniam innodb excepteur dolore rajapinta nostrud backlog item anim tietomalli consequat Visio officia mollit esse MyNet MariaDB adipisicing nostrud MariaDB esse dolore dolore reprehenderit ullamco incididunt culpa pariatur sopimusmalli eiusmod in ullamco et in quis testitapaus incididunt SQL Server MariaDB virtual window taulu nostrud ut uimarata VDI esse eiusmod user story ad Git tutuksi UML ad veniam rajapinta ullamco aliquip oliopeli Tomcat mollit ssh-putki officia excepteur laboris ut veniam in sprintti indeksi sopimusmalli non elit dolore incididunt magna Access minim product backlog user story taulu labore occaecat Access in velit aliqua taulu vaatimusm&#228;&#228;rittely est vesiputousmalli duis sed proident ex tempor product owner in adipisicing veniam innodb excepteur dolore rajapinta nostrud backlog item anim tietomalli consequat Visio officia mollit esse MyNet MariaDB adipisicing nostrud MariaDB esse dolore dolore reprehenderit ullamco incididunt culpa pariatur sopimusmalli eiusmod in ullamco et in quis testitapaus incididunt SQL Server MariaDB virtual window taulu nostrud ut uimarata VDI esse eiusmod user story ad " lahtotaso="Eritt&#228;in haastava ilmeisesti" nakyvyys="0" arvioiva_ope="1"/>
-  <koulutustilaisuus koulutus_id="6" aihe="Windows XP - Legenda el&#228;&#228;" kuvaus="WinhaWille sed eu ut laborum innodb taulu qui incididunt minim labore non merkist&#246;koodaus tempor UML esse duis sed raportointipohja labore scrum anim ssh-putki BPMN in in oliopeli minim dolore mollit fugiat MVC veniam uimarata proident consectetur velit velit m&#228;&#228;rityskuvasto duis quis reprehenderit officia VDI DAO product backlog Spring Visio definition of done labore liveCD definition of done sunt exercitation est Access BPMN SQL Server elit k&#228;ytt&#228;j&#228;tarina kohdeluokka laboris est laborum uimarata occaecat p&#228;&#228;avain definition of done consectetur taulu tietomalli ad do merkist&#246;koodaus ullamco ut veniam id framework incididunt definition of done velit mollit taulu reprehenderit proident " lahtotaso="Alkeet" nakyvyys="1" arvioiva_ope="2"/>
-  <koulutustilaisuus koulutus_id="7" aihe="Prosessimallinnus" kuvaus="culpa sint MVC mollit rajapinta ullamco sopimusmalli ut intra in tietomalli nostrud sunt Tomcat nostrud minim MyNet et nisi exercitation p&#228;&#228;avain ea ketter&#228; kehitys consectetur occaecat ad reprehenderit liveCD Access laboris dolor definition of done cillum sed DAO cillum eiusmod ea nulla cillum MariaDB fugiat labore laboris kohdeluokka MariaDB m&#228;&#228;rityskuvasto mockup officia relaatio uimarata sint p&#228;&#228;avain id oliopeli tietohallinto nisi eu m&#228;&#228;rityskuvasto adipisicing nisi velit ut excepteur pariatur excepteur minim reprehenderit Spring dolor in fugiat vesiputousmalli ut ea do vesiputousmalli fugiat kontrolleri minim ex esse fugiat consectetur " lahtotaso="Keskitaso" nakyvyys="1" arvioiva_ope="2"/>
-  <aikatauluslotti aika_id="3" pvm="2014-03-18" alkukello="12:00:00" loppukello="14:00:00" koulutustila="Auditorio" koulutus_id="2"/>
-  <aikatauluslotti aika_id="4" pvm="2014-03-30" alkukello="08:00:00" loppukello="12:00:00" koulutustila="5007" koulutus_id="3"/>
-  <aikatauluslotti aika_id="5" pvm="2014-04-03" alkukello="12:00:00" loppukello="14:00:00" koulutustila="4003" koulutus_id="5"/>
-  <aikatauluslotti aika_id="6" pvm="2014-06-17" alkukello="10:00:00" loppukello="12:00:00" koulutustila="Auditorio" koulutus_id="6"/>
-  <aikatauluslotti aika_id="7" pvm="2014-04-17" alkukello="13:00:00" loppukello="15:00:00" koulutustila="5009" koulutus_id="7"/>
+
+<!-- yksi koulutus, jota ei ole julkaistu, toinen koulutus joka on jo mennyt ja kolmas koulutus joka on tulossa -->
+  <koulutustilaisuus koulutus_id="1" aihe="Scrum" kuvaus="Scrumluento" lahtotaso="Keskitaso" nakyvyys="0" arvioiva_ope="1"/>
+  <koulutustilaisuus koulutus_id="2" aihe="jQueryn alkeet" kuvaus="jQuery luento " lahtotaso="Alkeet" nakyvyys="1" arvioiva_ope="1"/>
+  <koulutustilaisuus koulutus_id="3" aihe="Git-versionhallinta: mikä se on?" kuvaus="Git tutuksi" lahtotaso="Alkeet" nakyvyys="1" arvioiva_ope="1"/>
+  
+  <aikatauluslotti aika_id="1" pvm="2016-03-18" alkukello="12:00:00" loppukello="16:00:00" koulutustila="5007" koulutus_id="1"/> 
+  <aikatauluslotti aika_id="2" pvm="2014-03-18" alkukello="12:00:00" loppukello="14:00:00" koulutustila="Auditorio" koulutus_id="2"/>
+  <aikatauluslotti aika_id="3" pvm="2016-04-03" alkukello="08:00:00" loppukello="15:00:00" koulutustila="4003" koulutus_id="3"/>
+  
   <avainsana avainsana_id="1" avainsana="Ohjelmointi"/>
-  <avainsana avainsana_id="4" avainsana="Tietokannat"/>
-  <avainsana avainsana_id="5" avainsana="Liiketoimintaprosessit"/>
-  <avainsana avainsana_id="6" avainsana="Tietohallinto"/>
-  <avainsana avainsana_id="7" avainsana="gitti"/>
+  <avainsana avainsana_id="2" avainsana="Scrum"/>
+  <avainsana avainsana_id="3" avainsana="gitti"/>
+  
   <osallistuja osallistuja_id="1" osallistujan_opiskelijanro="7654321" etunimi="Ilmari" sukunimi="Ilmoittautuja"/>
-  <osallistuja osallistuja_id="2" osallistujan_opiskelijanro="7654321" etunimi="Ilmari" sukunimi="Ilmottautuja"/>
-  <osallistuja osallistuja_id="3" osallistujan_opiskelijanro="7654321" etunimi="Ilmari" sukunimi="Ilmottautuja"/>
-  <osallistuja osallistuja_id="4" osallistujan_opiskelijanro="1231231" etunimi="Seppo" sukunimi="Taalasmaa"/>
-  <osallistuja osallistuja_id="5" osallistujan_opiskelijanro="?" etunimi="?" sukunimi="?"/>
-  <osallistuja osallistuja_id="6" osallistujan_opiskelijanro="666" etunimi="Seppo-Koira" sukunimi="Taalasmaa-Kivinen"/>
+  
   <palaute palaute_id="1" arvosana="5" palauteteksti="Paras koulutus"/>
-  <palaute palaute_id="2" arvosana="5" palauteteksti="Paras koulutus"/>
-  <palaute palaute_id="3" arvosana="1" palauteteksti="ihan paska"/>
-  <ilmoittautuminen ilmoittautuminen_id="2" osallistuja_id="1" koulutus_id="2" palaute_id="1"/>
+  
+  <ilmoittautuminen ilmoittautuminen_id="1" osallistuja_id="1" koulutus_id="2" palaute_id="1"/>
+  
   <kouluttaja opiskelijanro="1122334" etunimi="Kalle" sukunimi="Kouluttaja" salasana="password2" suola="xqz"/>
   <kouluttaja opiskelijanro="1234567" etunimi="Tarmo" sukunimi="Testaaja" salasana="password1" suola="xqz"/>
   <kouluttaja opiskelijanro="3335556" etunimi="Scrum" sukunimi="Master" salasana="password4" suola="xqz"/>
+  
+  <koulutuksenavainsana koulutuksenavainsana_id="1" avainsana_id="2" koulutus_id="1"/>
   <koulutuksenavainsana koulutuksenavainsana_id="2" avainsana_id="1" koulutus_id="2"/>
-  <koulutuksenavainsana koulutuksenavainsana_id="4" avainsana_id="4" koulutus_id="2"/>
-  <koulutuksenavainsana koulutuksenavainsana_id="5" avainsana_id="5" koulutus_id="3"/>
-  <koulutuksenavainsana koulutuksenavainsana_id="6" avainsana_id="6" koulutus_id="3"/>
-  <koulutuksenavainsana koulutuksenavainsana_id="7" avainsana_id="7" koulutus_id="5"/>
-  <koulutuksenavainsana koulutuksenavainsana_id="8" avainsana_id="1" koulutus_id="6"/>
-  <koulutuksenavainsana koulutuksenavainsana_id="9" avainsana_id="5" koulutus_id="6"/>
-  <koulutuksenavainsana koulutuksenavainsana_id="10" avainsana_id="6" koulutus_id="7"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="2" opiskelijanro="1234567" koulutus_id="2"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="3" opiskelijanro="1122334" koulutus_id="2"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="4" opiskelijanro="3335556" koulutus_id="3"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="5" opiskelijanro="1122334" koulutus_id="5"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="6" opiskelijanro="1234567" koulutus_id="6"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="7" opiskelijanro="3335556" koulutus_id="7"/>
+  <koulutuksenavainsana koulutuksenavainsana_id="3" avainsana_id="3" koulutus_id="3"/>
+  
+  <koulutuksenkouluttaja koulutuksenkouluttaja_id="1" opiskelijanro="1234567" koulutus_id="3"/>
+  <koulutuksenkouluttaja koulutuksenkouluttaja_id="2" opiskelijanro="1122334" koulutus_id="2"/>
+  <koulutuksenkouluttaja koulutuksenkouluttaja_id="3" opiskelijanro="3335556" koulutus_id="1"/>
 </dataset>

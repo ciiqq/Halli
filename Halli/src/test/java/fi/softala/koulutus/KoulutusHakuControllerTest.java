@@ -1,10 +1,7 @@
 package fi.softala.koulutus;
 
 import static org.mockito.Mockito.times;
-
 import static org.mockito.Mockito.verify;
-
-import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -13,15 +10,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.controller.KoulutusHakuController;
 import fi.softala.service.KoulutusHakuService;
 
@@ -39,22 +33,24 @@ public class KoulutusHakuControllerTest {
 
 	@Before
 	public void setup() {
-
-		// mockaa KoulutusHakuController
-		this.mockMvc = MockMvcBuilders.standaloneSetup(this.controller).build();
-		Mockito.when(service.haeTulevat()).thenReturn(
-				new ArrayList<Koulutustilaisuus>());
+		this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 	}
-	// Tarkastaa, että haetaan lista koulutustilaisuus olioita
+
 	@Test
-	public void haeKoulutuksia() throws Exception {
-		RequestBuilder requestBuilder = MockMvcRequestBuilders
-				.get("/");
-		mockMvc.perform(requestBuilder)
+	public void haeTulevatKoulutukset() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.model().size(1))
 				.andExpect(MockMvcResultMatchers.view().name("listausuusi"));
-		// Tarkasta, että haeKaikki()-metodia on kutsuttu yhden kerran
 		verify(service, times(1)).haeTulevat();
+	}
+	
+	@Test
+	public void haeMenneetKoulutukset() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/menneet"))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.model().size(1))
+				.andExpect(MockMvcResultMatchers.view().name("listausuusi"));
+		verify(service, times(1)).haeMenneet();
 	}
 }

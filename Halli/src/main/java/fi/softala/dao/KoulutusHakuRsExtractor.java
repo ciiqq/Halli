@@ -18,11 +18,10 @@ import fi.softala.bean.Koulutustilaisuus;
 /**
  * 
  * @author Timo Kottonen
- * @author ...
  *
  */
 
-public class KoulutusHakuRsE implements
+public class KoulutusHakuRsExtractor implements
 		ResultSetExtractor<List<Koulutustilaisuus>> {
 
 	public List<Koulutustilaisuus> extractData(ResultSet rs)

@@ -32,119 +32,121 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 	}
 
 	public List<Koulutustilaisuus> haeTulevat() {
-		String sql = "SELECT k.*, ast.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
+		String sql = "SELECT k.*, ats.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
-				+ "JOIN koulutuksenKouluttaja kk ON k.koulutus_id = kk.koulutus_id "
+				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
 				+ "JOIN kouluttaja ko ON ko.opiskelijanro = kk.opiskelijanro "
-				+ "JOIN aikatauluslotti ast ON ast.koulutus_id = k.koulutus_id "
-				+ "WHERE ast.pvm >= curdate() "
+				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
+				+ "WHERE ats.pvm > curdate() AND nakyvyys = 1 "
 				+ "UNION ALL "
-				+ "SELECT k.*, ast.*, '', '', '', 0 kouluttaja_true, a.avainsana "
+				+ "SELECT k.*, ats.*, '', '', '', 0 kouluttaja_true, a.avainsana "
 				+ "FROM koulutustilaisuus k "
-				+ "JOIN koulutuksenAvainsana ka ON ka.koulutus_id = k.koulutus_id "
+				+ "JOIN koulutuksenavainsana ka ON ka.koulutus_id = k.koulutus_id "
 				+ "JOIN avainsana a ON a.avainsana_id = ka.avainsana_id "
-				+ "JOIN aikatauluslotti ast ON ast.koulutus_id = k.koulutus_id "
-				+ "WHERE ast.pvm >= curdate();";
+				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
+				+ "WHERE ats.pvm > curdate() AND nakyvyys = 1 "
+				+ "ORDER BY pvm, alkukello";
 		List<Koulutustilaisuus> koulutukset = jt.query(sql,
-				new KoulutusHakuRsE());
+				new KoulutusHakuRsExtractor());
 		return koulutukset;
 	}
 	
 	public List<Koulutustilaisuus> haeMenneet() {
 		String sql = "SELECT k.*, ats.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
-				+ "JOIN koulutuksenKouluttaja kk ON k.koulutus_id = kk.koulutus_id "
+				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
 				+ "JOIN kouluttaja ko ON ko.opiskelijanro = kk.opiskelijanro "
 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
-				+ "WHERE ats.pvm <= curdate() "
+				+ "WHERE ats.pvm <= curdate() AND nakyvyys = 1 "
 				+ "UNION ALL "
 				+ "SELECT k.*, ats.*, '', '', '', 0 kouluttaja_true, a.avainsana "
 				+ "FROM koulutustilaisuus k "
-				+ "JOIN koulutuksenAvainsana ka ON ka.koulutus_id = k.koulutus_id "
+				+ "JOIN koulutuksenavainsana ka ON ka.koulutus_id = k.koulutus_id "
 				+ "JOIN avainsana a ON a.avainsana_id = ka.avainsana_id "
 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
-				+ "WHERE ats.pvm <= curdate() "
-				+ "ORDER BY pvm, alkukello;";
+				+ "WHERE ats.pvm <= curdate() AND nakyvyys = 1 "
+				+ "ORDER BY pvm, alkukello";
 		List<Koulutustilaisuus> koulutukset = jt.query(sql,
-				new KoulutusHakuRsE());
+				new KoulutusHakuRsExtractor());
 		return koulutukset;
 	}
 	
-	public List<Koulutustilaisuus> haeValitut(String ehto) {
+	public List<Koulutustilaisuus> haeHakusanalla(String ehto) {
 		ehto = "%"+ehto+"%";
-		String idLause = "WHERE k.koulutus_id = ";
 		Object[] parametrit = new Object[] {ehto, ehto, ehto};
-		String sqlIdt = "SELECT DISTINCT koulutustilaisuus.koulutus_id FROM koulutustilaisuus "
-				+ "JOIN koulutuksenAvainsana ON koulutustilaisuus.koulutus_id = koulutuksenAvainsana.koulutus_id "
-				+ "JOIN avainsana ON koulutuksenAvainsana.avainsana_id  = avainsana.avainsana_id "
-				+ "WHERE koulutustilaisuus.kuvaus LIKE ? OR koulutustilaisuus.aihe LIKE ? OR avainsana.avainsana LIKE ?";
-		List<Integer> koulutusIdt = jt.query(sqlIdt, parametrit, new IdHakuRowMapper());
-		if(koulutusIdt.size() == 0){
+		String sql = "SELECT DISTINCT koulutustilaisuus.koulutus_id FROM koulutustilaisuus "
+				+ "JOIN koulutuksenavainsana ON koulutustilaisuus.koulutus_id = koulutuksenavainsana.koulutus_id "
+				+ "JOIN avainsana ON koulutuksenavainsana.avainsana_id  = avainsana.avainsana_id "
+				+ "WHERE (koulutustilaisuus.kuvaus LIKE ? OR koulutustilaisuus.aihe LIKE ? "+
+				"OR avainsana.avainsana LIKE ? ) AND nakyvyys = 1";
+		List<Integer> koulutustunnukset = jt.queryForList(sql, parametrit, Integer.class);
+		if(koulutustunnukset.size() == 0){
 			return new ArrayList<Koulutustilaisuus>();
 		}
-		for (int i=0; i<koulutusIdt.size(); i++){
-			if (koulutusIdt.size()==1){			
-				idLause = idLause + ""+koulutusIdt.get(i)+" ";
-				}
-			else if (i < koulutusIdt.size()-1){			
-			idLause = idLause + ""+koulutusIdt.get(i)+" OR k.koulutus_id = ";
-			}
-			else if(i == koulutusIdt.size()-1) {
-			idLause = idLause + ""+koulutusIdt.get(i)+" ";
-			}
-		}
-		String sql = "SELECT k.*, ast.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
+		
+		String sqlehto = "WHERE k.koulutus_id = ";
+		for (int i = 0; i < koulutustunnukset.size(); i++) {
+ 			if (i < koulutustunnukset.size() -1) {			
+ 				// += on lyhenne [sqlehto = sqlehto + "..."]
+ 				sqlehto += koulutustunnukset.get(i)+" OR k.koulutus_id = ";
+ 			} else {
+ 				sqlehto += koulutustunnukset.get(i);
+ 			}
+ 		}
+		
+		sql = "SELECT k.*, ats.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
-				+ "JOIN koulutuksenKouluttaja kk ON k.koulutus_id = kk.koulutus_id "
+				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
 				+ "JOIN kouluttaja ko ON ko.opiskelijanro = kk.opiskelijanro "
-				+ "JOIN aikatauluslotti ast ON ast.koulutus_id = k.koulutus_id "
-				+ ""+idLause+" "
+				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
+				+ ""+sqlehto+" "
 				+ "UNION ALL "
-				+ "SELECT k.*, ast.*, '', '', '', 0 kouluttaja_true, a.avainsana "
+				+ "SELECT k.*, ats.*, '', '', '', 0 kouluttaja_true, a.avainsana "
 				+ "FROM koulutustilaisuus k "
-				+ "JOIN koulutuksenAvainsana ka ON ka.koulutus_id = k.koulutus_id "
+				+ "JOIN koulutuksenavainsana ka ON ka.koulutus_id = k.koulutus_id "
 				+ "JOIN avainsana a ON a.avainsana_id = ka.avainsana_id "
-				+ "JOIN aikatauluslotti ast ON ast.koulutus_id = k.koulutus_id "
-				+ ""+idLause+";";
-		List<Koulutustilaisuus> koulutukset = jt.query(sql, new KoulutusHakuRsE());
+				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
+				+ ""+sqlehto+" "
+				+ "ORDER BY pvm, alkukello";
+		List<Koulutustilaisuus> koulutukset = jt.query(sql, new KoulutusHakuRsExtractor());
 		return koulutukset;
 	}
-	public List<Koulutustilaisuus> haeAvainsana(String ehto) {
-		 		String idLause = "WHERE k.koulutus_id = ";
+	
+	public List<Koulutustilaisuus> haeAvainsanalla(String ehto) {
 		 		Object[] parametrit = new Object[] {ehto};
-		 		String sqlIdt = "SELECT DISTINCT koulutustilaisuus.koulutus_id FROM koulutustilaisuus "
-		 				+ "JOIN koulutuksenAvainsana ON koulutustilaisuus.koulutus_id = koulutuksenAvainsana.koulutus_id "
-		 				+ "JOIN avainsana ON koulutuksenAvainsana.avainsana_id  = avainsana.avainsana_id "
-		 				+ "WHERE avainsana.avainsana = ?";
-		 		List<Integer> koulutusIdt = jt.query(sqlIdt, parametrit, new IdHakuRowMapper());
-		 		if(koulutusIdt.size() == 0){
+		 		String sql = "SELECT DISTINCT koulutustilaisuus.koulutus_id FROM koulutustilaisuus "
+		 				+ "JOIN koulutuksenavainsana ON koulutustilaisuus.koulutus_id = koulutuksenavainsana.koulutus_id "
+		 				+ "JOIN avainsana ON koulutuksenavainsana.avainsana_id  = avainsana.avainsana_id "
+		 				+ "WHERE avainsana.avainsana = ? AND nakyvyys = 1";
+		 		List<Integer> koulutustunnukset = jt.queryForList(sql, parametrit, Integer.class);
+		 		if(koulutustunnukset.size() == 0) {
 		 			return new ArrayList<Koulutustilaisuus>();
 		 		}
-		 		for (int i=0; i<koulutusIdt.size(); i++){
-		 			if (koulutusIdt.size()==1){			
-		 				idLause = idLause + ""+koulutusIdt.get(i)+" ";
-		 				}
-		 			else if (i < koulutusIdt.size()-1){			
-		 			idLause = idLause + ""+koulutusIdt.get(i)+" OR k.koulutus_id = ";
-		 			}
-		 			else if(i == koulutusIdt.size()-1) {
-		 			idLause = idLause + ""+koulutusIdt.get(i)+" ";
+		 		
+		 		String sqlehto = "WHERE k.koulutus_id = ";
+		 		for (int i = 0; i < koulutustunnukset.size(); i++){
+		 			if (i < koulutustunnukset.size() -1){			
+		 				sqlehto += koulutustunnukset.get(i)+" OR k.koulutus_id = ";
+		 			} else {
+		 				sqlehto += koulutustunnukset.get(i);
 		 			}
 		 		}
-		 		String sql = "SELECT k.*, ats.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
+		 		
+		 		sql = "SELECT k.*, ats.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 		 				+ "FROM koulutustilaisuus k "
-		 				+ "JOIN koulutuksenKouluttaja kk ON k.koulutus_id = kk.koulutus_id "
+		 				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
 		 				+ "JOIN kouluttaja ko ON ko.opiskelijanro = kk.opiskelijanro "
 		 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
-		 				+ ""+idLause+" "
+		 				+ ""+sqlehto+" "
 		 				+ "UNION ALL "
 		 				+ "SELECT k.*, ats.*, '', '', '', 0 kouluttaja_true, a.avainsana "
 		 				+ "FROM koulutustilaisuus k "
-		 				+ "JOIN koulutuksenAvainsana ka ON ka.koulutus_id = k.koulutus_id "
+		 				+ "JOIN koulutuksenavainsana ka ON ka.koulutus_id = k.koulutus_id "
 		 				+ "JOIN avainsana a ON a.avainsana_id = ka.avainsana_id "
 		 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
-		 				+ ""+idLause+";";
-		 		List<Koulutustilaisuus> koulutukset = jt.query(sql, new KoulutusHakuRsE());
+		 				+ ""+sqlehto+" "
+		 				+ "ORDER BY pvm, alkukello";
+		 		List<Koulutustilaisuus> koulutukset = jt.query(sql, new KoulutusHakuRsExtractor());
 		 		return koulutukset;
 		 	}
 }

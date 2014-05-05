@@ -1,15 +1,10 @@
 package fi.softala.dao;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.bean.Osallistuja;
 
 @Repository
@@ -35,13 +30,7 @@ public class OsallistujaDAOImpl implements OsallistujaDAO {
 
 		jdbcTemplate.update(sql, parametrit);
 		
-		int max = jdbcTemplate.queryForObject( "select last_insert_id()", Integer.class );
-		
-		for(int k = 0; k <osallistumiset.length; k++){	
-			System.out.println(osallistumiset[k]);
-		}
-		
-		System.out.println(max);
+		int max = jdbcTemplate.queryForObject( "select last_insert_id()", Integer.class );		
 		
 		String toinenSql = "";
 

@@ -8,7 +8,7 @@ public interface KoulutusHakuDAO {
 	
 	List<Koulutustilaisuus> haeMenneet();
 	List<Koulutustilaisuus> haeTulevat();
-	List<Koulutustilaisuus> haeValitut(String ehto);
-	List<Koulutustilaisuus> haeAvainsana(String ehto);
+	List<Koulutustilaisuus> haeHakusanalla(String ehto);
+	List<Koulutustilaisuus> haeAvainsanalla(String ehto);
 
 }

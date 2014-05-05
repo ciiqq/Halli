@@ -1,9 +1,10 @@
 package fi.softala.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.ServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fi.softala.bean.Koulutustilaisuus;
-import fi.softala.service.KoulutusHakuService;
 import fi.softala.bean.Osallistuja;
+import fi.softala.service.KoulutusHakuService;
 import fi.softala.service.OsallistujaService;
 
 /**
@@ -41,45 +42,45 @@ public class KoulutusHakuController {
 	private OsallistujaService osallistujaservice;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String listaaKoulutuksetTulevat(Model model) {
+	public String listaaTulevatKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeTulevat();
 		model.addAttribute("koulutukset", koulutukset);
 		return "listausuusi";
 	}
-	@RequestMapping(value = "/menneet", method = RequestMethod.GET)
-	public String listaaKoulutuksetMenneet(Model model) {
+	
+	@RequestMapping(value = "menneet", method = RequestMethod.GET)
+	public String listaaMenneetKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeMenneet();
 		model.addAttribute("koulutukset", koulutukset);
 		return "listausuusi";
 	}
+	
 	@RequestMapping(value="hakutulokset", method=RequestMethod.GET)
-	public String naytaHakutulokset(Model model, HttpServletRequest httpRequest) {
-		String ehto = httpRequest.getParameter("haku");
-		List<Koulutustilaisuus> koulutukset = hakuservice.haeValitut(ehto);
+	public String listaaKoulutuksetHakusanalla(Model model, ServletRequest request) throws UnsupportedEncodingException {
+		String ehto = new String(request.getParameter("haku").getBytes("iso-8859-1"), "UTF-8");
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeHakusanalla(ehto);
 		model.addAttribute("koulutukset", koulutukset);
-		System.out.println(ehto);
+		model.addAttribute("hakusana", ehto);
 		return "listausuusi";
 	}
+	
 	@RequestMapping(value="avainsana", method=RequestMethod.GET)
-	public String naytaAvainsana(Model model, HttpServletRequest httpRequest) {
-		String ehto = httpRequest.getParameter("avainsana");
-		List<Koulutustilaisuus> koulutukset = hakuservice.haeAvainsana(ehto);
+	public String listaaKoulutuksetAvainsanalla(Model model, ServletRequest request) throws UnsupportedEncodingException {
+		String ehto = new String(request.getParameter("avainsana").getBytes("iso-8859-1"), "UTF-8");
+		List<Koulutustilaisuus> koulutukset = hakuservice.haeAvainsanalla(ehto);
 		model.addAttribute("koulutukset", koulutukset);
-		System.out.println(ehto);
+		model.addAttribute("hakusana", ehto);
 		return "listausuusi";
 	}
 
-	@RequestMapping(value="ilmoittaudu", method=RequestMethod.GET)
-	public String talletaOsallistuja(Model model, HttpServletRequest request){
+	@RequestMapping(value="ilmoittaudu", method=RequestMethod.POST)
+	public String talletaOsallistuja(Model model, ServletRequest request){
 		String osallistumiset = request.getParameter("valitutkoulutukset");
 		String enimi = request.getParameter("etunimi");
 		String snimi = request.getParameter("sukunimi");
 		String onro = request.getParameter("opiskelijanro");
 		Osallistuja osallistuja = new Osallistuja(onro, enimi, snimi);
-		System.out.println(osallistuja.getEtunimi() + " " + osallistumiset);
-		//model.addAttribute("osallistuja", osallistuja);
-		//model.addAttribute("osallistumiset", osallistumiset);
 		osallistujaservice.tallenna(osallistuja, osallistumiset);
-		return "listausuusi";
+		return "redirect:/";
 	}
 }

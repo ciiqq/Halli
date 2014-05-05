@@ -41,13 +41,13 @@ public class KoulutusHakuServiceImpl implements KoulutusHakuService {
 		return koulutukset;
 	}
 	
-	public List<Koulutustilaisuus> haeValitut(String ehto) {
-		List<Koulutustilaisuus> koulutukset = dao.haeValitut(ehto);
+	public List<Koulutustilaisuus> haeHakusanalla(String ehto) {
+		List<Koulutustilaisuus> koulutukset = dao.haeHakusanalla(ehto);
 		return koulutukset;
 	}
 	
-	public List<Koulutustilaisuus> haeAvainsana(String ehto) {
-		List<Koulutustilaisuus> koulutukset = dao.haeAvainsana(ehto);
+	public List<Koulutustilaisuus> haeAvainsanalla(String ehto) {
+		List<Koulutustilaisuus> koulutukset = dao.haeAvainsanalla(ehto);
 		return koulutukset;
 	}
 }

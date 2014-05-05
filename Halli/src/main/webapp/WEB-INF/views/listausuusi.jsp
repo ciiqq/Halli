@@ -52,7 +52,7 @@
 			<div class="ylapalkki">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
 			<div class="fifty lista">
-			<form id="haku" action="hakutulokset"><input type="text" name="haku" placeholder="Suodata koulutuksia hakusanan perusteella"><input type="submit" value=" "></form>
+			<form id="haku" action="hakutulokset"><input type="text" name="haku" autocomplete="off" placeholder="Suodata koulutuksia hakusanan perusteella" value="${hakusana}"><input type="submit" value=" "></form>
 				<ul>
 					<c:if test="${empty koulutukset}">
 						<c:out value="Koulutuksia ei löytynyt" />
@@ -144,7 +144,7 @@
 				<p>Anna vielä tietosi ilmoittautumista varten:</p>
 				<br />
 				
-				<form id="ilmoittautuminen" action="ilmoittaudu" name="ilmoittaudu">
+				<form id="ilmoittautuminen" method="post" action="ilmoittaudu" name="ilmoittaudu">
 				
 				<input type="hidden" id="valitutkoulutukset" name="valitutkoulutukset" />
 				
@@ -173,6 +173,7 @@
 
 				<input type="button"
 					onclick="$.colorbox.close()" value="Sulje ikkuna" />
+					
 			</div>
 			</form>
 		</div>

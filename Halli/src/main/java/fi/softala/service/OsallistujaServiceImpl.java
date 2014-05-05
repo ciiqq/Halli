@@ -22,13 +22,6 @@ public class OsallistujaServiceImpl implements OsallistujaService {
 		this.dao = dao;
 	}
 		
-		
-	public void enTieda(Osallistuja o, String osallistumiset){
-		System.out.println(o + " " + osallistumiset);
-		tallenna(o, osallistumiset);
-	}
-
-		
 	public void tallenna(Osallistuja o, String osallistumiset){
 		String[] idTaulukko = osallistumiset.split(",");
 		dao.talleta(o, idTaulukko);
