@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap-modal.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/koulutuslistaustyylit.css">
@@ -20,7 +21,7 @@ pageEncoding="UTF-8"%>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modal.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modalmanager.js"></script>
- <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+
 <script> 
  	$(document).ready(function() {
  		$( "#datepicker" ).datepicker({dateFormat: 'dd.mm.yy'});
@@ -30,78 +31,19 @@ pageEncoding="UTF-8"%>
  		});
  	});
  </script>
-     
-            <script>
-   $(function() {
-  
-  
-    $("#modal-form").validate({
-    
-        // Specify the validation rules
-        rules: {
-            aihe: {required:true,
-            		minlength:5
-        		},
-            kuvaus:{required:true,
-            		minlength:5
-    		}
-        },
-     
-        // Specify the validation error messages
-        messages: {
-            aihe: {required:"Lisï¿½ï¿½ aihe!",
-            		minlength:"Liian lyhyt aiheen nimi!"},
-            kuvaus: {required:"Lisï¿½ï¿½ kuvaus!",
-            		minlength:"Liian lyhyt kuvaus"
-            }
-        },
-        
-        submitHandler: function(form) {
-            form.submit();
-        }
-    });
 
-  });
-  
-  </script>
-
-<!-- Avaa Modal valikko, mikÃ¤li muokkauskentÃ¤ssÃ¤ on virheitÃ¤ -->
+<!-- Avaa Modal valikko, mikäli muokkauskentässä on virheitä -->
 <c:if test="${avaaModal != null }">
 	<script src="<%=request.getContextPath()%>/resources/js/modalAvaus.js"></script>
 </c:if>
 
 <title>Koulutustiedot</title>
-
 </head>
-<body>
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Halli</a>
-			</div>
 
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Koulutukset</a></li>
-					<li><a href="#">Kouluttajat</a></li>
-					<li><a href="#">Palautteet</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Kirjaudu ulos</a></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-	<div class="container">
-		
+
+<body>
+
+
 <div class="panel panel-default">
   <!-- Default panel contents -->
   
@@ -115,16 +57,7 @@ pageEncoding="UTF-8"%>
   <table class="table">
   
   <tr>
-    	<th>Kouluttajat</th>
-    	<td>
-    	<c:forEach var="kouluttaja" items="${ks.kouluttajat }">
-    		<c:out value="${kouluttaja.etunimi}" /> <c:out value="${kouluttaja.sukunimi}" />
-    	</c:forEach>
-    	</td> 
-    </tr>
-  
-  <tr>
-    	<th>PÃ¤ivÃ¤mÃ¤Ã¤rÃ¤</th>
+    	<th>Päivämäärä</th>
     	<td>${ks.aikaslotti.pvm}</td> 
     </tr>
   	
@@ -144,13 +77,13 @@ pageEncoding="UTF-8"%>
     </tr>
     
     <tr>
-    	<th>LÃ¤htÃ¶taso</th>
+    	<th>Lähtötaso</th>
     	<td>${ks.lahtotaso}</td> 
     </tr>
     
     <!--
     <tr>
-    	<th>NÃ¤kyvyys</th>
+    	<th>Näkyvyys</th>
     	<td>${ks.nakyvyys}</td> 
     </tr> -->
     
@@ -162,7 +95,7 @@ pageEncoding="UTF-8"%>
 <br /><br />
 
 
-<!-- Jos muokkaus onnistui, nÃ¤ytetÃ¤Ã¤n kÃ¤yttÃ¤jÃ¤lle teksti siitÃ¤ -->
+<!-- Jos muokkaus onnistui, näytetään käyttäjälle teksti siitä -->
 <c:if test="${muokkausOnnistui != null}">
 	<p id="mop" class="text-success bg-success" style="padding: 30px; font-size: 2em;">
 		<c:out value="${muokkausOnnistui}" />
@@ -197,11 +130,8 @@ pageEncoding="UTF-8"%>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title"><c:out value="${ks.aikaslotti.pvm}" />, <c:out value="${ks.aikaslotti.alkukello}" />-<c:out value="${ks.aikaslotti.loppukello}" /></h4>
       </div>
- 
-      
-       <form:form id="modal-form" method="POST" modelAttribute="muokattavaKoulutus">
+       <form:form id="modal-form" modelAttribute="muokattavaKoulutus"  method="POST">
       <div class="modal-body">
-
 
 
            <table class="table">
@@ -209,48 +139,50 @@ pageEncoding="UTF-8"%>
         
 			  <tr>
 			  	<th><form:label path="aihe">Aihe</form:label></th>	 		  
-			  	<td><form:input id="aihe" name="aihe" path="aihe"  value="${ks.aihe}"/>  </td> 
+			  	<td><form:input path="aihe" value="${ks.aihe}"/>  </td> 
 			  	<td><form:errors path="aihe"></form:errors></td>
 			  	
 			  </tr>  
 			  
 			  <tr>
 			  	<th><form:label path="kuvaus">Kuvaus</form:label></th>
-			  	<td><form:textarea id="kuvaus" name="kuvaus" class="kuvaus" path="kuvaus" style="resize:none;" value="${ks.kuvaus}" cols="40" rows="5"/> </td>
+			  	<td><form:textarea path="kuvaus" style="resize:none;" value="${ks.kuvaus}" cols="40" rows="5"/> </td>
 			  	<td><form:errors path="kuvaus"></form:errors></td>
 			  	
 			  </tr>    
 			  
-			   <tr>
-			    	<th><form:label path="lahtotaso">LÃ¤htÃ¶taso</form:label></th>
-			  	<td><form:input path="lahtotaso" value="${ks.lahtotaso}"/> </td>
-			  	<td><form:errors path="lahtotaso"></form:errors></td>
-			    </tr>
-			  
-			 <tr>
-			    <th><form:label path="aikaslotti.pvm">PÃ¤ivÃ¤mÃ¤Ã¤rÃ¤</form:label></th>
-			  	<td><c:out value="${ks.aikaslotti.pvm}"/> </td>
+			  <tr>
+			    <th><form:label path="aikaslotti.pvm">Päivämäärä</form:label></th>
+			  	<td><form:input path="aikaslotti.pvm" class="zDepth" id="datepicker" value="${ks.aikaslotti.pvm}"/> </td>
+			  	<td><form:errors path="aikaslotti.pvm"></form:errors></td> 
 			  </tr>
 			  	
 			  <tr> 
 			  	<th><form:label path="aikaslotti.alkukello">Alkaa</form:label></th>
-			  	<td><c:out value="${ks.aikaslotti.alkukello}"/></td>
+			  	<td><form:input path="aikaslotti.alkukello" class="timepicker zDepth" value="${ks.aikaslotti.alkukello}"/></td>
+			  	<td><form:errors path="aikaslotti.alkukello"></form:errors></td> 
 			  </tr>
 			  	
 			  	<tr>  	
 					<th><form:label path="aikaslotti.loppukello">Loppuu</form:label></th>
-			  		<td><c:out value="${ks.aikaslotti.loppukello}"/> </td>    
+			  		<td><form:input path="aikaslotti.loppukello" class="timepicker" value="${ks.aikaslotti.loppukello}"/> </td>    
+			  		<td><form:errors path="aikaslotti.loppukello"></form:errors></td>
 			  </tr>
 			    
 			    <tr>
 			    	<th><form:label path="aikaslotti.koulutustila">Koulutustila</form:label></th>
-			  	<td><c:out value="${ks.aikaslotti.koulutustila}"/></td> 
+			  	<td><form:input path="aikaslotti.koulutustila" value="${ks.aikaslotti.koulutustila}"/></td> 
+			  	<td><form:errors path="aikaslotti.koulutustila"></form:errors></td>
 			    </tr>
 			    
-			   
+			    <tr>
+			    	<th><form:label path="lahtotaso">Lähtötaso</form:label></th>
+			  	<td><form:input path="lahtotaso" value="${ks.lahtotaso}"/> </td>
+			  	<td><form:errors path="lahtotaso"></form:errors></td>
+			    </tr>
 			    
 			   <!--  <tr>
-			    	<th><form:label path="nakyvyys">NÃ¤kyvyys</form:label></th>
+			    	<th><form:label path="nakyvyys">Näkyvyys</form:label></th>
 			  		<td><form:input path="nakyvyys" value="${ks.nakyvyys}"/> </td> 
 			  		<td><form:errors path="nakyvyys"></form:errors></td>
 			    </tr> -->
@@ -274,9 +206,6 @@ pageEncoding="UTF-8"%>
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-		
-	</div>
-	<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+
 </body>
 </html>

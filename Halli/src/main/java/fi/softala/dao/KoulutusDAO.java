@@ -2,6 +2,7 @@ package fi.softala.dao;
 
 import java.util.List;
 
+import fi.softala.bean.Kouluttaja;
 import fi.softala.bean.Koulutustilaisuus;
 
 public interface KoulutusDAO {
@@ -11,4 +12,8 @@ public interface KoulutusDAO {
 	public Koulutustilaisuus haeKoulutus(int id);
 	
 	public void paivitaKoulutus(Koulutustilaisuus koulutus);
+	
+	public void peruutaKoulutus(int id);
+	
+	public List<Kouluttaja> haeKouluttajat(int id);
 }
