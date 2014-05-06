@@ -15,14 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fi.softala.bean.Aikatauluslotti;
 import fi.softala.bean.Kouluttaja;
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.dao.KoulutusDAO;
-
-/*
- * Testi
- */
 
 @Controller
 public class KoulutusController {
@@ -39,7 +34,7 @@ public class KoulutusController {
 	}
 		
 		@RequestMapping(value="/koulutuslistaus", method=RequestMethod.GET)
-		public String getCreateForm(Model model) {
+		public String haeKoulutukset(Model model) {
 			List<Koulutustilaisuus> koulutuslista = dao.haeKoulutukset();
 			
 			model.addAttribute("koulutukset", koulutuslista);
@@ -52,14 +47,17 @@ public class KoulutusController {
 		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.GET)
 	    public String siirryKoulutukseen(Model model, @PathVariable Integer DaoId) {
 			
+			//Hakee koulutuksen tiedot
 	       Koulutustilaisuus koulutus = dao.haeKoulutus(DaoId);
 	       
+	       //Hakee kaikki koulutuksen kouluttajat ja laittaa sen koulutus-olioon
 	       List<Kouluttaja> kouluttajat = dao.haeKouluttajat(DaoId);
 	       koulutus.setKouluttajat(kouluttajat);
 	        
-	        model.addAttribute("ks", koulutus);
+	       //Laitetaan Modeliin koulustusolio, jotta voidaan sivulla 
+	       model.addAttribute("ks", koulutus);
 	       
-	        
+	        //Luodaan olio Springin formia varten ,jossa voidaan muokata koulutusta
 	        Koulutustilaisuus koulutusTemplate = new Koulutustilaisuus();
 	        koulutusTemplate.setKuvaus(koulutus.getKuvaus());
 	        model.addAttribute("muokattavaKoulutus", koulutusTemplate);
@@ -97,9 +95,7 @@ public class KoulutusController {
 			
 			dao.peruutaKoulutus(DaoId);
 			
-			
-			
-			getCreateForm(model);
+			haeKoulutukset(model);
 			
 			return "redirect:/koulutuslistaus";
 		}

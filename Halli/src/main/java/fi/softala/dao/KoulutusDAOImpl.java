@@ -88,8 +88,8 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 
 
 	public List<Kouluttaja> haeKouluttajat(int id) {
-		final String sql = "SELECT h.etunimi, h.sukunimi FROM koulutustilaisuus kt JOIN koulutuksenKouluttaja kk ON kt.koulutus_id = kk.koulutus_id " +
-							"JOIN kouluttaja h ON kk.opiskelijanro = h.opiskelijanro WHERE kt.koulutus_id = ?;";
+		final String sql = "SELECT h.etunimi, h.sukunimi FROM koulutustilaisuus kt JOIN koulutuksenkouluttaja kk ON kt.koulutus_id = kk.koulutus_id " +
+							"JOIN henkilo h ON kk.kouluttajatunnus = h.henkilotunnus WHERE kt.koulutus_id = ? AND h.rooli = 'kouluttaja';";
 		Object[] parametrit = new Object[] { id };
 		
 		RowMapper<Kouluttaja> rm = new HenkiloRowMapper();
