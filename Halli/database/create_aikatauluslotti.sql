@@ -5,5 +5,5 @@ CREATE TABLE aikatauluslotti (
 	alkukello TIME,
 	loppukello TIME,
 	koulutustila  varchar(10),
-	koulutus_id  SMALLINT
+	koulutus_id  SMALLINT,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

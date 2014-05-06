@@ -10,7 +10,7 @@
 </head>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.Calendar" %>
-<% Date paivays = new Date();
+<% Date paivays = (Date) request.getSession().getAttribute("paivays");
 int kuukaudenEkaPaiva = 0;
 int kuukaudenVikaPaiva = 0;
 int ok,i,paiva,ekaloyty;
@@ -29,18 +29,14 @@ if(kuukaudenEkaPaiva==1) { /* su ma ti ke to pe la -> ma ti ke to pe la su */
 %>
 
 
-<body>
-
-
-
-	
+<body>	
 	<table>
 	<form action="vaihdakuukausi" method="get">
 	<tr>
 	
- 	<td><input type="submit" value="edellinen"></td>
- 	<td><input type="text" name="fname"></td>
-  	<td><input type="submit" value="seuraava"></td>
+ 	<td><input type="submit" name="vaihda" value="edellinen"></td>
+ 	<td><input type="text" name="kuukausiteksti" value="${kuukausiteksti}"></td>
+  	<td><input type="submit" name="vaihda" value="seuraava"></td>
 
 	</tr>
 	
@@ -75,7 +71,7 @@ if(kuukaudenEkaPaiva==1) { /* su ma ti ke to pe la -> ma ti ke to pe la su */
 							paiva++;
 							if(paiva<=kuukaudenVikaPaiva) {
 					%>
-								<input type="submit" name="paivays" value="<%=paiva %>"></input>
+								<input type="submit" name="paiva" value="<%=paiva %>"></input>
 						<%	} else 
 								ok=1;
 					} %>
@@ -86,4 +82,5 @@ if(kuukaudenEkaPaiva==1) { /* su ma ti ke to pe la -> ma ti ke to pe la su */
 	</form>
 	</table>
 </body>
+</html>
 </html>
