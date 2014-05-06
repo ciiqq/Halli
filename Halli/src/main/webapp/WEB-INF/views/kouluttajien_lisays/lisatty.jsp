@@ -2,10 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
+
 <!DOCTYPE>
 <html>
 <head>
-	<title>Kouluttajien lisäys</title>
+	<title>Lisäys onnistui!</title>
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
 </head>
 <body>
@@ -40,43 +41,26 @@
 			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
+						<h1>Lisäys suoritettu</h1>
+
 						<div>
-							<form action="lisaaLista" method="post" enctype="multipart/form-data">
-								
-								<fieldset>		
-									<legend>Kouluttajalistan lisäys</legend>
-									<p>
-										<input type="file" name="kouluttajaLista" />
-									</p>
-									<p>
-										<input type="submit" value="Lisää"/>
-									</p>
-								</fieldset>
-							</form>
+						<h2>Lisätyt kouluttajat</h2>
+						
+						<c:forEach items="${lisatyt}" var="k">
+						<p><c:out value="${k.etunimi}" /> <c:out value="${k.sukunimi}" /></p>
+						</c:forEach>
+						
 						</div>
 						
 						<div>
-							<form:form action="lisaaKouluttaja" modelAttribute="kouluttaja" method="post">
-			  					<fieldset>		
-									<legend>Kouluttajan tiedot</legend>
-									<p>
-										<form:label	path="etunimi">Etunimi</form:label><br/>
-										<form:input path="etunimi"/><form:errors path="etunimi"/>
-									</p>
-									<p>	
-										<form:label path="sukunimi">Sukunimi</form:label><br/>
-										<form:input path="sukunimi"/><form:errors path="sukunimi"/>
-									</p>
-									<p>	
-										<form:label path="opiskelijanro">Opiskelijanumero</form:label><br/>
-										<form:input path="opiskelijanro"/><form:errors path="opiskelijanro"/>
-									</p>
-									<p>	
-										<button type="submit">Lisää</button>
-									</p>
-								</fieldset>
-							</form:form>
+						<h2>Ei lisätyt kouluttajat</h2>
+						
+						<c:forEach items="${eiLisatyt}" var="k">
+						<p><c:out value="${k.etunimi}" /> <c:out value="${k.sukunimi}" /></p>
+						</c:forEach>
+						
 						</div>
+						
 					</div>
 				</div>
 			</div>

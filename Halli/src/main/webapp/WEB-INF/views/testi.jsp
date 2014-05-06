@@ -32,5 +32,7 @@
     </div>
     <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+    
+    <a href="http://localhost:8080/koulutusjarjestelma/kouluttajien_lisays/lisays">Kouluttajien lisäys</a>
 </body>
 </html>

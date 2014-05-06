@@ -28,4 +28,10 @@
 	<!-- location of static content (images, js and css files) -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+
 </beans>

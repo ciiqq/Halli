@@ -32,7 +32,7 @@ public class KouluttajienLisaysDAOSpringJdbcImpl implements KouluttajienLisaysDA
 	}
 
 	
-	public Kouluttaja kouluttajanHaku(int opiskelijanro) {
+	public Kouluttaja kouluttajanHaku(String opiskelijanro) {
 		String sql = "select * from kouluttaja where opiskelijanro = ?";
 		
 		Object[] parametrit = new Object[] { opiskelijanro };
