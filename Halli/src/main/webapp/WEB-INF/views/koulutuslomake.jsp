@@ -112,7 +112,11 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <label>Lähtötaso</label>
-                <form:textarea class="form-control" rows="4" cols="50" style="resize:none;" path="lahtotaso"></form:textarea>
+                <form:select class="form-control" style="resize:none;" path="lahtotaso">
+  					<option>Helppo</option>
+  					<option>Keskitaso</option>
+  					<option>Vaikea</option>
+ 			</form:select>
             </div> 
              <div class="col-xs-6 col-sm-6 col-md-6">
                 <label>Avainsanat</label>
