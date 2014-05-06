@@ -19,11 +19,12 @@ public class Koulutustilaisuus {
 	@Size(min=5, max=50)
 	private String aihe;
 	
-	@Min(value=20)
+	@Size(min=5)
 	private String kuvaus;
 	
-	@Size()
+	@Size(min=5)
 	private String lahtotaso;
+	
 	private boolean nakyvyys;
 	private String suomiPvm;
 	private String suomiKlo;

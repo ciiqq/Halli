@@ -52,8 +52,10 @@ public class KoulutusController {
 	       Koulutustilaisuus koulutus = dao.haeKoulutus(DaoId);
 	        
 	        model.addAttribute("ks", koulutus);
+	       
 	        
 	        Koulutustilaisuus koulutusTemplate = new Koulutustilaisuus();
+	        koulutusTemplate.setKuvaus(koulutus.getKuvaus());
 	        model.addAttribute("muokattavaKoulutus", koulutusTemplate);
 	        
 	        return "koulutustiedot";
@@ -73,9 +75,6 @@ public class KoulutusController {
 				
 				return "koulutustiedot";
 			}
-			
-			//DEBUG
-			System.out.println("meni läpi");
 			
 			koulutus.setId(DaoId);
 			

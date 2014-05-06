@@ -90,7 +90,9 @@
   </table>
 </div>
 <a class="btn btn-primary" href="../koulutuslistaus">Takaisin listaukseen</a>
-<a id="muokkausPainike" type="button" class="btn btn-primary"  href="#test_modal" data-toggle="modal">Muokkaa</a><br /><br />
+<a id="muokkausPainike" type="button" class="btn btn-primary"  href="#test_modal" data-toggle="modal">Muokkaa</a>
+<button class="btn btn-danger" data-toggle="modal" href="#peruutusModal">Peruuta Koulutus</button>
+<br /><br />
 
 
 <!-- Jos muokkaus onnistui, näytetään käyttäjälle teksti siitä -->
@@ -100,8 +102,26 @@
 	</p>
 </c:if>
 
+<!-- Modal-popup, jolla voidaan peruuttaa koulutus -->
+<div id="peruutusModal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <div class="modal-header">
+    	<h3><c:out value="${ks.aihe}" /></h3>
+    </div>
+    	<div class="modal-body">
+      		Haluatko varmasti peruuttaa koulutuksen?
+        </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+      <a href="peruutus/${ks.id}" class="btn btn-primary">Peruuta</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
+<!-- Modal-popup, jolla voidaan muokata tietoja -->
 <div class="modal fade" id="test_modal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -126,7 +146,7 @@
 			  
 			  <tr>
 			  	<th><form:label path="kuvaus">Kuvaus</form:label></th>
-			  	<td><form:input path="kuvaus" value="${ks.kuvaus}"/> </td>
+			  	<td><form:textarea path="kuvaus" style="resize:none;" value="${ks.kuvaus}" cols="40" rows="5"/> </td>
 			  	<td><form:errors path="kuvaus"></form:errors></td>
 			  	
 			  </tr>    
