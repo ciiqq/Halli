@@ -201,6 +201,19 @@ pageEncoding="UTF-8"%>
 			  	<td><c:out value="${ks.aikaslotti.koulutustila}"/></td> 
 			    </tr>
 			    
+			     <tr>
+			    	<th><form:label path="aikaslotti.pvm">Siirrä koulutus</form:label></th>
+			    	
+			  	<td>
+			  	<select>
+				  	<c:forEach var="#" items="${#}">
+				  		<option><c:out value="${#.aikaslotti.pvm}"/>, <c:out value="${#.aikaslotti.alkukello}"/>-<c:out value="${#.aikaslotti.loppukello}"/>, <c:out value="${#.aikaslotti.koulutustila}"/></option>
+				  	</c:forEach>
+			  	</select>
+			  	
+			  	</td> 
+			    </tr>
+			    
 			   
 			    
 			   <!--  <tr>

@@ -13,4 +13,6 @@ public interface KoulutusDAO {
 	public void paivitaKoulutus(Koulutustilaisuus koulutus);
 	
 	public void peruutaKoulutus(int id);
+
+	public void siirraKoulutus(int koulutusId, int aikaId);
 }

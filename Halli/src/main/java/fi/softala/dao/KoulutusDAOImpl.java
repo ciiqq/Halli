@@ -7,6 +7,9 @@ import javax.inject.Inject;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import fi.softala.bean.Aikatauluslotti;
 import fi.softala.bean.Koulutustilaisuus;
@@ -82,6 +85,30 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 		jdbcTemplate.update(sql, parametrit);
 		
 		
+	}
+	
+//	Koulutuksen siirto toiseen aikatauluslottiin
+
+	@Transactional(propagation=Propagation.REQUIRED, isolation=Isolation.SERIALIZABLE, readOnly=false)
+	public void siirraKoulutus(int koulutusId, int aikaId) {
+		
+		final String sql = "UPDATE aikatauluslotti asl"
+						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id"
+						+ " SET asl.koulutus_id = null"
+						+ " WHERE asl.koulutus_id = ?";
+		
+		Object[] parametrit = new Object[] {koulutusId};
+		
+		jdbcTemplate.update(sql, parametrit);
+		
+		
+		final String sql2 = "UPDATE aikatauluslotti "
+						+ " SET koulutus_id = ?"
+						+ " WHERE aika_id = ?";
+		
+		Object[] parametrit2 = new Object[] {koulutusId, aikaId};
+		
+		jdbcTemplate.update(sql2, parametrit2);
 	}
 
 }
