@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import fi.softala.bean.Aikatauluslotti;
+import fi.softala.bean.Kouluttaja;
 import fi.softala.bean.Koulutustilaisuus;
 @Repository
 public class KoulutusDAOImpl implements KoulutusDAO{
@@ -75,6 +76,20 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 	public void peruutaKoulutus(int id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+
+	public List<Kouluttaja> haeKouluttajat(int id) {
+		final String sql = "SELECT h.etunimi, h.sukunimi FROM koulutustilaisuus kt JOIN koulutuksenKouluttaja kk ON kt.koulutus_id = kk.koulutus_id " +
+							"JOIN kouluttaja h ON kk.opiskelijanro = h.opiskelijanro WHERE kt.koulutus_id = ?;";
+		Object[] parametrit = new Object[] { id };
+		
+		RowMapper<Kouluttaja> rm = new HenkiloRowMapper();
+		
+		List<Kouluttaja> kouluttajat = jdbcTemplate.query(sql, parametrit, rm);
+		
+		return kouluttajat;
 	}
 
 }
