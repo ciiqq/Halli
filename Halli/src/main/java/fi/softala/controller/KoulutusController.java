@@ -57,7 +57,11 @@ public class KoulutusController {
 	       //Laitetaan Modeliin koulustusolio, jotta voidaan sivulla 
 	       model.addAttribute("ks", koulutus);
 	       
+
 	        //Luodaan olio Springin formia varten ,jossa voidaan muokata koulutusta
+
+//	        dao.haeVapaatSlotit();
+
 	        Koulutustilaisuus koulutusTemplate = new Koulutustilaisuus();
 	        koulutusTemplate.setKuvaus(koulutus.getKuvaus());
 	        model.addAttribute("muokattavaKoulutus", koulutusTemplate);
@@ -98,6 +102,18 @@ public class KoulutusController {
 			haeKoulutukset(model);
 			
 			return "redirect:/koulutuslistaus";
+		}
+		
+		@RequestMapping(value = "/koulutuslistaus/siirto/{DaoId}/{DaoId2}", method = RequestMethod.GET)
+		public String siirraKoulutus(Model model, @PathVariable Integer DaoId, @PathVariable Integer DaoId2){
+			
+			dao.siirraKoulutus(DaoId, DaoId2);
+			
+			
+			
+			siirryKoulutukseen(model, DaoId);
+			
+			return "redirect:/koulutuslistaus/{DaoId}";
 		}
 		
 
