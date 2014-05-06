@@ -78,13 +78,12 @@
 					</table>
 				</div>
 				<div class="bottom-bar">
-					<button type="submit" name="vahvista" href="#"
+					<button type="submit" name="vahvista"
 						class="btn btn-primary koulutuksienVahvistus" disabled>Vahvista
 						ja julkaise valitut koulutukset</button>
-					<button type="submit" name="vahvistaKaikki"
-						href="VahvistaKaikkiKoulutukset"
+					<a href="VahvistaKaikkiKoulutukset"
 						class="btn btn-primary kaikkienKoulutuksienVahvistus">Vahvista
-						ja julkaise kaikki koulutukset</button>
+						ja julkaise kaikki koulutukset</a>
 				</div>
 
 				Mitähän vittua?
