@@ -64,6 +64,6 @@ public class KoulutusHakuController {
 	public String listaaVahvistamattomatKoulutuksetUusiUi(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeVahvistamattomat();
 		model.addAttribute("koulutukset", koulutukset);
-		return "vahvistamattomat_uusi_ui";
+		return "vahvistamattomat_uusi_ui2";
 	}
 }
