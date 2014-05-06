@@ -11,6 +11,7 @@ $(document).ready(function() {
 		// Hae uusi ikkunan korkeus
 		var nykyinenkorkeus = $(window).height();
 		$('.tiedot').css('height', nykyinenkorkeus - valikkojenkorkeus);
+		$('.lista').css('height', nykyinenkorkeus - valikkojenkorkeus);
 
 	});
 	// jQuery-validointi
