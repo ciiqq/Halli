@@ -13,7 +13,7 @@ public class TietokantaTesti {
 	
 	public Connection haeJdbcConnection() throws Exception {
 		this.jdbcConnection = DriverManager.getConnection(
-			"jdbc:mariadb://proto187.haaga-helia.fi/team4", "projekti", "maXUGp62c");
+			"jdbc:mariadb://localhost/team4", "projekti", "maXUGp62c");
 		this.jdbcConnection.setAutoCommit(false);
 		this.jdbcConnection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 		return jdbcConnection;
