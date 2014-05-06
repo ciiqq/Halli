@@ -175,35 +175,33 @@ pageEncoding="UTF-8"%>
 			  	
 			  </tr>    
 			  
-			  <tr>
-			    <th><form:label path="aikaslotti.pvm">Päivämäärä</form:label></th>
-			  	<td><form:input path="aikaslotti.pvm" class="zDepth" id="datepicker" value="${ks.aikaslotti.pvm}"/> </td>
-			  	<td><form:errors path="aikaslotti.pvm"></form:errors></td> 
-			  </tr>
-			  	
-			  <tr> 
-			  	<th><form:label path="aikaslotti.alkukello">Alkaa</form:label></th>
-			  	<td><form:input path="aikaslotti.alkukello" class="timepicker zDepth" value="${ks.aikaslotti.alkukello}"/></td>
-			  	<td><form:errors path="aikaslotti.alkukello"></form:errors></td> 
-			  </tr>
-			  	
-			  	<tr>  	
-					<th><form:label path="aikaslotti.loppukello">Loppuu</form:label></th>
-			  		<td><form:input path="aikaslotti.loppukello" class="timepicker" value="${ks.aikaslotti.loppukello}"/> </td>    
-			  		<td><form:errors path="aikaslotti.loppukello"></form:errors></td>
-			  </tr>
-			    
-			    <tr>
-			    	<th><form:label path="aikaslotti.koulutustila">Koulutustila</form:label></th>
-			  	<td><form:input path="aikaslotti.koulutustila" value="${ks.aikaslotti.koulutustila}"/></td> 
-			  	<td><form:errors path="aikaslotti.koulutustila"></form:errors></td>
-			    </tr>
-			    
-			    <tr>
+			   <tr>
 			    	<th><form:label path="lahtotaso">Lähtötaso</form:label></th>
 			  	<td><form:input path="lahtotaso" value="${ks.lahtotaso}"/> </td>
 			  	<td><form:errors path="lahtotaso"></form:errors></td>
 			    </tr>
+			  
+			 <tr>
+			    <th><form:label path="aikaslotti.pvm">Päivämäärä</form:label></th>
+			  	<td><c:out value="${ks.aikaslotti.pvm}"/> </td>
+			  </tr>
+			  	
+			  <tr> 
+			  	<th><form:label path="aikaslotti.alkukello">Alkaa</form:label></th>
+			  	<td><c:out value="${ks.aikaslotti.alkukello}"/></td>
+			  </tr>
+			  	
+			  	<tr>  	
+					<th><form:label path="aikaslotti.loppukello">Loppuu</form:label></th>
+			  		<td><c:out value="${ks.aikaslotti.loppukello}"/> </td>    
+			  </tr>
+			    
+			    <tr>
+			    	<th><form:label path="aikaslotti.koulutustila">Koulutustila</form:label></th>
+			  	<td><c:out value="${ks.aikaslotti.koulutustila}"/></td> 
+			    </tr>
+			    
+			   
 			    
 			   <!--  <tr>
 			    	<th><form:label path="nakyvyys">Näkyvyys</form:label></th>

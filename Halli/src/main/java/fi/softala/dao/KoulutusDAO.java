@@ -11,4 +11,6 @@ public interface KoulutusDAO {
 	public Koulutustilaisuus haeKoulutus(int id);
 	
 	public void paivitaKoulutus(Koulutustilaisuus koulutus);
+	
+	public void peruutaKoulutus(int id);
 }

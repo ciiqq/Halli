@@ -86,6 +86,13 @@ public class KoulutusController {
 		}
 		
 
+		@RequestMapping(value = "/koulutuslistaus/peruutus/{DaoId}", method = RequestMethod.POST)
+		public String peruutaKoulutus( @PathVariable Integer DaoId){
+			
+			dao.peruutaKoulutus(DaoId);
+			
+			return "koulutuslista";
+		}
 		
 
 

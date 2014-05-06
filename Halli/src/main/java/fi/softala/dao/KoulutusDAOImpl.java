@@ -70,4 +70,11 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 		
 	}
 
+
+
+	public void peruutaKoulutus(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
