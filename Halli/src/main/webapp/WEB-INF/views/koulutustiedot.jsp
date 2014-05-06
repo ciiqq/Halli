@@ -81,6 +81,15 @@ pageEncoding="UTF-8"%>
   <table class="table">
   
   <tr>
+    	<th>Kouluttajat</th>
+    	<td>
+    	<c:forEach var="kouluttaja" items="${ks.kouluttajat }">
+    		<c:out value="${kouluttaja.etunimi}" /> <c:out value="${kouluttaja.sukunimi}" />
+    	</c:forEach>
+    	</td> 
+    </tr>
+  
+  <tr>
     	<th>Päivämäärä</th>
     	<td>${ks.aikaslotti.pvm}</td> 
     </tr>
