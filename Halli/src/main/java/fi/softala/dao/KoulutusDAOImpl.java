@@ -73,7 +73,14 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 
 
 	public void peruutaKoulutus(int id) {
-		// TODO Auto-generated method stub
+		final String sql = "UPDATE aikatauluslotti asl"
+						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id"
+						+ " SET asl.koulutus_id = null"
+						+ " WHERE asl.koulutus_id = ?;";
+		
+		Object[] parametrit = new Object[] {id};
+		jdbcTemplate.update(sql, parametrit);
+		
 		
 	}
 
