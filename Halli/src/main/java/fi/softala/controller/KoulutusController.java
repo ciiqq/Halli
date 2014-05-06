@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fi.softala.bean.Aikatauluslotti;
@@ -91,12 +92,16 @@ public class KoulutusController {
 		}
 		
 
-		@RequestMapping(value = "/koulutuslistaus/peruutus/{DaoId}", method = RequestMethod.POST)
-		public String peruutaKoulutus( @PathVariable Integer DaoId){
+		@RequestMapping(value = "/koulutuslistaus/peruutus/{DaoId}", method = RequestMethod.GET)
+		public String peruutaKoulutus(Model model, @PathVariable Integer DaoId){
 			
 			dao.peruutaKoulutus(DaoId);
 			
-			return "koulutuslista";
+			
+			
+			getCreateForm(model);
+			
+			return "redirect:/koulutuslistaus";
 		}
 		
 
