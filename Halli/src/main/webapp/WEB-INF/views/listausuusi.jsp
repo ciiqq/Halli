@@ -32,16 +32,15 @@
 	<div class="container">
 		<div class="sivumenu">
 			<a href="./">
-			<div class="nav-item">
-				<div class="nav-icon tulevat"></div>
-				<div class="nav-text">Tulevat luennot</div>
-			</div>
-			</a>
-			<a href="./menneet">
-			<div class="nav-item">
-				<div class="nav-icon menneet"></div>
-				<div class="nav-text">Menneet luennot</div>
-			</div>
+				<div class="nav-item">
+					<div class="nav-icon tulevat"></div>
+					<div class="nav-text">Tulevat luennot</div>
+				</div>
+			</a> <a href="./menneet">
+				<div class="nav-item">
+					<div class="nav-icon menneet"></div>
+					<div class="nav-text">Menneet luennot</div>
+				</div>
 			</a>
 			<div class="nav-item">
 				<div class="nav-icon palaute"></div>
@@ -52,7 +51,11 @@
 			<div class="ylapalkki">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
 			<div class="fifty lista">
-			<form id="haku" action="hakutulokset"><input type="text" name="haku" autocomplete="off" placeholder="Suodata koulutuksia hakusanan perusteella" value="${hakusana}"><input type="submit" value=" "></form>
+				<form id="haku" action="hakutulokset">
+					<input type="text" name="haku" autocomplete="off"
+						placeholder="Suodata koulutuksia hakusanan perusteella"
+						value="${hakusana}"><input type="submit" value=" ">
+				</form>
 				<ul>
 					<c:if test="${empty koulutukset}">
 						<c:out value="Koulutuksia ei löytynyt" />
@@ -66,7 +69,11 @@
 				</ul>
 			</div>
 			<div class="fifty tiedot">
-				<div class="table-container" style="opacity:0.5;"><span style="display:block;text-align:center;margin-top:96px;margin-bottom:96px;">Valitse koulutus vasemmalta :)</span></div>
+				<div class="table-container" style="opacity: 0.5;">
+					<span
+						style="display: block; text-align: center; margin-top: 96px; margin-bottom: 96px;">Valitse
+						koulutus vasemmalta :)</span>
+				</div>
 				<c:forEach items="${koulutukset}" var="k">
 					<input type="hidden" name="aihe" value="${k.aihe}" />
 					<div class="table-container" id="<c:out value="${k.id}"/>"
@@ -81,11 +88,12 @@
 							</tr>
 							<tr>
 								<td class="bold">Kouluttajat</td>
-								<td><c:forEach items="${k.kouluttajat}" var="koul" varStatus="loopStatus">
+								<td><c:forEach items="${k.kouluttajat}" var="koul"
+										varStatus="loopStatus">
 										<c:out value="${koul.etunimi} " />
 										<c:out value="${koul.sukunimi}" />
 										<c:if test="${!loopStatus.last}">
-										<c:out value=", " />
+											<c:out value=", " />
 										</c:if>
 									</c:forEach></td>
 							</tr>
@@ -95,12 +103,14 @@
 							</tr>
 							<tr>
 								<td class="bold">Kellonaika</td>
-								<td><c:out value="${k.suomiKlo}" /> - <c:out value="${k.suomiLoppuKlo}" /></td>
+								<td><c:out value="${k.suomiKlo}" /> - <c:out
+										value="${k.suomiLoppuKlo}" /></td>
 							</tr>
 							<tr>
 								<td class="bold">Avainsanat</td>
 								<td><c:forEach items="${k.avainsanat}" var="a">
-										<span class="tagi"><a href="avainsana?avainsana=${a}" class="tagi"><c:out value="${a}" /></a></span>
+										<span class="tagi"><a href="avainsana?avainsana=${a}"
+											class="tagi"><c:out value="${a}" /></a></span>
 									</c:forEach></td>
 							</tr>
 							<tr>
@@ -113,20 +123,35 @@
 							</tr>
 							<tr>
 								<td class="bold">Kuvaus</td>
-								<td><p><c:out value="${k.kuvaus}" /></p></td>
+								<td><p>
+										<c:out value="${k.kuvaus}" />
+									</p></td>
 							</tr>
+							
+							<jsp:useBean id="now" class="java.util.Date" />
+							<fmt:parseDate value="${k.suomiPvm}" pattern="dd.MM.yyyy"
+								var="pvm" />
+							<fmt:formatDate value="${pvm}" pattern="yyyy-MM-dd" var="pvm" />
+							<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nyt" />
 							<tr>
 								<td></td>
-								<td><button type="button" value="${k.id}" class="lisaa">Valitse
-										koulutus</button></td>
+								<td><c:choose>
+										<c:when test="${pvm <= nyt}">
+											<button type="button" value="${k.id}" class="lisaa">Anna
+												palautetta</button>
+										</c:when>
+										<c:otherwise>
+											<button type="button" value="${k.id}" class="lisaa">Valitse
+												koulutus</button>
+										</c:otherwise>
+									</c:choose></td>
 							</tr>
-						</table>
 					</div>
 				</c:forEach>
 			</div>
 			<div class="alapalkki">
-				<button type="submit" name="vahvista" href="#lightbox_sisalto"
-					class="vahvistus" disabled>Vahvista ilmoittautumiset</button>
+				<button type="submit" name="vahvista" href="#lightbox_sisalto" class="vahvistus"
+				 disabled>Vahvista ilmoittautumiset</button>
 			</div>
 		</div>
 
@@ -143,37 +168,39 @@
 				<br />
 				<p>Anna vielä tietosi ilmoittautumista varten:</p>
 				<br />
-				
-				<form id="ilmoittautuminen" method="post" action="ilmoittaudu" name="ilmoittaudu">
-				
-				<input type="hidden" id="valitutkoulutukset" name="valitutkoulutukset" />
-				
-				<table>
-				  <tr>
-				    <td>Etunimi</td>
-				    <td>Sukunimi</td>
-				  </tr>
-				  <tr>
-				    <td><input type="text" name="etunimi"></td>
-				    <td><input type="text" name="sukunimi"></td>
-				  </tr>
-				  <tr>
-				    <td colspan="2">Opiskelijanumero</td>
-				  </tr>
-				  <tr>
-				    <td colspan="2"><input type="text" name="opiskelijanro"></td>
-				  </tr>
-				</table>
-				</div>
+
+				<form id="ilmoittautuminen" method="post" action="ilmoittaudu"
+					name="ilmoittaudu">
+
+					<input type="hidden" id="valitutkoulutukset"
+						name="valitutkoulutukset" />
+
+					<table>
+						<tr>
+							<td>Etunimi</td>
+							<td>Sukunimi</td>
+						</tr>
+						<tr>
+							<td><input type="text" name="etunimi"></td>
+							<td><input type="text" name="sukunimi"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Opiskelijanumero</td>
+						</tr>
+						<tr>
+							<td colspan="2"><input type="text" name="opiskelijanro"></td>
+						</tr>
+					</table>
+			</div>
 
 
 			<div class="modaalin-kontrollit clearfix">
-				<button type="submit"
-					id="ilmoittaudu" disabled > Ilmoittaudu koulutuksiin</button>
+				<button type="submit" id="ilmoittaudu" disabled>
+					Ilmoittaudu koulutuksiin</button>
 
-				<input type="button"
-					onclick="$.colorbox.close()" value="Sulje ikkuna" />
-					
+				<input type="button" onclick="$.colorbox.close()"
+					value="Sulje ikkuna" />
+
 			</div>
 			</form>
 		</div>
