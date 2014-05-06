@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modal.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modalmanager.js"></script>
-
+ <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 <script> 
  	$(document).ready(function() {
  		$( "#datepicker" ).datepicker({dateFormat: 'dd.mm.yy'});
@@ -30,6 +30,40 @@ pageEncoding="UTF-8"%>
  		});
  	});
  </script>
+     
+            <script>
+   $(function() {
+  
+  
+    $("#modal-form").validate({
+    
+        // Specify the validation rules
+        rules: {
+            aihe: {required:true,
+            		minlength:5
+        		},
+            kuvaus:{required:true,
+            		minlength:5
+    		}
+        },
+     
+        // Specify the validation error messages
+        messages: {
+            aihe: {required:"Lis�� aihe!",
+            		minlength:"Liian lyhyt aiheen nimi!"},
+            kuvaus: {required:"Lis�� kuvaus!",
+            		minlength:"Liian lyhyt kuvaus"
+            }
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+  });
+  
+  </script>
 
 <!-- Avaa Modal valikko, mikäli muokkauskentässä on virheitä -->
 <c:if test="${avaaModal != null }">
@@ -163,8 +197,11 @@ pageEncoding="UTF-8"%>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title"><c:out value="${ks.aikaslotti.pvm}" />, <c:out value="${ks.aikaslotti.alkukello}" />-<c:out value="${ks.aikaslotti.loppukello}" /></h4>
       </div>
-       <form:form id="modal-form" modelAttribute="muokattavaKoulutus"  method="POST">
+ 
+      
+       <form:form id="modal-form" method="POST" modelAttribute="muokattavaKoulutus">
       <div class="modal-body">
+
 
 
            <table class="table">
@@ -172,14 +209,14 @@ pageEncoding="UTF-8"%>
         
 			  <tr>
 			  	<th><form:label path="aihe">Aihe</form:label></th>	 		  
-			  	<td><form:input path="aihe" value="${ks.aihe}"/>  </td> 
+			  	<td><form:input id="aihe" name="aihe" path="aihe"  value="${ks.aihe}"/>  </td> 
 			  	<td><form:errors path="aihe"></form:errors></td>
 			  	
 			  </tr>  
 			  
 			  <tr>
 			  	<th><form:label path="kuvaus">Kuvaus</form:label></th>
-			  	<td><form:textarea path="kuvaus" style="resize:none;" value="${ks.kuvaus}" cols="40" rows="5"/> </td>
+			  	<td><form:textarea id="kuvaus" name="kuvaus" class="kuvaus" path="kuvaus" style="resize:none;" value="${ks.kuvaus}" cols="40" rows="5"/> </td>
 			  	<td><form:errors path="kuvaus"></form:errors></td>
 			  	
 			  </tr>    
