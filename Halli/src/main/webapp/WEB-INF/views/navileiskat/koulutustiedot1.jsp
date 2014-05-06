@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap-modal.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/koulutuslistaustyylit.css">
@@ -31,43 +32,18 @@ pageEncoding="UTF-8"%>
  	});
  </script>
 
-<!-- Avaa Modal valikko, mikÃ¤li muokkauskentÃ¤ssÃ¤ on virheitÃ¤ -->
+<!-- Avaa Modal valikko, mikäli muokkauskentässä on virheitä -->
 <c:if test="${avaaModal != null }">
 	<script src="<%=request.getContextPath()%>/resources/js/modalAvaus.js"></script>
 </c:if>
 
 <title>Koulutustiedot</title>
-
 </head>
-<body>
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Halli</a>
-			</div>
 
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Koulutukset</a></li>
-					<li><a href="#">Kouluttajat</a></li>
-					<li><a href="#">Palautteet</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Kirjaudu ulos</a></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-	<div class="container">
-		
+
+<body>
+
+
 <div class="panel panel-default">
   <!-- Default panel contents -->
   
@@ -81,7 +57,7 @@ pageEncoding="UTF-8"%>
   <table class="table">
   
   <tr>
-    	<th>PÃ¤ivÃ¤mÃ¤Ã¤rÃ¤</th>
+    	<th>Päivämäärä</th>
     	<td>${ks.aikaslotti.pvm}</td> 
     </tr>
   	
@@ -101,13 +77,13 @@ pageEncoding="UTF-8"%>
     </tr>
     
     <tr>
-    	<th>LÃ¤htÃ¶taso</th>
+    	<th>Lähtötaso</th>
     	<td>${ks.lahtotaso}</td> 
     </tr>
     
     <!--
     <tr>
-    	<th>NÃ¤kyvyys</th>
+    	<th>Näkyvyys</th>
     	<td>${ks.nakyvyys}</td> 
     </tr> -->
     
@@ -119,7 +95,7 @@ pageEncoding="UTF-8"%>
 <br /><br />
 
 
-<!-- Jos muokkaus onnistui, nÃ¤ytetÃ¤Ã¤n kÃ¤yttÃ¤jÃ¤lle teksti siitÃ¤ -->
+<!-- Jos muokkaus onnistui, näytetään käyttäjälle teksti siitä -->
 <c:if test="${muokkausOnnistui != null}">
 	<p id="mop" class="text-success bg-success" style="padding: 30px; font-size: 2em;">
 		<c:out value="${muokkausOnnistui}" />
@@ -176,7 +152,7 @@ pageEncoding="UTF-8"%>
 			  </tr>    
 			  
 			  <tr>
-			    <th><form:label path="aikaslotti.pvm">PÃ¤ivÃ¤mÃ¤Ã¤rÃ¤</form:label></th>
+			    <th><form:label path="aikaslotti.pvm">Päivämäärä</form:label></th>
 			  	<td><form:input path="aikaslotti.pvm" class="zDepth" id="datepicker" value="${ks.aikaslotti.pvm}"/> </td>
 			  	<td><form:errors path="aikaslotti.pvm"></form:errors></td> 
 			  </tr>
@@ -200,13 +176,13 @@ pageEncoding="UTF-8"%>
 			    </tr>
 			    
 			    <tr>
-			    	<th><form:label path="lahtotaso">LÃ¤htÃ¶taso</form:label></th>
+			    	<th><form:label path="lahtotaso">Lähtötaso</form:label></th>
 			  	<td><form:input path="lahtotaso" value="${ks.lahtotaso}"/> </td>
 			  	<td><form:errors path="lahtotaso"></form:errors></td>
 			    </tr>
 			    
 			   <!--  <tr>
-			    	<th><form:label path="nakyvyys">NÃ¤kyvyys</form:label></th>
+			    	<th><form:label path="nakyvyys">Näkyvyys</form:label></th>
 			  		<td><form:input path="nakyvyys" value="${ks.nakyvyys}"/> </td> 
 			  		<td><form:errors path="nakyvyys"></form:errors></td>
 			    </tr> -->
@@ -230,9 +206,6 @@ pageEncoding="UTF-8"%>
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-		
-	</div>
-	<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+
 </body>
 </html>
