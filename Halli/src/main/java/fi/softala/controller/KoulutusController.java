@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fi.softala.bean.Aikatauluslotti;
+import fi.softala.bean.Kouluttaja;
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.dao.KoulutusDAO;
 
@@ -50,7 +51,11 @@ public class KoulutusController {
 		//Tämä metodi kuuntelee valuessa olevaa osoitetta koulutuslistat.jsp:ltä.	
 		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.GET)
 	    public String siirryKoulutukseen(Model model, @PathVariable Integer DaoId) {
+			
 	       Koulutustilaisuus koulutus = dao.haeKoulutus(DaoId);
+	       
+	       List<Kouluttaja> kouluttajat = dao.haeKouluttajat(DaoId);
+	       koulutus.setKouluttajat(kouluttajat);
 	        
 	        model.addAttribute("ks", koulutus);
 	       

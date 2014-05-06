@@ -64,3 +64,6 @@ VALUES (1200003, "Melko", "Meikäläinen", "salasana", "suola123");
 
 INSERT INTO kouluttaja (opiskelijanro, etunimi, sukunimi, salasana, suola)
 VALUES (1200004, "Make", "Makkara", "salasana", "suola123");
+
+INSERT INTO koulutuksenKouluttaja (koulutus_id, opiskelijanro)
+VALUES (2, 1200001);
