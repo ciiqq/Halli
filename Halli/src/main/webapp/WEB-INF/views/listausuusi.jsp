@@ -146,6 +146,7 @@
 										</c:otherwise>
 									</c:choose></td>
 							</tr>
+							</table>
 					</div>
 				</c:forEach>
 			</div>

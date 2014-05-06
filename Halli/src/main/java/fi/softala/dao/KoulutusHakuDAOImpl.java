@@ -32,10 +32,10 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 	}
 
 	public List<Koulutustilaisuus> haeTulevat() {
-		String sql = "SELECT k.*, ats.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
+		String sql = "SELECT k.*, ats.*, ko.henkilotunnus, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
 				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
-				+ "JOIN kouluttaja ko ON ko.opiskelijanro = kk.opiskelijanro "
+				+ "JOIN henkilo ko ON ko.henkilotunnus = kk.kouluttajatunnus "
 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
 				+ "WHERE ats.pvm > curdate() AND nakyvyys = 1 "
 				+ "UNION ALL "
@@ -52,10 +52,10 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 	}
 	
 	public List<Koulutustilaisuus> haeMenneet() {
-		String sql = "SELECT k.*, ats.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
+		String sql = "SELECT k.*, ats.*, ko.henkilotunnus, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
 				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
-				+ "JOIN kouluttaja ko ON ko.opiskelijanro = kk.opiskelijanro "
+				+ "JOIN henkilo ko ON ko.henkilotunnus = kk.kouluttajatunnus "
 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
 				+ "WHERE ats.pvm <= curdate() AND nakyvyys = 1 "
 				+ "UNION ALL "
@@ -94,10 +94,10 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
  			}
  		}
 		
-		sql = "SELECT k.*, ats.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
+		sql = "SELECT k.*, ats.*, ko.henkilotunnus, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
 				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
-				+ "JOIN kouluttaja ko ON ko.opiskelijanro = kk.opiskelijanro "
+				+ "JOIN henkilo ko ON ko.henkilotunnus = kk.kouluttajatunnus "
 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
 				+ ""+sqlehto+" "
 				+ "UNION ALL "
@@ -132,10 +132,10 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 		 			}
 		 		}
 		 		
-		 		sql = "SELECT k.*, ats.*, ko.opiskelijanro, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
+		 		sql = "SELECT k.*, ats.*, ko.henkilotunnus, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 		 				+ "FROM koulutustilaisuus k "
 		 				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
-		 				+ "JOIN kouluttaja ko ON ko.opiskelijanro = kk.opiskelijanro "
+		 				+ "JOIN henkilo ko ON ko.henkilotunnus = kk.kouluttajatunnus "
 		 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
 		 				+ ""+sqlehto+" "
 		 				+ "UNION ALL "
