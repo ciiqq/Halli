@@ -59,6 +59,7 @@ public class KoulutusController {
 	        
 	        model.addAttribute("ks", koulutus);
 	       
+//	        dao.haeVapaatSlotit();
 	        
 	        Koulutustilaisuus koulutusTemplate = new Koulutustilaisuus();
 	        koulutusTemplate.setKuvaus(koulutus.getKuvaus());
@@ -102,6 +103,18 @@ public class KoulutusController {
 			getCreateForm(model);
 			
 			return "redirect:/koulutuslistaus";
+		}
+		
+		@RequestMapping(value = "/koulutuslistaus/siirto/{DaoId}/{DaoId2}", method = RequestMethod.GET)
+		public String siirraKoulutus(Model model, @PathVariable Integer DaoId, @PathVariable Integer DaoId2){
+			
+			dao.siirraKoulutus(DaoId, DaoId2);
+			
+			
+			
+			siirryKoulutukseen(model, DaoId);
+			
+			return "redirect:/koulutuslistaus/{DaoId}";
 		}
 		
 
