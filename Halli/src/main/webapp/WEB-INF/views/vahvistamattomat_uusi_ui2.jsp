@@ -66,7 +66,7 @@
 
 							<tr>
 								<td>
-									<p><c:out value="${k.pvm}" />klo.<c:out value="${k.alkukello}" />-<c:out value="${k.loppukello}" /></p>
+									<p><c:out value="${k.suomiPvm}" />klo.<c:out value="${k.suomiKloAlku}" />-<c:out value="${k.suomiKloLoppu}" /></p>
 								</td>
 
 								<td><c:out value="${k.aihe}" /></td>
