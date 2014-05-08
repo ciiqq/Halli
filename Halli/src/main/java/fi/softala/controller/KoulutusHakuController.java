@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.bean.Osallistuja;
@@ -74,13 +75,15 @@ public class KoulutusHakuController {
 	}
 
 	@RequestMapping(value="ilmoittaudu", method=RequestMethod.POST)
-	public String talletaOsallistuja(Model model, ServletRequest request){
+	public String talletaOsallistuja(Model model, ServletRequest request
+			, final RedirectAttributes redirectAttrs){
 		String osallistumiset = request.getParameter("valitutkoulutukset");
 		String enimi = request.getParameter("etunimi");
 		String snimi = request.getParameter("sukunimi");
 		String onro = request.getParameter("opiskelijanro");
 		Osallistuja osallistuja = new Osallistuja(onro, enimi, snimi);
 		osallistujaservice.tallenna(osallistuja, osallistumiset);
+		redirectAttrs.addFlashAttribute("viesti", "Ilmoittautuminen onnistui!");
 		return "redirect:/";
 	}
 }
