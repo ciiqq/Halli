@@ -25,22 +25,22 @@ public class PalauteDAOimpl implements PalauteDAO {
 	}
 
 	/**
-	 * Tallettaa parametrina annetun henkilön tietokantaan. Tietokannan
+	 * Tallettaa parametrina annetun henkilï¿½n tietokantaan. Tietokannan
 	 * generoima id asetetaan parametrina annettuun olioon.
 	 */
 	/*
 	 * public void talleta(Palaute p) { final String sql =
 	 * "insert into henkilo(etunimi, sukunimi) values(?,?)";
 	 * 
-	 * // anonyymi sisäluokka tarvitsee vakioina välitettävät arvot, //
-	 * jotta roskien keruu onnistuu tämän metodin suorituksen päättyessä.
+	 * // anonyymi sisï¿½luokka tarvitsee vakioina vï¿½litettï¿½vï¿½t arvot, //
+	 * jotta roskien keruu onnistuu tï¿½mï¿½n metodin suorituksen pï¿½ï¿½ttyessï¿½.
 	 * final int arvosana = p.getArvosana(); final String palauteteksti =
 	 * p.getPalauteteksti();
 	 * 
-	 * // jdbc pistää generoidun id:n tänne talteen KeyHolder idHolder = new
+	 * // jdbc pistï¿½ï¿½ generoidun id:n tï¿½nne talteen KeyHolder idHolder = new
 	 * GeneratedKeyHolder();
 	 * 
-	 * // suoritetaan päivitys itse määritellyllä
+	 * // suoritetaan pï¿½ivitys itse mï¿½ï¿½ritellyllï¿½
 	 * PreparedStatementCreatorilla // ja KeyHolderilla jdbcTemplate.update(new
 	 * PreparedStatementCreator() { public PreparedStatement
 	 * createPreparedStatement( Connection connection) throws SQLException {
@@ -48,7 +48,7 @@ public class PalauteDAOimpl implements PalauteDAO {
 	 * "palaute_id" }); ps.setInt(1, arvosana); ps.setString(2, palauteteksti);
 	 * return ps; } }, idHolder);
 	 * 
-	 * // tallennetaan id takaisin beaniin, koska // kutsujalla pitäisi olla
+	 * // tallennetaan id takaisin beaniin, koska // kutsujalla pitï¿½isi olla
 	 * viittaus samaiseen olioon p.setId(idHolder.getKey().intValue());
 	 * 
 	 * }
@@ -96,7 +96,7 @@ public class PalauteDAOimpl implements PalauteDAO {
 	
 	public List<Palaute> haeKouluttajaIdlla() {
 
-		String sql = "SELECT kk.opiskelijanro, i.koulutus_id, p.palaute_id, p.palauteteksti, p.arvosana, kk.koulutus_id FROM ilmoittautuminen i JOIN koulutuksenKouluttaja kk ON i.koulutus_id = kk.koulutus_id"
+		String sql = "SELECT kk.opiskelijanro, i.koulutus_id, p.palaute_id, p.palauteteksti, p.arvosana, kk.koulutus_id FROM ilmoittautuminen i JOIN koulutuksenkouluttaja kk ON i.koulutus_id = kk.koulutus_id"
 				+ " JOIN palaute p ON i.palaute_id = p.palaute_id " + " WHERE kk.opiskelijanro = 1234567;";
 		RowMapper<Palaute> mapper = new PalauteRowMapper();
 		List<Palaute> palautteet = jdbcTemplate.query(sql, mapper);
