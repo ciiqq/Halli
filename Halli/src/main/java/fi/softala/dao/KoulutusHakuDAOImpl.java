@@ -72,6 +72,7 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 	}
 	
 	public List<Koulutustilaisuus> haeHakusanalla(String ehto) {
+		ehto = ehto.trim();
 		ehto = "%"+ehto+"%";
 		Object[] parametrit = new Object[] {ehto, ehto, ehto};
 		String sql = "SELECT DISTINCT koulutustilaisuus.koulutus_id FROM koulutustilaisuus "
