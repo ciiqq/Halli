@@ -2,7 +2,9 @@ package fi.softala.dao;
 
 import javax.inject.Inject;
 
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import fi.softala.bean.Osallistuja;
@@ -40,6 +42,18 @@ public class OsallistujaDAOImpl implements OsallistujaDAO {
 			jdbcTemplate.update(toinenSql);
 		}
 
+	}
+	public Osallistuja haeOsallistuja(String opiskelijanumero, String koulutus_id) {
+		String sql = "select * from ilmoittautuminen where opiskelijanumero = ? and koulutus_id = ?";
+		Object[] parametrit = new Object[] { opiskelijanumero, koulutus_id };
+		Osallistuja osallistuja;
+		RowMapper<Osallistuja> mapper = new OsallistujaRowMapper();
+		try {
+			osallistuja = jdbcTemplate.queryForObject(sql, parametrit, mapper);
+		} catch (IncorrectResultSizeDataAccessException e) {
+			throw e;
+		}
+		return osallistuja;
 	}
 
 }

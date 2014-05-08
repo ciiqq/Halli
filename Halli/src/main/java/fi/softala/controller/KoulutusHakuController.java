@@ -8,14 +8,18 @@ import javax.servlet.ServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.bean.Osallistuja;
+import fi.softala.bean.Palaute;
 import fi.softala.service.KoulutusHakuService;
+import fi.softala.service.OpiskelijanumeronMuutosService;
 import fi.softala.service.OsallistujaService;
+import fi.softala.service.PalauteService;
 
 /**
  * 
@@ -41,6 +45,51 @@ public class KoulutusHakuController {
 	
 	@Inject
 	private OsallistujaService osallistujaservice;
+	
+	@Inject
+	private PalauteService palauteservice;
+	
+	@Inject
+	private OpiskelijanumeronMuutosService muutosservice;
+
+	public PalauteService getPalauteService() {
+		return palauteservice;
+	}
+
+	public void setPalauteService(PalauteService palauteservice) {
+		this.palauteservice = palauteservice;
+	}
+	public OpiskelijanumeronMuutosService getMuutosService() {
+		return muutosservice;
+	}
+	public void setMuutos(OpiskelijanumeronMuutosService muutosservice) {
+		this.muutosservice = muutosservice;
+	}
+	
+	@RequestMapping(value="palaute", method=RequestMethod.GET)
+	public String getCreateForm(Model model) {
+		Palaute tyhjaPalaute = new Palaute();
+		model.addAttribute("palaute", tyhjaPalaute);
+		return "palaute";
+	}
+	
+	@RequestMapping(value="palaute", method=RequestMethod.POST)
+	public String create(@ModelAttribute(value="palaute") Palaute palaute, Model model) {	
+				String opiskelijanumero = palaute.getOpiskelijanumero();
+				//Koulutus_id jostain listasta?
+				String koulutus_id = "";
+				opiskelijanumero = muutosservice.OpiskelijanumeronMuotoilu(opiskelijanumero);
+				if (palauteservice.tarkistaOpiskelijanumero(opiskelijanumero) == false && palauteservice.tarkistaOsallistuja(opiskelijanumero, koulutus_id) == true) {
+					palauteservice.tallenna(palaute);
+					model.addAttribute("onnistunutviesti", "Palautteen lähetys onnistui");	
+					return "palaute";
+				}
+				else {
+					model.addAttribute("virheviesti", "Palautteen lähetys ei onnistunut");
+					return "palaute";
+				}
+		
+	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listaaTulevatKoulutukset(Model model) {
