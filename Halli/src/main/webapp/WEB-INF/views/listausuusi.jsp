@@ -48,8 +48,11 @@
 			</div>
 		</div>
 		<div class="main clearfix">
-			<div class="ylapalkki">Halli: Koulutusten hallinta- ja
+		<div class="ylapalkit">
+			<div class="yla1">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
+			<div class="yla2"><div class="yla2-icon admin"></div><a href="./admin">Kirjaudu sisään järjestelmänvalvojana</a></div>
+		</div>
 			<div class="fifty lista">
 				<form id="haku" action="hakutulokset">
 					<input type="text" name="haku" autocomplete="off"
@@ -58,7 +61,7 @@
 				</form>
 				<ul>
 					<c:if test="${empty koulutukset}">
-						<c:out value="Koulutuksia ei löytynyt" />
+						<c:out value="Koulutuksia ei löytynyt hakusanan perusteella" />
 					</c:if>
 					<c:forEach items="${koulutukset}" var="k">
 						<li divid="<c:out value="${k.id}"/>" class="aihe"><input
@@ -149,14 +152,10 @@
 							<tr>
 								<td></td>
 								<td><c:choose>
-										<c:when test="${pvm <= nyt}">
-											<button type="button" value="${k.id}" class="lisaa">Anna
-												palautetta</button>
-										</c:when>
-										<c:otherwise>
+										<c:when test="${pvm > nyt}">
 											<button type="button" value="${k.id}" class="lisaa">Valitse
 												koulutus</button>
-										</c:otherwise>
+										</c:when>
 									</c:choose></td>
 							</tr>
 							</table>
@@ -164,8 +163,12 @@
 				</c:forEach>
 			</div>
 			<div class="alapalkki">
+			<c:choose>
+				<c:when test="${pvm > nyt}">
 				<button type="submit" name="vahvista" href="#lightbox_sisalto" class="vahvistus"
 				 disabled>Vahvista ilmoittautumiset</button>
+				</c:when>
+			</c:choose>
 			</div>
 		</div>
 

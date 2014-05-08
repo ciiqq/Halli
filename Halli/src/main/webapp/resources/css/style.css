@@ -282,13 +282,47 @@ input[type="checkbox"]:checked:after {
 	background-image: url("../images/palaute.png");
 }
 
-.ylapalkki {
+.yla2-icon {
+	height: 21px;
+	margin-top:10px;
+	margin-right:10px;
+	width: 16px;
+	float:left;
+}
+.admin {
+	background-image: url("../images/lukkokuvake.png");
+}
+
+.ylapalkit {
 	height: 48px;
 	line-height: 48px;
 	background-color: #009999;
 	color:white;
 	padding-left: 16px;
+	float:left;
+	display:block;
+	width:100%;
 }
+
+.yla1 {
+	height: 48px;
+	line-height: 48px;
+	background-color: #009999;
+	color:white;
+	padding-left: 16px;
+	float:left;
+}
+
+.yla2{
+	height: 48px;
+	line-height: 48px;
+	background-color: #009999;
+	color:white;
+	padding-left: 16px;
+	padding-right: 5px;
+	float:right;
+}
+
 
 .modaalin-kontrollit {
 	width: 100%;
