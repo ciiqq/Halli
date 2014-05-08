@@ -72,23 +72,26 @@ public class Aikatauluslottikontrolleri {
 		
 		kuukausi = paivays.getMonth();
 		vuosi = paivays.getYear();
-
+		
 		toiminto=request.getParameter("vaihda");
-		if (toiminto.equals("edellinen")) {
-			kuukausi--;
-			if(kuukausi<0){
-				vuosi--;
-				kuukausi = 11;
-			}
-		} else if (toiminto.equals("seuraava")) {
-			kuukausi++;
-			if(kuukausi>11){
-				vuosi++;
-				kuukausi = 0;
+		if (toiminto!=null) {
+			if (toiminto.equals("edellinen")) {
+				kuukausi--;
+				if(kuukausi<0){
+					vuosi--;
+					kuukausi = 11;
+				}
+			} else if (toiminto.equals("seuraava")) {
+				kuukausi++;
+				if(kuukausi>11){
+					vuosi++;
+					kuukausi = 0;
+				}
 			}
 		}
 		paivays.setMonth(kuukausi);
 		paivays.setYear(vuosi);
+		paiva = 1;
 		paivays.setDate(paiva);
 		request.getSession().setAttribute("paivays",paivays);
 
