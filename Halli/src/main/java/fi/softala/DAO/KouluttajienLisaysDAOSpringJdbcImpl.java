@@ -34,7 +34,7 @@ public class KouluttajienLisaysDAOSpringJdbcImpl implements KouluttajienLisaysDA
 
 	
 	public List<Kouluttaja> kouluttajienHaku(){
-		String sql = "select * from kouluttaja ORDER BY sukunimi ASC, etunimi ASC";
+		String sql = "select * from henkilo WHERE rooli = 'kouluttaja' ORDER BY sukunimi ASC, etunimi ASC";
 		
 		RowMapper<Kouluttaja> mapper = new KouluttajienLisaysRowMapper();
 		
@@ -44,7 +44,7 @@ public class KouluttajienLisaysDAOSpringJdbcImpl implements KouluttajienLisaysDA
 	}
 	
 	public Kouluttaja kouluttajanHaku(String opiskelijanro) {
-		String sql = "select * from kouluttaja where opiskelijanro = ?";
+		String sql = "select * from henkilo where rooli = 'kouluttaja' AND henkilotunnus = ? ";
 		
 		Object[] parametrit = new Object[] { opiskelijanro };
 		RowMapper<Kouluttaja> mapper = new KouluttajienLisaysRowMapper();
@@ -62,11 +62,12 @@ public class KouluttajienLisaysDAOSpringJdbcImpl implements KouluttajienLisaysDA
 	}
 
 	public void kouluttajanLisays(Kouluttaja k) {
-		final String sql = "insert into kouluttaja(opiskelijanro, etunimi, sukunimi, salasana, suola) values(?,?,?,?,?)";
+		final String sql = "insert into henkilo(henkilotunnus, rooli, etunimi, sukunimi, salasana, suola) values(?,?,?,?,?,?)";
 
 		// anonyymi sis‰luokka tarvitsee vakioina v‰litett‰v‰t arvot,
 		// jotta roskien keruu onnistuu t‰m‰n metodin suorituksen p‰‰ttyess‰.
-		final int opiskelijanro = Integer.parseInt(k.getOpiskelijanro());
+		final String opiskelijanro = k.getOpiskelijanro();
+		final String rooli = "kouluttaja";
 		final String etunimi = k.getEtunimi();
 		final String sukunimi = k.getSukunimi();
 		final String salasana = k.getSalasana();
@@ -81,11 +82,12 @@ public class KouluttajienLisaysDAOSpringJdbcImpl implements KouluttajienLisaysDA
     	    new PreparedStatementCreator() {
     	        public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
     	            PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
-    	            ps.setInt(1, opiskelijanro);
-    	            ps.setString(2, etunimi);
-    	            ps.setString(3, sukunimi);
-    	            ps.setString(4, salasana);
-    	            ps.setString(5, suola);
+    	            ps.setString(1, opiskelijanro);
+    	            ps.setString(2, rooli);
+    	            ps.setString(3, etunimi);
+    	            ps.setString(4, sukunimi);
+    	            ps.setString(5, salasana);
+    	            ps.setString(6, suola);
     	            return ps;
     	        }
     	    }, idHolder);

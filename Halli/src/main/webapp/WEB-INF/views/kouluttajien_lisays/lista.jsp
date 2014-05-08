@@ -86,10 +86,9 @@
 						      </div>
 						      
 						      
-						      <form:form action="/koulutusjarjestelma/opettaja/kouluttajat" modelAttribute="kouluttaja" method="post">
+						      <form:form action="/koulutusjarjestelma/opettaja/kouluttajat/lisaaKouluttaja" modelAttribute="kouluttaja" method="post">
 						      <div class="modal-body">
-						       
-										
+															
 										<p>
 											<form:label	path="etunimi">Etunimi</form:label><br/>
 											<form:input path="etunimi"/><form:errors path="etunimi"/>

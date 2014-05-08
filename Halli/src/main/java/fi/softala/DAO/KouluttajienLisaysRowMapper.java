@@ -13,7 +13,7 @@ public class KouluttajienLisaysRowMapper implements RowMapper<Kouluttaja> {
 		
 		Kouluttaja k = new Kouluttaja();
 		
-		k.setOpiskelijanro(rs.getString("opiskelijanro"));
+		k.setOpiskelijanro(rs.getString("henkilotunnus"));
 		k.setEtunimi(rs.getString("etunimi"));
 		k.setSukunimi(rs.getString("sukunimi"));
 		k.setSalasana(rs.getString("salasana"));
