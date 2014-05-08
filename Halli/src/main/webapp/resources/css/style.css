@@ -221,3 +221,7 @@ body {
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
+
+#vahvistusilmoitus {
+	padding: 20px;
+}

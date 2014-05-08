@@ -178,6 +178,7 @@ pageEncoding="UTF-8"%>
 </div>
 <a id="muokkausPainike" type="button" class="btn btn-primary"  href="#test_modal" data-toggle="modal">Muokkaa</a>
 <button class="btn btn-danger" data-toggle="modal" href="#peruutusModal">Peruuta Koulutus</button>
+<button class="btn btn-success" data-toggle="modal" href="#julkaisuModal">Julkaise Koulutus</button>
 
 
 <!-- Jos muokkaus onnistui, näytetään käyttäjälle teksti siitä -->
@@ -199,7 +200,27 @@ pageEncoding="UTF-8"%>
         </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
-      <a href="peruutus/${ks.id}" class="btn btn-primary">Peruuta</a>
+      <a href="peruutus/${ks.id}" class="btn btn-danger">Peruuta koulutus</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal-popup, jolla voidaan julkaista koulutus -->
+<div id="julkaisuModal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <div class="modal-header">
+    	<h3><c:out value="${ks.aihe}" /></h3>
+    </div>
+    	<div class="modal-body">
+      		Haluatko varmasti julkaista koulutuksen?
+      		
+      		<span class="color:red">HUOM! Koulutusta ei voi tämän jälkeen muokata!</span>
+        </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+      <a href="julkaisu/${ks.id}" class="btn btn-success">Julkaise koulutus</a>
       </div>
     </div>
   </div>

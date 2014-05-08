@@ -147,4 +147,15 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 		return avainsanat;
 	}
 
+
+
+	public void julkaiseKoulutus(int id) {
+		final String sql = "UPDATE koulutustilaisuus SET nakyvyys = 1 WHERE koulutus_id = ?";
+		
+		Object[] parametrit = new Object[] { id };
+
+		jdbcTemplate.update(sql, parametrit);
+		
+	}
+
 }

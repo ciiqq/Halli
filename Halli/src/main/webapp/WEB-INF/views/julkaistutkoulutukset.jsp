@@ -62,6 +62,12 @@
 							</c:forEach>
 						</table>
 						
+						<c:if test="${julkaisuvahvistus != null}">
+							<p id="vahvistusilmoitus" class="text-success bg-success">
+								<c:out value="${julkaisuvahvistus}" />
+							</p>
+						</c:if>
+						
 					</div>
 				</div>
 			</div>

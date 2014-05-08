@@ -109,6 +109,16 @@ public class KoulutusController {
 			return "redirect:/opettaja/koulutukset/julkaisemattomat";
 		}
 		
+		@RequestMapping(value = "/opettaja/koulutukset/julkaisemattomat/koulutustiedot/julkaise/{DaoId}", method = RequestMethod.GET)
+		public String julkaiseKoulutus(Model model, @PathVariable Integer DaoId){
+			
+			dao.julkaiseKoulutus(DaoId);
+			
+			haeKoulutukset(model);
+			
+			return "redirect:/opettaja/koulutukset/julkaisemattomat";
+		}
+		
 		@RequestMapping(value = "/koulutuslistaus/siirto/{DaoId}/{DaoId2}", method = RequestMethod.GET)
 		public String siirraKoulutus(Model model, @PathVariable Integer DaoId, @PathVariable Integer DaoId2){
 			

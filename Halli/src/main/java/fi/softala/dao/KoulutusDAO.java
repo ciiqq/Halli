@@ -18,6 +18,8 @@ public interface KoulutusDAO {
 
 	public void siirraKoulutus(int koulutusId, int aikaId);
 	
+	public void julkaiseKoulutus(int id);
+	
 	public List<Kouluttaja> haeKouluttajat(int id);
 	
 	public List<Avainsana> haeAvainsanat(int id);

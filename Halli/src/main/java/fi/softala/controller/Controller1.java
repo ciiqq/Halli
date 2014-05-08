@@ -111,6 +111,16 @@ public class Controller1 {
 		return "muokkaakoulutusta";
 	}
 	
+	@RequestMapping(value = "/opettaja/koulutukset/julkaisemattomat/koulutustiedot/julkaisu/{DaoId}", method = RequestMethod.GET)
+	public String julkaiseKoulutus(Model model, @PathVariable Integer DaoId, final RedirectAttributes ra){
+		
+		dao.julkaiseKoulutus(DaoId);
+		
+		ra.addFlashAttribute("julkaisuvahvistus", "Koulutus on julkaistu ja siihen voi ilmoittautua!");
+		
+		return "redirect:/opettaja/koulutukset/julkaistut";
+	}
+	
 	@RequestMapping(value="opettaja/koulutukset/julkaisemattomat/uusikoulutus", method=RequestMethod.GET)
 	public String getCreateForm5() {
 		return "uusikoulutus";
