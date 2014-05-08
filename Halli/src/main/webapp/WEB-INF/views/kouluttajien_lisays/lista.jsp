@@ -44,6 +44,29 @@
                         <h2 class="panel-title">Lista kouluttajista</h2>
                     </div>
                     <div class="panel-body">
+                    
+                    
+                    <c:if test="${not empty lisatyt}">
+	                    <div class="alert alert-success">  
+	  					<a class="close" data-dismiss="alert">×</a>  
+	  					<strong>Lisätyt kouluttajat</strong>  
+	  					<c:forEach items="${lisatyt}" var="k">
+							<p><c:out value="${k.opiskelijanro}"/> <c:out value="${k.etunimi}" /> <c:out value="${k.sukunimi}" /></p>
+						</c:forEach>
+						</div>
+					</c:if>
+					
+					<c:if test="${not empty eiLisatyt}">
+						<div class="alert alert-warning">  
+		  				<a class="close" data-dismiss="alert">×</a>  
+		  				<strong>Seuraavat opiskelijanumerot löytyvät jo kannasta</strong>
+		  				<c:forEach items="${eiLisatyt}" var="k">
+							<p><c:out value="${k.opiskelijanro}"/> <c:out value="${k.etunimi}" /> <c:out value="${k.sukunimi}" /></p>
+						</c:forEach>
+						</div>
+					</c:if>
+
+                    
                    		 <c:choose>
 							<c:when test="${not empty kouluttajat}">
 								<table class="table table-striped">
@@ -61,9 +84,7 @@
 									</c:forEach>
 		                            
 	                     	  	</table>
-								<p>
-								
-								</p>
+
 							</c:when>
 							
 							<c:otherwise>
@@ -147,5 +168,8 @@
 	</div>
 	<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+	<script src="twitter-bootstrap-v2/docs/assets/js/jquery.js"></script>  
+	<script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-alert.js"></script>  
+
 </body>
 </html>

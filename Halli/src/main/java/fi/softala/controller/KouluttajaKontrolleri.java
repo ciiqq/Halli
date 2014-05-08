@@ -26,6 +26,8 @@ import fi.softala.funktiot.SalasanaGeneraattori;
 @RequestMapping (value="/opettaja/kouluttajat")
 public class KouluttajaKontrolleri {
 	
+	private final String polku = "kouluttajien_lisays/lista";
+	
 	@Inject
 	private KouluttajienLisaysDAO dao;
 	
@@ -47,7 +49,7 @@ public class KouluttajaKontrolleri {
 		
 		model.addAttribute("kouluttajat", kouluttajat);
 		
-		return "kouluttajien_lisays/lista";
+		return polku;
 	}
 	
 	@RequestMapping(value="lisays", method=RequestMethod.GET)
@@ -56,7 +58,7 @@ public class KouluttajaKontrolleri {
 		Kouluttaja kouluttaja = new Kouluttaja();
 		model.addAttribute("kouluttaja", kouluttaja);
 		
-		return "kouluttajien_lisays/lisays";
+		return polku;
 	}
 	
 	@RequestMapping(value="lisaaKouluttaja", method=RequestMethod.POST)
@@ -67,7 +69,7 @@ public class KouluttajaKontrolleri {
 			List<Kouluttaja> kouluttajat = dao.kouluttajienHaku();
 			
 			model.addAttribute("kouluttajat", kouluttajat);
-			return "kouluttajien_lisays/lista";
+			return polku;
 		}
 		else{
 			//Lista tietokantaa varten
@@ -94,9 +96,14 @@ public class KouluttajaKontrolleri {
 				model.addAttribute("lisatyt", k);
 				
 			}
+			kouluttaja = new Kouluttaja();
+			model.addAttribute("kouluttaja", kouluttaja);
+			
+			List<Kouluttaja> kouluttajat = dao.kouluttajienHaku();
+			model.addAttribute("kouluttajat", kouluttajat);
 			
 
-			return "kouluttajien_lisays/lisatty";
+			return polku;
 		}
 		
 	}
@@ -131,9 +138,14 @@ public class KouluttajaKontrolleri {
 		//Annetaan modelille listat lisätyistä ja ei lisätyistä kouluttajista
 		model.addAttribute("lisatyt", lisataan);
 		model.addAttribute("eiLisatyt", eiLisata);
+		Kouluttaja kouluttaja = new Kouluttaja();
+		model.addAttribute("kouluttaja", kouluttaja);
+		
+		kouluttajat = dao.kouluttajienHaku();
+		model.addAttribute("kouluttajat", kouluttajat);
 		
 		
-		return "kouluttajien_lisays/lisatty";
+		return polku;
 	}
 	
 }
