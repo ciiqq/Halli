@@ -2,6 +2,7 @@ package fi.softala.dao;
 
 import java.util.List;
 
+import fi.softala.bean.Aikatauluslotti;
 import fi.softala.bean.Avainsana;
 import fi.softala.bean.Kouluttaja;
 import fi.softala.bean.Koulutustilaisuus;
@@ -23,4 +24,6 @@ public interface KoulutusDAO {
 	public List<Kouluttaja> haeKouluttajat(int id);
 	
 	public List<Avainsana> haeAvainsanat(int id);
+	
+	public List<Aikatauluslotti> haeVapaatSlotit();
 }

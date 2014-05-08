@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fi.softala.bean.Aikatauluslotti;
 import fi.softala.bean.Avainsana;
 import fi.softala.bean.Kouluttaja;
 import fi.softala.bean.Koulutustilaisuus;
@@ -74,11 +75,12 @@ public class Controller1 {
        
 
         //Luodaan olio Springin formia varten ,jossa voidaan muokata koulutusta
-//        dao.haeVapaatSlotit();
+        List<Aikatauluslotti> vapaat = dao.haeVapaatSlotit();
 
         Koulutustilaisuus koulutusTemplate = new Koulutustilaisuus();
         koulutusTemplate.setKuvaus(koulutus.getKuvaus());
         model.addAttribute("muokattavaKoulutus", koulutusTemplate);
+        model.addAttribute("vapaat", vapaat);
         
         return "koulutustiedot";
     }
