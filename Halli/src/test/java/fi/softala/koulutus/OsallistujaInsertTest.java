@@ -43,18 +43,18 @@ public class OsallistujaInsertTest {
 		Osallistuja osallistuja = new Osallistuja();
 		osallistuja.setEtunimi("Ossi");
 		osallistuja.setSukunimi("Osallistuja");
-		osallistuja.setOpiskelijanro("1204567");
+		osallistuja.setOpiskelijanro("1278393");
 		osallistuja.setSahkoposti("ossi", "osallistuja");
 		String[] osallistumiset = new String[] { "3" };
 		dao.talleta(osallistuja, osallistumiset);
 
-		String sql = "Select osallistuja_id from osallistuja "
-				+ "where osallistujan_opiskelijanro = '1204567'";
-		Integer id = jdbcTemplate.queryForObject(sql, Integer.class);
-		assertNotNull(id);
+		String sql = "Select osallistujan_opiskelijanro from osallistuja "
+				+ "where osallistujan_opiskelijanro = '1278393'";
+		String opnro = jdbcTemplate.queryForObject(sql, String.class);
+		assertNotNull(opnro);
 
-		sql = "Select osallistuja_id from ilmoittautuminen where osallistuja_id = "
-				+ id;
+		sql = "Select osallistujan_opiskelijanro from ilmoittautuminen where osallistujan_opiskelijanro = "
+				+ opnro;
 		List<Integer> ilmoittautumiset = jdbcTemplate.queryForList(sql,
 				Integer.class);
 		assertEquals(ilmoittautumiset.size(), osallistumiset.length);
