@@ -118,83 +118,86 @@
 		</div>
 	</div>
 
+	<form action="/koulutusjarjestelma/opettaja/aikataulut/lisaa" modelAttribute="aikaslotti"
+		method="post">
+		<div class="modal fade" id="lisääslotti" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Aikatauluslotin
+							lisääminen</h4>
+					</div>
 
-	<div class="modal fade" id="lisääslotti" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Aikatauluslotin
-						lisääminen</h4>
-				</div>
-				<div class="modal-body">
-					<div class="container">
-						<p>Valitse päivämäärä:</p>
-						<div class="row">
-							<div class='col-sm-6'>
-								<div class="form-group">
-									<div class='input-group date' id='paivamaara'
-										data-date-format="DD.MM.YYYY">
-										<input type='text' class="form-control" /> <span
-											class="input-group-addon"><span
-											class="glyphicon glyphicon-calendar"></span> </span>
-									</div>
-								</div>
-							</div>
-							<script type="text/javascript">
-								$(function() {
-									$('#paivamaara').datetimepicker({
-										language : 'fi',
-										pickTime : false
-									});
-								});
-							</script>
-						</div>
-						<p>Valitse alkamisaika:</p>
-						<div class="row">
-							<div class='col-sm-6'>
-								<div class="form-group">
-									<div class='input-group date' id='alkuaika'>
-										<input type='text' class="form-control" /> <span
-											class="input-group-addon"><span
-											class="glyphicon glyphicon-time"></span> </span>
-									</div>
-								</div>
-							</div>
-							<script type="text/javascript">
-								$(function() {
-									$('#alkuaika').datetimepicker({
-										language : 'fi',
-										pickDate : false
-									});
-								});
-							</script>
-						</div>
-						<p>Valitse päättymisaika:</p>
-						<div class="row">
-							<div class='col-sm-6'>
-								<div class="form-group">
-									<div class='input-group date' id='loppuaika'>
-										<input type='text' class="form-control" /> <span
-											class="input-group-addon"><span
-											class="glyphicon glyphicon-time"></span> </span>
-									</div>
-								</div>
-							</div>
-							<script type="text/javascript">
-								$(function() {
-									$('#loppuaika').datetimepicker({
-										language : 'fi',
-										pickDate : false
-									});
-								});
-							</script>
-						</div>
-						<p>Syötä tila:</p>
+					<div class="modal-body">
 
-						
+						<div class="container">
+							<p>Valitse päivämäärä:</p>
+							<div class="row">
+								<div class='col-sm-6'>
+									<div class="form-group">
+										<div class='input-group date' id='paivamaara'
+											data-date-format="DD.MM.YYYY">
+											<input type='text' class="form-control" /> <span
+												class="input-group-addon"><span
+												class="glyphicon glyphicon-calendar"></span> </span>
+										</div>
+									</div>
+								</div>
+								<script type="text/javascript">
+									$(function() {
+										$('#paivamaara').datetimepicker({
+											language : 'fi',
+											pickTime : false
+										});
+									});
+								</script>
+							</div>
+							<p>Valitse alkamisaika:</p>
+							<div class="row">
+								<div class='col-sm-6'>
+									<div class="form-group">
+										<div class='input-group date' id='alkuaika'>
+											<input type='text' class="form-control" /> <span
+												class="input-group-addon"><span
+												class="glyphicon glyphicon-time"></span> </span>
+										</div>
+									</div>
+								</div>
+								<script type="text/javascript">
+									$(function() {
+										$('#alkuaika').datetimepicker({
+											language : 'fi',
+											pickDate : false
+										});
+									});
+								</script>
+							</div>
+							<p>Valitse päättymisaika:</p>
+							<div class="row">
+								<div class='col-sm-6'>
+									<div class="form-group">
+										<div class='input-group date' id='loppuaika'>
+											<input type='text' class="form-control" /> <span
+												class="input-group-addon"><span
+												class="glyphicon glyphicon-time"></span> </span>
+										</div>
+									</div>
+								</div>
+								<script type="text/javascript">
+									$(function() {
+										$('#loppuaika').datetimepicker({
+											language : 'fi',
+											pickDate : false
+										});
+									});
+								</script>
+							</div>
+							<p>Syötä tila:</p>
+
+
 							<div class='col-sm-6'>
 								<div class="form-group">
 									<div class='input-group text' id='tila'>
@@ -212,9 +215,12 @@
 						ikkuna</button>
 					<button type="submit" class="btn btn-primary">Lisää slotti</button>
 				</div>
+
+
 			</div>
 		</div>
-	</div>
+		</div>
+	</form>
 
 	<script
 		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
