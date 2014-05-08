@@ -75,10 +75,10 @@ public class PalauteDAOimpl implements PalauteDAO {
 		return palautteet;
 	}
 
-	public List<Palaute> haeIdlla() {
+	public List<Palaute> haeIdlla() {	
 
 		String sql = "SELECT i.koulutus_id, p.palaute_id, p.palauteteksti, p.arvosana FROM ilmoittautuminen i "
-				+ "JOIN palaute p ON p.palaute_id = i.palaute_id WHERE i.koulutus_id = 1;";
+				+ "JOIN palaute p ON p.palaute_id = i.palaute_id WHERE i.koulutus_id = 2;";
 		RowMapper<Palaute> mapper = new PalauteRowMapper();
 		List<Palaute> palautteet = jdbcTemplate.query(sql, mapper);
 
@@ -96,8 +96,8 @@ public class PalauteDAOimpl implements PalauteDAO {
 	
 	public List<Palaute> haeKouluttajaIdlla() {
 
-		String sql = "SELECT kk.opiskelijanro, i.koulutus_id, p.palaute_id, p.palauteteksti, p.arvosana, kk.koulutus_id FROM ilmoittautuminen i JOIN koulutuksenkouluttaja kk ON i.koulutus_id = kk.koulutus_id"
-				+ " JOIN palaute p ON i.palaute_id = p.palaute_id " + " WHERE kk.opiskelijanro = 1234567;";
+		String sql = "SELECT kk.kouluttajatunnus, i.koulutus_id, p.palaute_id, p.palauteteksti, p.arvosana, kk.koulutus_id FROM ilmoittautuminen i JOIN koulutuksenkouluttaja kk ON i.koulutus_id = kk.koulutus_id"
+				+ " JOIN palaute p ON i.palaute_id = p.palaute_id " + " WHERE kk.kouluttajatunnus = 3335556;";
 		RowMapper<Palaute> mapper = new PalauteRowMapper();
 		List<Palaute> palautteet = jdbcTemplate.query(sql, mapper);
 
