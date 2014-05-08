@@ -8,6 +8,7 @@
 <head>
 	<title>Lisäys onnistui!</title>
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/style.css">
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
@@ -26,8 +27,8 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Koulutukset</a></li>
-					<li><a href="#">Kouluttajat</a></li>
+					<li><a href="#">Koulutukset</a></li>
+					<li class="active"><a href="#">Kouluttajat</a></li>
 					<li><a href="#">Palautteet</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -40,15 +41,20 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-body">
+					<div class="panel-heading">
+					<h2 class="panel-title">
 						<c:choose>
 							<c:when test="${not empty lisatyt}">
-								<h1>Lisäys suoritettu</h1>
+								Lisäys suoritettu
 							</c:when>
 							<c:otherwise>
-								<h1>Lisäystä ei tapahtunut</h1>
+								Lisäystä ei tapahtunut
 							</c:otherwise>
 						</c:choose>
+                        </h2>
+                    </div>
+					<div class="panel-body">
+						
 						
 						
 						<c:if test="${not empty lisatyt}">

@@ -69,8 +69,8 @@ public class KouluttajienLisaysDAOSpringJdbcImpl implements KouluttajienLisaysDA
 		final int opiskelijanro = Integer.parseInt(k.getOpiskelijanro());
 		final String etunimi = k.getEtunimi();
 		final String sukunimi = k.getSukunimi();
-		final String salasana = "testisalasana";
-		final String suola = "suola";
+		final String salasana = k.getSalasana();
+		final String suola = "suola!";
 		
 		
 		//jdbc pist‰‰ generoidun id:n t‰nne talteen

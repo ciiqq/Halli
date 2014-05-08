@@ -33,6 +33,6 @@
     <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
     
-    <a href="kouluttajat/">Kouluttajat</a>
+    <a href="opettaja/kouluttajat/">Kouluttajat</a>
 </body>
 </html>

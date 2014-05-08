@@ -19,10 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 import fi.softala.DAO.KouluttajienLisaysDAO;
 import fi.softala.bean.Kouluttaja;
 import fi.softala.funktiot.ExcelParseri;
+import fi.softala.funktiot.SalasanaGeneraattori;
 
 
 @Controller
-@RequestMapping (value="/kouluttajat")
+@RequestMapping (value="/opettaja/kouluttajat")
 public class KouluttajaKontrolleri {
 	
 	@Inject
@@ -63,6 +64,9 @@ public class KouluttajaKontrolleri {
 		
 		//Validointi tarkistus
 		if(result.hasErrors()){
+			List<Kouluttaja> kouluttajat = dao.kouluttajienHaku();
+			
+			model.addAttribute("kouluttajat", kouluttajat);
 			return "kouluttajien_lisays/lista";
 		}
 		else{
@@ -72,6 +76,7 @@ public class KouluttajaKontrolleri {
 			
 			//Jos opiskelijanumerolla ei löydy opiskelijaa, lisätään se kantaan
 			if(dao.kouluttajanHaku(kouluttaja.getOpiskelijanro()) == null ){
+				kouluttaja.setSalasana(SalasanaGeneraattori.generoiSalasana());
 				dao.kouluttajanLisays(kouluttaja);
 				System.out.println("Kouluttaja lisätty!");
 				System.out.println(kouluttaja);
@@ -112,6 +117,7 @@ public class KouluttajaKontrolleri {
 		for (int i = 0; i < kouluttajat.size(); i++){
 			if(dao.kouluttajanHaku(kouluttajat.get(i).getOpiskelijanro()) == null ){
 				lisataan.add(kouluttajat.get(i));
+				lisataan.get(lisataan.size()-1).setSalasana(SalasanaGeneraattori.generoiSalasana());
 			}else{
 				eiLisata.add(kouluttajat.get(i));
 			}

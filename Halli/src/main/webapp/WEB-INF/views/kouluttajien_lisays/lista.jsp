@@ -7,6 +7,7 @@
 <head>
 	<title>Kouluttajat</title>
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/style.css">
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
@@ -25,8 +26,8 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Koulutukset</a></li>
-					<li><a href="#">Kouluttajat</a></li>
+					<li><a href="#">Koulutukset</a></li>
+					<li class="active"><a href="#">Kouluttajat</a></li>
 					<li><a href="#">Palautteet</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -39,35 +40,42 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-body">
-					
-						<!-- Tähän tulee tavaraa -->
-						
-						<h1>Kouluttajat</h1>
-						
-						<!-- Button trigger modal -->
-						<button class="btn btn-primary" data-toggle="modal" data-target="#lisaaKouluttaja">
-						  Lisää kouluttaja
-						</button>
-						<button class="btn btn-primary" data-toggle="modal" data-target="#lisaaKouluttajalista">
-						  Lisää kouluttajalista
-						</button>
-						
-						<c:choose>
+					<div class="panel-heading">
+                        <h2 class="panel-title">Lista kouluttajista</h2>
+                    </div>
+                    <div class="panel-body">
+                   		 <c:choose>
 							<c:when test="${not empty kouluttajat}">
+								<table class="table table-striped">
+		                            <tr>
+		                                <th>Opiskelijanumero</th>
+		                                <th>Nimi</th>
+		                                <th></th>
+		                            </tr>
+		                            <c:forEach items="${kouluttajat}" var="k">
+										<tr>
+			                                <td><c:out value="${k.opiskelijanro}" /></td>
+			                                <td><c:out value="${k.etunimi}" /> <c:out value="${k.sukunimi}" /></td>
+			                                <td><button type="button" class="pull-right btn btn-danger btn-xs">Poista</button></td>
+		                       		    </tr>
+									</c:forEach>
+		                            
+	                     	  	</table>
 								<p>
-								<c:forEach items="${kouluttajat}" var="k">
-									<br><c:out value="${k.etunimi}" /> <c:out value="${k.sukunimi}" />
-								</c:forEach>
+								
 								</p>
 							</c:when>
 							
 							<c:otherwise>
-							<p><br>Järjestelmässä ei ole yhtään kouluttajaa</p>
+								<p><br>Järjestelmässä ei ole yhtään kouluttajaa</p>
 							</c:otherwise>
 						
 						</c:choose>
-							
+                        
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#lisaaKouluttajalista">Lisää kouluttajia Excelistä</button>
+                        <button class="btn btn-default" data-toggle="modal" data-target="#lisaaKouluttaja">Lisää yksittäinen kouluttaja</button>
+                        
+                    </div>
 						<!-- Modal -->
 						<div class="modal fade" id="lisaaKouluttaja" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  <div class="modal-dialog">
@@ -132,8 +140,6 @@
 						  </div>
 						</div>
 						
-						
-					</div>
 				</div>
 			</div>
 		</div>
