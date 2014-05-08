@@ -3,6 +3,7 @@ package fi.softala.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -91,7 +92,7 @@ public class Controller1 {
 	
 	@RequestMapping(value="opettaja/koulutukset/julkaisemattomat/koulutustiedot/{DaoId}", method=RequestMethod.POST)
 	public String muokkaaKoulutusta(Model model, @PathVariable Integer DaoId, @Valid @ModelAttribute("muokattavaKoulutus") Koulutustilaisuus koulutus,
-			BindingResult bindingResult, final RedirectAttributes reAts){
+			BindingResult bindingResult, final RedirectAttributes reAts, HttpServletRequest req){
 		
 		if(bindingResult.hasErrors()) {
 			Koulutustilaisuus virheellinenKoulutus = dao.haeKoulutus(DaoId);
