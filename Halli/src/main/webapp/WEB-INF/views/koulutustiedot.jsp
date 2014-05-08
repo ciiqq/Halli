@@ -33,7 +33,7 @@ pageEncoding="UTF-8"%>
  	});  
 
    
- 	$(document).ready(function() {
+ 	var validointi = function() {
   
 
  	$('input').keydown(function() {
@@ -75,7 +75,7 @@ pageEncoding="UTF-8"%>
 <title>Aikataulut</title>
 
 </head>
-<body>
+<body onload="validointi()">
 
 
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -254,7 +254,7 @@ pageEncoding="UTF-8"%>
 			  <tr>
 			  	<th><form:label path="kuvaus">Kuvaus</form:label></th>
 			  	<td><form:textarea id="kuvaus" name="kuvaus" class="kuvaus" path="kuvaus" style="resize:none;" value="${ks.kuvaus}" cols="40" rows="5"/> </td>
-			  	<td><form:errors path="kuvaus"></form:errors></td>
+			  	<td><form:errors id="kuvaus-error" path="kuvaus"></form:errors></td>
 			  	
 			  </tr>    
 			  
