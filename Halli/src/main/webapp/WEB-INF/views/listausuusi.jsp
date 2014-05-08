@@ -101,7 +101,7 @@
 								<td class="koulutus-otsikko" colspan="2">Koulutuksen tiedot</td>
 							</tr>
 							<tr>
-								<td class="bold">Aihe</td>
+								<td style="width:1px;" class="bold">Aihe</td>
 								<td><c:out value="${k.aihe}" /></td>
 							</tr>
 							<tr>
