@@ -51,7 +51,7 @@ public class Osallistuja {
 	}
 
 	public String getEtunimi() {
-		return etunimi;
+		return muotoileNimi(etunimi);
 	}
 
 	public void setEtunimi(String etunimi) {
@@ -59,7 +59,7 @@ public class Osallistuja {
 	}
 
 	public String getSukunimi() {
-		return sukunimi;
+		return muotoileNimi(sukunimi);
 	}
 
 	public void setSukunimi(String sukunimi) {
@@ -72,6 +72,20 @@ public class Osallistuja {
 	
 	public String getSahkoposti(){
 		return sahkoposti;
+	}
+	
+	public String muotoileNimi(String nimi){
+		String muotoiltuNimi=nimi.substring(0,1).toUpperCase();
+		for(int i = 1; i < nimi.length();i++){
+			if(nimi.substring(i, i+1).equals("-")){
+				muotoiltuNimi+=nimi.substring(i, i+1);
+				muotoiltuNimi+=nimi.substring(i+1, i+2).toUpperCase();
+				i++;
+			}else{
+				muotoiltuNimi+=nimi.substring(i, i+1).toLowerCase();
+			}
+		}
+		return muotoiltuNimi;
 	}
 
 	@Override
