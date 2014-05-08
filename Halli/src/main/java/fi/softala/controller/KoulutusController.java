@@ -78,6 +78,7 @@ public class KoulutusController {
 			if(bindingResult.hasErrors()) {
 				Koulutustilaisuus virheellinenKoulutus = dao.haeKoulutus(DaoId);
 		        
+				
 		        model.addAttribute("ks", virheellinenKoulutus);
 		        model.addAttribute("avaaModal", "avaaModal");
 				

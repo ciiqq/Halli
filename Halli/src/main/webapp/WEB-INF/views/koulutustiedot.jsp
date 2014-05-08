@@ -65,15 +65,14 @@ pageEncoding="UTF-8"%>
   
   </script>
 
-<!-- Avaa Modal valikko, mikäli muokkauskentässä on virheitä -->
-<c:if test="${avaaModal != null }">
-	<script src="<%=request.getContextPath()%>/resources/js/modalAvaus.js"></script>
-</c:if>
+
 
 <title>Koulutustiedot</title>
 
 </head>
 <body>
+
+
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -101,6 +100,7 @@ pageEncoding="UTF-8"%>
 		</div><!-- /.container-fluid -->
 	</nav>
 	<div class="container">
+	
 		
 <div class="panel panel-default">
   <!-- Default panel contents -->
@@ -252,8 +252,8 @@ pageEncoding="UTF-8"%>
 			    	
 			  	<td>
 			  	<select>
-				  	<c:forEach var="#" items="${#}">
-				  		<option><c:out value="${#.aikaslotti.pvm}"/>, <c:out value="${#.aikaslotti.alkukello}"/>-<c:out value="${#.aikaslotti.loppukello}"/>, <c:out value="${#.aikaslotti.koulutustila}"/></option>
+				  	<c:forEach var="#" items="">
+				  		<option><c:out value=""/>, <c:out value=""/>-<c:out value=""/>, <c:out value=""/></option>
 				  	</c:forEach>
 			  	</select>
 			  	
@@ -289,7 +289,10 @@ pageEncoding="UTF-8"%>
 
 		
 	</div>
-	<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+	<!-- Avaa Modal valikko, mikäli muokkauskentässä on virheitä -->
+	<c:if test="${avaaModal != null }">
+		<script src="<%=request.getContextPath()%>/resources/js/modalAvaus.js"></script>
+	</c:if>
+
 </body>
 </html>

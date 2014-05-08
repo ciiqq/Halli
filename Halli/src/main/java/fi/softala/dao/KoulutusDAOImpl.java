@@ -60,15 +60,15 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 
 	public void paivitaKoulutus(Koulutustilaisuus kt) {
 		final String sql = "UPDATE aikatauluslotti asl"
-						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id SET asl.pvm = ?, asl.alkukello = ?, asl.loppukello = ?, asl.koulutustila = ?, kt.aihe = ?, kt.kuvaus = ?, kt.lahtotaso = ?, kt.nakyvyys = ?"
+						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id SET kt.aihe = ?, kt.kuvaus = ?, kt.lahtotaso = ?"
 						+ " WHERE asl.aika_id = ?;";
 		
-		//Muutetaan takaisin SQL-muotoon
-		String asConvert = kt.getAikaslotti().getPvm().replace(".", "-");
-		String[] suomiPvm = asConvert.split("-");
-		kt.getAikaslotti().setPvm(suomiPvm[2] + "-" + suomiPvm[1] + "-" + suomiPvm[0]);	
+//		Muutetaan takaisin SQL-muotoon
+//		String asConvert = kt.getAikaslotti().getPvm().replace(".", "-");
+//		String[] suomiPvm = asConvert.split("-");
+//		kt.getAikaslotti().setPvm(suomiPvm[2] + "-" + suomiPvm[1] + "-" + suomiPvm[0]);	
 		
-		Object[] parametrit = new Object[] {kt.getAikaslotti().getPvm(), kt.getAikaslotti().getAlkukello(), kt.getAikaslotti().getLoppukello(), kt.getAikaslotti().getKoulutustila(), kt.getAihe(), kt.getKuvaus(), kt.getLahtotaso(), kt.getNakyvyys(), kt.getId()};
+		Object[] parametrit = new Object[] { kt.getAihe(), kt.getKuvaus(), kt.getLahtotaso(), kt.getId()};
 		
 		jdbcTemplate.update(sql, parametrit);
 		
