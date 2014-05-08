@@ -3,6 +3,7 @@ package fi.softala.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -31,6 +32,16 @@ public class KouluttajienLisaysDAOSpringJdbcImpl implements KouluttajienLisaysDA
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	
+	public List<Kouluttaja> kouluttajienHaku(){
+		String sql = "select * from kouluttaja ORDER BY sukunimi ASC, etunimi ASC";
+		
+		RowMapper<Kouluttaja> mapper = new KouluttajienLisaysRowMapper();
+		
+		List<Kouluttaja> kouluttajat = jdbcTemplate.query(sql,mapper);
+		
+		return kouluttajat;
+	}
 	
 	public Kouluttaja kouluttajanHaku(String opiskelijanro) {
 		String sql = "select * from kouluttaja where opiskelijanro = ?";

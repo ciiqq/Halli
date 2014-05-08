@@ -22,7 +22,7 @@ import fi.softala.funktiot.ExcelParseri;
 
 
 @Controller
-@RequestMapping (value="/kouluttajien_lisays")
+@RequestMapping (value="/kouluttajat")
 public class KouluttajaKontrolleri {
 	
 	@Inject
@@ -36,6 +36,18 @@ public class KouluttajaKontrolleri {
 		this.dao = dao;
 	}
 	
+	@RequestMapping(method=RequestMethod.GET)
+	public String kouluttajaLista(Model model) {
+		//Tyhjä kouluttaja oletuksena
+		Kouluttaja kouluttaja = new Kouluttaja();
+		model.addAttribute("kouluttaja", kouluttaja);
+		
+		List<Kouluttaja> kouluttajat = dao.kouluttajienHaku();
+		
+		model.addAttribute("kouluttajat", kouluttajat);
+		
+		return "kouluttajien_lisays/lista";
+	}
 	
 	@RequestMapping(value="lisays", method=RequestMethod.GET)
 	public String kouluttajienLisaysSivu(Model model) {
@@ -51,7 +63,7 @@ public class KouluttajaKontrolleri {
 		
 		//Validointi tarkistus
 		if(result.hasErrors()){
-			return "kouluttajien_lisays/lisays";
+			return "kouluttajien_lisays/lista";
 		}
 		else{
 			//Lista tietokantaa varten

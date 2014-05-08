@@ -41,25 +41,37 @@
 			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h1>Lisäys suoritettu</h1>
-
-						<div>
-						<h2>Lisätyt kouluttajat</h2>
+						<c:choose>
+							<c:when test="${not empty lisatyt}">
+								<h1>Lisäys suoritettu</h1>
+							</c:when>
+							<c:otherwise>
+								<h1>Lisäystä ei tapahtunut</h1>
+							</c:otherwise>
+						</c:choose>
 						
-						<c:forEach items="${lisatyt}" var="k">
-						<p><c:out value="${k.etunimi}" /> <c:out value="${k.sukunimi}" /></p>
-						</c:forEach>
 						
-						</div>
+						<c:if test="${not empty lisatyt}">
+							<div>
+							<p><b>Lisätyt kouluttajat</b></p>
+							
+							<c:forEach items="${lisatyt}" var="k">
+							<p><c:out value="${k.etunimi}" /> <c:out value="${k.sukunimi}" /></p>
+							</c:forEach>
+							
+							</div>
+						</c:if>
 						
-						<div>
-						<h2>Ei lisätyt kouluttajat</h2>
-						
-						<c:forEach items="${eiLisatyt}" var="k">
-						<p><c:out value="${k.etunimi}" /> <c:out value="${k.sukunimi}" /></p>
-						</c:forEach>
-						
-						</div>
+						<c:if test="${not empty eiLisatyt}">
+							<div>
+							<p><b>Seuraavat kouluttajat ovat jo järjestelmässä</b></p>
+							
+							<c:forEach items="${eiLisatyt}" var="k">
+							<p><c:out value="${k.etunimi}" /> <c:out value="${k.sukunimi}" /></p>
+							</c:forEach>
+							
+							</div>
+						</c:if>
 						
 					</div>
 				</div>
