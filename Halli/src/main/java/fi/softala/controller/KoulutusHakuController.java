@@ -132,7 +132,7 @@ public class KoulutusHakuController {
 		String onro = request.getParameter("opiskelijanro");
 		Osallistuja osallistuja = new Osallistuja(onro, enimi, snimi);
 		osallistujaservice.tallenna(osallistuja, osallistumiset);
-		redirectAttrs.addFlashAttribute("viesti", "Ilmoittautuminen onnistui!");
+		redirectAttrs.addFlashAttribute("viesti", "PARAS KOODI EI OLE NULL");
 		return "redirect:/";
 	}
 }

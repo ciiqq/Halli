@@ -73,9 +73,22 @@
 			</div>
 			<div class="fifty tiedot">
 				<div class="table-container" style="opacity: 0.5;">
-					<span
-						style="display: block; text-align: center; margin-top: 96px; margin-bottom: 96px;">Valitse
-						koulutus vasemmalta :)</span><br>${viesti}
+					<c:choose>
+						<c:when test="${viesti==null}">
+							<span
+								style="display: block; text-align: center; margin-top: 96px; margin-bottom: 96px;">Tervetuloa
+								HAAGA-HELIA ammattikorkeakoulun ilmoittautumisjärjestelmään!
+								Tarvitset opiskelijatunnuksen. Valitse koulutukset vasemmalta.</span>
+							<br />
+						</c:when>
+
+						<c:otherwise>
+							<span
+								style="display: block; text-align: center; margin-top: 96px; margin-bottom: 96px;">
+								Kiitos ilmoittautumisesta!</span>
+							<br />
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<c:forEach items="${koulutukset}" var="k">
 					<input type="hidden" name="aihe" value="${k.aihe}" />
