@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: a1102173
 Build-Jdk: 1.7.0_40
+=======
+Built-By: JORI
+Build-Jdk: 1.7.0_51
+>>>>>>> e45b51c0ed38812fe97153c936641a34354fc506
 Created-By: Maven Integration for Eclipse
 

@@ -20,8 +20,8 @@ public class Koulutustilaisuus {
 	private String suomiKloAlku;
 	private String suomiKloLoppu;
 	private String paikka;
-	private Opettaja ope;
-	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
+	private Henkilo ope;
+	private List<Henkilo> kouluttajat = new ArrayList<Henkilo>();
 	private List<String> avainsanat = new ArrayList<String>();
 	
 	public int getId() {
@@ -101,19 +101,19 @@ public class Koulutustilaisuus {
 		this.suomiKloLoppu = suomiKloMuotoilu.format(suomiKloLoppu);
 	}
 
-	public Opettaja getOpe() {
+	public Henkilo getOpe() {
 		return ope;
 	}
 
-	public void setOpe(Opettaja ope) {
+	public void setOpe(Henkilo ope) {
 		this.ope = ope;
 	}
 
-	public List<Kouluttaja> getKouluttajat() {
+	public List<Henkilo> getKouluttajat() {
 		return kouluttajat;
 	}
 
-	public void setKouluttajat(List<Kouluttaja> kouluttajat) {
+	public void setKouluttajat(List<Henkilo> kouluttajat) {
 		this.kouluttajat = kouluttajat;
 	}
 

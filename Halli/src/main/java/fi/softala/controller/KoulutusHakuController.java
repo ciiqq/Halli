@@ -43,7 +43,7 @@ public class KoulutusHakuController {
 	public String listaaVahvistamattomatKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeVahvistamattomat();
 		model.addAttribute("koulutukset", koulutukset);
-		return "vahvistamattomatkoulutukset";
+		return "uusi_ui";
 	}
 	
 	@RequestMapping(value = "vahvistakoulutus", method = RequestMethod.POST)
@@ -51,19 +51,19 @@ public class KoulutusHakuController {
 		String vahvistettavat = request.getParameter("valitutkoulutukset");
 
 		vahvistusservice.VahvistaKoulutus(vahvistettavat);
-		return "vahvistamattomatkoulutukset";
+		return "uusi_ui";
 	}
 	
 	@RequestMapping(value = "VahvistaKaikkiKoulutukset")
 	public String VahvistaKaikkiKoulutukset() {
 		vahvistusservice.VahvistaKaikkiKoulutukset();
-		return "vahvistamattomatkoulutukset";
+		return "uusi_ui";
 	}
 	
 	@RequestMapping(value = "uusi_ui", method = RequestMethod.GET)
 	public String listaaVahvistamattomatKoulutuksetUusiUi(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeVahvistamattomat();
 		model.addAttribute("koulutukset", koulutukset);
-		return "vahvistamattomat_uusi_ui";
+		return "vahvistamattomat_uusi_ui2";
 	}
 }

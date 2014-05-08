@@ -1,35 +1,44 @@
 package fi.softala.bean;
 
-public class Kouluttaja {
+public class Henkilo {
 	
-	private String opiskelijanro;
+	private String htunnus;
+	private String rooli;
 	private String etunimi;
 	private String sukunimi;
 	private String salasana;
 	private String suola;
 	
-	public Kouluttaja() {
-		opiskelijanro = null;
+	public Henkilo() {
+		htunnus = null;
 		etunimi = null;
 		sukunimi = null;
 		salasana = null;
 		suola = null;
 	}
 	
-	public Kouluttaja(String onro, String enimi, String snimi, String ssana, String suola) {
-		this.opiskelijanro = onro;
+	public Henkilo(String onro, String enimi, String snimi, String ssana, String suola) {
+		this.htunnus = onro;
 		this.etunimi = enimi;
 		this.sukunimi = snimi;
 		this.salasana = ssana;
 		this.suola = suola;
 	}
 
-	public String getOpiskelijanro() {
-		return opiskelijanro;
+	public String getHtunnus() {
+		return htunnus;
 	}
 
-	public void setOpiskelijanro(String opiskelijanro) {
-		this.opiskelijanro = opiskelijanro;
+	public void setHtunnus(String htunnus) {
+		this.htunnus = htunnus;
+	}
+	
+	public String getRooli() {
+		return rooli;
+	}
+	
+	public void setRooli(String rooli) {
+		this.rooli = rooli;
 	}
 
 	public String getEtunimi() {
@@ -66,7 +75,7 @@ public class Kouluttaja {
 
 	@Override
 	public String toString() {
-		return "KouluttajaImpl [opiskelijanro=" + opiskelijanro + ", etunimi="
+		return "KouluttajaImpl [htunnus=" + htunnus + ", rooli=" + rooli + ", etunimi="
 				+ etunimi + ", sukunimi=" + sukunimi + ", salasana=" + salasana
 				+ ", suola=" + suola + "]";
 	}

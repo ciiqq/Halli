@@ -12,7 +12,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
-import fi.softala.bean.Kouluttaja;
+import fi.softala.bean.Henkilo;
 import fi.softala.bean.Koulutustilaisuus;
 
 /**
@@ -29,7 +29,7 @@ public class KoulutusHakuRsE implements
 			throws SQLException, DataAccessException {
 
 		RowMapper<Koulutustilaisuus> koulutusMapper = new KoulutusHakuRowMapper();
-		RowMapper<Kouluttaja> kouluttajaMapper = new KouluttajaRowMapper();
+		RowMapper<Henkilo> henkiloMapper = new HenkiloRowMapper();
 		Map<Integer, Koulutustilaisuus> koulutukset = new LinkedHashMap<Integer, Koulutustilaisuus>();
 
 		while (rs.next()) {
@@ -41,8 +41,8 @@ public class KoulutusHakuRsE implements
 			}
 			int kouluttaja_true = rs.getInt("kouluttaja_true");
 			if (kouluttaja_true == 1) {
-				List<Kouluttaja> kouluttajat = koulutus.getKouluttajat();
-				Kouluttaja kouluttaja = kouluttajaMapper.mapRow(rs, id);
+				List<Henkilo> kouluttajat = koulutus.getKouluttajat();
+				Henkilo kouluttaja = henkiloMapper.mapRow(rs, id);
 				kouluttajat.add(kouluttaja);
 
 			} else if (kouluttaja_true == 0) {

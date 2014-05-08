@@ -125,11 +125,4 @@ $(document).ready(function() {
 		$("#koulutukset").submit();
 		
     });
-	
-    // Kaikille vahvistamattomille koulutuksille vahvistus
-    $(".kaikkienKoulutuksienVahvistus").click(function() {
-    	
-    	
-    	
-    }); 
 });  
