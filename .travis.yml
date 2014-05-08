@@ -1,6 +1,4 @@
 language: java
-before_script:
-  - mysql -e 'create database test;'
 script: mvn test --file Halli/travispom.xml
 after_success:
   - mvn clean --file Halli/travispom.xml cobertura:cobertura coveralls:cobertura
