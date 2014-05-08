@@ -63,6 +63,13 @@
 							</c:forEach>
 						</table>
 						<a href="<%=request.getContextPath()%>/opettaja/koulutukset/julkaisemattomat/uusikoulutus" class="btn btn-primary" >Lisää uusi koulutus</a>
+						
+						<c:if test="${peruutusvahvistus != null}">
+							<p id="peruutusilmoitus" class="text-success bg-success">
+								<c:out value="${peruutusvahvistus}" />
+							</p>
+						</c:if>
+						
 					</div>
 				</div>
 			</div>

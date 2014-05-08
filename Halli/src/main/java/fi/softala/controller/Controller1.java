@@ -111,6 +111,17 @@ public class Controller1 {
 		return "muokkaakoulutusta";
 	}
 	
+
+	@RequestMapping(value = "/opettaja/koulutukset/julkaisemattomat/koulutustiedot/peruutus/{DaoId}", method = RequestMethod.GET)
+	public String peruutaKoulutus(Model model, @PathVariable Integer DaoId, final RedirectAttributes ra){
+		
+		dao.peruutaKoulutus(DaoId);
+		
+		ra.addFlashAttribute("peruutusvahvistus", "Koulutus on peruutettu onnistuneesti!");
+		
+		return "redirect:/opettaja/koulutukset/julkaisemattomat";
+	}
+	
 	@RequestMapping(value = "/opettaja/koulutukset/julkaisemattomat/koulutustiedot/julkaisu/{DaoId}", method = RequestMethod.GET)
 	public String julkaiseKoulutus(Model model, @PathVariable Integer DaoId, final RedirectAttributes ra){
 		
