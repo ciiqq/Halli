@@ -29,39 +29,45 @@ pageEncoding="UTF-8"%>
  			'maxTime': '21:00'
  		});
  	});
- </script>
-     
-            <script>
-   $(function() {
+ 	
+ 	
+ 
+   
+
+   
+ 	$(document).ready(function() {
   
   
-    $("#modal-form").validate({
-    
-        // Specify the validation rules
-        rules: {
-            aihe: {required:true,
-            		minlength:5
-        		},
-            kuvaus:{required:true,
-            		minlength:5
-    		}
-        },
-     
-        // Specify the validation error messages
-        messages: {
-            aihe: {required:"Lis�� aihe!",
-            		minlength:"Liian lyhyt aiheen nimi!"},
-            kuvaus: {required:"Lis�� kuvaus!",
-            		minlength:"Liian lyhyt kuvaus"
-            }
-        },
-        
-        submitHandler: function(form) {
-            form.submit();
-        }
-    });
+ 	$('input').keydown(function() {
+	     $("#modal-form").validate({ 
+	    
+	        // Specify the validation rules
+	        rules: {
+	            aihe: {required:true,
+	            		minlength:5
+	        		},
+	            kuvaus:{required:true,
+	            		minlength:5
+	    		}
+	        },
+	     
+	        // Specify the validation error messages
+	        messages: {
+	            aihe: {required:"Lisää aihe!",
+	            		minlength:"Liian lyhyt aiheen nimi!"},
+	            kuvaus: {required:"Lisää kuvaus!",
+	            		minlength:"Liian lyhyt kuvaus"
+	            }
+	        },
+	        
+	        submitHandler: function(form) {
+	            form.submit();	        
+	     }
 
   });
+    });	
+ 	});	
+ 
   
   </script>
 
