@@ -57,7 +57,7 @@
 				<form id="haku" action="hakutulokset">
 					<input type="text" name="haku" autocomplete="off"
 						placeholder="Suodata koulutuksia hakusanan perusteella"
-						value="${hakusana}"><input type="submit" value=" ">
+						value="${hakusana}"><input type="submit" value=" "><c:if test="${!empty hakusana}"><c:out escapeXml="false" value="<a class='sulkemisnappi' href='./'></a>" /></c:if>
 				</form>
 				<ul>
 					<c:if test="${empty koulutukset}">
