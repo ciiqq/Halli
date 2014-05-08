@@ -65,7 +65,7 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 				+ "JOIN avainsana a ON a.avainsana_id = ka.avainsana_id "
 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
 				+ "WHERE ats.pvm <= curdate() AND nakyvyys = 1 "
-				+ "ORDER BY pvm, alkukello";
+				+ "ORDER BY pvm DESC";
 		List<Koulutustilaisuus> koulutukset = jt.query(sql,
 				new KoulutusHakuRsExtractor());
 		return koulutukset;
