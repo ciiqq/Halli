@@ -8,7 +8,7 @@ import fi.softala.bean.Koulutustilaisuus;
 
 public interface KoulutusDAO {
 	
-	public List<Koulutustilaisuus> haeKoulutukset();
+	public List<Koulutustilaisuus> haeKoulutukset(boolean julkaistu);
 
 	public Koulutustilaisuus haeKoulutus(int id);
 	

@@ -16,7 +16,7 @@ public class Koulutustilaisuus {
 	
 	private int id;
 	
-	@Size(min=5, max=50)
+	@Size(min=5, max=50, message="Aiheen t‰ytyy olla v‰hint‰‰n 5 merkki‰ pitk‰")
 	private String aihe;
 	
 	@Size(min=5)

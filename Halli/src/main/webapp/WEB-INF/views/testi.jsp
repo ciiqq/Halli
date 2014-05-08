@@ -5,6 +5,7 @@
 <head>
 <title>Testi</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
+
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -34,8 +35,13 @@
         </div>
     </nav>
     <div class="container">
+
         <a class="btn btn-primary" href="testaus/uusi">Testaa</a>
-        <a class="btn btn-primary" href="koulutuslistaus">Listaus</a>
+        <a class="btn btn-primary" href="opettaja/koulutukset/julkaisemattomat">Listaus</a>
+
+        <a class="btn btn-primary" href="opettaja/aikataulut">Kirjaudu sisään opettajana</a>
+        <a class="btn btn-primary" href="kouluttaja/koulutus/">Kirjaudu sisään kouluttajana</a>
+
     </div>
     <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>

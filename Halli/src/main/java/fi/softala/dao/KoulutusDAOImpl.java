@@ -34,9 +34,15 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 
 
 
-	public List<Koulutustilaisuus> haeKoulutukset() {
-		final String sql = "SELECT kt.koulutus_id, asl.aika_id, asl.pvm, asl.alkukello, asl.loppukello, asl.koulutustila, kt.aihe, kt.kuvaus, kt.lahtotaso, kt.nakyvyys FROM koulutustilaisuus kt JOIN aikatauluslotti asl ON " +
-							"asl.koulutus_id = kt.koulutus_id;";
+	public List<Koulutustilaisuus> haeKoulutukset(boolean julkaistu) {
+		String sql = "SELECT kt.koulutus_id, asl.aika_id, asl.pvm, asl.alkukello, asl.loppukello, asl.koulutustila, kt.aihe, kt.kuvaus, kt.lahtotaso, kt.nakyvyys FROM koulutustilaisuus kt JOIN aikatauluslotti asl ON " +
+							"asl.koulutus_id = kt.koulutus_id AND ";
+		
+		if(julkaistu){
+			sql =  sql + "nakyvyys = 1";
+		}else{
+			sql =  sql + "nakyvyys = 0";
+		}
 		
 		RowMapper<Koulutustilaisuus> rm = new KoulutusRowMapper();
 		

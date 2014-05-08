@@ -36,77 +36,77 @@ public class KoulutusController {
 		
 		@RequestMapping(value="/koulutuslistaus", method=RequestMethod.GET)
 		public String haeKoulutukset(Model model) {
-			List<Koulutustilaisuus> koulutuslista = dao.haeKoulutukset();
+			List<Koulutustilaisuus> koulutuslista = dao.haeKoulutukset(true);
 			
 			model.addAttribute("koulutukset", koulutuslista);
 			
-			return "koulutuslista";
+			return "julkaisemattomatkoulutukset";
 		}
 		
 		
-		//Tämä metodi kuuntelee valuessa olevaa osoitetta koulutuslistat.jsp:ltä.	
-		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.GET)
-	    public String siirryKoulutukseen(Model model, @PathVariable Integer DaoId) {
-			
-			//Hakee koulutuksen tiedot
-	       Koulutustilaisuus koulutus = dao.haeKoulutus(DaoId);
-	       
-	       //Hakee kaikki koulutuksen kouluttajat ja laittaa sen koulutus-olioon
-	       List<Kouluttaja> kouluttajat = dao.haeKouluttajat(DaoId);
-	       koulutus.setKouluttajat(kouluttajat);
-	       
-	       //Hakee kaikki koulutuksen avainsanat ja laittaa sen koulutus-olioon
-	       List<Avainsana> avainsanat = dao.haeAvainsanat(DaoId);
-	       koulutus.setAvainsanat(avainsanat);
-	        
-	       //Laitetaan Modeliin koulustusolio, jotta voidaan sivulla 
-	       model.addAttribute("ks", koulutus);
-	       
-
-	        //Luodaan olio Springin formia varten ,jossa voidaan muokata koulutusta
+//		//Tämä metodi kuuntelee valuessa olevaa osoitetta koulutuslistat.jsp:ltä.	
+//		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.GET)
+//	    public String siirryKoulutukseen(Model model, @PathVariable Integer DaoId) {
+//			
+//			//Hakee koulutuksen tiedot
+//	       Koulutustilaisuus koulutus = dao.haeKoulutus(DaoId);
+//	       
+//	       //Hakee kaikki koulutuksen kouluttajat ja laittaa sen koulutus-olioon
+//	       List<Kouluttaja> kouluttajat = dao.haeKouluttajat(DaoId);
+//	       koulutus.setKouluttajat(kouluttajat);
+//	       
+//	       //Hakee kaikki koulutuksen avainsanat ja laittaa sen koulutus-olioon
+//	       List<Avainsana> avainsanat = dao.haeAvainsanat(DaoId);
+//	       koulutus.setAvainsanat(avainsanat);
+//	        
+//	       //Laitetaan Modeliin koulustusolio, jotta voidaan sivulla 
+//	       model.addAttribute("ks", koulutus);
+//	       
+//
+//	        //Luodaan olio Springin formia varten ,jossa voidaan muokata koulutusta
 //	        dao.haeVapaatSlotit();
+//
+//	        Koulutustilaisuus koulutusTemplate = new Koulutustilaisuus();
+//	        koulutusTemplate.setKuvaus(koulutus.getKuvaus());
+//	        model.addAttribute("muokattavaKoulutus", koulutusTemplate);
+//	        
+//	        return "koulutustiedot";
+//	    } 
+		
+		
+//		
+//		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.POST)
+//		public String muokkaaKoulutusta(Model model, @PathVariable Integer DaoId, @Valid @ModelAttribute("muokattavaKoulutus") Koulutustilaisuus koulutus,
+//				BindingResult bindingResult, final RedirectAttributes reAts){
+//			
+//			if(bindingResult.hasErrors()) {
+//				Koulutustilaisuus virheellinenKoulutus = dao.haeKoulutus(DaoId);
+//		        
+//				
+//		        model.addAttribute("ks", virheellinenKoulutus);
+//		        model.addAttribute("avaaModal", "avaaModal");
+//				
+//				return "koulutustiedot";
+//			}
+//			
+//			koulutus.setId(DaoId);
+//			
+//			dao.paivitaKoulutus(koulutus);
+//			
+//			reAts.addFlashAttribute("muokkausOnnistui", "Koulutuksen muokkaus onnistui!");
+//			
+//			return "redirect:/koulutuslistaus/" + DaoId;
+//		}
+		
 
-	        Koulutustilaisuus koulutusTemplate = new Koulutustilaisuus();
-	        koulutusTemplate.setKuvaus(koulutus.getKuvaus());
-	        model.addAttribute("muokattavaKoulutus", koulutusTemplate);
-	        
-	        return "koulutustiedot";
-	    } 
-		
-		
-		
-		@RequestMapping(value = "/koulutuslistaus/{DaoId}", method = RequestMethod.POST)
-		public String muokkaaKoulutusta(Model model, @PathVariable Integer DaoId, @Valid @ModelAttribute("muokattavaKoulutus") Koulutustilaisuus koulutus,
-				BindingResult bindingResult, final RedirectAttributes reAts){
-			
-			if(bindingResult.hasErrors()) {
-				Koulutustilaisuus virheellinenKoulutus = dao.haeKoulutus(DaoId);
-		        
-				
-		        model.addAttribute("ks", virheellinenKoulutus);
-		        model.addAttribute("avaaModal", "avaaModal");
-				
-				return "koulutustiedot";
-			}
-			
-			koulutus.setId(DaoId);
-			
-			dao.paivitaKoulutus(koulutus);
-			
-			reAts.addFlashAttribute("muokkausOnnistui", "Koulutuksen muokkaus onnistui!");
-			
-			return "redirect:/koulutuslistaus/" + DaoId;
-		}
-		
-
-		@RequestMapping(value = "/koulutuslistaus/peruutus/{DaoId}", method = RequestMethod.GET)
+		@RequestMapping(value = "/opettaja/koulutukset/julkaisemattomat/koulutustiedot/peruutus/{DaoId}", method = RequestMethod.GET)
 		public String peruutaKoulutus(Model model, @PathVariable Integer DaoId){
 			
 			dao.peruutaKoulutus(DaoId);
 			
 			haeKoulutukset(model);
 			
-			return "redirect:/koulutuslistaus";
+			return "redirect:/opettaja/koulutukset/julkaisemattomat";
 		}
 		
 		@RequestMapping(value = "/koulutuslistaus/siirto/{DaoId}/{DaoId2}", method = RequestMethod.GET)
@@ -116,7 +116,7 @@ public class KoulutusController {
 			
 			
 			
-			siirryKoulutukseen(model, DaoId);
+			//siirryKoulutukseen(model, DaoId);
 			
 			return "redirect:/koulutuslistaus/{DaoId}";
 		}

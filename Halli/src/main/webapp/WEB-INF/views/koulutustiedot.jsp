@@ -11,6 +11,7 @@ pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/koulutuslistaustyylit.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/jquery-ui-1.10.4.min.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/jquery.timepicker.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/style.css">
 
 
 
@@ -21,6 +22,7 @@ pageEncoding="UTF-8"%>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modal.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modalmanager.js"></script>
  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+ 
 <script> 
  	$(document).ready(function() {
  		$( "#datepicker" ).datepicker({dateFormat: 'dd.mm.yy'});
@@ -75,41 +77,40 @@ pageEncoding="UTF-8"%>
 
 
 
-<title>Koulutustiedot</title>
+<title>Aikataulut</title>
 
 </head>
 <body>
 
 
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
+	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Halli</a>
+				<div class="navbar-brand">Halli</div>
 			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Koulutukset</a></li>
-					<li><a href="#">Kouluttajat</a></li>
-					<li><a href="#">Palautteet</a></li>
+					<li><a href="<%=request.getContextPath()%>/opettaja/kouluttajat">Kouluttajat</a></li>
+					<li><a href="<%=request.getContextPath()%>/opettaja/aikataulut">Aikataulut</a></li>
+					<li class="active"><a href="<%=request.getContextPath()%>/opettaja/koulutukset/julkaisemattomat/">Koulutukset</a></li>
+					<li><a href="<%=request.getContextPath()%>/opettaja/palautteet">Palautteet</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Kirjaudu ulos</a></li>
+					<li><a href="logout">Kirjaudu ulos</a></li>
 				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
+			</div>
+		</div>
 	</nav>
 	<div class="container">
-	
-		
+		<div class="row">
+			<div class="col-md-12">
+
 <div class="panel panel-default">
   <!-- Default panel contents -->
   
@@ -173,10 +174,10 @@ pageEncoding="UTF-8"%>
     
   </table>
 </div>
-<a class="btn btn-primary" href="../koulutuslistaus">Takaisin listaukseen</a>
+</div>
+</div>
 <a id="muokkausPainike" type="button" class="btn btn-primary"  href="#test_modal" data-toggle="modal">Muokkaa</a>
 <button class="btn btn-danger" data-toggle="modal" href="#peruutusModal">Peruuta Koulutus</button>
-<br /><br />
 
 
 <!-- Jos muokkaus onnistui, näytetään käyttäjälle teksti siitä -->
@@ -312,4 +313,5 @@ pageEncoding="UTF-8"%>
 	</c:if>
 
 </body>
+
 </html>
