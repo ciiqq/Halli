@@ -130,7 +130,7 @@ public class KoulutusHakuController {
 		String enimi = request.getParameter("etunimi");
 		String snimi = request.getParameter("sukunimi");
 		String onro = request.getParameter("opiskelijanro");
-		Osallistuja osallistuja = new Osallistuja(onro, enimi, snimi);
+		Osallistuja osallistuja = new Osallistuja(onro.trim(), enimi.trim(), snimi.trim());
 		osallistujaservice.tallenna(osallistuja, osallistumiset);
 		redirectAttrs.addFlashAttribute("viesti", "PARAS KOODI EI OLE NULL");
 		return "redirect:/";
