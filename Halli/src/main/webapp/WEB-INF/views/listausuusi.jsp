@@ -86,7 +86,7 @@
 
 						<c:otherwise>
 							<span
-								style="display: block; text-align: center; margin-top: 96px; margin-bottom: 96px;">
+								style="display: block; text-align: center; margin-top: 96px; margin-bottom: 96px; color:green; font-size:30px;">
 								Kiitos ilmoittautumisesta!</span>
 							<br />
 						</c:otherwise>
