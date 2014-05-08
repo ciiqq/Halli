@@ -157,5 +157,15 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 		jdbcTemplate.update(sql, parametrit);
 		
 	}
+	
+	public List<Aikatauluslotti> haeVapaatSlotit(){
+		final String sql = "SELECT aika_id, pvm, alkukello, loppukello, koulutustila FROM aikatauluslotti WHERE koulutus_id IS NULL;";
+		
+		RowMapper<Aikatauluslotti> rm = new AikatauluslottiRowMapper();
+		
+		List<Aikatauluslotti> slotit = jdbcTemplate.query(sql, rm);
+				
+		return slotit;
+	}
 
 }
