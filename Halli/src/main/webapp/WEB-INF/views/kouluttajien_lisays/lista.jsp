@@ -84,10 +84,12 @@
 						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						        <h4 class="modal-title" id="myModalLabel">Kouluttajan lisäys</h4>
 						      </div>
-						      <form:form action="lisaaKouluttaja" modelAttribute="kouluttaja" method="post">
+						      
+						      
+						      <form:form action="/koulutusjarjestelma/opettaja/kouluttajat" modelAttribute="kouluttaja" method="post">
 						      <div class="modal-body">
 						       
-									
+										
 										<p>
 											<form:label	path="etunimi">Etunimi</form:label><br/>
 											<form:input path="etunimi"/><form:errors path="etunimi"/>
@@ -121,7 +123,7 @@
 						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						        <h4 class="modal-title" id="myModalLabel">Kouluttajalistan lisäys</h4>
 						      </div>
-						      <form action="lisaaLista" method="post" enctype="multipart/form-data">
+						      <form action="/koulutusjarjestelma/opettaja/kouluttajat/lisaaLista" method="post" enctype="multipart/form-data">
 						      <div class="modal-body">
 
 									<p>
