@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import fi.softala.bean.Aikatauluslotti;
+import fi.softala.bean.Avainsana;
 import fi.softala.bean.Kouluttaja;
 import fi.softala.bean.Koulutustilaisuus;
 @Repository
@@ -124,6 +125,20 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 		List<Kouluttaja> kouluttajat = jdbcTemplate.query(sql, parametrit, rm);
 		
 		return kouluttajat;
+	}
+
+
+
+	public List<Avainsana> haeAvainsanat(int id) {
+		final String sql = "SELECT a.avainsana_id, a.avainsana FROM koulutustilaisuus kt JOIN koulutuksenAvainsana ka ON kt.koulutus_id = ka.koulutus_id " + 
+							"JOIN avainsana a ON ka.avainsana_id = a.avainsana_id WHERE kt.koulutus_id = ?;";
+		Object[] parametrit = new Object[] { id };
+		
+		RowMapper<Avainsana> rm = new AvainsanaRowMapper();
+		
+		List<Avainsana> avainsanat = jdbcTemplate.query(sql, parametrit, rm);
+		
+		return avainsanat;
 	}
 
 }

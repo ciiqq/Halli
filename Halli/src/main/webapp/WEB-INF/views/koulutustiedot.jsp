@@ -38,6 +38,7 @@ pageEncoding="UTF-8"%>
  	$(document).ready(function() {
   
   
+
  	$('input').keydown(function() {
 	     $("#modal-form").validate({ 
 	    
@@ -63,6 +64,7 @@ pageEncoding="UTF-8"%>
 	        submitHandler: function(form) {
 	            form.submit();	        
 	     }
+
 
   });
     });	
@@ -152,6 +154,15 @@ pageEncoding="UTF-8"%>
     <tr>
     	<th>Lähtötaso</th>
     	<td>${ks.lahtotaso}</td> 
+    </tr>
+    
+    <tr>
+    	<th>Avainsanat</th>
+    	<td>
+    	<c:forEach var="a" items="${ks.avainsanat}">
+    		<p><c:out value="${a.avainsana}" /></p>
+    	</c:forEach>
+    	</td> 
     </tr>
     
     <!--
