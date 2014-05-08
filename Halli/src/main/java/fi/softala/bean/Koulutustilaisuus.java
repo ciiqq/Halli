@@ -20,8 +20,8 @@ public class Koulutustilaisuus {
 	private String suomiKloAlku;
 	private String suomiKloLoppu;
 	private String paikka;
-	private Opettaja ope;
-	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
+	private Henkilo ope;
+	private List<Henkilo> kouluttajat = new ArrayList<Henkilo>();
 	private List<String> avainsanat = new ArrayList<String>();
 	
 	public int getId() {
@@ -71,8 +71,8 @@ public class Koulutustilaisuus {
 		return suomiPvm;
 	}
 
-	// Käytetään SQL päivämäärän muuttamisessa suomalaiseksi
-	// Hyödyntämällä java.sql.Date -kirjastoa
+	// Kï¿½ytetï¿½ï¿½n SQL pï¿½ivï¿½mï¿½ï¿½rï¿½n muuttamisessa suomalaiseksi
+	// Hyï¿½dyntï¿½mï¿½llï¿½ java.sql.Date -kirjastoa
 	public void setSuomiPvm(Date suomiPvm) {
 		this.suomiPvm = suomiPvmMuotoilu.format(suomiPvm);
 	}
@@ -81,8 +81,8 @@ public class Koulutustilaisuus {
 		return suomiKloAlku;
 	}
 
-	// Käytetään SQL kellonajan muuttamisessa suomalaiseksi
-	// Hyödyntämällä java.sql.Time -kirjastoa
+	// Kï¿½ytetï¿½ï¿½n SQL kellonajan muuttamisessa suomalaiseksi
+	// Hyï¿½dyntï¿½mï¿½llï¿½ java.sql.Time -kirjastoa
 	public void setSuomiKloAlku(Time suomiKloAlku) {
 		this.suomiKloAlku = suomiKloMuotoilu.format(suomiKloAlku);
 	}
@@ -91,25 +91,25 @@ public class Koulutustilaisuus {
 		return suomiKloLoppu;
 	}
 
-	// Käytetään SQL kellonajan muuttamisessa suomalaiseksi
-	// Hyödyntämällä java.sql.Time -kirjastoa
+	// Kï¿½ytetï¿½ï¿½n SQL kellonajan muuttamisessa suomalaiseksi
+	// Hyï¿½dyntï¿½mï¿½llï¿½ java.sql.Time -kirjastoa
 	public void setSuomiKloLoppu(Time suomiKloLoppu) {
 		this.suomiKloLoppu = suomiKloMuotoilu.format(suomiKloLoppu);
 	}
 
-	public Opettaja getOpe() {
+	public Henkilo getOpe() {
 		return ope;
 	}
 
-	public void setOpe(Opettaja ope) {
+	public void setOpe(Henkilo ope) {
 		this.ope = ope;
 	}
 
-	public List<Kouluttaja> getKouluttajat() {
+	public List<Henkilo> getKouluttajat() {
 		return kouluttajat;
 	}
 
-	public void setKouluttajat(List<Kouluttaja> kouluttajat) {
+	public void setKouluttajat(List<Henkilo> kouluttajat) {
 		this.kouluttajat = kouluttajat;
 	}
 
