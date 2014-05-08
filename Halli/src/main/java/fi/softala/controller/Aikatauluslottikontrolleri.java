@@ -32,7 +32,7 @@ public class Aikatauluslottikontrolleri {
 		List<Aikatauluslotti> aikatauluslotit = dao.haeKaikki();
 		request.getSession().setAttribute("paivays",today);
  		model.addAttribute("aikatauluslotit", aikatauluslotit);
-		return "aikatauluslottilisaa";
+		return "aikataulut";
 	}
 	@RequestMapping(value="vaihdakuukausi", method=RequestMethod.GET)
 	public String vaihdakuukausi(Model model, HttpServletRequest request) { /* JariK 20140319 */
