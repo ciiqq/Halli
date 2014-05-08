@@ -66,13 +66,17 @@ public class Koulutustilaisuus {
 	public void setNakyvyys(int nakyvyys) {
 		this.nakyvyys = nakyvyys;
 	}
+	
+	public int getNakyvyys() {
+		return nakyvyys;
+	}
 
 	public String getSuomiPvm() {
 		return suomiPvm;
 	}
 
-	// Käytetään SQL päivämäärän muuttamisessa suomalaiseksi
-	// Hyödyntämällä java.sql.Date -kirjastoa
+	// Kï¿½ytetï¿½ï¿½n SQL pï¿½ivï¿½mï¿½ï¿½rï¿½n muuttamisessa suomalaiseksi
+	// Hyï¿½dyntï¿½mï¿½llï¿½ java.sql.Date -kirjastoa
 	public void setSuomiPvm(Date suomiPvm) {
 		this.suomiPvm = suomiPvmMuotoilu.format(suomiPvm);
 	}
@@ -81,8 +85,8 @@ public class Koulutustilaisuus {
 		return suomiKloAlku;
 	}
 
-	// Käytetään SQL kellonajan muuttamisessa suomalaiseksi
-	// Hyödyntämällä java.sql.Time -kirjastoa
+	// Kï¿½ytetï¿½ï¿½n SQL kellonajan muuttamisessa suomalaiseksi
+	// Hyï¿½dyntï¿½mï¿½llï¿½ java.sql.Time -kirjastoa
 	public void setSuomiKloAlku(Time suomiKloAlku) {
 		this.suomiKloAlku = suomiKloMuotoilu.format(suomiKloAlku);
 	}
@@ -91,8 +95,8 @@ public class Koulutustilaisuus {
 		return suomiKloLoppu;
 	}
 
-	// Käytetään SQL kellonajan muuttamisessa suomalaiseksi
-	// Hyödyntämällä java.sql.Time -kirjastoa
+	// Kï¿½ytetï¿½ï¿½n SQL kellonajan muuttamisessa suomalaiseksi
+	// Hyï¿½dyntï¿½mï¿½llï¿½ java.sql.Time -kirjastoa
 	public void setSuomiKloLoppu(Time suomiKloLoppu) {
 		this.suomiKloLoppu = suomiKloMuotoilu.format(suomiKloLoppu);
 	}
