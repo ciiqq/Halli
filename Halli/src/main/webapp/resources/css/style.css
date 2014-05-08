@@ -225,3 +225,7 @@ body {
 #vahvistusilmoitus, #peruutusvahvistus {
 	padding: 20px;
 }
+
+.modal-varjo {
+	box-shadow: 0px 0px 18px gray;
+}
