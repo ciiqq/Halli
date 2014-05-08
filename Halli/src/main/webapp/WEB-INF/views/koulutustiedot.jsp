@@ -30,15 +30,10 @@ pageEncoding="UTF-8"%>
  			'minTime': '07:00',
  			'maxTime': '21:00'
  		});
- 	});
- 	
- 	
- 
-   
+ 	});  
 
    
  	$(document).ready(function() {
-  
   
 
  	$('input').keydown(function() {
@@ -244,9 +239,12 @@ pageEncoding="UTF-8"%>
 
 
            <table class="table">
+           
+           
       
         
 			  <tr>
+			   
 			  	<th><form:label path="aihe">Aihe</form:label></th>	 		  
 			  	<td><form:input id="aihe" name="aihe" path="aihe"  value="${ks.aihe}"/>  </td> 
 			  	<td><form:errors path="aihe"></form:errors></td>

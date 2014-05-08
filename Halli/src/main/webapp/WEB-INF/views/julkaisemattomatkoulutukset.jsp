@@ -52,17 +52,31 @@
 							<tr>
 								<th>Aika</th>
 								<th>Aihe</th>
+								<th>Kouluttaja(t)</th>
 								<th></th>
 							</tr>
 							<c:forEach var="ks" items="${koulutukset}">
 							<tr>
 								<td><c:out value="${ks.aikaslotti.pvm}" />&nbsp;<c:out value="${ks.aikaslotti.alkukello}" />-<c:out value="${ks.aikaslotti.loppukello}" /></td>
 								<td class="pitka"><c:out value="${ks.aihe}" /></td>
+								<td>
+									<c:forEach var="k" items="${ks.kouluttajat}">
+										<c:out value="${k.etunimi }" /> <c:out value="${k.sukunimi }" /> 
+									</c:forEach>
+								</td>
 								<td><a href="<%=request.getContextPath()%>/opettaja/koulutukset/julkaisemattomat/koulutustiedot/${ks.id}" class="btn btn-primary btn-xs" >Koulutuksen tiedot</a></td>
 							</tr>
 							</c:forEach>
 						</table>
 						<a href="<%=request.getContextPath()%>/opettaja/koulutukset/julkaisemattomat/uusikoulutus" class="btn btn-primary" >Lisää uusi koulutus</a>
+
+					<c:if test="${peruutusvahvistus != null}">
+                            <p id="peruutusvahvistus" class="text-success bg-success">
+                                <c:out value="${peruutusvahvistus}" />
+                            </p>
+                        </c:if> 
+						
+
 					</div>
 				</div>
 			</div>

@@ -50,6 +50,10 @@ public class Controller1 {
 	public String haeJulkaisemattomat(Model model) {
 		List<Koulutustilaisuus> koulutuslista = dao.haeKoulutukset(false);
 		
+		for(int i = 0;i < koulutuslista.size();i++){
+			koulutuslista.get(i).setKouluttajat(dao.haeKouluttajat(koulutuslista.get(i).getId()));
+		}
+		
 		model.addAttribute("koulutukset", koulutuslista);
 		
 		return "julkaisemattomatkoulutukset";
@@ -113,6 +117,17 @@ public class Controller1 {
 		return "muokkaakoulutusta";
 	}
 	
+
+	@RequestMapping(value = "/opettaja/koulutukset/julkaisemattomat/koulutustiedot/peruutus/{DaoId}", method = RequestMethod.GET)
+	public String peruutaKoulutus(Model model, @PathVariable Integer DaoId, final RedirectAttributes ra){
+		
+		dao.peruutaKoulutus(DaoId);
+		
+		ra.addFlashAttribute("peruutusvahvistus", "Koulutus on peruutettu onnistuneesti!");
+		
+		return "redirect:/opettaja/koulutukset/julkaisemattomat";
+	}
+	
 	@RequestMapping(value = "/opettaja/koulutukset/julkaisemattomat/koulutustiedot/julkaisu/{DaoId}", method = RequestMethod.GET)
 	public String julkaiseKoulutus(Model model, @PathVariable Integer DaoId, final RedirectAttributes ra){
 		
@@ -131,6 +146,10 @@ public class Controller1 {
 	@RequestMapping(value="opettaja/koulutukset/julkaistut", method=RequestMethod.GET)
 	public String haeJulkaistut(Model model) {
 		List<Koulutustilaisuus> koulutuslista = dao.haeKoulutukset(true);
+		
+		for(int i = 0;i < koulutuslista.size();i++){
+			koulutuslista.get(i).setKouluttajat(dao.haeKouluttajat(koulutuslista.get(i).getId()));
+		}
 		
 		model.addAttribute("koulutukset", koulutuslista);
 		

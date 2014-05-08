@@ -222,7 +222,7 @@ body {
 	box-shadow: none;
 }
 
-#vahvistusilmoitus {
+#vahvistusilmoitus, #peruutusvahvistus {
 	padding: 20px;
 }
 
