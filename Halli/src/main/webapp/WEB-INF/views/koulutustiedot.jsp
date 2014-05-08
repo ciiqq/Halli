@@ -289,9 +289,9 @@ pageEncoding="UTF-8"%>
 			    	
 			  	<td>
 			  	<select>
-			  		<option>Valitse aika</option>
+			  		<option value="0">Valitse aika</option>
 				  	<c:forEach var="vp" items="${vapaat}">
-				  		<option><c:out value="${vp.pvm}"/>, <c:out value="${vp.alkukello}"/> - <c:out value="${vp.loppukello}"/>, luokka: <c:out value="${vp.koulutustila}"/></option>
+				  		<option value="${vp.id}"><c:out value="${vp.pvm}"/>, <c:out value="${vp.alkukello}"/> - <c:out value="${vp.loppukello}"/>, luokka: <c:out value="${vp.koulutustila}"/></option>
 				  	</c:forEach>
 			  	</select>
 			  	
