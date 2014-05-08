@@ -74,7 +74,7 @@
 				</ul>
 			</div>
 			<div class="fifty tiedot">
-				<div class="table-container" style="opacity: 0.5;">
+				<div class="table-container">
 					<c:choose>
 						<c:when test="${viesti==null}">
 							<span
@@ -98,7 +98,7 @@
 						style="display: none">
 						<table>
 							<tr>
-								<td class="tiedotx" colspan="2">KOULUTUKSEN TIEDOT</td>
+								<td class="koulutus-otsikko" colspan="2">Koulutuksen tiedot</td>
 							</tr>
 							<tr>
 								<td class="bold">Aihe</td>

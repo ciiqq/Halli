@@ -270,11 +270,11 @@ input[type="checkbox"]:checked + label {
 	font-weight: bold;
 }
 
-.tiedotx {
-	font-weight: bold;
-	background-color:#A4A4A4;
-	color:#FFF;
+.koulutus-otsikko {
+	font-weight: normal;
+	color:black;
 	padding:15px;
+	font-size: 20px;
 }
 
 .nav-item {
