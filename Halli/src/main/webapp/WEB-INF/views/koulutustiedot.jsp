@@ -190,7 +190,7 @@ pageEncoding="UTF-8"%>
 
 <!-- Modal-popup, jolla voidaan peruuttaa koulutus -->
 <div id="peruutusModal" class="modal fade">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm modal-varjo">
     <div class="modal-content">
     <div class="modal-header">
     	<h3><c:out value="${ks.aihe}" /></h3>
@@ -208,7 +208,7 @@ pageEncoding="UTF-8"%>
 
 <!-- Modal-popup, jolla voidaan julkaista koulutus -->
 <div id="julkaisuModal" class="modal fade">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm modal-varjo">
     <div class="modal-content">
     <div class="modal-header">
     	<h3><c:out value="${ks.aihe}" /></h3>
@@ -229,7 +229,7 @@ pageEncoding="UTF-8"%>
 
 <!-- Modal-popup, jolla voidaan muokata tietoja -->
 <div class="modal fade" id="test_modal">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-varjo">
     <div class="modal-content">
       <div class="modal-header">
       <h3><c:out value="${ks.aihe}" /></h3>
