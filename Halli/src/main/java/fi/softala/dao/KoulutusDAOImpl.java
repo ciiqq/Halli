@@ -22,13 +22,13 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 	private JdbcTemplate jdbcTemplate;
 	
 
-	public JdbcTemplate getJdbc() {
+	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
 
 
 
-	public void setJdbc(JdbcTemplate jdbcTemplate) {
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
