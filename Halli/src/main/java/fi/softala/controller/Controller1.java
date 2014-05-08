@@ -49,6 +49,10 @@ public class Controller1 {
 	public String haeJulkaisemattomat(Model model) {
 		List<Koulutustilaisuus> koulutuslista = dao.haeKoulutukset(false);
 		
+		for(int i = 0;i < koulutuslista.size();i++){
+			koulutuslista.get(i).setKouluttajat(dao.haeKouluttajat(koulutuslista.get(i).getId()));
+		}
+		
 		model.addAttribute("koulutukset", koulutuslista);
 		
 		return "julkaisemattomatkoulutukset";
@@ -140,6 +144,10 @@ public class Controller1 {
 	@RequestMapping(value="opettaja/koulutukset/julkaistut", method=RequestMethod.GET)
 	public String haeJulkaistut(Model model) {
 		List<Koulutustilaisuus> koulutuslista = dao.haeKoulutukset(true);
+		
+		for(int i = 0;i < koulutuslista.size();i++){
+			koulutuslista.get(i).setKouluttajat(dao.haeKouluttajat(koulutuslista.get(i).getId()));
+		}
 		
 		model.addAttribute("koulutukset", koulutuslista);
 		
