@@ -61,7 +61,7 @@
 				</form>
 				<ul>
 					<c:if test="${empty koulutukset}">
-						<c:out value="Koulutuksia ei löytynyt" />
+						<c:out value="Koulutuksia ei löytynyt hakusanan perusteella" />
 					</c:if>
 					<c:forEach items="${koulutukset}" var="k">
 						<li divid="<c:out value="${k.id}"/>" class="aihe"><input
