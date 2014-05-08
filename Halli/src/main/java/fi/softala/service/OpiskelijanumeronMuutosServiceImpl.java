@@ -1,5 +1,8 @@
 package fi.softala.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class OpiskelijanumeronMuutosServiceImpl implements OpiskelijanumeronMuutosService {
 
 	/* (non-Javadoc)
