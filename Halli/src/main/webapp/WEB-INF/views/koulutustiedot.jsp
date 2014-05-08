@@ -49,9 +49,9 @@ pageEncoding="UTF-8"%>
      
         // Specify the validation error messages
         messages: {
-            aihe: {required:"Lis�� aihe!",
+            aihe: {required:"Lisää aihe!",
             		minlength:"Liian lyhyt aiheen nimi!"},
-            kuvaus: {required:"Lis�� kuvaus!",
+            kuvaus: {required:"Lisää kuvaus!",
             		minlength:"Liian lyhyt kuvaus"
             }
         },
@@ -146,6 +146,15 @@ pageEncoding="UTF-8"%>
     <tr>
     	<th>Lähtötaso</th>
     	<td>${ks.lahtotaso}</td> 
+    </tr>
+    
+    <tr>
+    	<th>Avainsanat</th>
+    	<td>
+    	<c:forEach var="a" items="${ks.avainsanat}">
+    		<p><c:out value="${a.avainsana}" /></p>
+    	</c:forEach>
+    	</td> 
     </tr>
     
     <!--

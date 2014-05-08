@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fi.softala.bean.Avainsana;
 import fi.softala.bean.Kouluttaja;
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.dao.KoulutusDAO;
@@ -53,13 +54,16 @@ public class KoulutusController {
 	       //Hakee kaikki koulutuksen kouluttajat ja laittaa sen koulutus-olioon
 	       List<Kouluttaja> kouluttajat = dao.haeKouluttajat(DaoId);
 	       koulutus.setKouluttajat(kouluttajat);
+	       
+	       //Hakee kaikki koulutuksen avainsanat ja laittaa sen koulutus-olioon
+	       List<Avainsana> avainsanat = dao.haeAvainsanat(DaoId);
+	       koulutus.setAvainsanat(avainsanat);
 	        
 	       //Laitetaan Modeliin koulustusolio, jotta voidaan sivulla 
 	       model.addAttribute("ks", koulutus);
 	       
 
 	        //Luodaan olio Springin formia varten ,jossa voidaan muokata koulutusta
-
 //	        dao.haeVapaatSlotit();
 
 	        Koulutustilaisuus koulutusTemplate = new Koulutustilaisuus();

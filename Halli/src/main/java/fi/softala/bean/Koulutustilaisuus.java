@@ -30,7 +30,7 @@ public class Koulutustilaisuus {
 	private String suomiKlo;
 	private Opettaja ope;
 	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
-	private List<String> avainsanat = new ArrayList<String>();
+	private List<Avainsana> avainsanat = new ArrayList<Avainsana>();
 	private Aikatauluslotti aikaslotti;
 	
 	
@@ -122,11 +122,11 @@ public class Koulutustilaisuus {
 		this.kouluttajat = kouluttajat;
 	}
 
-	public List<String> getAvainsanat() {
+	public List<Avainsana> getAvainsanat() {
 		return avainsanat;
 	}
 
-	public void setAvainsanat(List<String> avainsanat) {
+	public void setAvainsanat(List<Avainsana> avainsanat) {
 		this.avainsanat = avainsanat;
 	}
 
