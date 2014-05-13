@@ -10,5 +10,6 @@ public interface KoulutusHakuService {
 	List<Koulutustilaisuus> haeTulevat();
 	List<Koulutustilaisuus> haeHakusanalla(String ehto);
 	List<Koulutustilaisuus> haeAvainsanalla(String ehto);
+	List<Koulutustilaisuus> haePalauteKelpoiset(String opiskelijanumero);
 
 }
