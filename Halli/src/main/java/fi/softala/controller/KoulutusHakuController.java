@@ -75,16 +75,12 @@ public class KoulutusHakuController {
 	
 	@RequestMapping(value="palaute", method=RequestMethod.POST)
 	public String create(@ModelAttribute(value="palaute") Palaute palaute, Model model) {	
-				String opiskelijanumero = palaute.getOpiskelijanumero();
-				//Koulutus_id jostain listasta?
-				String koulutus_id = "";
-				opiskelijanumero = muutosservice.OpiskelijanumeronMuotoilu(opiskelijanumero);
-				if (palauteservice.tarkistaOpiskelijanumero(opiskelijanumero) == false && palauteservice.tarkistaOsallistuja(opiskelijanumero, koulutus_id) == true) {
-					palauteservice.tallenna(palaute);
-					model.addAttribute("onnistunutviesti", "Palautteen lähetys onnistui");	
-					return "palaute";
-				}
-				else {
+				
+				try {
+				palauteservice.tallenna(palaute);
+				model.addAttribute("onnistunutviesti", "Palautteen lähetys onnistui");	
+				return "palaute";
+				} catch (Exception e) {
 					model.addAttribute("virheviesti", "Palautteen lähetys ei onnistunut");
 					return "palaute";
 				}
