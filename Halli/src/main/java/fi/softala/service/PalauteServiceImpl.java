@@ -38,13 +38,5 @@ public class PalauteServiceImpl implements PalauteService {
 	public void tallenna(Palaute palaute) {
 		palautedao.talletaPalaute(palaute);
 	}
-	/* (non-Javadoc)
-	 * @see fi.softala.service.PalauteService#tarkistaOpiskelijanumero(java.lang.String)
-	 */
-	public boolean tarkistaOpiskelijanumero(String opiskelijanumero) {
-		return opiskelijanumero.equals(palautedao.haePalautteenOpiskelianumero(opiskelijanumero).getOpiskelijanro());
-	}
-	public boolean tarkistaOsallistuja(String opiskelijanumero, String koulutus_id) {
-		return opiskelijanumero.equals(osallistujadao.haeOsallistuja(opiskelijanumero, koulutus_id).getOpiskelijanro());		
-	}
+
 }

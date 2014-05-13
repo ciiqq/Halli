@@ -14,6 +14,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import fi.softala.bean.Palaute;
 
@@ -30,46 +32,65 @@ public class PalauteDAOimpl implements PalauteDAO {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-
+	
+	@Transactional (readOnly = false, isolation = Isolation.REPEATABLE_READ)
 	public void talletaPalaute(Palaute palaute) {
-		final String sql = "insert into palaute(arvosana, palauteteksti, opiskelijanumero) values(?,?,?)";
+		final String sqlPalaute = "insert into palaute(arvosana, palauteteksti) values (?, ?, ?)";
+		final String sqlIlmoittautuminen = "update ilmoittautuminen set palaute_id = ? where opiskelijanro = ?";
+		
 		final int arvosana = palaute.getArvosana();
 		final String palauteteksti = palaute.getPalauteteksti();
-		final int opiskelijanumero = Integer.parseInt(palaute.getOpiskelijanro());
-
-		KeyHolder idHolder = new GeneratedKeyHolder();
-
+		final String opiskelijanro = palaute.getOpiskelijanro();
+		final int palauteId;
+		
+		KeyHolder kh = new GeneratedKeyHolder();
+		
 		jdbcTemplate.update(new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(
-					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql,
-						new String[] { "palaute_id" });
+			public PreparedStatement createPreparedStatement(Connection connection)
+					throws SQLException {
+				PreparedStatement ps = connection.prepareStatement(sqlPalaute, new String[] {"palaute_id"} );
 				ps.setInt(1, arvosana);
 				ps.setString(2, palauteteksti);
-				ps.setInt(3, opiskelijanumero);
 				return ps;
 			}
-		}, idHolder);
-
-		palaute.setPalaute_id(idHolder.getKey().intValue());
-
+		}, kh);
+		
+		palaute.setPalaute_id(kh.getKey().intValue());
+		palauteId = palaute.getPalaute_id();
+		
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(Connection connection)
+					throws SQLException {
+				PreparedStatement ps = connection.prepareStatement(sqlIlmoittautuminen);
+				ps.setInt(1, palauteId);
+				ps.setString(2, opiskelijanro);
+				return ps;
+			}
+		});
 	}
-	public Palaute haePalautteenOpiskelianumero(String opiskelijanumero) {
-		String sql = "select opiskelijanumero from palaute where opiskelijanumero = ?";
-		Object[] parametrit = new Object[] { opiskelijanumero };
-		Palaute palaute;
+
+	public List<Palaute> haePalaute(String opiskelijanro) {
+		
+		String sql = "select p.palaute_id, arvosana, palauteteksti, i.osallistujan_opiskelijanro "
+				+ "from palaute p "
+				+ "join ilmoittautuminen i "
+				+ "on p.palaute_id = i.palaute_id "
+				+ "where osallistujan_opiskelijanro = " + opiskelijanro + ";";
+		
 		RowMapper<Palaute> mapper = new PalauteRowMapper();
-		try {
-			palaute = jdbcTemplate.queryForObject(sql, parametrit, mapper);
-		} catch (IncorrectResultSizeDataAccessException e) {
-			throw e;
-		}
-		return palaute;
+		List<Palaute> palautteet = jdbcTemplate.query(sql, mapper);
+		
+		return palautteet;
 	}
 
+	@Transactional (readOnly = false, isolation = Isolation.REPEATABLE_READ)
 	public List<Palaute> haeKaikki() {
 
-		String sql = "select palaute_id, arvosana, palauteteksti from palaute";
+		String sql = "select p.palaute_id, arvosana, palauteteksti, i.osallistujan_opiskelijanro "
+				+ "from palaute p "
+				+ "join ilmoittautuminen i "
+				+ "on p.palaute_id = i.palaute_id;";
+		
 		RowMapper<Palaute> mapper = new PalauteRowMapper();
 		List<Palaute> palautteet = jdbcTemplate.query(sql, mapper);
 
@@ -85,12 +106,5 @@ public class PalauteDAOimpl implements PalauteDAO {
 
 		return palautteet;
 	}
-	public List<Palaute> haeKaikkiPalautteet() {
 
-		String sql = "select * from palaute";
-		RowMapper<Palaute> mapper = new PalauteRowMapper();
-		List<Palaute> palautteet = jdbcTemplate.query(sql, mapper);
-
-		return palautteet;
-	}
 }
