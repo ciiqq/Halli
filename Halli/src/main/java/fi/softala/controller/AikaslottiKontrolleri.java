@@ -39,13 +39,16 @@ public class AikaslottiKontrolleri {
 	}
 	
 	@RequestMapping(value="opettaja/aikataulut/lisaa", method=RequestMethod.POST)
-	public String lisaaSlotti(HttpServletRequest request, Aikatauluslotti aikatauluslotti, Model model) {
-		String pvm = request.getParameter("paivamaara");
-		String alkuaika = request.getParameter("alkuaika");
-		String loppuaika = request.getParameter("loppuaika");
-		String tila = request.getParameter("tila");
+	public String lisaaSlotti(HttpServletRequest request, Model model) {
+		Aikatauluslotti a = new Aikatauluslotti();
+//		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
+//		String date = DATE_FORMAT.format(request.getParameter("paivamaara"));
+		a.setPvm(request.getParameter("paivamaara"));
+		a.setAlkukello(request.getParameter("alkuaika"));
+		a.setLoppukello(request.getParameter("loppuaika"));
+		a.setKoulutustila(request.getParameter("tila"));
 		
-		dao.talleta(aikatauluslotti);
+		dao.talleta(a);
 		
 		return "testi";
 		
