@@ -2,17 +2,19 @@ package fi.softala.bean;
 
 import javax.validation.constraints.*;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import fi.softala.funktiot.FormatoiNimi;
 
 public class Kouluttaja {
 	
-	@Pattern(regexp = "\\d{7}")
+	@Pattern(regexp = "\\d{7}", message="Opiskelijanumeron tulee koostua seitsemästä numerosta")
 	private String opiskelijanro;
 	
-	@Size(min = 2, max = 50)
+	@Size(min = 2, max = 50, message="Etunimen tulee olla 2-50 merkkiä pitkä")
 	private String etunimi;
 	
-	@Size(min = 2, max = 50)
+	@Size(min = 2, max = 50, message="Sukunimen tulee olla 2-50 merkkiä pitkä")
 	private String sukunimi;
 	
 	private String salasana;
@@ -27,8 +29,8 @@ public class Kouluttaja {
 	}
 	
 	public Kouluttaja(String etunimi, String sukunimi, String opiskelijanro) {
-		this.etunimi = FormatoiNimi.isoAlkukirjain(etunimi);
-		this.sukunimi = FormatoiNimi.isoAlkukirjain(sukunimi);
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
 		this.opiskelijanro = opiskelijanro;
 		this.salasana = null;
 		this.suola = null;
@@ -36,8 +38,8 @@ public class Kouluttaja {
 
 	public Kouluttaja(String onro, String enimi, String snimi, String ssana, String suola) {
 		this.opiskelijanro = onro;
-		this.etunimi = FormatoiNimi.isoAlkukirjain(enimi);
-		this.sukunimi = FormatoiNimi.isoAlkukirjain(snimi);;
+		this.etunimi = enimi;
+		this.sukunimi = snimi;
 		this.salasana = ssana;
 		this.suola = suola;
 	}
@@ -55,7 +57,7 @@ public class Kouluttaja {
 	}
 
 	public void setEtunimi(String etunimi) {
-		this.etunimi = FormatoiNimi.isoAlkukirjain(etunimi);;
+		this.etunimi = etunimi;
 	}
 
 	public String getSukunimi() {
@@ -63,7 +65,7 @@ public class Kouluttaja {
 	}
 
 	public void setSukunimi(String sukunimi) {
-		this.sukunimi = FormatoiNimi.isoAlkukirjain(sukunimi);;
+		this.sukunimi = sukunimi;;
 	}
 
 	public String getSalasana() {

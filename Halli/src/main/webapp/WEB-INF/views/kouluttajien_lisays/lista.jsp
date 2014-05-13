@@ -98,7 +98,7 @@
                         
                     </div>
 						<!-- Modal -->
-						<div class="modal fade" id="lisaaKouluttaja" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal fade" id="lisaaKouluttaja" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  <div class="modal-dialog">
 						    <div class="modal-content">
 						      <div class="modal-header">
@@ -111,7 +111,7 @@
 						      <div class="modal-body">
 															
 										<p>
-											<form:label	path="etunimi">Etunimi</form:label><br/>
+											<form:label	path="etunimi" required="">Etunimi</form:label><br/>
 											<form:input path="etunimi"/><form:errors path="etunimi"/>
 										</p>
 										<p>	
@@ -166,6 +166,8 @@
 			</div>
 		</div>
 	</div>
+	
+	
 	<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 	<script src="twitter-bootstrap-v2/docs/assets/js/jquery.js"></script>  

@@ -16,6 +16,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import fi.softala.bean.Kouluttaja;
+import fi.softala.funktiot.FormatoiNimi;
 
 
 @Repository
@@ -68,8 +69,8 @@ public class KouluttajienLisaysDAOSpringJdbcImpl implements KouluttajienLisaysDA
 		// jotta roskien keruu onnistuu t‰m‰n metodin suorituksen p‰‰ttyess‰.
 		final String opiskelijanro = k.getOpiskelijanro();
 		final String rooli = "kouluttaja";
-		final String etunimi = k.getEtunimi();
-		final String sukunimi = k.getSukunimi();
+		final String etunimi = FormatoiNimi.isoAlkukirjain(k.getEtunimi());
+		final String sukunimi = FormatoiNimi.isoAlkukirjain(k.getSukunimi());
 		final String salasana = k.getSalasana();
 		final String suola = "suola!";
 		
