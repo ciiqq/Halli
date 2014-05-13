@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <henkilo henkilotunnus="1122334" rooli="kouluttaja" etunimi="Kalle" sukunimi="Kouluttaja" salasana="password2" suola="xqz"/>
+  <henkilo henkilotunnus="1123456" rooli="opettaja" etunimi="Johannes" sukunimi="Siipola" salasana="44eW9z6M" suola="suola!"/>
+  <henkilo henkilotunnus="1234567" rooli="kouluttaja" etunimi="Tarmo" sukunimi="Testaaja" salasana="password1" suola="xqz"/>
+  <henkilo henkilotunnus="3335556" rooli="kouluttaja" etunimi="Kari" sukunimi="Master" salasana="password4" suola="xqz"/>
+  <henkilo henkilotunnus="opepe" rooli="opettaja" etunimi="Maikka" sukunimi="Opettaja" salasana="salasana" suola="xqz"/>
+  <henkilo henkilotunnus="opine" rooli="opettaja" etunimi="Neea" sukunimi="Opi" salasana="salasana" suola="xqz"/>
+</dataset>
