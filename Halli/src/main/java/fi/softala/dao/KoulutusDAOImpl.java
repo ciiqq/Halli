@@ -128,7 +128,7 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 
 	public List<Henkilo> haeHenkilot(int id, String rooli) {
 		String sql = "SELECT h.etunimi, h.sukunimi FROM koulutustilaisuus kt JOIN koulutuksentoimija kk ON kt.koulutus_id = kk.koulutus_id " +
-							"JOIN henkilo h ON kk.kouluttajatunnus = h.henkilotunnus WHERE kt.koulutus_id = ? AND h.rooli = ";
+							"JOIN henkilo h ON kk.henkilotunnus = h.henkilotunnus WHERE kt.koulutus_id = ? AND h.rooli = ";
 		if(rooli.equals("kouluttaja")){
 			sql = sql + " 'kouluttaja';";
 		}else if(rooli.equals("opettaja")){
