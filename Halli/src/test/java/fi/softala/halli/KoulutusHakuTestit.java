@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -22,6 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 
+import fi.softala.bean.Aikatauluslotti;
+import fi.softala.bean.Avainsana;
+import fi.softala.bean.Henkilo;
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.dao.KoulutusDAO;
 
@@ -92,23 +96,6 @@ public class KoulutusHakuTestit {
 
 		
 	}
-	
-	//EI TOIMI VIELÄ
-	@Test
-	public void siirraKoulutusTesti() {
-		
-		
-		Koulutustilaisuus koulutus = dao.haeKoulutus(1);
-		assertEquals(1, koulutus.getAikaslotti().getId());
-		
-		dao.siirraKoulutus(1,7);
-		
-		koulutus = dao.haeKoulutus(1);
-		assertEquals(7, koulutus.getAikaslotti().getId());
-
-		
-	}
-	//EI TOIMI VIELÄ
 	@Test
 	public void peruutaKoulutusTesti() {
 		Koulutustilaisuus kt = new Koulutustilaisuus();
@@ -123,9 +110,46 @@ public class KoulutusHakuTestit {
 		
 		dao.peruutaKoulutus(1);
 		
-		
+		try{
 		assertNull(dao.haeKoulutus(1));
+
+	}catch (EmptyResultDataAccessException e) {
+		System.out.println("Tyhjää tuli niinkuin piti");
+	}
+	}
+	@Test
+	public void haeAvainsanatTesti() {
+		
+		List <Avainsana> as = dao.haeAvainsanat(1);
+	
+		assertEquals("Scrum",as.get(0).getAvainsana());
+	}
+	@Test
+	public void haeVapaatSlotitTesti() {
+		
+		List <Aikatauluslotti> as = dao.haeVapaatSlotit();
+		
+		for(Aikatauluslotti slotti: as){
+		assertNull(slotti.getId());
+		}
+	}
+	//EI TOIMI VIELÄ ja puuttuu henkilohakutesti
+	@Test
+	public void siirraKoulutusTesti() {
+		
+		
+		Koulutustilaisuus koulutus = dao.haeKoulutus(1);
+		assertEquals(1, koulutus.getAikaslotti().getId());
+		
+		dao.siirraKoulutus(1,7);
+		
+		koulutus = dao.haeKoulutus(1);
+		
+		assertEquals(7, koulutus.getAikaslotti().getId());
+		
 
 		
 	}
+
+	
 }
