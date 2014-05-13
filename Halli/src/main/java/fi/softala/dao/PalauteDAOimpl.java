@@ -83,7 +83,10 @@ public class PalauteDAOimpl implements PalauteDAO {
 
 	public List<Palaute> haeKaikki() {
 
-		String sql = "select palaute_id, arvosana, palauteteksti from palaute";
+		String sql = "select p.palaute_id, arvosana, palauteteksti, i.osallistujan_opiskelijanro "
+				+ "from palaute p "
+				+ "join ilmoittautuminen i "
+				+ "on p.palaute_id = i.palaute_id;";
 		RowMapper<Palaute> mapper = new PalauteRowMapper();
 		List<Palaute> palautteet = jdbcTemplate.query(sql, mapper);
 
@@ -108,10 +111,17 @@ public class PalauteDAOimpl implements PalauteDAO {
 		return palautteet;
 	}
 	
-	public List<Palaute> haePalaute(String opiskelijanumero) {
-		List<Palaute> palautteet = null;
+	public List<Palaute> haePalaute(String opiskelijanro) {
 		
-		final String sql = "";
+		String sql = "select p.palaute_id, arvosana, palauteteksti, i.osallistujan_opiskelijanro "
+				+ "from palaute p "
+				+ "join ilmoittautuminen i "
+				+ "on p.palaute_id = i.palaute_id "
+				+ "where osallistujan_opiskelijanro = " + opiskelijanro + ";";
+		
+		RowMapper<Palaute> mapper = new PalauteRowMapper();
+		List<Palaute> palautteet = jdbcTemplate.query(sql, mapper);
+		
 		return palautteet;
 	}
 	
