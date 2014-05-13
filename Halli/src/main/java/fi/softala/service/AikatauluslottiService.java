@@ -5,6 +5,6 @@ import fi.softala.bean.Aikatauluslotti;
 
 public interface AikatauluslottiService {
 	
-	public List<Aikatauluslotti> haeAjat();
+	public List<Aikatauluslotti> haeVapaatAjat();
 	
 }
