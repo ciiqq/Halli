@@ -104,6 +104,12 @@ public class Controller1 {
 			return "koulutustiedot";
 		}
 		
+		int siirto = Integer.parseInt(req.getParameter("siirto"));
+		
+		if(siirto != 0){
+			dao.siirraKoulutus(koulutus.getId(), siirto);
+		}
+		
 		koulutus.setId(DaoId);
 		
 		dao.paivitaKoulutus(koulutus);
