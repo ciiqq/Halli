@@ -5,14 +5,20 @@ public class Palaute {
 	private int palaute_id;
 	private int arvosana;
 	private String palauteteksti;
-	private String opiskelijanumero;
+	private String opiskelijanro;
 	
-	public String getOpiskelijanumero() {
-		return opiskelijanumero;
+	public String getOpiskelijanro() {
+		if (opiskelijanro.length() == 8) {
+			opiskelijanro = opiskelijanro.substring(1, 8);
+			return opiskelijanro;
+		}
+		else {
+			return opiskelijanro;
+		}
 	}
 
-	public void setOpiskelijanumero(String opiskelijanumero) {
-		this.opiskelijanumero = opiskelijanumero;
+	public void setOpiskelijanro(String opiskelijanro) {
+		this.opiskelijanro = opiskelijanro;
 	}
 
 	public int getPalaute_id() {
@@ -42,8 +48,8 @@ public class Palaute {
 	@Override
 	public String toString() {
 		return "Palaute [palaute_id=" + palaute_id + ", arvosana=" + arvosana
-				+ ", palauteteksti=" + palauteteksti + ", opiskelijanumero="
-				+ opiskelijanumero + "]";
+				+ ", palauteteksti=" + palauteteksti + ", opiskelijanro="
+				+ opiskelijanro + "]";
 	}
 	
 	
