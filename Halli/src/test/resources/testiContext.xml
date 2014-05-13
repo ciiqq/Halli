@@ -8,14 +8,7 @@
 	<!-- Käyttää src/test/resources -kansion db_connection.properties -tiedostoa -->
 	<context:property-placeholder location="./db_connection.properties" />
 	
-	<!-- Omat DAO-beanit näiden tilalle -->
-	<bean id="koulutusHakuDao" class="fi.softala.dao.KoulutusHakuDAOImpl">
-		<property name="jdbcTemplate" ref="jdbcTemplate" />
-	</bean>
-	
-	<bean id="osallistujaDao" class="fi.softala.dao.OsallistujaDAOImpl">
-		<property name="jdbcTemplate" ref="jdbcTemplate" />
-	</bean>
+	<context:component-scan base-package="fi.softala" />
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${db.driver}" />
