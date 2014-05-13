@@ -32,44 +32,30 @@ public class PalauteDAOimpl implements PalauteDAO {
 	}
 
 	public void talletaPalaute(Palaute palaute) {
-		final String sqlPalaute = "insert into palaute(arvosana, palauteteksti) values (?, ?)";
-		final String sqlIlmoittautuminen = "update ilmoittautuminen set palaute_id = ? where osallistujan_opiskelijanro = ?";
-		
+		final String sql = "insert into palaute(arvosana, palauteteksti, opiskelijanumero) values(?,?,?)";
 		final int arvosana = palaute.getArvosana();
 		final String palauteteksti = palaute.getPalauteteksti();
-		final String opiskelijanro = palaute.getOpiskelijanro();
+		final int opiskelijanumero = Integer.parseInt(palaute.getOpiskelijanro());
 
 		KeyHolder idHolder = new GeneratedKeyHolder();
 
 		jdbcTemplate.update(new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(Connection connection) 
-					throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sqlPalaute,
+			public PreparedStatement createPreparedStatement(
+					Connection connection) throws SQLException {
+				PreparedStatement ps = connection.prepareStatement(sql,
 						new String[] { "palaute_id" });
 				ps.setInt(1, arvosana);
 				ps.setString(2, palauteteksti);
+				ps.setInt(3, opiskelijanumero);
 				return ps;
 			}
 		}, idHolder);
-		
-		palaute.setPalaute_id(idHolder.getKey().intValue());
-		final int palauteId = palaute.getPalaute_id();
-		
-		jdbcTemplate.update(new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(Connection connection)
-					throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sqlIlmoittautuminen);
-				ps.setInt(1, palauteId);
-				ps.setString(2, opiskelijanro);
-				return ps;
-			}
-		});
-		
-		
-	}
 
+		palaute.setPalaute_id(idHolder.getKey().intValue());
+
+	}
 	public Palaute haePalautteenOpiskelianumero(String opiskelijanumero) {
-		String sql = "select opiskelijanro from palaute where opiskelijanro = ?";
+		String sql = "select opiskelijanumero from palaute where opiskelijanumero = ?";
 		Object[] parametrit = new Object[] { opiskelijanumero };
 		Palaute palaute;
 		RowMapper<Palaute> mapper = new PalauteRowMapper();
@@ -83,10 +69,7 @@ public class PalauteDAOimpl implements PalauteDAO {
 
 	public List<Palaute> haeKaikki() {
 
-		String sql = "select p.palaute_id, arvosana, palauteteksti, i.osallistujan_opiskelijanro "
-				+ "from palaute p "
-				+ "join ilmoittautuminen i "
-				+ "on p.palaute_id = i.palaute_id;";
+		String sql = "select palaute_id, arvosana, palauteteksti from palaute";
 		RowMapper<Palaute> mapper = new PalauteRowMapper();
 		List<Palaute> palautteet = jdbcTemplate.query(sql, mapper);
 
@@ -110,19 +93,4 @@ public class PalauteDAOimpl implements PalauteDAO {
 
 		return palautteet;
 	}
-	
-	public List<Palaute> haePalaute(String opiskelijanro) {
-		
-		String sql = "select p.palaute_id, arvosana, palauteteksti, i.osallistujan_opiskelijanro "
-				+ "from palaute p "
-				+ "join ilmoittautuminen i "
-				+ "on p.palaute_id = i.palaute_id "
-				+ "where osallistujan_opiskelijanro = " + opiskelijanro + ";";
-		
-		RowMapper<Palaute> mapper = new PalauteRowMapper();
-		List<Palaute> palautteet = jdbcTemplate.query(sql, mapper);
-		
-		return palautteet;
-	}
-	
 }

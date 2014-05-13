@@ -35,10 +35,6 @@ public class KoulutusHakuServiceImpl implements KoulutusHakuService {
 		List<Koulutustilaisuus> koulutukset = dao.haeMenneet();
 		return koulutukset;
 	}
-	public List<Koulutustilaisuus> haePalauteKelpoiset(String opiskelijanumero) {
-		List<Koulutustilaisuus> koulutukset = dao.haePalauteKelpoiset(opiskelijanumero);
-		return koulutukset;
-	}
 	
 	public List<Koulutustilaisuus> haeTulevat() {
 		List<Koulutustilaisuus> koulutukset = dao.haeTulevat();

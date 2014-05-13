@@ -66,21 +66,25 @@ public class KoulutusHakuController {
 		this.muutosservice = muutosservice;
 	}
 	
-	/*@RequestMapping(value="palaute", method=RequestMethod.GET)
+	@RequestMapping(value="palaute", method=RequestMethod.GET)
 	public String getCreateForm(Model model) {
 		Palaute tyhjaPalaute = new Palaute();
 		model.addAttribute("palaute", tyhjaPalaute);
 		return "palaute";
-	}*/
+	}
 	
 	@RequestMapping(value="palaute", method=RequestMethod.POST)
 	public String create(@ModelAttribute(value="palaute") Palaute palaute, Model model) {	
-				
-				try {
-				palauteservice.tallenna(palaute);
-				model.addAttribute("onnistunutviesti", "Palautteen lähetys onnistui");	
-				return "palaute";
-				} catch (Exception e) {
+				String opiskelijanumero = palaute.getOpiskelijanro();
+				//Koulutus_id jostain listasta?
+				String koulutus_id = "";
+				opiskelijanumero = muutosservice.OpiskelijanumeronMuotoilu(opiskelijanumero);
+				if (palauteservice.tarkistaOpiskelijanumero(opiskelijanumero) == false && palauteservice.tarkistaOsallistuja(opiskelijanumero, koulutus_id) == true) {
+					palauteservice.tallenna(palaute);
+					model.addAttribute("onnistunutviesti", "Palautteen lähetys onnistui");	
+					return "palaute";
+				}
+				else {
 					model.addAttribute("virheviesti", "Palautteen lähetys ei onnistunut");
 					return "palaute";
 				}
@@ -93,16 +97,7 @@ public class KoulutusHakuController {
 		model.addAttribute("koulutukset", koulutukset);
 		return "listausuusi";
 	}
-	@RequestMapping(value = "anna_palautetta", method = RequestMethod.POST)
-	public String getCreateForm(Model model, ServletRequest request
-			, final RedirectAttributes redirectAttrs) {
-		String opiskelijanro = request.getParameter("opiskelijanumero");
-		List<Koulutustilaisuus> koulutukset = hakuservice.haePalauteKelpoiset(opiskelijanro);
-		model.addAttribute("koulutukset", koulutukset);
-		Palaute palaute = new Palaute(opiskelijanro);
-		model.addAttribute("palaute", palaute);
-		return "palaute";
-	}
+	
 	@RequestMapping(value = "menneet", method = RequestMethod.GET)
 	public String listaaMenneetKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeMenneet();

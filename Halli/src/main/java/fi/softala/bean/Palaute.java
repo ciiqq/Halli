@@ -7,18 +7,14 @@ public class Palaute {
 	private String palauteteksti;
 	private String opiskelijanro;
 	
-	public Palaute() {
-		this.palaute_id = 0;
-		this.palauteteksti = null;
-		this.opiskelijanro = null;
-		this.arvosana = 0;
-	}
-	public Palaute(String opiskelijanro) {
-		this.opiskelijanro = opiskelijanro;
-	}
-
 	public String getOpiskelijanro() {
-		return opiskelijanro;
+		if (opiskelijanro.length() == 8) {
+			opiskelijanro = opiskelijanro.substring(1, 8);
+			return opiskelijanro;
+		}
+		else {
+			return opiskelijanro;
+		}
 	}
 
 	public void setOpiskelijanro(String opiskelijanro) {
