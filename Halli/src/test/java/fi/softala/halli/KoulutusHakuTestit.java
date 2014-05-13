@@ -4,7 +4,7 @@ package fi.softala.halli;
  * @author Jiri
  */
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -72,5 +72,60 @@ public class KoulutusHakuTestit {
 		// testi ettei id 1 ole enään vahvistamaton.
 		koulutukset = dao.haeKoulutukset(true);
 		assertEquals(true, koulutukset.get(0).getNakyvyys());
+	}
+	@Test
+	public void paivitaKoulutusTesti() {
+		Koulutustilaisuus kt = new Koulutustilaisuus();
+		kt.setId(1);
+		kt.setAihe("Junit");
+		kt.setKuvaus("Testaisu");
+		kt.setLahtotaso("Keskitaso");
+		kt.setNakyvyys(false);
+		
+		Koulutustilaisuus koulutus = dao.haeKoulutus(1);
+		assertEquals("Scrum", koulutus.getAihe());
+		
+		dao.paivitaKoulutus(kt);
+		
+		koulutus = dao.haeKoulutus(1);
+		assertEquals("Junit", koulutus.getAihe());
+
+		
+	}
+	
+	//EI TOIMI VIELÄ
+	@Test
+	public void siirraKoulutusTesti() {
+		
+		
+		Koulutustilaisuus koulutus = dao.haeKoulutus(1);
+		assertEquals(1, koulutus.getAikaslotti().getId());
+		
+		dao.siirraKoulutus(1,7);
+		
+		koulutus = dao.haeKoulutus(1);
+		assertEquals(7, koulutus.getAikaslotti().getId());
+
+		
+	}
+	//EI TOIMI VIELÄ
+	@Test
+	public void peruutaKoulutusTesti() {
+		Koulutustilaisuus kt = new Koulutustilaisuus();
+		kt.setId(1);
+		kt.setAihe("Junit");
+		kt.setKuvaus("Testaisu");
+		kt.setLahtotaso("Keskitaso");
+		kt.setNakyvyys(false);
+		
+		Koulutustilaisuus koulutus = dao.haeKoulutus(1);
+		assertEquals("Scrum", koulutus.getAihe());
+		
+		dao.peruutaKoulutus(1);
+		
+		
+		assertNull(dao.haeKoulutus(1));
+
+		
 	}
 }
