@@ -53,6 +53,7 @@
 								<th>Aika</th>
 								<th>Aihe</th>
 								<th>Kouluttaja(t)</th>
+								<th>Arvioiva opettaja</th>
 								<th></th>
 							</tr>
 							<c:forEach var="ks" items="${koulutukset}">
@@ -61,6 +62,11 @@
 								<td class="pitka"><c:out value="${ks.aihe}" /></td>
 								<td>
 									<c:forEach var="k" items="${ks.kouluttajat}">
+										<c:out value="${k.etunimi }" /> <c:out value="${k.sukunimi }" /> 
+									</c:forEach>
+								</td>
+								<td>
+									<c:forEach var="k" items="${ks.opettajat}">
 										<c:out value="${k.etunimi }" /> <c:out value="${k.sukunimi }" /> 
 									</c:forEach>
 								</td>

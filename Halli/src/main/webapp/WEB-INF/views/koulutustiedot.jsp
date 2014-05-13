@@ -126,6 +126,15 @@ pageEncoding="UTF-8"%>
     	</c:forEach>
     	</td> 
     </tr>
+    
+    <tr>
+    	<th>Arvioiva opettaja</th>
+    	<td>
+    	<c:forEach var="opettaja" items="${ks.opettajat }">
+    		<c:out value="${opettaja.etunimi}" /> <c:out value="${opettaja.sukunimi}" />
+    	</c:forEach>
+    	</td> 
+    </tr>
   
   <tr>
     	<th>Päivämäärä</th>

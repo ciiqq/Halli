@@ -4,7 +4,7 @@ import java.util.List;
 
 import fi.softala.bean.Aikatauluslotti;
 import fi.softala.bean.Avainsana;
-import fi.softala.bean.Kouluttaja;
+import fi.softala.bean.Henkilo;
 import fi.softala.bean.Koulutustilaisuus;
 
 public interface KoulutusDAO {
@@ -21,7 +21,7 @@ public interface KoulutusDAO {
 	
 	public void julkaiseKoulutus(int id);
 	
-	public List<Kouluttaja> haeKouluttajat(int id);
+	public List<Henkilo> haeHenkilot(int id, String rooli);
 	
 	public List<Avainsana> haeAvainsanat(int id);
 	

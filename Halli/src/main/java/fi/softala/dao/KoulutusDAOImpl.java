@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fi.softala.bean.Aikatauluslotti;
 import fi.softala.bean.Avainsana;
-import fi.softala.bean.Kouluttaja;
+import fi.softala.bean.Henkilo;
 import fi.softala.bean.Koulutustilaisuus;
 @Repository
 public class KoulutusDAOImpl implements KoulutusDAO{
@@ -120,16 +120,22 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 
 
 
-	public List<Kouluttaja> haeKouluttajat(int id) {
-		final String sql = "SELECT h.etunimi, h.sukunimi FROM koulutustilaisuus kt JOIN koulutuksenkouluttaja kk ON kt.koulutus_id = kk.koulutus_id " +
-							"JOIN henkilo h ON kk.kouluttajatunnus = h.henkilotunnus WHERE kt.koulutus_id = ? AND h.rooli = 'kouluttaja';";
+	public List<Henkilo> haeHenkilot(int id, String rooli) {
+		String sql = "SELECT h.etunimi, h.sukunimi FROM koulutustilaisuus kt JOIN koulutuksenkouluttaja kk ON kt.koulutus_id = kk.koulutus_id " +
+							"JOIN henkilo h ON kk.kouluttajatunnus = h.henkilotunnus WHERE kt.koulutus_id = ? AND h.rooli = ";
+		if(rooli.equals("kouluttaja")){
+			sql = sql + " 'kouluttaja';";
+		}else if(rooli.equals("opettaja")){
+			sql = sql + " 'opettaja';";
+		}
+		
 		Object[] parametrit = new Object[] { id };
 		
-		RowMapper<Kouluttaja> rm = new HenkiloRowMapper();
+		RowMapper<Henkilo> rm = new HenkiloRowMapper();
 		
-		List<Kouluttaja> kouluttajat = jdbcTemplate.query(sql, parametrit, rm);
+		List<Henkilo> henkilot = jdbcTemplate.query(sql, parametrit, rm);
 		
-		return kouluttajat;
+		return henkilot;
 	}
 
 

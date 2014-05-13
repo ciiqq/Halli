@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fi.softala.bean.Aikatauluslotti;
 import fi.softala.bean.Avainsana;
-import fi.softala.bean.Kouluttaja;
+import fi.softala.bean.Henkilo;
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.dao.KoulutusDAO;
 
@@ -52,9 +52,10 @@ public class Controller1 {
 		List<Koulutustilaisuus> koulutuslista = dao.haeKoulutukset(false);
 		
 		for(int i = 0;i < koulutuslista.size();i++){
-			koulutuslista.get(i).setKouluttajat(dao.haeKouluttajat(koulutuslista.get(i).getId()));
+			koulutuslista.get(i).setKouluttajat(dao.haeHenkilot(koulutuslista.get(i).getId(), "kouluttaja"));
+			koulutuslista.get(i).setOpettajat(dao.haeHenkilot(koulutuslista.get(i).getId(), "opettaja"));
 		}
-		
+
 		model.addAttribute("koulutukset", koulutuslista);
 		
 		return "julkaisemattomatkoulutukset";
@@ -68,8 +69,12 @@ public class Controller1 {
        Koulutustilaisuus koulutus = dao.haeKoulutus(DaoId);
        
        //Hakee kaikki koulutuksen kouluttajat ja laittaa sen koulutus-olioon
-       List<Kouluttaja> kouluttajat = dao.haeKouluttajat(DaoId);
+       List<Henkilo> kouluttajat = dao.haeHenkilot(DaoId, "kouluttaja");
        koulutus.setKouluttajat(kouluttajat);
+       
+       //Hakee kaikki koulutuksen kouluttajat ja laittaa sen koulutus-olioon
+       List<Henkilo> opettajat = dao.haeHenkilot(DaoId, "opettaja");
+       koulutus.setOpettajat(opettajat);
        
        //Hakee kaikki koulutuksen avainsanat ja laittaa sen koulutus-olioon
        List<Avainsana> avainsanat = dao.haeAvainsanat(DaoId);
@@ -158,7 +163,8 @@ public class Controller1 {
 		List<Koulutustilaisuus> koulutuslista = dao.haeKoulutukset(true);
 		
 		for(int i = 0;i < koulutuslista.size();i++){
-			koulutuslista.get(i).setKouluttajat(dao.haeKouluttajat(koulutuslista.get(i).getId()));
+			koulutuslista.get(i).setKouluttajat(dao.haeHenkilot(koulutuslista.get(i).getId(), "kouluttaja"));
+			koulutuslista.get(i).setOpettajat(dao.haeHenkilot(koulutuslista.get(i).getId(), "opettaja"));
 		}
 		
 		model.addAttribute("koulutukset", koulutuslista);

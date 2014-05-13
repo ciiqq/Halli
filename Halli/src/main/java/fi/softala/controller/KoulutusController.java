@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fi.softala.bean.Avainsana;
-import fi.softala.bean.Kouluttaja;
+import fi.softala.bean.Henkilo;
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.dao.KoulutusDAO;
 

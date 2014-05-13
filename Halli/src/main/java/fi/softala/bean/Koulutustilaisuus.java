@@ -28,8 +28,8 @@ public class Koulutustilaisuus {
 	private boolean nakyvyys;
 	private String suomiPvm;
 	private String suomiKlo;
-	private Opettaja ope;
-	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
+	private List<Henkilo> kouluttajat = new ArrayList<Henkilo>();
+	private List<Henkilo> opettajat = new ArrayList<Henkilo>();
 	private List<Avainsana> avainsanat = new ArrayList<Avainsana>();
 	private Aikatauluslotti aikaslotti;
 	
@@ -106,19 +106,20 @@ public class Koulutustilaisuus {
 		this.suomiKlo = suomiKloMuotoilu.format(suomiKlo);
 	}
 
-	public Opettaja getOpe() {
-		return ope;
+
+	public List<Henkilo> getOpettajat() {
+		return opettajat;
 	}
 
-	public void setOpe(Opettaja ope) {
-		this.ope = ope;
+	public void setOpettajat(List<Henkilo> opettajat) {
+		this.opettajat = opettajat;
 	}
 
-	public List<Kouluttaja> getKouluttajat() {
+	public List<Henkilo> getKouluttajat() {
 		return kouluttajat;
 	}
 
-	public void setKouluttajat(List<Kouluttaja> kouluttajat) {
+	public void setKouluttajat(List<Henkilo> kouluttajat) {
 		this.kouluttajat = kouluttajat;
 	}
 
@@ -136,10 +137,11 @@ public class Koulutustilaisuus {
 				+ ", suomiKloMuotoilu=" + suomiKloMuotoilu + ", id=" + id
 				+ ", aihe=" + aihe + ", kuvaus=" + kuvaus + ", lahtotaso="
 				+ lahtotaso + ", nakyvyys=" + nakyvyys + ", suomiPvm="
-				+ suomiPvm + ", suomiKlo=" + suomiKlo + ", ope=" + ope
-				+ ", kouluttajat=" + kouluttajat + ", avainsanat=" + avainsanat
-				+ ", aikaslotti=" + aikaslotti + "]";
+				+ suomiPvm + ", suomiKlo=" + suomiKlo + ", kouluttajat="
+				+ kouluttajat + ", opettajat=" + opettajat + ", avainsanat="
+				+ avainsanat + ", aikaslotti=" + aikaslotti + "]";
 	}
+
 
 
 
