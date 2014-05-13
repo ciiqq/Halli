@@ -103,19 +103,18 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 		final String sql = "UPDATE aikatauluslotti asl"
 						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id"
 						+ " SET asl.koulutus_id = null"
-						+ " WHERE asl.koulutus_id = ?";
+						+ " WHERE asl.koulutus_id = ?;";
 		
 		Object[] parametrit = new Object[] {koulutusId};
 		
-		jdbcTemplate.update(sql, parametrit);
-		
-		
-		final String sql2 = "UPDATE aikatauluslotti "
-						+ " SET koulutus_id = ?"
-						+ " WHERE aika_id = ?";
+		final String sql2 = "UPDATE aikatauluslotti asl"
+						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id"
+						+ " SET asl.koulutus_id = ?"
+						+ " WHERE asl.aika_id = ?;";
 		
 		Object[] parametrit2 = new Object[] {koulutusId, aikaId};
 		
+		jdbcTemplate.update(sql, parametrit);
 		jdbcTemplate.update(sql2, parametrit2);
 	}
 
