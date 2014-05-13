@@ -100,28 +100,34 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 	@Transactional(propagation=Propagation.REQUIRED, isolation=Isolation.SERIALIZABLE, readOnly=false)
 	public void siirraKoulutus(int koulutusId, int aikaId) {
 		
-		final String sql = "UPDATE aikatauluslotti asl"
-						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id"
-						+ " SET asl.koulutus_id = null"
-						+ " WHERE asl.koulutus_id = ?;";
+//		final String sql = "UPDATE aikatauluslotti asl"
+//						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id"
+//						+ " SET asl.koulutus_id = null"
+//						+ " WHERE asl.koulutus_id = ?;";
+//		
+//		Object[] parametrit = new Object[] {koulutusId};
+//		
+//		final String sql2 = "UPDATE aikatauluslotti asl"
+//						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id"
+//						+ " SET asl.koulutus_id = ?"
+//						+ " WHERE asl.aika_id = ?;";
+//		
+//		Object[] parametrit2 = new Object[] {koulutusId, aikaId};
+//		
+//		System.out.println("Koulutusid: " + koulutusId);
+//		System.out.println("Aikaid: " + aikaId);
+//		
+//		jdbcTemplate.update(sql, parametrit);
+//		jdbcTemplate.update(sql2, parametrit2);
+				
 		
-		Object[] parametrit = new Object[] {koulutusId};
-		
-		final String sql2 = "UPDATE aikatauluslotti asl"
-						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id"
-						+ " SET asl.koulutus_id = ?"
-						+ " WHERE asl.aika_id = ?;";
-		
-		Object[] parametrit2 = new Object[] {koulutusId, aikaId};
-		
-		jdbcTemplate.update(sql, parametrit);
-		jdbcTemplate.update(sql2, parametrit2);
+
 	}
 
 
 
 	public List<Henkilo> haeHenkilot(int id, String rooli) {
-		String sql = "SELECT h.etunimi, h.sukunimi FROM koulutustilaisuus kt JOIN koulutuksenkouluttaja kk ON kt.koulutus_id = kk.koulutus_id " +
+		String sql = "SELECT h.etunimi, h.sukunimi FROM koulutustilaisuus kt JOIN koulutuksentoimija kk ON kt.koulutus_id = kk.koulutus_id " +
 							"JOIN henkilo h ON kk.kouluttajatunnus = h.henkilotunnus WHERE kt.koulutus_id = ? AND h.rooli = ";
 		if(rooli.equals("kouluttaja")){
 			sql = sql + " 'kouluttaja';";
