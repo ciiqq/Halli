@@ -1,35 +1,75 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <dataset>
-  <opettaja opettaja_id="1" etunimi="Olli" sukunimi="Opettaja" salasana="password2" suola="asdf"/>
-
-<!-- yksi koulutus, jota ei ole julkaistu, toinen koulutus joka on jo mennyt ja kolmas koulutus joka on tulossa -->
-  <koulutustilaisuus koulutus_id="1" aihe="Scrum" kuvaus="Scrumluento" lahtotaso="Keskitaso" nakyvyys="0" arvioiva_ope="1"/>
-  <koulutustilaisuus koulutus_id="2" aihe="jQueryn alkeet" kuvaus="jQuery luento " lahtotaso="Alkeet" nakyvyys="1" arvioiva_ope="1"/>
-  <koulutustilaisuus koulutus_id="3" aihe="Git-versionhallinta: mikä se on?" kuvaus="Git tutuksi" lahtotaso="Alkeet" nakyvyys="1" arvioiva_ope="1"/>
-  
-  <aikatauluslotti aika_id="1" pvm="2016-03-18" alkukello="12:00:00" loppukello="16:00:00" koulutustila="5007" koulutus_id="1"/> 
-  <aikatauluslotti aika_id="2" pvm="2014-03-18" alkukello="12:00:00" loppukello="14:00:00" koulutustila="Auditorio" koulutus_id="2"/>
-  <aikatauluslotti aika_id="3" pvm="2016-04-03" alkukello="08:00:00" loppukello="15:00:00" koulutustila="4003" koulutus_id="3"/>
-  
+  <henkilo henkilotunnus="1122334" rooli="kouluttaja" etunimi="Kalle" sukunimi="Kouluttaja" salasana="password2" suola="xqz"/>
+  <henkilo henkilotunnus="1123456" rooli="opettaja" etunimi="Johannes" sukunimi="Siipola" salasana="44eW9z6M" suola="suola!"/>
+  <henkilo henkilotunnus="1234567" rooli="kouluttaja" etunimi="Tarmo" sukunimi="Testaaja" salasana="password1" suola="xqz"/>
+  <henkilo henkilotunnus="3335556" rooli="kouluttaja" etunimi="Kari" sukunimi="Master" salasana="password4" suola="xqz"/>
+  <henkilo henkilotunnus="opepe" rooli="opettaja" etunimi="Maikka" sukunimi="Opettaja" salasana="salasana" suola="xqz"/>
+  <henkilo henkilotunnus="opine" rooli="opettaja" etunimi="Neea" sukunimi="Opi" salasana="salasana" suola="xqz"/>
+  <koulutustilaisuus koulutus_id="1" aihe="Scrum" kuvaus="..." lahtotaso="Keskitaso" nakyvyys="0"/>
+  <koulutustilaisuus koulutus_id="2" aihe="jQueryn alkeet" kuvaus="..." lahtotaso="Alkeet" nakyvyys="1"/>
+  <koulutustilaisuus koulutus_id="3" aihe="Git-versionhallinta: mikä se on?" kuvaus="Git tutuksi" lahtotaso="Alkeet" nakyvyys="1"/>
+  <koulutustilaisuus koulutus_id="4" aihe="Windows XP - Legenda elää" kuvaus="Teen tarkoituksella lyhyitä kuvauksia" lahtotaso="Alkeet" nakyvyys="1"/>
+  <koulutustilaisuus koulutus_id="5" aihe="Flash-pelit" kuvaus="..." lahtotaso="Keskitaso" nakyvyys="1"/>
+  <koulutustilaisuus koulutus_id="6" aihe="Java-ohjelmointi" kuvaus="autolistasovellus" lahtotaso="Haastava" nakyvyys="1"/>
+  <koulutustilaisuus koulutus_id="7" aihe="Futaba channel" kuvaus="^__^" lahtotaso="Alkeet" nakyvyys="1"/>
+  <aikatauluslotti aika_id="1" pvm="2014-06-11" alkukello="12:00:00" loppukello="16:00:00" koulutustila="5007" koulutus_id="1"/>
+  <aikatauluslotti aika_id="2" pvm="2016-06-06" alkukello="12:00:00" loppukello="14:00:00" koulutustila="Auditorio" koulutus_id="2"/>
+  <aikatauluslotti aika_id="3" pvm="2014-07-06" alkukello="08:00:00" loppukello="15:00:00" koulutustila="4003" koulutus_id="3"/>
+  <aikatauluslotti aika_id="4" pvm="2014-05-06" alkukello="06:00:00" loppukello="18:00:00" koulutustila="5013" koulutus_id="4"/>
+  <aikatauluslotti aika_id="5" pvm="2014-03-20" alkukello="12:00:00" loppukello="16:00:00" koulutustila="1011" koulutus_id="5"/>
+  <aikatauluslotti aika_id="6" pvm="2014-05-15" alkukello="10:00:00" loppukello="13:00:00" koulutustila="3006" koulutus_id="6"/>
+  <aikatauluslotti aika_id="7" pvm="2014-05-06" alkukello="17:00:00" loppukello="19:00:00" koulutustila="Auditorio" koulutus_id="7"/>
   <avainsana avainsana_id="1" avainsana="Ohjelmointi"/>
   <avainsana avainsana_id="2" avainsana="Scrum"/>
   <avainsana avainsana_id="3" avainsana="gitti"/>
-  
-  <osallistuja osallistuja_id="1" osallistujan_opiskelijanro="7654321" etunimi="Ilmari" sukunimi="Ilmoittautuja"/>
-  
+  <avainsana avainsana_id="4" avainsana="Windows"/>
+  <avainsana avainsana_id="5" avainsana="Flash"/>
+  <avainsana avainsana_id="6" avainsana="jQuery"/>
+  <osallistuja osallistujan_opiskelijanro="1102030" etunimi="Joh" sukunimi="Sii"/>
+  <osallistuja osallistujan_opiskelijanro="1204567" etunimi="tarmo" sukunimi="testaaja"/>
+  <osallistuja osallistujan_opiskelijanro="1231233" etunimi="Per" sukunimi="..."/>
+  <osallistuja osallistujan_opiskelijanro="1231234" etunimi="Jan-Peter-Magnus-Tor-Erik-Thor" sukunimi="..."/>
+  <osallistuja osallistujan_opiskelijanro="1234124" etunimi="tale" sukunimi="talesmaa"/>
+  <osallistuja osallistujan_opiskelijanro="1234567" etunimi="demo" sukunimi="testi"/>
+  <osallistuja osallistujan_opiskelijanro="1234569" etunimi="jou" sukunimi="..."/>
+  <osallistuja osallistujan_opiskelijanro="3456789" etunimi="Ilmari" sukunimi="Ilmoittautuja"/>
+  <osallistuja osallistujan_opiskelijanro="6666666" etunimi="Tale" sukunimi="Taalasmaa"/>
+  <osallistuja osallistujan_opiskelijanro="7654321" etunimi="demo" sukunimi="testi"/>
+  <osallistuja osallistujan_opiskelijanro="9368745" etunimi="paras" sukunimi="koodi"/>
+  <osallistuja osallistujan_opiskelijanro="9876543" etunimi="Kalle" sukunimi="..."/>
+  <osallistuja osallistujan_opiskelijanro="9999999" etunimi="Testi" sukunimi="Testaaja"/>
   <palaute palaute_id="1" arvosana="5" palauteteksti="Paras koulutus"/>
-  
-  <ilmoittautuminen ilmoittautuminen_id="1" osallistuja_id="1" koulutus_id="2" palaute_id="1"/>
-  
-  <kouluttaja opiskelijanro="1122334" etunimi="Kalle" sukunimi="Kouluttaja" salasana="password2" suola="xqz"/>
-  <kouluttaja opiskelijanro="1234567" etunimi="Tarmo" sukunimi="Testaaja" salasana="password1" suola="xqz"/>
-  <kouluttaja opiskelijanro="3335556" etunimi="Scrum" sukunimi="Master" salasana="password4" suola="xqz"/>
-  
+  <ilmoittautuminen osallistujan_opiskelijanro="1102030" koulutus_id="3"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="1204567" koulutus_id="2"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="1204567" koulutus_id="3"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="1204567" koulutus_id="6"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="1231233" koulutus_id="2"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="1231233" koulutus_id="6"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="1231234" koulutus_id="3"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="1234567" koulutus_id="2"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="1234567" koulutus_id="3"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="1234567" koulutus_id="6"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="1234569" koulutus_id="3"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="3456789" koulutus_id="6"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="6666666" koulutus_id="6"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="7654321" koulutus_id="3"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="7654321" koulutus_id="6"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="9368745" koulutus_id="2"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="9876543" koulutus_id="6"/>
   <koulutuksenavainsana koulutuksenavainsana_id="1" avainsana_id="2" koulutus_id="1"/>
   <koulutuksenavainsana koulutuksenavainsana_id="2" avainsana_id="1" koulutus_id="2"/>
   <koulutuksenavainsana koulutuksenavainsana_id="3" avainsana_id="3" koulutus_id="3"/>
-  
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="1" opiskelijanro="1234567" koulutus_id="3"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="2" opiskelijanro="1122334" koulutus_id="2"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="3" opiskelijanro="3335556" koulutus_id="1"/>
+  <koulutuksenavainsana koulutuksenavainsana_id="16" avainsana_id="4" koulutus_id="4"/>
+  <koulutuksenavainsana koulutuksenavainsana_id="17" avainsana_id="5" koulutus_id="5"/>
+  <koulutuksenavainsana koulutuksenavainsana_id="18" avainsana_id="1" koulutus_id="6"/>
+  <koulutuksenavainsana koulutuksenavainsana_id="20" avainsana_id="6" koulutus_id="2"/>
+  <koulutuksenavainsana koulutuksenavainsana_id="21" avainsana_id="1" koulutus_id="7"/>
+  <koulutuksenkouluttaja koulutuksenkouluttaja_id="1" kouluttajatunnus="1122334" koulutus_id="5"/>
+  <koulutuksenkouluttaja koulutuksenkouluttaja_id="2" kouluttajatunnus="3335556" koulutus_id="3"/>
+  <koulutuksenkouluttaja koulutuksenkouluttaja_id="3" kouluttajatunnus="1234567" koulutus_id="1"/>
+  <koulutuksenkouluttaja koulutuksenkouluttaja_id="4" kouluttajatunnus="1122334" koulutus_id="2"/>
+  <koulutuksenkouluttaja koulutuksenkouluttaja_id="5" kouluttajatunnus="1122334" koulutus_id="4"/>
+  <koulutuksenkouluttaja koulutuksenkouluttaja_id="6" kouluttajatunnus="3335556" koulutus_id="6"/>
+  <koulutuksenkouluttaja koulutuksenkouluttaja_id="7" kouluttajatunnus="1122334" koulutus_id="7"/>
 </dataset>
