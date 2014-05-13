@@ -7,10 +7,10 @@ import javax.inject.Inject;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import fi.softala.bean.Kouluttaja;
+import fi.softala.bean.Aikatauluslotti;
 
 @Repository
-public class HaeKouluttajatDaoImpl implements HaeKouluttajatDao {
+public class HaeAjatDaoImpl implements HaeAjatDao {
 	
 	@Inject
 	private JdbcTemplate jdbcTemplate;
@@ -25,10 +25,10 @@ public class HaeKouluttajatDaoImpl implements HaeKouluttajatDao {
 	
 	
 
-	public List<Kouluttaja> haeKouluttajat() {
+	public List<Aikatauluslotti> haeAjat() {
 		
-		String sql = "SELECT henkilotunnus, etunimi, sukunimi FROM henkilo WHERE rooli='kouluttaja'";
-		return jdbcTemplate.query(sql, new HaeKouluttajatRowMapper());
+		String sql = "SELECT pvm, alkukello, loppukello, koulutustila FROM aikatauluslotti";
+		return jdbcTemplate.query(sql, new HaeAjatRowMapper());
 	}
 
 }
