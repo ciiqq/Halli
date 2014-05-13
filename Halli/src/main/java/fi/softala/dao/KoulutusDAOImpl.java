@@ -96,7 +96,6 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 	}
 	
 //	Koulutuksen siirto toiseen aikatauluslottiin
-
 	@Transactional(propagation=Propagation.REQUIRED, isolation=Isolation.SERIALIZABLE, readOnly=false)
 	public void siirraKoulutus(int koulutusId, int aikaId) {
 		
@@ -114,9 +113,6 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 						+ " WHERE asl.aika_id = ?;";
 		
 		Object[] parametrit2 = new Object[] {koulutusId, aikaId};
-		
-		System.out.println("Koulutusid: " + koulutusId);
-		System.out.println("Aikaid: " + aikaId);
 		
 		jdbcTemplate.update(sql2, parametrit2);
 				

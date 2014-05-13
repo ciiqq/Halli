@@ -112,9 +112,6 @@ public class Controller1 {
 		int siirto = Integer.parseInt(req.getParameter("siirto"));
 		koulutus.setId(DaoId);
 		
-		System.out.println(siirto);
-		System.out.println(koulutus.getId());
-		
 		if(siirto > 0){
 			dao.siirraKoulutus(koulutus.getId(), siirto);
 		}
