@@ -35,7 +35,7 @@ public class PalauteDAOimpl implements PalauteDAO {
 		final String sql = "insert into palaute(arvosana, palauteteksti, opiskelijanumero) values(?,?,?)";
 		final int arvosana = palaute.getArvosana();
 		final String palauteteksti = palaute.getPalauteteksti();
-		final int opiskelijanumero = Integer.parseInt(palaute.getOpiskelijanumero());
+		final int opiskelijanumero = Integer.parseInt(palaute.getOpiskelijanro());
 
 		KeyHolder idHolder = new GeneratedKeyHolder();
 
