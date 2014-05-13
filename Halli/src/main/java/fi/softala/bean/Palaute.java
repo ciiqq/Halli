@@ -5,24 +5,24 @@ public class Palaute {
 	private int palaute_id;
 	private int arvosana;
 	private String palauteteksti;
-	private String opiskelijanumero;
+	private String opiskelijanro;
 	
 	public Palaute() {
 		this.palaute_id = 0;
 		this.palauteteksti = null;
-		this.opiskelijanumero = null;
+		this.opiskelijanro = null;
 		this.arvosana = 0;
 	}
 	public Palaute(String opiskelijanro) {
-		this.opiskelijanumero = opiskelijanro;
+		this.opiskelijanro = opiskelijanro;
 	}
 
-	public String getOpiskelijanumero() {
-		return opiskelijanumero;
+	public String getOpiskelijanro() {
+		return opiskelijanro;
 	}
 
-	public void setOpiskelijanumero(String opiskelijanumero) {
-		this.opiskelijanumero = opiskelijanumero;
+	public void setOpiskelijanro(String opiskelijanro) {
+		this.opiskelijanro = opiskelijanro;
 	}
 
 	public int getPalaute_id() {
@@ -52,8 +52,8 @@ public class Palaute {
 	@Override
 	public String toString() {
 		return "Palaute [palaute_id=" + palaute_id + ", arvosana=" + arvosana
-				+ ", palauteteksti=" + palauteteksti + ", opiskelijanumero="
-				+ opiskelijanumero + "]";
+				+ ", palauteteksti=" + palauteteksti + ", opiskelijanro="
+				+ opiskelijanro + "]";
 	}
 	
 	

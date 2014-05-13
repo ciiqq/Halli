@@ -32,34 +32,28 @@ public class PalauteDAOimpl implements PalauteDAO {
 	}
 
 	public void talletaPalaute(Palaute palaute) {
-<<<<<<< HEAD
 		final String sqlPalaute = "insert into palaute(arvosana, palauteteksti) values (?, ?)";
 		final String sqlIlmoittautuminen = "update ilmoittautuminen set palaute_id = ? where osallistujan_opiskelijanro = ?";
 		
-=======
-		final String sql = "insert into palaute(arvosana, palauteteksti, opiskelijanro) values(?,?,?)";
->>>>>>> 0d95bc259bcdc93c4c804a5fd796323fb9049164
 		final int arvosana = palaute.getArvosana();
 		final String palauteteksti = palaute.getPalauteteksti();
-		final int opiskelijanumero = Integer.parseInt(palaute.getOpiskelijanumero());
+		final String opiskelijanro = palaute.getOpiskelijanro();
 
 		KeyHolder idHolder = new GeneratedKeyHolder();
 
 		jdbcTemplate.update(new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(
-					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql,
+			public PreparedStatement createPreparedStatement(Connection connection) 
+					throws SQLException {
+				PreparedStatement ps = connection.prepareStatement(sqlPalaute,
 						new String[] { "palaute_id" });
 				ps.setInt(1, arvosana);
 				ps.setString(2, palauteteksti);
-				ps.setInt(3, opiskelijanumero);
 				return ps;
 			}
-<<<<<<< HEAD
-		}, kh);
+		}, idHolder);
 		
-		palaute.setPalaute_id(kh.getKey().intValue());
-		palauteId = palaute.getPalaute_id();
+		palaute.setPalaute_id(idHolder.getKey().intValue());
+		final int palauteId = palaute.getPalaute_id();
 		
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection connection)
@@ -73,13 +67,7 @@ public class PalauteDAOimpl implements PalauteDAO {
 		
 		
 	}
-=======
-		}, idHolder);
 
-		palaute.setPalaute_id(idHolder.getKey().intValue());
->>>>>>> 0d95bc259bcdc93c4c804a5fd796323fb9049164
-
-	}
 	public Palaute haePalautteenOpiskelianumero(String opiskelijanumero) {
 		String sql = "select opiskelijanro from palaute where opiskelijanro = ?";
 		Object[] parametrit = new Object[] { opiskelijanumero };
@@ -119,4 +107,12 @@ public class PalauteDAOimpl implements PalauteDAO {
 
 		return palautteet;
 	}
+	
+	public List<Palaute> haePalaute(String opiskelijanumero) {
+		List<Palaute> palautteet = null;
+		
+		final String sql = "";
+		return palautteet;
+	}
+	
 }
