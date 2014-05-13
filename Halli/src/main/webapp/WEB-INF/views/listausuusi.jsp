@@ -170,10 +170,7 @@
 			<div class="alapalkki">
 			<c:choose>
 				<c:when test="${pvm > nyt}">
-				<!--<button type="submit" name="vahvista" href="#lightbox_sisalto" class="vahvistus"
-				 disabled>Vahvista ilmoittautumiset</button>-->
-				 
-				 <button type="submit" class="vahvistus" data-toggle="modal" data-target="#myModal">
+				 <button type="submit" class="vahvistus" data-toggle="modal" data-target="#myModal" disabled>
 				  Vahvista ilmoittautumiset
 				</button>
 				 
@@ -225,7 +222,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Sulje ikkuna</button>
         				<button type="submit" class="btn btn-primary" id="ilmoittaudu" disabled>
 					Ilmoittaudu koulutuksiin</button>
 					
