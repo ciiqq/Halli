@@ -75,7 +75,7 @@ public class KoulutusHakuController {
 	
 	@RequestMapping(value="palaute", method=RequestMethod.POST)
 	public String create(@ModelAttribute(value="palaute") Palaute palaute, Model model) {	
-				String opiskelijanumero = palaute.getOpiskelijanumero();
+				String opiskelijanumero = palaute.getOpiskelijanro();
 				//Koulutus_id jostain listasta?
 				String koulutus_id = "";
 				opiskelijanumero = muutosservice.OpiskelijanumeronMuotoilu(opiskelijanumero);

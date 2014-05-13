@@ -43,7 +43,11 @@ public class OsallistujaDAOImpl implements OsallistujaDAO {
 			for (int i = 0; i < osallistumiset.length; i++) {
 				sql = "insert into ilmoittautuminen(osallistujan_opiskelijanro, koulutus_id) " +
 						"values ("+ opnro + ", "+ osallistumiset[i] + ")";
+				try {
 				jdbcTemplate.update(sql);
+				}catch (Exception e) {
+					
+				}
 			}
 
 		} else {
