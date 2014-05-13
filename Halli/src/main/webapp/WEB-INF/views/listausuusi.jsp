@@ -58,7 +58,7 @@
 				role="dialog" aria-labelledby="opiskelijanumeroModal" aria-hidden="true" id="opiskelijanumeroModal">
 				<div class="modal-dialog modal-sm">
 					<div class="modal-content">
-						<form action="palaute" id="opiskelijanumeroForm"
+						<form action="anna_palautetta" id="opiskelijanumeroForm"
 							method="post">
 							<br>
 							<label for="opiskelijanumero" style="color:grey;">Anna opiskelijanumero</label>
