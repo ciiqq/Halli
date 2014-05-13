@@ -100,25 +100,25 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 	@Transactional(propagation=Propagation.REQUIRED, isolation=Isolation.SERIALIZABLE, readOnly=false)
 	public void siirraKoulutus(int koulutusId, int aikaId) {
 		
-//		final String sql = "UPDATE aikatauluslotti asl"
-//						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id"
-//						+ " SET asl.koulutus_id = null"
-//						+ " WHERE asl.koulutus_id = ?;";
-//		
-//		Object[] parametrit = new Object[] {koulutusId};
-//		
-//		final String sql2 = "UPDATE aikatauluslotti asl"
-//						+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id"
-//						+ " SET asl.koulutus_id = ?"
-//						+ " WHERE asl.aika_id = ?;";
-//		
-//		Object[] parametrit2 = new Object[] {koulutusId, aikaId};
-//		
-//		System.out.println("Koulutusid: " + koulutusId);
-//		System.out.println("Aikaid: " + aikaId);
-//		
-//		jdbcTemplate.update(sql, parametrit);
-//		jdbcTemplate.update(sql2, parametrit2);
+		final String sql = "UPDATE aikatauluslotti asl"
+				+ " INNER JOIN koulutustilaisuus kt ON asl.koulutus_id = kt.koulutus_id"
+				+ " SET asl.koulutus_id = null"
+				+ " WHERE asl.koulutus_id = ?;";
+
+		Object[] parametrit = new Object[] {koulutusId};
+		jdbcTemplate.update(sql, parametrit);
+		
+		
+		final String sql2 = "UPDATE aikatauluslotti asl"
+						+ " SET asl.koulutus_id = ?"
+						+ " WHERE asl.aika_id = ?;";
+		
+		Object[] parametrit2 = new Object[] {koulutusId, aikaId};
+		
+		System.out.println("Koulutusid: " + koulutusId);
+		System.out.println("Aikaid: " + aikaId);
+		
+		jdbcTemplate.update(sql2, parametrit2);
 				
 		
 
