@@ -14,15 +14,15 @@ pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/style.css">
 
 
-
 <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/jquery-ui-1.10.4.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.timepicker.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modal.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap-modalmanager.js"></script>
- <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
- 
+<script src="<%=request.getContextPath()%>/resources/js/jqBootstrapValidation.js"></script>
+
+
 <script> 
  	$(document).ready(function() {
  		$( "#datepicker" ).datepicker({dateFormat: 'dd.mm.yy'});
@@ -32,50 +32,18 @@ pageEncoding="UTF-8"%>
  		});
  	});  
 
-   
- 	var validointi = function() {
   
+    function() {$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+     });
 
- 	$('input').keydown(function() {
-	     $("#modal-form").validate({ 
-	    
-	        // Specify the validation rules
-	        rules: {
-	            aihe: {required:true,
-	            		minlength:5
-	        		},
-	            kuvaus:{required:true,
-	            		minlength:5
-	    		}
-	        },
-	     
-	        // Specify the validation error messages
-	        messages: {
-	            aihe: {required:"Lisää aihe!",
-	            		minlength:"Liian lyhyt aiheen nimi!"},
-	            kuvaus: {required:"Lisää kuvaus!",
-	            		minlength:"Liian lyhyt kuvaus"
-	            }
-	        },
-	        
-	        submitHandler: function(form) {
-	            form.submit();	        
-	     }
-
-
-  });
-    });	
- 	});	
  
-  
-  </script>
-
+ 	 </script>
 
 
 <title>Aikataulut</title>
 
 </head>
-<body onload="validointi()">
+<body>
 
 
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -115,10 +83,24 @@ pageEncoding="UTF-8"%>
     <p>${ks.kuvaus}</p>    
   </div>
 
+
+    <form class="form-horizontal">
+    <div class="control-group">
+    <label class="control-label">Type something</label>
+    <div class="controls">
+    <input type="text" name="some_field" required />
+    <p class="help-block"></p>
+    </div>
+    </div>
+    </form>
+
+
+
   <!-- Table -->
   <table class="table">
   
   <tr>
+  
     	<th>Kouluttajat</th>
     	<td>
     	<c:forEach var="kouluttaja" items="${ks.kouluttajat }">
@@ -204,7 +186,7 @@ pageEncoding="UTF-8"%>
         </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
-      <a href="peruutus/${ks.id}" class="btn btn-danger">Peruuta koulutus</a>
+      <a href="peruutus/${ks.id}" class="btn btn-danger">Vahvista</a>
       </div>
     </div>
   </div>
@@ -237,12 +219,13 @@ pageEncoding="UTF-8"%>
     <div class="modal-content">
       <div class="modal-header">
       <h3><c:out value="${ks.aihe}" /></h3>
+
+
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title"><c:out value="${ks.aikaslotti.pvm}" />, <c:out value="${ks.aikaslotti.alkukello}" />-<c:out value="${ks.aikaslotti.loppukello}" /></h4>
       </div>
- 
-      
-       <form:form id="modal-form" method="POST" modelAttribute="muokattavaKoulutus">
+
+       <form:form id="modal-form" method="POST" modelAttribute="muokattavaKoulutus" novalidate="novalidate">
       <div class="modal-body">
 
 
@@ -250,19 +233,18 @@ pageEncoding="UTF-8"%>
            <table class="table">
            
            
-      
         
 			  <tr>
 			   
-			  	<th><form:label path="aihe">Aihe</form:label></th>	 		  
-			  	<td><form:input id="aihe" name="aihe" path="aihe"  value="${ks.aihe}"/>  </td> 
+			  	<th><form:label path="aihe" name="aihe">Aihe</form:label></th>	 		  
+			  	<td><form:input id="aihe" path="aihe" required="required" data-validation-required-message="Lisää aihe!" datavalue="${ks.aihe}"/>  </td> 
 			  	<td><form:errors path="aihe"></form:errors></td>
 			  	
 			  </tr>  
 			  
 			  <tr>
-			  	<th><form:label path="kuvaus">Kuvaus</form:label></th>
-			  	<td><form:textarea id="kuvaus" name="kuvaus" class="kuvaus" path="kuvaus" style="resize:none;" value="${ks.kuvaus}" cols="40" rows="5"/> </td>
+			  	<th><form:label path="kuvaus" name="kuvaus">Kuvaus</form:label></th>
+			  	<td><form:textarea id="kuvaus" class="kuvaus" path="kuvaus" style="resize:none;" value="${ks.kuvaus}" cols="40" rows="5"/> </td>
 			  	<td><form:errors id="kuvaus-error" path="kuvaus"></form:errors></td>
 			  	
 			  </tr>    
