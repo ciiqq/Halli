@@ -81,19 +81,19 @@
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <label>Ajankohta</label>
                     <div class="input-group">
-                        <form:input class="form-control" disabled="true" path="aikaPaiva"></form:input>
+                        <form:input id="ajankohta_input" class="form-control" disabled="true" path="aikaPaiva"></form:input>
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" data-toggle="modal" data-target="#aikavalinta">Valitse aika</button>
+                            <button class="btn btn-default" type="button" data-toggle="modal" data-target="#aikavalinta">Lisää ajankohta</button>
                         </span>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-8 col-md-6"> 
                             <label>Ohjaaja</label>
-                            <form:input class="form-control" disabled="true" path="ope"></form:input>                           
+                            <form:input id="ohjaaja_input" class="form-control" disabled="true" path="ope"></form:input>                           
                         </div> 
                         <div class="col-xs-12 col-sm-8 col-md-6"> 
                             <label>Luokkatila</label>
-                            <form:input class="form-control" disabled="true" path="paikka"></form:input>                           
+                            <form:input id="luokkatila_input" class="form-control" disabled="true" path="paikka"></form:input>                           
                         </div> 
                     </div>
             </div>
@@ -140,7 +140,7 @@
     <form role="form">  
       <div class="modal-body">
             <div class="form-group">
-                <table class="table">
+                <table id="aikalistaus" class="table">
                     <thead>
                     <th>Pvm</th>
                     <th>Alkuaika</th>
@@ -148,7 +148,7 @@
                     <th>Luokkatila</th>
                     <tbody>
                         <c:forEach items="${vapaatajat}" var="aika" varStatus="status">
-							<tr  class="ajankohta" style="cursor:pointer;" >
+							<tr class="ajankohta" style="cursor:pointer;" >
 								<td><fmt:formatDate pattern="dd.MM.yyyy" value="${aika.pvm}" /></td>
 								<td><c:out value="${aika.alkukello}"/></td>
 								<td><c:out value="${aika.loppukello}"/></td>
@@ -161,8 +161,10 @@
           
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Peruuta</button>
-        <button type="button" class="btn btn-primary">Valitse aika</button>
+        <input type="button" class="btn btn-default" value="Peruuta" data-dismiss="modal"></input>
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Peruuta</button>-->
+                <input type="button" id="valitseaika_nappula" class="btn btn-default" value="Valitse aika" disabled data-dismiss="modal"></input>
+        <!-- <button type="button" class="btn btn-primary">Valitse aika</button> -->
       </div>
     </form>
     </div>

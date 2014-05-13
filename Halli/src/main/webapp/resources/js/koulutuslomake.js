@@ -1,11 +1,46 @@
 $().ready(function() {
 
-	
-	
-    
+
     // Variablet
-    var $kouluttaja_rivi = $('.kouluttaja');
+    //var $kouluttaja_rivi = $('.kouluttaja');
+    
+	// Aikavalinta modaali ja nappuloiden toiminta
+	
+    var $ajankohta_input = $('#ajankohta_input');
+    var $luokkatila_input = $('#luokkatila_input');
+    var $ohjaaja_input = $('#ohjaaja_input');
+	var $aikavalinta_nappula = $('#aikavalinta_nappula');   // Lomakkeella "Valitse aika" nappula  
+    var $aikalistaus = $('#aikalistaus');
     var $ajankohta_rivi = $('.ajankohta');
+    var $valitseaika_nappula = $('#valitseaika_nappula');
+
+    
+	//Aikarivin valinta modaalissa
+	$ajankohta_rivi.click(function() {
+		if ($(this).hasClass("active")) {
+			$(this).removeClass("active");
+			$valitseaika_nappula.prop('disabled', true);				
+		} else {
+			$ajankohta_rivi.removeClass("active");
+			$(this).addClass("active");
+			$valitseaika_nappula.prop('disabled', false);			
+		}
+	});
+	
+	 // Valitun ajan lis‰ys nappula aikavalinta modaalissa
+    $valitseaika_nappula.click(function(e) {
+        e.preventDefault();
+    	console.log('Lis‰t‰‰n');
+      
+        var $valittu_aika = $aikalistaus.find('tr.active').find('td');
+        if($valittu_aika[0]){       	
+            $ajankohta_input.val($valittu_aika[0].innerHTML+' Klo: '+$valittu_aika[1].innerHTML+' - '+$valittu_aika[2].innerHTML);
+            $luokkatila_input.val($valittu_aika[3].innerHTML);
+        }
+    });
+    
+    /*
+    
     var $tallenna_nappula = $('#tallenna_nappula');
     var $aikavalinta_nappula = $('#aikavalinta_nappula');    
     var $kouluttajavalinta_nappula = $('#kouluttajavalinta_nappula');
@@ -17,7 +52,8 @@ $().ready(function() {
     var $kouluttaja2_nappula =('#kouluttaja2_nappula');
     var $lisaakouluttaja_nappula =('#lisaakouluttaja_nappula');
     var $kouluttajalista =('#kouluttajalista'); 
-
+*/
+	
  // Kouluttajan lis√§ys nappula kouluttaja modaalissa
     $("#lisaakouluttaja_nappula").click(function(e) {
         e.preventDefault();
@@ -26,7 +62,7 @@ $().ready(function() {
         var valittu = $('#kouluttajalista').find('tr.active').find('td');
         if(valittu[0]){ 
            // $lisaakouluttaja_nappula.prop('disabled', false);        	
-            $kouluttaja1.val($valittu[0].innerHTML+' '+$valittu[1].innerHTML);
+            $("#kouluttaja1").val($valittu[0].innerHTML+' '+$valittu[1].innerHTML);
         }
     });
   
@@ -48,16 +84,6 @@ $().ready(function() {
 			$(this).removeClass("active");
 		} else {
 			$kouluttaja_rivi.removeClass("active");
-			$(this).addClass("active");
-		}
-	});
-	
-	//Aikarivin valinta modaalissa --- ei toiminnassa!
-	$ajankohta_rivi.click(function() {
-		if ($(this).hasClass("active")) {
-			$(this).removeClass("active");
-		} else {
-			$ajankohta_rivi.removeClass("active");
 			$(this).addClass("active");
 		}
 	});
