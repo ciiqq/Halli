@@ -12,6 +12,6 @@ public interface PalauteDAO {
 	
 	public abstract void talletaPalaute(Palaute palaute);
 	
-	public abstract Palaute haePalautteenOpiskelianumero(String opiskelijanumero);
+	public abstract List<Palaute> haePalautteet(String opiskelijanumero);
 
 }
