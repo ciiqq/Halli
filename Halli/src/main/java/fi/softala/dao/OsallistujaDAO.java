@@ -1,5 +1,7 @@
 package fi.softala.dao;
 
+import org.mariadb.jdbc.internal.common.QueryException;
+
 import fi.softala.bean.Osallistuja;
 
 public interface OsallistujaDAO {

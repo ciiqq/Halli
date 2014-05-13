@@ -6,6 +6,8 @@ import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import fi.softala.bean.Osallistuja;
 
@@ -23,27 +25,44 @@ public class OsallistujaDAOImpl implements OsallistujaDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	@Transactional(readOnly = false, isolation = Isolation.REPEATABLE_READ)
 	public void talleta(Osallistuja o, String[] osallistumiset) {
 
-		final String sql = "insert into osallistuja(osallistujan_opiskelijanro, etunimi, sukunimi) values(?,?,?)";
-
-		Object[] parametrit = new Object[] { o.getOpiskelijanro(),
-				o.getEtunimi(), o.getSukunimi()};
-
-		jdbcTemplate.update(sql, parametrit);
-		
-		int max = jdbcTemplate.queryForObject( "select last_insert_id()", Integer.class );		
-		
-		String toinenSql = "";
-
-		for (int i = 0; i < osallistumiset.length; i++) {
-			toinenSql = "insert into ilmoittautuminen(osallistuja_id, koulutus_id) values ("+max+","+osallistumiset[i]+")";
-
-			jdbcTemplate.update(toinenSql);
+		String sql = "Select osallistujan_opiskelijanro FROM "
+				+ "osallistuja where osallistujan_opiskelijanro = ?";
+		Object[] parametrit = new Object[] { o.getOpiskelijanro() };
+		String opnro = null;
+		try {
+			opnro = jdbcTemplate.queryForObject(sql, parametrit,
+					String.class);
+		} catch (IncorrectResultSizeDataAccessException e) {
+			opnro = null;
 		}
 
+		if (opnro != null) {
+			for (int i = 0; i < osallistumiset.length; i++) {
+				sql = "insert into ilmoittautuminen(osallistujan_opiskelijanro, koulutus_id) " +
+						"values ("+ opnro + ", "+ osallistumiset[i] + ")";
+				jdbcTemplate.update(sql);
+			}
+
+		} else {
+			sql = "insert into osallistuja(osallistujan_opiskelijanro, etunimi, sukunimi) values(?,?,?)";
+			parametrit = new Object[] { o.getOpiskelijanro(), o.getEtunimi(),
+					o.getSukunimi() };
+
+			jdbcTemplate.update(sql, parametrit);
+
+			for (int i = 0; i < osallistumiset.length; i++) {
+				sql = "insert into ilmoittautuminen(osallistujan_opiskelijanro, koulutus_id) "
+						+ "values ("+ o.getOpiskelijanro()+"," + osallistumiset[i] + ")";
+				jdbcTemplate.update(sql);
+			}
+		}
 	}
-	public Osallistuja haeOsallistuja(String opiskelijanumero, String koulutus_id) {
+
+	public Osallistuja haeOsallistuja(String opiskelijanumero,
+			String koulutus_id) {
 		String sql = "select * from ilmoittautuminen where opiskelijanumero = ? and koulutus_id = ?";
 		Object[] parametrit = new Object[] { opiskelijanumero, koulutus_id };
 		Osallistuja osallistuja;
@@ -55,5 +74,4 @@ public class OsallistujaDAOImpl implements OsallistujaDAO {
 		}
 		return osallistuja;
 	}
-
 }

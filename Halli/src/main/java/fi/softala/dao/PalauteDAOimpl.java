@@ -32,7 +32,7 @@ public class PalauteDAOimpl implements PalauteDAO {
 	}
 
 	public void talletaPalaute(Palaute palaute) {
-		final String sql = "insert into palaute(arvosana, palauteteksti, opiskelijanumero) values(?,?,?)";
+		final String sql = "insert into palaute(arvosana, palauteteksti, opiskelijanro) values(?,?,?)";
 		final int arvosana = palaute.getArvosana();
 		final String palauteteksti = palaute.getPalauteteksti();
 		final int opiskelijanumero = Integer.parseInt(palaute.getOpiskelijanumero());
@@ -55,7 +55,7 @@ public class PalauteDAOimpl implements PalauteDAO {
 
 	}
 	public Palaute haePalautteenOpiskelianumero(String opiskelijanumero) {
-		String sql = "select opiskelijanumero from palaute where opiskelijanumero = ?";
+		String sql = "select opiskelijanro from palaute where opiskelijanro = ?";
 		Object[] parametrit = new Object[] { opiskelijanumero };
 		Palaute palaute;
 		RowMapper<Palaute> mapper = new PalauteRowMapper();

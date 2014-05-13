@@ -85,6 +85,19 @@ input[type="text"], textarea {
 	margin:6px;
 }
 
+.sulkemisnappi {
+	background-color: white;
+	display:inline-block;
+	width: 20px;
+	height: 20px;
+	border: 0;
+	background-image:url('../images/sulkemisnappula.png');
+	background-size: 20px;
+	background-repeat: no-repeat;
+	position:absolute;
+	right:26px;
+	margin:6px;
+}
 
 #haku input[type="text"]:focus {
 	outline: 0;
@@ -189,29 +202,38 @@ input[type="text"], textarea {
 	padding: 8px;
 }
 
-input[type="checkbox"] {    
-    opacity: 1;
-    vertical-align: middle;
+input[type="checkbox"] {
+	display:none;
+	vertical-align: middle;
 	-webkit-appearance: none;
-	-moz-appearance:    none;
-	appearance:         none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
-input[type="checkbox"]:after {    
-    min-height: 18px;
-    min-width: 18px;
-    content: "";
-    display:block;
-    background-size: contain;
-    background-repeat: no-repeat;
+.active input[type="checkbox"] {
+	display:none;
+	vertical-align: middle;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
-input[type="checkbox"]:checked:after {
-	background-image:url('../images/checkmark.png');
+input[type="checkbox"] + label {    
+	    min-height: 18px;
+	    min-width: 19px;
+	    display: inline-block;
+	    background-size: contain;
+	    background-repeat: no-repeat;
+	    margin-left: auto;
+    	margin-right: auto;
 }
 
-.active input[type="checkbox"]:checked:after {
-	background-image:url('../images/checkmark-white.png');
+input[type="checkbox"]:checked + label {
+		background-image:url('../images/checkmark.png');
+}
+
+.active input[type="checkbox"]:checked + label {
+		background-image:url('../images/checkmark-white.png');
 }
 
 .alapalkki {
@@ -248,11 +270,11 @@ input[type="checkbox"]:checked:after {
 	font-weight: bold;
 }
 
-.tiedotx {
-	font-weight: bold;
-	background-color:#A4A4A4;
-	color:#FFF;
+.koulutus-otsikko {
+	font-weight: normal;
+	color:black;
 	padding:15px;
+	font-size: 20px;
 }
 
 .nav-item {
@@ -282,13 +304,47 @@ input[type="checkbox"]:checked:after {
 	background-image: url("../images/palaute.png");
 }
 
-.ylapalkki {
+.yla2-icon {
+	height: 21px;
+	margin-top:10px;
+	margin-right:10px;
+	width: 16px;
+	float:left;
+}
+.admin {
+	background-image: url("../images/lukkokuvake.png");
+}
+
+.ylapalkit {
 	height: 48px;
 	line-height: 48px;
 	background-color: #009999;
 	color:white;
 	padding-left: 16px;
+	float:left;
+	display:block;
+	width:100%;
 }
+
+.yla1 {
+	height: 48px;
+	line-height: 48px;
+	background-color: #009999;
+	color:white;
+	padding-left: 16px;
+	float:left;
+}
+
+.yla2{
+	height: 48px;
+	line-height: 48px;
+	background-color: #009999;
+	color:white;
+	padding-left: 16px;
+	padding-right: 5px;
+	float:right;
+}
+
 
 .modaalin-kontrollit {
 	width: 100%;

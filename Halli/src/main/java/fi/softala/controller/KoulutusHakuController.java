@@ -100,12 +100,12 @@ public class KoulutusHakuController {
 	@RequestMapping(value = "anna_palautetta", method = RequestMethod.POST)
 	public String getCreateForm(Model model, ServletRequest request
 			, final RedirectAttributes redirectAttrs) {
-		String opiskelijanro = request.getParameter("opiskelijanro");
+		String opiskelijanro = request.getParameter("opiskelijanumero");
 		List<Koulutustilaisuus> koulutukset = hakuservice.haePalauteKelpoiset(opiskelijanro);
 		model.addAttribute("koulutukset", koulutukset);
 		Palaute palaute = new Palaute(opiskelijanro);
 		model.addAttribute("palaute", palaute);
-		return "listausuusi";
+		return "palaute";
 	}
 	@RequestMapping(value = "menneet", method = RequestMethod.GET)
 	public String listaaMenneetKoulutukset(Model model) {
@@ -139,9 +139,9 @@ public class KoulutusHakuController {
 		String enimi = request.getParameter("etunimi");
 		String snimi = request.getParameter("sukunimi");
 		String onro = request.getParameter("opiskelijanro");
-		Osallistuja osallistuja = new Osallistuja(onro, enimi, snimi);
+		Osallistuja osallistuja = new Osallistuja(onro.trim(), enimi.trim(), snimi.trim());
 		osallistujaservice.tallenna(osallistuja, osallistumiset);
-		redirectAttrs.addFlashAttribute("viesti", "Ilmoittautuminen onnistui!");
+		redirectAttrs.addFlashAttribute("viesti", "PARAS KOODI EI OLE NULL");
 		return "redirect:/";
 	}
 }
