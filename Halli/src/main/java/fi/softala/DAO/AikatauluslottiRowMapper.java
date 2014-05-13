@@ -26,14 +26,15 @@ public class AikatauluslottiRowMapper implements RowMapper<Aikatauluslotti> {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 		}
-		a.setPvm(merkkijonostaDateen);
+//		a.setPvm(merkkijonostaDateen); 13.5.2014 JariK
+		a.setPvm(rs.getString("pvm"));
 		a.setAlkukello(rs.getString("alkukello"));
 		a.setLoppukello(rs.getString("loppukello"));
 		a.setKoulutustila(rs.getString("koulutustila"));
-		if(rs.getString("koulutus_id")!=null)
-			k.setId(Integer.parseInt(rs.getString("koulutus_id")));
-		else
-			k.setId(0);
+//		if(rs.getString("koulutus_id")!=null)
+//			k.setId(Integer.parseInt(rs.getString("koulutus_id")));
+//		else
+//			k.setId(0);
 		a.setKoulutus(k);
 		a.setId(rs.getInt("aika_id"));
 		

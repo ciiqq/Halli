@@ -5,7 +5,8 @@ public class Aikatauluslotti {
 	
 	// nmoi
 	private int id;
-	private SimpleDateFormat pvm;
+//	private SimpleDateFormat pvm;
+	private String pvm;
 	private String alkukello;
 	private String loppukello;
 	private String koulutustila;
@@ -15,7 +16,8 @@ public class Aikatauluslotti {
 		super();
 	}
 
-	public Aikatauluslotti(int id, SimpleDateFormat pvm, String alkukello,
+//	public Aikatauluslotti(int id, SimpleDateFormat pvm, String alkukello,
+	public Aikatauluslotti(int id, String pvm, String alkukello,
 			String loppukello, String koulutustila, Koulutustilaisuus koulutus) {
 		super();
 		this.id = id;
@@ -34,11 +36,13 @@ public class Aikatauluslotti {
 		this.id = id;
 	}
 
-	public SimpleDateFormat getPvm() {
+//	public SimpleDateFormat getPvm() {
+	public String getPvm() {
 		return pvm;
 	}
 
-	public void setPvm(SimpleDateFormat pvm) {
+//	public void setPvm(SimpleDateFormat pvm) {
+	public void setPvm(String pvm) {
 		this.pvm = pvm;
 	}
 

@@ -37,17 +37,19 @@ public class AikatauluslottiDAOSpringJdbcImpl implements AikatauluslottiDAO {
 	 * generoima id asetetaan parametrina annettuun olioon.
 	 */
 	public void talleta(Aikatauluslotti a) {
-		final String sql = "insert into aikatauluslotti(pvm, alkukello, loppukello, koulutustila, koulutusid) values(?,?,?,?,?)";
+		final String sql = "insert into aikatauluslotti(pvm, alkukello, loppukello, koulutustila, koulutus_id) values(?,?,?,?,?)";
 
 		// anonyymi sis‰luokka tarvitsee vakioina v‰litett‰v‰t arvot,
 		// jotta roskien keruu onnistuu t‰m‰n metodin suorituksen p‰‰ttyess‰.
-		final SimpleDateFormat pvm = a.getPvm();
+//		final SimpleDateFormat pvm = a.getPvm();
+		final String pvm = a.getPvm();
 		final String alkukello = a.getAlkukello();
 		final String loppukello = a.getLoppukello();
 		final String koulutustila = a.getKoulutustila();
-		final int koulutusid = a.getKoulutus().getId();
-		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-		final String date = DATE_FORMAT.format(pvm);
+//		final int koulutusid = a.getKoulutus().getId();
+		final int koulutusid = 1;
+//		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd"); poistettu rivi 13.5.2014
+//		final String date = DATE_FORMAT.format(pvm); poistettu rivi 13.5.2014
 		// jdbc pist‰‰ generoidun id:n t‰nne talteen
 		KeyHolder idHolder = new GeneratedKeyHolder();
 
@@ -58,7 +60,9 @@ public class AikatauluslottiDAOSpringJdbcImpl implements AikatauluslottiDAO {
 					Connection connection) throws SQLException {
 				PreparedStatement ps = connection.prepareStatement(sql,
 						new String[] { "id" });
-				ps.setString (1, date);
+				System.out.println("talleta: pm: " + pvm + " alkukello: " + alkukello + " loppukello: " + loppukello);
+//				ps.setString (1, date);
+				ps.setString (1, pvm);
 				ps.setString(2, alkukello);
 				ps.setString(3, loppukello);
 				ps.setString(4, koulutustila);
