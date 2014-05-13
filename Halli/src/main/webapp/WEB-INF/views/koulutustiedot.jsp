@@ -83,19 +83,6 @@ pageEncoding="UTF-8"%>
     <p>${ks.kuvaus}</p>    
   </div>
 
-
-    <form class="form-horizontal">
-    <div class="control-group">
-    <label class="control-label">Type something</label>
-    <div class="controls">
-    <input type="text" name="some_field" required />
-    <p class="help-block"></p>
-    </div>
-    </div>
-    </form>
-
-
-
   <!-- Table -->
   <table class="table">
   
@@ -237,7 +224,7 @@ pageEncoding="UTF-8"%>
 			  <tr>
 			   
 			  	<th><form:label path="aihe" name="aihe">Aihe</form:label></th>	 		  
-			  	<td><form:input id="aihe" path="aihe" required="required" data-validation-required-message="Lisää aihe!" datavalue="${ks.aihe}"/>  </td> 
+			  	<td><form:input id="aihe" path="aihe" required="required" value="${ks.aihe}"/>  </td> 
 			  	<td><form:errors path="aihe"></form:errors></td>
 			  	
 			  </tr>  
