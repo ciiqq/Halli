@@ -118,11 +118,12 @@
 		</div>
 	</div>
 
-	<form action="/koulutusjarjestelma/opettaja/aikataulut/lisaa" modelAttribute="aikaslotti"
-		method="post">
-		<div class="modal fade" id="lisääslotti" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
+
+	<div class="modal fade" id="lisääslotti" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<form action="/koulutusjarjestelma/opettaja/aikataulut/lisaa"
+				modelAttribute="aikaslotti" method="post">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
@@ -140,7 +141,7 @@
 									<div class="form-group">
 										<div class='input-group date' id='paivamaara'
 											data-date-format="DD.MM.YYYY">
-											<input type='text' class="form-control" /> <span
+											<input type='text' name="paivamaara" class="form-control" /> <span
 												class="input-group-addon"><span
 												class="glyphicon glyphicon-calendar"></span> </span>
 										</div>
@@ -160,7 +161,7 @@
 								<div class='col-sm-6'>
 									<div class="form-group">
 										<div class='input-group date' id='alkuaika'>
-											<input type='text' class="form-control" /> <span
+											<input type='text' name="alkuaika" class="form-control" /> <span
 												class="input-group-addon"><span
 												class="glyphicon glyphicon-time"></span> </span>
 										</div>
@@ -180,7 +181,7 @@
 								<div class='col-sm-6'>
 									<div class="form-group">
 										<div class='input-group date' id='loppuaika'>
-											<input type='text' class="form-control" /> <span
+											<input type='text' name="loppuaika" class="form-control" /> <span
 												class="input-group-addon"><span
 												class="glyphicon glyphicon-time"></span> </span>
 										</div>
@@ -197,30 +198,30 @@
 							</div>
 							<p>Syötä tila:</p>
 
-
-							<div class='col-sm-6'>
-								<div class="form-group">
-									<div class='input-group text' id='tila'>
-										<input type='text' class="form-control" /> <span
-											class="input-group-addon"><span
-											class="glyphicon glyphicon-pencil"></span> </span>
+							<div class="row">
+								<div class='col-sm-6'>
+									<div class="form-group">
+										<div class='input-group text' id='tila'>
+											<input type='text' name="tila" class="form-control" /> <span
+												class="input-group-addon"><span
+												class="glyphicon glyphicon-pencil"></span> </span>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Sulje
-						ikkuna</button>
-					<button type="submit" class="btn btn-primary">Lisää slotti</button>
-				</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Sulje
+							ikkuna</button>
+						<button type="submit" class="btn btn-primary">Lisää
+							slotti</button>
+					</div>
+			</form>
 
+		</div>
+	</div>
 
-			</div>
-		</div>
-		</div>
-	</form>
 
 	<script
 		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>

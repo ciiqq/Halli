@@ -1,6 +1,9 @@
 package fi.softala.controller;
 
+import java.text.SimpleDateFormat;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -36,7 +39,14 @@ public class AikaslottiKontrolleri {
 	}
 	
 	@RequestMapping(value="opettaja/aikataulut/lisaa", method=RequestMethod.POST)
-	public String lisaaSlotti(@ModelAttribute(value="aikaslotti") @Valid Aikatauluslotti aikatauluslotti, BindingResult result, Model model) {
+	public String lisaaSlotti(HttpServletRequest request, Aikatauluslotti aikatauluslotti, Model model) {
+		String pvm = request.getParameter("paivamaara");
+		String alkuaika = request.getParameter("alkuaika");
+		String loppuaika = request.getParameter("loppuaika");
+		String tila = request.getParameter("tila");
+		
+		dao.talleta(aikatauluslotti);
+		
 		return "testi";
 		
 	}
