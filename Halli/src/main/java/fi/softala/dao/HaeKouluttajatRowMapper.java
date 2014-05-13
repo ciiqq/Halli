@@ -13,7 +13,7 @@ public class HaeKouluttajatRowMapper implements RowMapper<Kouluttaja> {
 		
 		Kouluttaja k = new Kouluttaja();
 		try {
-			k.setOpiskelijanro(rs.getString("opiskelijanro"));
+			k.setOpiskelijanro(rs.getString("henkilotunnus"));
 			k.setEtunimi(rs.getString("etunimi"));
 			k.setSukunimi(rs.getString("sukunimi"));
 		} catch (SQLException e) {
