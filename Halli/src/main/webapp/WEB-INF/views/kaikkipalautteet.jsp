@@ -54,7 +54,7 @@
 			<div class="col-md-3">
 				<ul class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#">Kaikki palautteet</a></li>
-					<li><a href="#">Koulutuskohtaiset palautteet</a></li>
+					<li class="active"><a href="#">Koulutuskohtaiset palautteet</a></li>
 				</ul>
 			</div>
 			<div class="col-md-9">

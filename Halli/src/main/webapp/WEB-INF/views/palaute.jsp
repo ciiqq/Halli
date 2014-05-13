@@ -26,14 +26,14 @@
 		<tbody>
 			<table class="table table-hover">
 				<tr class="active">
-					<td>Id</td>
+				<%-- 	<td>Id</td>--%>
 					<td>Arvosana</td>
 					<td>Palaute</td>
 				</tr>
 				<c:forEach items="${palautteet}" var="palautteet">
 
 					<tr>
-						<td><c:out value="${palautteet.palaute_id}" /></td>
+					<%-- 	<td><c:out value="${palautteet.palaute_id}" /></td>--%>
 						<td><c:out value="${palautteet.arvosana}" /></td>
 						<td><c:out value="${palautteet.palauteteksti}" /></td>
 					</tr>
