@@ -22,7 +22,9 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/style.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/colorbox.css">
+	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/hallityylit.css">
 
 <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,7 +35,8 @@
 	<div class="container">
 		<div class="sivumenu">
 			<a href="./">
-				<div class="nav-item">
+			
+				<div class="nav-item aktiivinen">
 					<div class="nav-icon tulevat"></div>
 					<div class="nav-text">Tulevat luennot</div>
 				</div>
@@ -167,8 +170,13 @@
 			<div class="alapalkki">
 			<c:choose>
 				<c:when test="${pvm > nyt}">
-				<button type="submit" name="vahvista" href="#lightbox_sisalto" class="vahvistus"
-				 disabled>Vahvista ilmoittautumiset</button>
+				<!--<button type="submit" name="vahvista" href="#lightbox_sisalto" class="vahvistus"
+				 disabled>Vahvista ilmoittautumiset</button>-->
+				 
+				 <button type="submit" class="vahvistus" data-toggle="modal" data-target="#myModal">
+				  Vahvista ilmoittautumiset
+				</button>
+				 
 				</c:when>
 			</c:choose>
 			</div>
@@ -177,62 +185,61 @@
 	</div>
 
 	<!-- lightboxin sisältö -->
-
-	<div style='display: none'>
-		<div id='lightbox_sisalto' style='padding: 20px; background: #fff;'>
-			<div class="lightbox-inner-sisalto">
-				<p>Olet valinnut seuraavat koulutukset:</p>
-				<br />
-				<ul id="valitut"></ul>
-				<br />
-				<p>Anna vielä tietosi ilmoittautumista varten:</p>
-				<br />
-
-				<form id="ilmoittautuminen" method="post" action="ilmoittaudu"
-					name="ilmoittaudu">
-
-					<input type="hidden" id="valitutkoulutukset"
-						name="valitutkoulutukset" />
-
-					<table>
-						<tr>
-							<td>Etunimi</td>
-							<td>Sukunimi</td>
-						</tr>
-						<tr>
-							<td><input type="text" name="etunimi"></td>
-							<td><input type="text" name="sukunimi"></td>
-						</tr>
-						<tr>
-							<td colspan="2">Opiskelijanumero</td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="text" name="opiskelijanro"></td>
-						</tr>
-					</table>
-			</div>
-
-
-			<div class="modaalin-kontrollit clearfix">
-				<button type="submit" id="ilmoittaudu" disabled>
-					Ilmoittaudu koulutuksiin</button>
-
-				<input type="button" onclick="$.colorbox.close()"
-					value="Sulje ikkuna" />
-
-			</div>
-			</form>
-		</div>
-	</div>
-
 	<!-- lightboxin sisältö päättyy -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+	
+	<!-- Bootstrap Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Ilmoittaudu koulutuksiin</h4>
+      </div>
+      <div class="modal-body">
+        				<p>Olet valinnut seuraavat koulutukset:</p>
+
+				<ul id="valitut"></ul>
+
+				<p>Anna vielä tietosi ilmoittautumista varten:</p>
+
+				
+								<form id="ilmoittautuminen" method="post" action="ilmoittaudu"
+					name="ilmoittaudu">
+				
+									<input type="hidden" id="valitutkoulutukset"
+						name="valitutkoulutukset" />
+<div class="row">
+<div class="form-group col-xs-6">
+<label for="sähköposti" class="bootstrap">Etunimi</label>
+<input type="text" name="etunimi" class="form-control" id="sähköposti">
+</div>
+<div class="form-group col-xs-6">
+<label for="sukunimi" class="bootstrap">Sukunimi</label>
+<input type="text" name="sukunimi" class="form-control" id="sukunimi">
+</div>
+</div>
+<div class="form-group">
+<label for="opiskelijanumero" class="bootstrap">Opiskelijanumero</label>
+<input type="text" name="opiskelijanro" class="form-control" id="opiskelijanumero">
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        				<button type="submit" class="btn btn-primary" id="ilmoittaudu" disabled>
+					Ilmoittaudu koulutuksiin</button>
+					
+					</form>
+      </div>
+    </div>
+  </div>
+</div>
+	
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.colorbox.js"></script>
-
+		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+		
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
 

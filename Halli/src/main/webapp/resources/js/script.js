@@ -57,17 +57,9 @@ $(document).ready(function() {
 	}, "Anna opiskelijanumero oikeassa muodossa");
 	
 	$("#ilmoittautuminen").validate({
-	    invalidHandler: function(form, validator) {
-	        var errors = validator.numberOfInvalids();
-	        if (errors) {
-	            $.colorbox.resize();
-	        } else {
-	        	$.colorbox.resize();
-	        }
-	    },
+	    invalidHandler: function(form, validator) {},
 	    success: function(label) {
 	    	$(label).remove();
-	    	$.colorbox.resize();
 	    },
 		rules : {
 			etunimi : {
@@ -161,11 +153,6 @@ $(document).ready(function() {
 	};
 
 	$(".vahvistus").click(function() {
-		$(".vahvistus").colorbox({
-			inline : true,
-			width : "50%",
-		});
-
 		var checkboxit = document.getElementsByName("box");
 		var aiheet = document.getElementsByName("aihe");
 		var valitutidt = new Array();
