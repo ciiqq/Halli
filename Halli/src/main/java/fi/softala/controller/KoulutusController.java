@@ -13,11 +13,13 @@ import javax.inject.Inject;
 
 
 
+
 import java.util.LinkedList;
 import java.util.List;
 
 import fi.softala.bean.Kouluttaja;
 import fi.softala.bean.Koulutustilaisuus;
+import fi.softala.service.AikatauluslottiService;
 import fi.softala.service.KouluttajaService;
 import fi.softala.service.KoulutustilaisuusService;
 
@@ -29,6 +31,8 @@ public class KoulutusController {
 	private KoulutustilaisuusService koulutustilaisuusService;
 	@Inject
 	private KouluttajaService kouluttajaService;
+	@Inject
+	private AikatauluslottiService aikatauluslottiService;
 
 	public void setKoulutustilaisuusService(
 			KoulutustilaisuusService koulutustilaisuusService) {
@@ -37,6 +41,10 @@ public class KoulutusController {
 
 	public void setKouluttajaService(KouluttajaService kouluttajaService) {
 		this.kouluttajaService = kouluttajaService;
+	}
+	
+	public void setAikatauluslottiService(AikatauluslottiService aikatauluslottiService) {
+		this.aikatauluslottiService = aikatauluslottiService;
 	}
 
 
@@ -49,6 +57,7 @@ public class KoulutusController {
 		kt.setKouluttajat(kouluttajat);
 		model.addAttribute("koulutustilaisuus", kt);
 		model.addAttribute("kouluttajat", kouluttajaService.haeKouluttajat());
+		model.addAttribute("vapaatajat", aikatauluslottiService.haeVapaatAjat());
 		return "koulutuslomake";
 	}
 

@@ -15,7 +15,6 @@
 <!-- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/style.css">  -->
 
 
-
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
@@ -58,12 +57,12 @@
                     <div class="row">   
                         <div class="col-xs-12 col-sm-8 col-md-4">
                             <div class="">
-                                <form:input class="form-control" disabled="true" path="kouluttajat[0]" ></form:input>
+                                <form:input id="kouluttaja0" class="form-control" disabled="true" path="kouluttajat[0]" ></form:input>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="input-group">
-                                <form:input class="form-control" disabled="true" path="kouluttajat[1]"></form:input>
+                                <form:input id="kouluttaja1" class="form-control" disabled="true" path="kouluttajat[1]"></form:input>
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button" data-toggle="modal" data-target="#kouluttajavalinta">+</button>
                                 </span>
@@ -71,7 +70,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="input-group">
-                                <form:input class="form-control" disabled="true" path="kouluttajat[2]"></form:input>
+                                <form:input id="kouluttaja2" class="form-control" disabled="true" path="kouluttajat[2]"></form:input>
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button" data-toggle="modal" data-target="#kouluttajavalinta">+</button>
                                 </span>
@@ -146,11 +145,16 @@
                     <th>Pvm</th>
                     <th>Alkuaika</th>
                     <th>Loppuaika</th>
-                    <th>Ohjaaja</th>
                     <th>Luokkatila</th>
                     <tbody>
-                        <!-- Varattu vapaiden aikojen listaukselle-->
-                        
+                        <c:forEach items="${vapaatajat}" var="aika" varStatus="status">
+							<tr  class="ajankohta" style="cursor:pointer;" >
+								<td><fmt:formatDate pattern="dd.MM.yyyy" value="${aika.pvm}" /></td>
+								<td><c:out value="${aika.alkukello}"/></td>
+								<td><c:out value="${aika.loppukello}"/></td>
+								<td><c:out value="${aika.koulutustila}"/></td>
+							</tr>
+						</c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -196,14 +200,15 @@
           
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Peruuta</button>
-        <button type="button" class="btn btn-primary">Lisää kouluttaja</button>
+        <input type="button"  class="btn btn-default" value="Peruuta" data-dismiss="modal"></input>
+        <input type="button" id="lisaakouluttaja_nappula" class="btn btn-primary" value="Lisää kouluttaja" data-dismiss="modal"></input>
       </div>
     </form>
     </div>
   </div>
 </div>
     <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/koulutuslomake.js"></script>
 </body>

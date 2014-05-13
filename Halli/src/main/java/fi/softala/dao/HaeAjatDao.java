@@ -6,6 +6,6 @@ import fi.softala.bean.Aikatauluslotti;
 
 public interface HaeAjatDao {
 	
-	public List<Aikatauluslotti> haeAjat();
+	public List<Aikatauluslotti> haeVapaatAjat();
 
 }
