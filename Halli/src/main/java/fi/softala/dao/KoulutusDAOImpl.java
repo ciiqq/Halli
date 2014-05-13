@@ -136,7 +136,7 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 
 
 	public List<Avainsana> haeAvainsanat(int id) {
-		final String sql = "SELECT a.avainsana_id, a.avainsana FROM koulutustilaisuus kt JOIN koulutuksenAvainsana ka ON kt.koulutus_id = ka.koulutus_id " + 
+		final String sql = "SELECT a.avainsana_id, a.avainsana FROM koulutustilaisuus kt JOIN koulutuksenavainsana ka ON kt.koulutus_id = ka.koulutus_id " + 
 							"JOIN avainsana a ON ka.avainsana_id = a.avainsana_id WHERE kt.koulutus_id = ?;";
 		Object[] parametrit = new Object[] { id };
 		
