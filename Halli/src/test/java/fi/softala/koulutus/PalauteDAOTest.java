@@ -2,12 +2,13 @@ package fi.softala.koulutus;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.junit.Before;
-import org.junit.Ignore;
+// import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -65,16 +66,18 @@ public class PalauteDAOTest {
 		palaute.setPalauteteksti(palauteteksti);
 	}
 	
-	@Ignore
+	@Test
 	@Transactional(readOnly = false)
 	public void tallennaPalaute() {
 		dao.talletaPalaute(palaute);
 		System.out.println(palaute.getPalaute_id());
 		
-		String sql = "select osallistujan_opiskelijanumero from ilmoittautuminen where";
+		String sql = "select osallistujan_opiskelijanro "
+				+ "from ilmoittautuminen where palaute_id = " + palaute.getPalaute_id() + ";";
 		
-		String sql2 = "select opiskelijanro from palaute where id = " + palaute.getPalaute_id();
-		String opiskelijanro = template.queryForObject(sql, String.class);
+		List<String> list = template.queryForList(sql, String.class);
+		
+		String opiskelijanro = list.get(1);
 		
 		assertEquals("7654321", opiskelijanro);
 	}

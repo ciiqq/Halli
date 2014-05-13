@@ -35,8 +35,8 @@ public class PalauteDAOimpl implements PalauteDAO {
 	
 	@Transactional (readOnly = false, isolation = Isolation.REPEATABLE_READ)
 	public void talletaPalaute(Palaute palaute) {
-		final String sqlPalaute = "insert into palaute(arvosana, palauteteksti) values (?, ?, ?)";
-		final String sqlIlmoittautuminen = "update ilmoittautuminen set palaute_id = ? where opiskelijanro = ?";
+		final String sqlPalaute = "insert into palaute(arvosana, palauteteksti) values (?, ?)";
+		final String sqlIlmoittautuminen = "update ilmoittautuminen set palaute_id = ? where osallistujan_opiskelijanro = ?";
 		
 		final int arvosana = palaute.getArvosana();
 		final String palauteteksti = palaute.getPalauteteksti();
@@ -67,6 +67,8 @@ public class PalauteDAOimpl implements PalauteDAO {
 				return ps;
 			}
 		});
+		
+		
 	}
 
 	public List<Palaute> haePalaute(String opiskelijanro) {
