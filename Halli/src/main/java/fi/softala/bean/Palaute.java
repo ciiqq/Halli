@@ -7,6 +7,16 @@ public class Palaute {
 	private String palauteteksti;
 	private String opiskelijanumero;
 	
+	public Palaute() {
+		this.palaute_id = 0;
+		this.palauteteksti = null;
+		this.opiskelijanumero = null;
+		this.arvosana = 0;
+	}
+	public Palaute(String opiskelijanro) {
+		this.opiskelijanumero = opiskelijanro;
+	}
+
 	public String getOpiskelijanumero() {
 		return opiskelijanumero;
 	}

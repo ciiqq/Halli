@@ -19,13 +19,17 @@
 <meta name="author" content="Haaga-Helia">
 
 <link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
+<link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/style.css">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/colorbox.css">
 
+
 <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
+         
 </head>
 
 <body>
@@ -42,9 +46,30 @@
 					<div class="nav-text">Menneet luennot</div>
 				</div>
 			</a>
-			<div class="nav-item">
+			<a href="#" data-toggle="modal"
+			data-target="#opiskelijanumeroModal"><div class="nav-item">
 				<div class="nav-icon palaute"></div>
 				<div class="nav-text">Anna palautetta</div>
+			</div></a>
+			
+			<!-- Palauteikkuna Modal. Kysytään opiskelijanumero-->
+			
+			<div class="modal fade bs-example-modal-sm" tabindex="-1"
+				role="dialog" aria-labelledby="opiskelijanumeroModal" aria-hidden="true" id="opiskelijanumeroModal">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<form action="palaute" id="opiskelijanumeroForm"
+							method="post">
+							<br>
+							<label for="opiskelijanumero" style="color:grey;">Anna opiskelijanumero</label>
+							<br>
+							<input type="text" id="opiskelijanumero" name="opiskelijanumero"
+								placeholder="a1234567" class="form-control" maxlength="8" />
+							<br>
+							<input type="submit" value="Jatka" class="form-control"></input>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="main clearfix">
@@ -127,7 +152,7 @@
 										<c:out value="${k.kuvaus}" />
 									</p></td>
 							</tr>
-							
+
 							<jsp:useBean id="now" class="java.util.Date" />
 							<fmt:parseDate value="${k.suomiPvm}" pattern="dd.MM.yyyy"
 								var="pvm" />
@@ -146,13 +171,13 @@
 										</c:otherwise>
 									</c:choose></td>
 							</tr>
-							</table>
+						</table>
 					</div>
 				</c:forEach>
 			</div>
 			<div class="alapalkki">
-				<button type="submit" name="vahvista" href="#lightbox_sisalto" class="vahvistus"
-				 disabled>Vahvista ilmoittautumiset</button>
+				<button type="submit" name="vahvista" href="#lightbox_sisalto"
+					class="vahvistus" disabled>Vahvista ilmoittautumiset</button>
 			</div>
 		</div>
 
@@ -206,12 +231,10 @@
 			</form>
 		</div>
 	</div>
-
 	<!-- lightboxin sisältö päättyy -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.colorbox.js"></script>
 
@@ -222,6 +245,9 @@
 		src="<%=request.getContextPath()%>/resources/js/additional-methods.js"></script>
 	<script type="application/javascript"
 		src="<%=request.getContextPath()%>/resources/js/script.js"></script>
+		<script
+		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+		
 </body>
 </html>
 

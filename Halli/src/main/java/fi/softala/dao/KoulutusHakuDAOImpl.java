@@ -70,6 +70,42 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 				new KoulutusHakuRsExtractor());
 		return koulutukset;
 	}
+	public List<Koulutustilaisuus> haePalauteKelpoiset(String opiskelijanro) {
+		Object[] parametrit = new Object[] {opiskelijanro};
+ 		String sql = "SELECT koulutus_id FROM ilmoittautuminen "
+ 				+ "WHERE osallistujan_opiskelijanro = ? AND osallistujan_opiskelijanro = 'NULL'";
+ 		List<Integer> koulutustunnukset = jt.queryForList(sql, parametrit, Integer.class);
+ 		if(koulutustunnukset.size() == 0) {
+ 			return new ArrayList<Koulutustilaisuus>();
+ 		}
+ 		
+ 		String sqlehto = "WHERE k.koulutus_id = ";
+ 		for (int i = 0; i < koulutustunnukset.size(); i++){
+ 			if (i < koulutustunnukset.size() -1){			
+ 				sqlehto += koulutustunnukset.get(i)+" OR k.koulutus_id = ";
+ 			} else {
+ 				sqlehto += koulutustunnukset.get(i);
+ 			}
+ 		}
+ 		
+ 		sql = "SELECT k.*, ats.*, ko.henkilotunnus, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
+ 				+ "FROM koulutustilaisuus k "
+ 				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
+ 				+ "JOIN henkilo ko ON ko.henkilotunnus = kk.kouluttajatunnus "
+ 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
+ 				+ ""+sqlehto+" "
+ 				+ "UNION ALL "
+ 				+ "SELECT k.*, ats.*, '', '', '', 0 kouluttaja_true, a.avainsana "
+ 				+ "FROM koulutustilaisuus k "
+ 				+ "JOIN koulutuksenavainsana ka ON ka.koulutus_id = k.koulutus_id "
+ 				+ "JOIN avainsana a ON a.avainsana_id = ka.avainsana_id "
+ 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
+ 				+ ""+sqlehto+" "
+ 				+ "ORDER BY pvm, alkukello";
+		List<Koulutustilaisuus> koulutukset = jt.query(sql, parametrit,
+				new KoulutusHakuRsExtractor());
+		return koulutukset;
+	}
 	
 	public List<Koulutustilaisuus> haeHakusanalla(String ehto) {
 		ehto = "%"+ehto+"%";
