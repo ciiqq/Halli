@@ -40,7 +40,7 @@
   <osallistuja osallistujan_opiskelijanro="9876543" etunimi="Kalle" sukunimi="..."/>
   <osallistuja osallistujan_opiskelijanro="9999999" etunimi="Testi" sukunimi="Testaaja"/>
   <palaute palaute_id="1" arvosana="5" palauteteksti="Paras koulutus"/>
-  <ilmoittautuminen osallistujan_opiskelijanro="1102030" koulutus_id="3"/>
+  <ilmoittautuminen osallistujan_opiskelijanro="1102030" koulutus_id="3" palaute_id="1"/>
   <ilmoittautuminen osallistujan_opiskelijanro="1204567" koulutus_id="2"/>
   <ilmoittautuminen osallistujan_opiskelijanro="1204567" koulutus_id="3"/>
   <ilmoittautuminen osallistujan_opiskelijanro="1204567" koulutus_id="6"/>
