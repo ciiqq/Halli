@@ -166,6 +166,9 @@
 											<button type="button" value="${k.id}" class="lisaa">Valitse
 												koulutus</button>
 										</c:when>
+										<c:otherwise>
+											<p>Menneille luennoille ei ole mahdollista ilmoittautua</p>								
+										</c:otherwise>
 									</c:choose></td>
 							</tr>
 							</table>
