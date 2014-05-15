@@ -38,22 +38,5 @@ public class PalauteDAOHakuTest {
 		List<Palaute> palautteet = dao.haeKaikki();
 		assertEquals("paras koulutus", palautteet.get(0).getPalauteteksti());
 	}
-	
-	@Test
-	public void haeIdlla() {
-		List<Palaute> palautteet = dao.haeIdlla();
-		assertEquals("paras koulutus", palautteet.get(0).getPalauteteksti());
-	}
-	
-	/*@Test
-	public void haeHakusanalla() {
-		List<Palaute> koulutukset = dao.haeHakusanalla("gitti");
-		assertEquals("Git-versionhallinta: mikä se on?", koulutukset.get(0).getAihe());
-	}*/
-	
-	/*@Test
-	public void haeAvainsanalla() {
-		List<Palaute> koulutukset = dao.haeAvainsanalla("ohjelmointi");
-		assertEquals("jQueryn alkeet", koulutukset.get(0).getAihe());
-	}*/
+
 }
