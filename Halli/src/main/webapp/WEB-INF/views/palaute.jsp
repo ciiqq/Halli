@@ -45,7 +45,7 @@
 		<div class="sivumenu">
 			<a href="./">
 			
-				<div class="nav-item aktiivinen">
+				<div class="nav-item">
 					<div class="nav-icon tulevat"></div>
 					<div class="nav-text">Tulevat luennot</div>
 				</div>
@@ -56,7 +56,7 @@
 				</div>
 			</a>
 			<a href="" data-toggle="modal"
-			data-target="#opiskelijanumeroModal"><div class="nav-item">
+			data-target="#opiskelijanumeroModal"><div class="nav-item aktiivinen">
 				<div class="nav-icon palaute"></div>
 				<div class="nav-text">Anna palautetta</div>
 			</div></a>
