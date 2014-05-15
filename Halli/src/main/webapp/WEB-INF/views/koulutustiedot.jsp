@@ -189,7 +189,7 @@ pageEncoding="UTF-8"%>
     	<div class="modal-body">
       		Haluatko varmasti julkaista koulutuksen?
       		
-      		<span class="color:red">HUOM! Koulutusta ei voi tämän jälkeen muokata!</span>
+      		<span style="color:red;">HUOM! Koulutusta ei voi tämän jälkeen muokata!</span>
         </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
