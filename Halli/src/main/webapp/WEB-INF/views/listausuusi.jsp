@@ -245,7 +245,7 @@
         <h4 class="modal-title">Koulutuksiin ilmoittautuminen</h4>
       </div>
       <div class="modal-body">
-        <p>Ilmoittatumisesi on vastaanotettu. Kiitos!</p>
+        <p>Ilmoittautumisesi on vastaanotettu. Kiitos!</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Sulje ikkuna</button>
