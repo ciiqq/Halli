@@ -10,6 +10,7 @@ CREATE TABLE henkilo (
 CREATE TABLE koulutustilaisuus (
     koulutus_id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
     aihe VARCHAR(50) NOT NULL,
+    koulutusmenetelmat VARCHAR(255),
     kuvaus TEXT,
     lahtotaso VARCHAR(100),
     nakyvyys BOOLEAN,
