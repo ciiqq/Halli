@@ -100,6 +100,7 @@ public class KoulutusHakuController {
 	public String listaaTulevatKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeTulevat();
 		model.addAttribute("koulutukset", koulutukset);
+		model.addAttribute("tulevatValittu", "x");
 		return "listausuusi";
 	}
 	
@@ -107,6 +108,7 @@ public class KoulutusHakuController {
 	public String listaaMenneetKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeMenneet();
 		model.addAttribute("koulutukset", koulutukset);
+		model.addAttribute("menneetValittu", "x");
 		return "listausuusi";
 	}
 	
