@@ -18,11 +18,11 @@
 <meta name="author" content="Haaga-Helia">
 
 <link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/ilmo-bootstrap.css">
+<link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/style.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/hallityylit.css">
+	href="<%=request.getContextPath()%>/resources/css/admintyylit.css">
 
 <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -81,7 +81,7 @@
 		<div class="ylapalkit">
 			<div class="yla1">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
-			<div class="yla2"><div class="yla2-icon admin"></div><a href="./admin">Kirjaudu sisään järjestelmänvalvojana</a></div>
+			<div class="yla2"><div class="yla2-icon admin"></div><a href="./login">Kirjaudu sisään järjestelmänvalvojana</a></div>
 		</div>
 			<div class="fifty lista">
 				<form id="haku" action="hakutulokset">

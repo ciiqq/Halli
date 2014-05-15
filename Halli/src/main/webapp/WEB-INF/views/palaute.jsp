@@ -20,11 +20,11 @@
 <meta name="author" content="Haaga-Helia">
 
 <link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/ilmo-bootstrap.css">
+<link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/style.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/hallityylit.css">
+	href="<%=request.getContextPath()%>/resources/css/admintyylit.css">
 <style>
 .error {
 	color: red;
