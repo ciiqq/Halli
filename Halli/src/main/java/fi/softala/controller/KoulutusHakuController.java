@@ -25,6 +25,7 @@ import fi.softala.service.PalauteService;
  * 
  * @author Timo Kottonen
  * @author Teemu Kälviäinen
+ * @author Henna Kiiveri
  *
  */
 
@@ -99,6 +100,7 @@ public class KoulutusHakuController {
 	public String listaaTulevatKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeTulevat();
 		model.addAttribute("koulutukset", koulutukset);
+		model.addAttribute("tulevatValittu", "x");
 		return "listausuusi";
 	}
 	
@@ -106,11 +108,13 @@ public class KoulutusHakuController {
 	public String listaaMenneetKoulutukset(Model model) {
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeMenneet();
 		model.addAttribute("koulutukset", koulutukset);
+		model.addAttribute("menneetValittu", "x");
 		return "listausuusi";
 	}
 	
 	@RequestMapping(value="hakutulokset", method=RequestMethod.GET)
 	public String listaaKoulutuksetHakusanalla(Model model, ServletRequest request) throws UnsupportedEncodingException {
+		//Tomcat aiheuttaa vaikeuksia ääkkösten kanssa, pakotetaan UTF-8 :ksi
 		String ehto = new String(request.getParameter("haku").getBytes("iso-8859-1"), "UTF-8");
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeHakusanalla(ehto);
 		model.addAttribute("koulutukset", koulutukset);
@@ -120,6 +124,7 @@ public class KoulutusHakuController {
 	
 	@RequestMapping(value="avainsana", method=RequestMethod.GET)
 	public String listaaKoulutuksetAvainsanalla(Model model, ServletRequest request) throws UnsupportedEncodingException {
+		//Tomcat aiheuttaa vaikeuksia ääkkösten kanssa, pakotetaan UTF-8 :ksi
 		String ehto = new String(request.getParameter("avainsana").getBytes("iso-8859-1"), "UTF-8");
 		List<Koulutustilaisuus> koulutukset = hakuservice.haeAvainsanalla(ehto);
 		model.addAttribute("koulutukset", koulutukset);
@@ -134,9 +139,13 @@ public class KoulutusHakuController {
 		String enimi = request.getParameter("etunimi");
 		String snimi = request.getParameter("sukunimi");
 		String onro = request.getParameter("opiskelijanro");
+		//.trim() poistaa whitespacet (välilyönti, tabulaattori, rivinvaihto) Stringin
+		//alusta ja lopusta
 		Osallistuja osallistuja = new Osallistuja(onro.trim(), enimi.trim(), snimi.trim());
 		osallistujaservice.tallenna(osallistuja, osallistumiset);
-		redirectAttrs.addFlashAttribute("viesti", "PARAS KOODI EI OLE NULL");
+		//tieto onnistumisesta palautetaan redirectin flash-attribuuttina: tämä käsitellään 
+		//c:iffillä jsp-tiedostossa
+		redirectAttrs.addFlashAttribute("viesti", "EI OLE NULL");
 		return "redirect:/";
 	}
 }

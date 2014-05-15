@@ -34,12 +34,22 @@
 		<div class="sivumenu">
 			<a href="./">
 			
+			<c:if test="${tulevatValittu != null}">
 				<div class="nav-item aktiivinen">
+			</c:if>
+			<c:if test="${tulevatValittu == null}">
+					<div class="nav-item"/>
+			</c:if>
 					<div class="nav-icon tulevat"></div>
 					<div class="nav-text">Tulevat luennot</div>
 				</div>
 			</a> <a href="./menneet">
-				<div class="nav-item">
+			<c:if test="${menneetValittu != null}">
+				<div class="nav-item aktiivinen">
+			</c:if>
+			<c:if test="${menneetValittu == null}">
+					<div class="nav-item"/>
+			</c:if>
 					<div class="nav-icon menneet"></div>
 					<div class="nav-text">Menneet luennot</div>
 				</div>
