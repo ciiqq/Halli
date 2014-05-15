@@ -94,13 +94,19 @@ public class PalauteDAOimpl implements PalauteDAO {
 	}
 	
 	public List<Palaute> haeIdlla(int id) {
-
-		String sql = "SELECT i.koulutus_id, p.palaute_id, p.palauteteksti, p.arvosana FROM ilmoittautuminen i "
-				+ "JOIN palaute p ON p.palaute_id = i.palaute_id WHERE i.koulutus_id = ?";
+		String sql = "select osallistujan_opiskelijanro, koulutus_id, p.palaute_id, arvosana, palauteteksti "
+				+ "FROM ilmoittautuminen i "
+				+ "join palaute p on i.palaute_id = p.palaute_id "
+				+ "where p.palaute_id = ?";
+		
 		RowMapper<Palaute> mapper = new PalauteRowMapper();
 		Object[] params = new Object[] { id };
 		List<Palaute> palautteet = jdbcTemplate.query(sql, params, mapper);
 
+		if (palautteet.size() == 0) {
+			System.out.println("DAO: Palautteet tyhjä");
+		}
+		
 		return palautteet;
 	}
 	public List<Palaute> haeKaikkiPalautteet() {
