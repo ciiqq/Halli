@@ -31,28 +31,42 @@ public class PalauteDAOimpl implements PalauteDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public void talletaPalaute(Palaute palaute) {
-		final String sql = "insert into palaute(arvosana, palauteteksti, opiskelijanumero) values(?,?,?)";
+	public void talletaPalaute(Palaute palaute, int koulutus_id) {
+		final String sql = "insert into palaute(arvosana, palauteteksti) values(?,?)";
+		final String sql2 = "update ilmoittautuminen set palaute_id = ? where osallistujan_opiskelijanro = ? and koulutus_id = ?";
 		final int arvosana = palaute.getArvosana();
 		final String palauteteksti = palaute.getPalauteteksti();
-		final int opiskelijanumero = Integer.parseInt(palaute.getOpiskelijanro());
+		final String opiskelijanumero = palaute.getOpiskelijanro();
+		final int koulutusid = koulutus_id;
 
 		KeyHolder idHolder = new GeneratedKeyHolder();
-
+		
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(
 					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql,
-						new String[] { "palaute_id" });
+				PreparedStatement ps = connection.prepareStatement(sql, new String[] { "palaute_id" });
 				ps.setInt(1, arvosana);
 				ps.setString(2, palauteteksti);
-				ps.setInt(3, opiskelijanumero);
 				return ps;
 			}
 		}, idHolder);
 
 		palaute.setPalaute_id(idHolder.getKey().intValue());
-
+		
+		final int palauteid = palaute.getPalaute_id();
+		System.out.println("PALAUTE_ID:");
+		System.out.println(palauteid);
+		
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(
+					Connection connection2) throws SQLException {
+				PreparedStatement ps2 = connection2.prepareStatement(sql2);
+				ps2.setInt(1, palauteid);
+				ps2.setString(2, opiskelijanumero);
+				ps2.setInt(3, koulutusid);
+				return ps2;
+			}
+		});
 	}
 	public Palaute haePalautteenOpiskelianumero(String opiskelijanumero) {
 		String sql = "select opiskelijanumero from palaute where opiskelijanumero = ?";

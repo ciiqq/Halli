@@ -7,6 +7,17 @@ public class Palaute {
 	private String palauteteksti;
 	private String opiskelijanro;
 	
+	public Palaute() {
+		this.palaute_id = 0;
+		this.palauteteksti = null;
+		this.opiskelijanro = null;
+		this.arvosana = 0;
+	}
+	
+	public Palaute(String opiskelijanro) {
+		this.opiskelijanro = opiskelijanro;
+	}
+	
 	public String getOpiskelijanro() {
 		if (opiskelijanro.length() == 8) {
 			opiskelijanro = opiskelijanro.substring(1, 8);
@@ -50,7 +61,5 @@ public class Palaute {
 		return "Palaute [palaute_id=" + palaute_id + ", arvosana=" + arvosana
 				+ ", palauteteksti=" + palauteteksti + ", opiskelijanro="
 				+ opiskelijanro + "]";
-	}
-	
-	
+	}	
 }

@@ -4,7 +4,7 @@ import fi.softala.bean.Palaute;
 
 public interface PalauteService {
 
-	public abstract void tallenna(Palaute palaute);
+	public abstract void tallenna(Palaute palaute, int koulutus_id);
 
 	public abstract boolean tarkistaOpiskelijanumero(String opiskelijanumero);
 	

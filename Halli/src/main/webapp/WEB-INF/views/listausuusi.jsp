@@ -46,10 +46,28 @@
 					<div class="nav-text">Menneet luennot</div>
 				</div>
 			</a>
-			<div class="nav-item">
+			<a href="" data-toggle="modal"
+			data-target="#opiskelijanumeroModal"><div class="nav-item">
 				<div class="nav-icon palaute"></div>
 				<div class="nav-text">Anna palautetta</div>
-			</div>
+			</div></a>
+		</div>
+		<div class="modal fade bs-example-modal-sm" tabindex="-1"
+				role="dialog" aria-labelledby="opiskelijanumeroModal" aria-hidden="true" id="opiskelijanumeroModal">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<form action="anna_palautetta" id="opiskelijanumeroForm"
+							method="post">
+							<br>
+							<label for="opiskelijanumero" style="color:grey;">Anna opiskelijanumerosi</label>
+							<br>
+							<input type="text" id="opiskelijanumero" name="opiskelijanumero"
+								placeholder="a1234567" class="form-control" maxlength="8" />
+							<br>
+							<input type="submit" value="Jatka" class="form-control btn btn-primary"></input>
+						</form>
+					</div>
+				</div>
 		</div>
 		<div class="main clearfix">
 		<div class="ylapalkit">

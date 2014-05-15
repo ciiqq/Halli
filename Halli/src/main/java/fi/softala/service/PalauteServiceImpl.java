@@ -35,8 +35,8 @@ public class PalauteServiceImpl implements PalauteService {
 	/* (non-Javadoc)
 	 * @see fi.softala.service.PalauteService#tallenna(fi.softala.bean.Palaute)
 	 */
-	public void tallenna(Palaute palaute) {
-		palautedao.talletaPalaute(palaute);
+	public void tallenna(Palaute palaute, int koulutus_id) {
+		palautedao.talletaPalaute(palaute, koulutus_id);
 	}
 	/* (non-Javadoc)
 	 * @see fi.softala.service.PalauteService#tarkistaOpiskelijanumero(java.lang.String)
