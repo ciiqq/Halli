@@ -1,5 +1,5 @@
 CREATE TABLE henkilo (
-    henkilotunnus CHAR(7) PRIMARY KEY NOT NULL,
+    henkilotunnus VARCHAR(7) PRIMARY KEY NOT NULL,
     etunimi VARCHAR(30) NOT NULL,
     sukunimi VARCHAR(50) NOT NULL,
     salasana VARCHAR(255) NOT NULL,
