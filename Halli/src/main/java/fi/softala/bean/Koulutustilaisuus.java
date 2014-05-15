@@ -23,6 +23,7 @@ public class Koulutustilaisuus {
 	private Opettaja ope; // opettajabean tähän
 	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
 	private List<String> avainsanat = new ArrayList<String>();
+	private String koulutusmenetelmat;
 	
 	public int getId() {
 		return id;
@@ -135,4 +136,14 @@ public class Koulutustilaisuus {
 	public void setPaikka(String paikka) {
 		this.paikka = paikka;
 	}
+
+	public String getKoulutusmenetelmat() {
+		return koulutusmenetelmat;
+	}
+
+	public void setKoulutusmenetelmat(String koulutusmenetelmat) {
+		this.koulutusmenetelmat = koulutusmenetelmat;
+	}
+	
+	
 }

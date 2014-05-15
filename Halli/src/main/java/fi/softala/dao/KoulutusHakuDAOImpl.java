@@ -35,7 +35,7 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 	public List<Koulutustilaisuus> haeTulevat() {
 		String sql = "SELECT k.*, ats.*, ko.henkilotunnus, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
-				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
+				+ "JOIN koulutuksentoimija kk ON k.koulutus_id = kk.koulutus_id "
 				+ "JOIN henkilo ko ON ko.henkilotunnus = kk.kouluttajatunnus "
 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
 				+ "WHERE ats.pvm > curdate() AND nakyvyys = 1 "
@@ -55,7 +55,7 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 	public List<Koulutustilaisuus> haeMenneet() {
 		String sql = "SELECT k.*, ats.*, ko.henkilotunnus, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
-				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
+				+ "JOIN koulutuksentoimija kk ON k.koulutus_id = kk.koulutus_id "
 				+ "JOIN henkilo ko ON ko.henkilotunnus = kk.kouluttajatunnus "
 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
 				+ "WHERE ats.pvm <= curdate() AND nakyvyys = 1 "
@@ -99,7 +99,7 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 
 		sql = "SELECT k.*, ats.*, ko.henkilotunnus, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
-				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
+				+ "JOIN koulutuksentoimija kk ON k.koulutus_id = kk.koulutus_id "
 				+ "JOIN henkilo ko ON ko.henkilotunnus = kk.kouluttajatunnus "
 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
 				+ ""
@@ -140,7 +140,7 @@ public class KoulutusHakuDAOImpl implements KoulutusHakuDAO {
 
 		sql = "SELECT k.*, ats.*, ko.henkilotunnus, ko.etunimi AS etunimi, ko.sukunimi AS sukunimi, 1 kouluttaja_true, '' AS avainsana "
 				+ "FROM koulutustilaisuus k "
-				+ "JOIN koulutuksenkouluttaja kk ON k.koulutus_id = kk.koulutus_id "
+				+ "JOIN koulutuksentoimija kk ON k.koulutus_id = kk.koulutus_id "
 				+ "JOIN henkilo ko ON ko.henkilotunnus = kk.kouluttajatunnus "
 				+ "JOIN aikatauluslotti ats ON ats.koulutus_id = k.koulutus_id "
 				+ ""

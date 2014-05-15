@@ -154,6 +154,10 @@
 								<td><c:out value="${k.lahtotaso}" /></td>
 							</tr>
 							<tr>
+								<td class="bold">Koulutusmenetelmät</td>
+								<td><c:out value="${k.koulutusmenetelmat}" /></td>
+							</tr>
+							<tr>
 								<td class="bold">Paikka</td>
 								<td><c:out value="${k.paikka}" /></td>
 							</tr>
