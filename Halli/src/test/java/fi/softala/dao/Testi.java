@@ -41,7 +41,8 @@ public class Testi {
 		dao.setJdbcTemplate(jdbcTemplate);
 		List<Palaute> palautteet = dao.haeKaikkiPalautteet();
 		
-		System.out.println(testidata.getTable("palaute").getValue(0, "arvosana"));
+		System.out.print(testidata.getTable("palaute").getValue(0, "arvosana"));
+		System.out.print(testidata.getTable("palaute").getValue(0, "palauteteksti"));
 		System.out.println(palautteet.get(0).getPalauteteksti());
 		assertEquals(testidata.getTable("palaute").getValue(0, "palauteteksti"),
 				palautteet.get(0).getPalauteteksti());
