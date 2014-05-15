@@ -274,7 +274,8 @@ input[type="checkbox"]:checked + label {
 }
 
 .nav-item {
-	padding: 16px;
+	padding: 8px;
+	margin: 8px;
 }
 
 .nav-text {
