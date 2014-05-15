@@ -5,15 +5,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -26,7 +25,7 @@ public abstract class ExcelParseri {
 	
 	
 	public static List<Kouluttaja> parseta(MultipartFile file){
-		ArrayList<Kouluttaja> lista = new ArrayList<Kouluttaja>();
+		List<Kouluttaja> lista = new LinkedList<Kouluttaja>();
 		
 		
 		try {
@@ -45,28 +44,28 @@ public abstract class ExcelParseri {
 					for(int i = 0; i < 2; i++){
 						HSSFCell cell = (HSSFCell) cells.next();
 						
-						if(HSSFCell.CELL_TYPE_NUMERIC==cell.getCellType())
-							kouluttaja.setOpiskelijanro(String.valueOf((int)cell.getNumericCellValue()));
+						if(i == 0){
+							kouluttaja.setOpiskelijanro(cell.getStringCellValue());
 						
-						else if(HSSFCell.CELL_TYPE_STRING==cell.getCellType()){
+						}else{
 							String kokonimi = cell.getStringCellValue();
+							System.out.println(kokonimi);
 							String[] nimi = kokonimi.split(" ");
-							kouluttaja.setEtunimi(nimi[0]);
-							kouluttaja.setSukunimi(nimi[nimi.length - 1]);
+							String sukunimi = "";
+							for (int ii = 0; ii < nimi.length-1; ii++){
+								if (ii != 0)
+									sukunimi += " ";
+								sukunimi += nimi[ii];
+							}
+							kouluttaja.setSukunimi(sukunimi);
+							kouluttaja.setEtunimi(nimi[nimi.length - 1]);
 						}
-						else if(HSSFCell.CELL_TYPE_BOOLEAN==cell.getCellType())
-							System.out.print(cell.getBooleanCellValue()+" ");
-						
-						else if(HSSFCell.CELL_TYPE_BLANK==cell.getCellType())
-							System.out.print("BLANK ");
-						
-						else
-							System.out.print("Unknown cell type");
-						
-					}
-					lista.add(kouluttaja);
+					
+					
 				}
+				lista.add(kouluttaja);
 				
+			}
 			}else{
 				XSSFWorkbook wb = new XSSFWorkbook(input);
 				XSSFSheet sheet = wb.getSheetAt(0);
@@ -80,34 +79,38 @@ public abstract class ExcelParseri {
 					for(int i = 0; i < 2; i++){
 						XSSFCell cell = (XSSFCell) cells.next();
 						
-						if(XSSFCell.CELL_TYPE_NUMERIC==cell.getCellType())
-							kouluttaja.setOpiskelijanro(String.valueOf((int)cell.getNumericCellValue()));
+						if(i == 0){
+							kouluttaja.setOpiskelijanro(cell.getStringCellValue());
 						
-						else if(XSSFCell.CELL_TYPE_STRING==cell.getCellType()){
+						}else{
 							String kokonimi = cell.getStringCellValue();
+							System.out.println(kokonimi);
 							String[] nimi = kokonimi.split(" ");
-							kouluttaja.setEtunimi(nimi[0]);
-							kouluttaja.setSukunimi(nimi[nimi.length - 1]);
+							String sukunimi = "";
+							for (int ii = 0; ii < nimi.length-1; ii++){
+								if (ii != 0)
+									sukunimi += " ";
+								sukunimi += nimi[ii];
+							}
+							kouluttaja.setSukunimi(sukunimi);
+							kouluttaja.setEtunimi(nimi[nimi.length - 1]);
 						}
-						else if(XSSFCell.CELL_TYPE_BOOLEAN==cell.getCellType())
-							System.out.print(cell.getBooleanCellValue()+" ");
-						
-						else if(XSSFCell.CELL_TYPE_BLANK==cell.getCellType())
-							System.out.print("BLANK ");
-						
-						else
-							System.out.print("Unknown cell type");
-						
-					}
-					lista.add(kouluttaja);
+					
+					
 				}
+				lista.add(kouluttaja);
 			}
 			
 			
 			
-		}catch(IOException e){
+			}
+			}catch(IOException e){
 			e.printStackTrace();
 		}
+		
+		for(int i = 0; i < lista.size(); i++)
+			System.out.println(lista.get(i));
+		
 		return lista;
 	}
 	
