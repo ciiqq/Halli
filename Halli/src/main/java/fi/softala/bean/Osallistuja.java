@@ -6,6 +6,7 @@ public class Osallistuja {
 	private String opiskelijanro;
 	private String etunimi;
 	private String sukunimi;
+	private String sahkoposti;
 	
 	public Osallistuja() {
 		id = 0;
@@ -20,6 +21,12 @@ public class Osallistuja {
 		this.etunimi = enimi;
 		this.sukunimi = snimi;
 	}
+	
+	public Osallistuja (String onro, String enimi, String snimi){
+		this.opiskelijanro = onro;
+		this.etunimi = enimi;
+		this.sukunimi = snimi;
+	}
 
 	public int getId() {
 		return id;
@@ -30,7 +37,13 @@ public class Osallistuja {
 	}
 
 	public String getOpiskelijanro() {
-		return opiskelijanro;
+		if (opiskelijanro.length() == 8){
+			opiskelijanro = opiskelijanro.substring(1, 8);
+			return opiskelijanro;
+		}
+		else{
+			return opiskelijanro;
+		}
 	}
 
 	public void setOpiskelijanro(String opiskelijanro) {
@@ -38,7 +51,7 @@ public class Osallistuja {
 	}
 
 	public String getEtunimi() {
-		return etunimi;
+		return muotoileNimi(etunimi);
 	}
 
 	public void setEtunimi(String etunimi) {
@@ -46,11 +59,33 @@ public class Osallistuja {
 	}
 
 	public String getSukunimi() {
-		return sukunimi;
+		return muotoileNimi(sukunimi);
 	}
 
 	public void setSukunimi(String sukunimi) {
 		this.sukunimi = sukunimi;
+	}
+	
+	public void setSahkoposti(String etunimi, String sukunimi){
+		 sahkoposti = etunimi + "." + sukunimi + "@myy.haaga-helia.fi";
+	}
+	
+	public String getSahkoposti(){
+		return sahkoposti;
+	}
+	
+	public String muotoileNimi(String nimi){
+		String muotoiltuNimi=nimi.substring(0,1).toUpperCase();
+		for(int i = 1; i < nimi.length();i++){
+			if(nimi.substring(i, i+1).equals("-")){
+				muotoiltuNimi+=nimi.substring(i, i+1);
+				muotoiltuNimi+=nimi.substring(i+1, i+2).toUpperCase();
+				i++;
+			}else{
+				muotoiltuNimi+=nimi.substring(i, i+1).toLowerCase();
+			}
+		}
+		return muotoiltuNimi;
 	}
 
 	@Override

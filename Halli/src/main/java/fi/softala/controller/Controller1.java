@@ -69,4 +69,9 @@ public class Controller1 {
 		return "kouluttaja-palaute";
 	}
 	
+	@RequestMapping(value="login", method=RequestMethod.GET)
+	public String getLogin() {
+		return "login";
+	}
+	
 }
