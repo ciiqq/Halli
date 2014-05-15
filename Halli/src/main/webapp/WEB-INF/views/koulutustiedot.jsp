@@ -3,7 +3,7 @@ pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html">
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
@@ -12,6 +12,7 @@ pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/jquery-ui-1.10.4.min.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/jquery.timepicker.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/style.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/koulutustiedot.css">
 
 
 <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
@@ -29,12 +30,11 @@ pageEncoding="UTF-8"%>
  		$( ".timepicker" ).timepicker({ 'timeFormat': 'H:i', 
  			'minTime': '07:00',
  			'maxTime': '21:00'
- 		});
- 	});  
-
-  
-    function() {$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
-     });
+ 		}); 		
+ 	}); 
+ 	
+ 	
+ 	
 
  
  	 </script>
@@ -146,6 +146,8 @@ pageEncoding="UTF-8"%>
     </tr> -->
     
   </table>
+  
+   
 </div>
 </div>
 </div>
@@ -204,43 +206,58 @@ pageEncoding="UTF-8"%>
 <div class="modal fade" id="test_modal">
   <div class="modal-dialog modal-varjo">
     <div class="modal-content">
+    
       <div class="modal-header">
       <h3><c:out value="${ks.aihe}" /></h3>
-
+			
 
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title"><c:out value="${ks.aikaslotti.pvm}" />, <c:out value="${ks.aikaslotti.alkukello}" />-<c:out value="${ks.aikaslotti.loppukello}" /></h4>
       </div>
+      
 
-       <form:form id="modal-form" method="POST" modelAttribute="muokattavaKoulutus" novalidate="novalidate">
+       <form:form id="modal-form" class="form-horizontal" method="POST" modelAttribute="muokattavaKoulutus" novalidate="">
       <div class="modal-body">
+      
+      
 
+    
+		
+		<div class="control-group">
+      			<form:label path="aihe" name="aihe" class="control-label">Aihe</form:label> 
+      		<div class="controls">		  
+			  	<form:input id="aihe" name="aihe" type="text" minlength="5" path="aihe" required="" data-validation-minlength-message="Liian vähän kirjaimia" data-validation-required-message="Kenttä ei saa olla tyhjä" value="${ks.aihe}"/>   
+			  	<form:errors path="aihe"></form:errors>
+			  	<p class="help-block"></p>
+			 </div>
+		</div>
+		
+		
+		
+		<div class="control-group">
+      			<form:label path="kuvaus" name="kuvaus" class="control-label">Kuvaus</form:label> 
+      		<div class="controls">		  
+			  	<form:textarea id="kuvaus" name="kuvaus" path="kuvaus" type="text" minlength="10" required="" data-validation-minlength-message="Vähintään 10 kirjainta" data-validation-required-message="Kenttä ei saa olla tyhjä" value="${ks.kuvaus}"/>   
+			  	<form:errors path="kuvaus"></form:errors>
+			  	<p class="help-block"></p>
+			 </div>
+		</div>
+		
+		<div class="control-group ">
+      			<form:label path="lahtotaso" name="lahtotaso" class="control-label">Lähtötaso</form:label> 
+      		<div class="controls">		  
+			  	<form:input id="lahtotaso" name="lahtotaso" type="text" minlength="5" path="lahtotaso" required="" data-validation-minlength-message="Vähintään 5 kirjainta" data-validation-required-message="Kenttä ei saa olla tyhjä" value="${ks.lahtotaso}"/>   
+			  	<form:errors path="lahtotaso"></form:errors>
+			  	<p class="help-block"></p>
+			 </div>
+		</div>
+		
+		
 
 
            <table class="table">
            
            
-        
-			  <tr>
-			   
-			  	<th><form:label path="aihe" name="aihe">Aihe</form:label></th>	 		  
-			  	<td><form:input id="aihe" path="aihe" required="required" value="${ks.aihe}"/>  </td> 
-			  	<td><form:errors path="aihe"></form:errors></td>
-			  	
-			  </tr>  
-			  
-			  <tr>
-			  	<th><form:label path="kuvaus" name="kuvaus">Kuvaus</form:label></th>
-			  	<td><form:textarea id="kuvaus" class="kuvaus" path="kuvaus" style="resize:none;" value="${ks.kuvaus}" cols="40" rows="5"/> </td>
-			  	<td><form:errors id="kuvaus-error" path="kuvaus"></form:errors></td>
-			  	
-			  </tr>    
-			  
-			   <tr>
-			    	<th><form:label path="lahtotaso">Lähtötaso</form:label></th>
-			  	<td><form:input path="lahtotaso" value="${ks.lahtotaso}"/> </td>
-			  	<td><form:errors path="lahtotaso"></form:errors></td>
-			    </tr>
 			  
 			 <tr>
 			    <th><form:label path="aikaslotti.pvm">Päivämäärä</form:label></th>
@@ -298,6 +315,10 @@ pageEncoding="UTF-8"%>
 
       </div>
       </form:form> 
+      <script>
+      
+      $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+      </script>
       	
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
