@@ -65,11 +65,11 @@
   <koulutuksenavainsana koulutuksenavainsana_id="18" avainsana_id="1" koulutus_id="6"/>
   <koulutuksenavainsana koulutuksenavainsana_id="20" avainsana_id="6" koulutus_id="2"/>
   <koulutuksenavainsana koulutuksenavainsana_id="21" avainsana_id="1" koulutus_id="7"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="1" kouluttajatunnus="1122334" koulutus_id="5"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="2" kouluttajatunnus="3335556" koulutus_id="3"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="3" kouluttajatunnus="1234567" koulutus_id="1"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="4" kouluttajatunnus="1122334" koulutus_id="2"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="5" kouluttajatunnus="1122334" koulutus_id="4"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="6" kouluttajatunnus="3335556" koulutus_id="6"/>
-  <koulutuksenkouluttaja koulutuksenkouluttaja_id="7" kouluttajatunnus="1122334" koulutus_id="7"/>
+  <koulutuksentoimija koulutuksentoimija_id="1" henkilotunnus="1122334" koulutus_id="5"/>
+  <koulutuksentoimija koulutuksentoimija_id="2" henkilotunnus="3335556" koulutus_id="3"/>
+  <koulutuksentoimija koulutuksentoimija_id="3" henkilotunnus="1234567" koulutus_id="1"/>
+  <koulutuksentoimija koulutuksentoimija_id="4" henkilotunnus="1122334" koulutus_id="2"/>
+  <koulutuksentoimija koulutuksentoimija_id="5" henkilotunnus="1122334" koulutus_id="4"/>
+  <koulutuksentoimija koulutuksentoimija_id="6" henkilotunnus="3335556" koulutus_id="6"/>
+  <koulutuksentoimija koulutuksentoimija_id="7" henkilotunnus="1122334" koulutus_id="7"/>
 </dataset>

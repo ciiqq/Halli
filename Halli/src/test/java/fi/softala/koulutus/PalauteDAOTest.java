@@ -68,7 +68,7 @@ public class PalauteDAOTest {
 		koulutusId = 4;
 	}
 	
-	@Ignore
+	@Test
 	@Transactional(readOnly = false)
 	public void tallennaPalaute() {
 		palauteService.tallenna(palaute, koulutusId);
