@@ -54,7 +54,8 @@
 			<div class="col-md-3">
 				<ul class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#">Kaikki palautteet</a></li>
-					<li class="active"><a href="#">Koulutuskohtaiset palautteet</a></li>
+					<li class="active"><a href="#">Koulutuskohtaiset
+							palautteet</a></li>
 				</ul>
 			</div>
 			<div class="col-md-9">
@@ -62,15 +63,13 @@
 					<div class="panel-body">
 						<table class="table table-hover">
 							<tr>
-								<td>Id</td>
-								<td>Arvosana</td>
-								<td>Palaute</td>
+								<td>Aihe</td>
+								<td>Kuvaus</td>
 							</tr>
-							<c:forEach items="${kaikkipalautteet}" var="kaikkipalautteet">
+							<c:forEach items="${kaikkikoulutukset}" var="kaikkikoulutukset">
 								<tr>
-									<td><c:out value="${kaikkipalautteet.palaute_id}" /></td>
-									<td><c:out value="${kaikkipalautteet.arvosana}" /></td>
-									<td><c:out value="${kaikkipalautteet.palauteteksti}" /></td>
+									<td><c:out value="${kaikkikoulutukset.aihe}" /></td>
+									<td><c:out value="${kaikkikoulutukset.kuvaus}" /></td>
 								</tr>
 							</c:forEach>
 						</table>

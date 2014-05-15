@@ -29,13 +29,17 @@
 				<%-- 	<td>Id</td>--%>
 					<td>Arvosana</td>
 					<td>Palaute</td>
+					<td>Koulutuksen aihe</td>
+					<td>Koulutuksen kuvaus</td>
 				</tr>
 				<c:forEach items="${palautteet}" var="palautteet">
 
 					<tr>
-					<%-- 	<td><c:out value="${palautteet.palaute_id}" /></td>--%>
 						<td><c:out value="${palautteet.arvosana}" /></td>
 						<td><c:out value="${palautteet.palauteteksti}" /></td>
+						<td><c:out value="${palautteet.aihe}"/></td>
+						<td><c:out value="${palautteet.kuvaus}"/></td>
+						
 					</tr>
 				</c:forEach>
 			</table>

@@ -4,7 +4,10 @@
 <!DOCTYPE>
 <html>
 <head>
-<title>Testi</title>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
+</head>
+<title>Etusivu</title>
 </head>
 <body>
 
@@ -12,10 +15,7 @@
 <a href="testaus/uusi">testi</a><br>
 <a href="palaute/palautteet">Katso halutun koulutustilaisuuden palautteet</a><br>
 
-<a href="palaute/kaikkipalautteet">Katso kaikki palautteet</a><br>
-
-<a href="palaute/opiskelijanpalautteet">Katso opiskelijakohtaiset palautteet</a><br>
-
+<a href="palaute/kaikkikoulutukset">Katso kaikki palautteet</a><br>
 
 </body>
 </html>

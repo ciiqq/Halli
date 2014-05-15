@@ -9,7 +9,5 @@ public interface PalauteDAO {
 	public abstract List<Palaute> haeKaikki();
 
 	public abstract List<Palaute> haeIdlla();
-
-	public abstract List<Palaute> haeKouluttajaIdlla();
-
+	
 }

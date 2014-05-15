@@ -63,6 +63,8 @@
 							<tr class="active">
 								<td>Arvosana</td>
 								<td>Palaute</td>
+								<td>Koulutuksen aihe</td>
+								<td>Koulutuksen kuvaus</td>
 							</tr>
 							<c:forEach items="${opiskelijanpalautteet}"
 								var="opiskelijanpalautteet">
@@ -70,6 +72,8 @@
 								<tr>
 									<td><c:out value="${opiskelijanpalautteet.arvosana}" /></td>
 									<td><c:out value="${opiskelijanpalautteet.palauteteksti}" /></td>
+									<td><c:out value="${opiskelijanpalautteet.aihe}" /></td>
+									<td><c:out value="${opiskelijanpalautteet.kuvaus}" /></td>
 								</tr>
 							</c:forEach>
 						</table>

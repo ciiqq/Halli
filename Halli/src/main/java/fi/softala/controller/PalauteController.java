@@ -28,21 +28,6 @@ public class PalauteController {
 		this.dao = dao;
 	}
 
-	/**
-	 * @RequestMapping(value = "palautteet", method = RequestMethod.GET) public
-	 *                       ModelAndView palautelista(HttpServletRequest
-	 *                       request,
-	 * 
-	 *                       HttpServletResponse response) throws Exception {
-	 * 
-	 *                       ModelMap model = new ModelMap();
-	 * 
-	 *                       model.addAttribute("palautteet", dao.haeKaikki());
-	 *                       return new ModelAndView("palaute", model);
-	 * 
-	 *                       }
-	 */
-
 	@RequestMapping(value = "palautteet", method = RequestMethod.GET)
 	public ModelAndView palautelista2(HttpServletRequest request,
 
@@ -55,27 +40,15 @@ public class PalauteController {
 
 	}
 
-	@RequestMapping(value = "kaikkipalautteet", method = RequestMethod.GET)
+	@RequestMapping(value = "kaikkikoulutukset", method = RequestMethod.GET)
 	public ModelAndView palautelista3(HttpServletRequest request,
 
 	HttpServletResponse response) throws Exception {
 
 		ModelMap model = new ModelMap();
 
-		model.addAttribute("kaikkipalautteet", dao.haeKaikki());
-		return new ModelAndView("kaikkipalautteet", model);
-
-	}
-
-	@RequestMapping(value = "opiskelijanpalautteet", method = RequestMethod.GET)
-	public ModelAndView palautelista4(HttpServletRequest request,
-
-	HttpServletResponse response) throws Exception {
-
-		ModelMap model = new ModelMap();
-
-		model.addAttribute("opiskelijanpalautteet", dao.haeKouluttajaIdlla());
-		return new ModelAndView("opiskelijanpalautteet", model);
+		model.addAttribute("kaikkikoulutukset", dao.haeKaikki());
+		return new ModelAndView("kaikkikoulutukset", model);
 
 	}
 
