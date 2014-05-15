@@ -20,7 +20,7 @@ public class GeneroiXML {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, SQLException, DatabaseUnitException {
 		Connection jdbcConnection = DriverManager.getConnection
-		("jdbc:mariadb://localhost/team3", "projekti", "maXUGp62c");
+		("jdbc:mariadb://localhost/projekti", "projekti", "maXUGp62c");
 		IDatabaseConnection dbConnection = new DatabaseConnection(jdbcConnection);
 
 		ITableFilter filter = new DatabaseSequenceFilter(dbConnection);
