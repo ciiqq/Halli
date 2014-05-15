@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Koulutustilaisuus {
@@ -18,11 +19,17 @@ public class Koulutustilaisuus {
 	private boolean nakyvyys;
 	private String suomiPvm;
 	private String suomiKlo;
+	private String aikaPaiva;
 	private String paikka;
-	private Opettaja ope; // opettajabean tŠhŠn
-	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
-	private List<String> avainsanat = new ArrayList<String>();
+	private Opettaja ope; // opettajabean tï¿½hï¿½n
+	private List<Kouluttaja> kouluttajat;
+	private List<String> avainsanat;
+	private String koulutusmenetelmat;
 	
+	
+
+	
+
 	public int getId() {
 		return id;
 	}
@@ -70,8 +77,8 @@ public class Koulutustilaisuus {
 		return suomiPvm;
 	}
 
-	// Käytetään SQL päivämäärän muuttamisessa suomalaiseksi
-	// Hyödyntämällä java.sql.Date -kirjastoa
+	// Kï¿½ytetï¿½ï¿½n SQL pï¿½ivï¿½mï¿½ï¿½rï¿½n muuttamisessa suomalaiseksi
+	// Hyï¿½dyntï¿½mï¿½llï¿½ java.sql.Date -kirjastoa
 	public void setSuomiPvm(Date suomiPvm) {
 		this.suomiPvm = suomiPvmMuotoilu.format(suomiPvm);
 	}
@@ -80,8 +87,8 @@ public class Koulutustilaisuus {
 		return suomiKlo;
 	}
 
-	// Käytetään SQL kellonajan muuttamisessa suomalaiseksi
-	// Hyödyntämällä java.sql.Time -kirjastoa
+	// Kï¿½ytetï¿½ï¿½n SQL kellonajan muuttamisessa suomalaiseksi
+	// Hyï¿½dyntï¿½mï¿½llï¿½ java.sql.Time -kirjastoa
 	public void setSuomiKlo(Time suomiKlo) {
 		this.suomiKlo = suomiKloMuotoilu.format(suomiKlo);
 	}
@@ -124,4 +131,46 @@ public class Koulutustilaisuus {
 	public void setPaikka(String paikka) {
 		this.paikka = paikka;
 	}
+
+	public SimpleDateFormat getSuomiPvmMuotoilu() {
+		return suomiPvmMuotoilu;
+	}
+
+	public void setSuomiPvmMuotoilu(SimpleDateFormat suomiPvmMuotoilu) {
+		this.suomiPvmMuotoilu = suomiPvmMuotoilu;
+	}
+
+	public SimpleDateFormat getSuomiKloMuotoilu() {
+		return suomiKloMuotoilu;
+	}
+
+	public void setSuomiKloMuotoilu(SimpleDateFormat suomiKloMuotoilu) {
+		this.suomiKloMuotoilu = suomiKloMuotoilu;
+	}
+
+	public String getAikaPaiva() {
+		return aikaPaiva;
+	}
+
+	public void setAikaPaiva(String aikaPaiva) {
+		this.aikaPaiva = aikaPaiva;
+	}
+
+	public String getKoulutusmenetelmat() {
+		return koulutusmenetelmat;
+	}
+
+	public void setKoulutusmenetelmat(String koulutusmenetelmat) {
+		this.koulutusmenetelmat = koulutusmenetelmat;
+	}
+
+	public void setSuomiPvm(String suomiPvm) {
+		this.suomiPvm = suomiPvm;
+	}
+
+	public void setSuomiKlo(String suomiKlo) {
+		this.suomiKlo = suomiKlo;
+	}
+	
+	
 }

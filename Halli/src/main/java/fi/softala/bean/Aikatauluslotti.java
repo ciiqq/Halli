@@ -1,11 +1,12 @@
 package fi.softala.bean;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Aikatauluslotti {
 	
 	// nmoi
 	private int id;
-	private SimpleDateFormat pvm;
+	private Date pvm;
 	private String alkukello;
 	private String loppukello;
 	private String koulutustila;
@@ -15,7 +16,7 @@ public class Aikatauluslotti {
 		super();
 	}
 
-	public Aikatauluslotti(int id, SimpleDateFormat pvm, String alkukello,
+	public Aikatauluslotti(int id, Date pvm, String alkukello,
 			String loppukello, String koulutustila, Koulutustilaisuus koulutus) {
 		super();
 		this.id = id;
@@ -34,11 +35,11 @@ public class Aikatauluslotti {
 		this.id = id;
 	}
 
-	public SimpleDateFormat getPvm() {
+	public Date getPvm() {
 		return pvm;
 	}
 
-	public void setPvm(SimpleDateFormat pvm) {
+	public void setPvm(Date pvm) {
 		this.pvm = pvm;
 	}
 
