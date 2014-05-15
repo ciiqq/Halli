@@ -44,6 +44,8 @@ public class KoulutusDAOImpl implements KoulutusDAO{
 			sql =  sql + "nakyvyys = 0";
 		}
 		
+		sql = sql + " ORDER BY asl.pvm";
+		
 		RowMapper<Koulutustilaisuus> rm = new KoulutusRowMapper();
 		
 		List<Koulutustilaisuus> koulutuslista = jdbcTemplate.query(sql, rm);
