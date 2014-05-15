@@ -1,5 +1,7 @@
 package fi.softala.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -37,6 +39,26 @@ public class PalauteServiceImpl implements PalauteService {
 	 */
 	public void tallenna(Palaute palaute, int koulutus_id) {
 		palautedao.talletaPalaute(palaute, koulutus_id);
+	}
+	
+	public List<Palaute> haePalautteet() {
+		return palautedao.haeKaikki();
+	}
+	
+	public List<Palaute> haePalautteet(String opiskelijanro) {
+		return palautedao.haePalautteet(opiskelijanro);
+	}
+	
+	public List<Palaute> haeIdlla(int id) {
+		return palautedao.haeIdlla(id);
+	}
+	
+	public static void printList(List<Palaute> palautteet) {
+		System.out.println(">>>>>>>>> debug palautteet (SERVICE)");
+		for (Palaute palaute : palautteet) {
+			System.out.println(palaute.toString());
+		}
+		System.out.println(">>>>>>>>");
 	}
 
 }

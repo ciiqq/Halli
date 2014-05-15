@@ -17,7 +17,6 @@ import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.bean.Osallistuja;
 import fi.softala.bean.Palaute;
 import fi.softala.service.KoulutusHakuService;
-import fi.softala.service.OpiskelijanumeronMuutosService;
 import fi.softala.service.OsallistujaService;
 import fi.softala.service.PalauteService;
 
@@ -50,21 +49,12 @@ public class KoulutusHakuController {
 	@Inject
 	private PalauteService palauteservice;
 	
-	@Inject
-	private OpiskelijanumeronMuutosService muutosservice;
-
 	public PalauteService getPalauteService() {
 		return palauteservice;
 	}
 
 	public void setPalauteService(PalauteService palauteservice) {
 		this.palauteservice = palauteservice;
-	}
-	public OpiskelijanumeronMuutosService getMuutosService() {
-		return muutosservice;
-	}
-	public void setMuutos(OpiskelijanumeronMuutosService muutosservice) {
-		this.muutosservice = muutosservice;
 	}
 	
 	@RequestMapping(value="palaute", method=RequestMethod.POST)
