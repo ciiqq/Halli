@@ -65,6 +65,14 @@
 						</c:forEach>
 						</div>
 					</c:if>
+					
+					<c:if test="${not empty virhe}">
+						<div class="alert alert-danger">  
+		  				<a class="close" data-dismiss="alert">×</a>  
+		  				<strong>Virhe!</strong>
+							<p><c:out value="${virhe}"/></p>
+						</div>
+					</c:if>
 
                     
                    		 <c:choose>
@@ -147,7 +155,7 @@
 						      <div class="modal-body">
 
 									<p>
-										Anna excel lista</br>
+										Anna Excel-lista</br>
 										<input type="file" name="kouluttajaLista" />
 									</p>
 

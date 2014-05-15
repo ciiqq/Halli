@@ -14,6 +14,10 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
 
 import fi.softala.bean.Kouluttaja;
@@ -27,40 +31,80 @@ public abstract class ExcelParseri {
 		
 		try {
 			InputStream input = new BufferedInputStream(new FileInputStream(multipartToFile(file)));
-			POIFSFileSystem fs = new POIFSFileSystem(input);
-			HSSFWorkbook wb = new HSSFWorkbook(fs);
-			HSSFSheet sheet = wb.getSheetAt(0);
-			Iterator rows = sheet.rowIterator();
 			
-			while(rows.hasNext()){
-				HSSFRow row = (HSSFRow) rows.next();
-				Iterator cells = row.cellIterator();
-				Kouluttaja kouluttaja = new Kouluttaja();
+			if (file.getOriginalFilename().substring(file.getOriginalFilename().length()-1).equals("s")){
+				HSSFWorkbook wb = new HSSFWorkbook(input);
+				HSSFSheet sheet = wb.getSheetAt(0);
+				Iterator rows = sheet.rowIterator();
 				
-				for(int i = 0; i < 2; i++){
-					HSSFCell cell = (HSSFCell) cells.next();
+				while(rows.hasNext()){
+					HSSFRow row = (HSSFRow) rows.next();
+					Iterator cells = row.cellIterator();
+					Kouluttaja kouluttaja = new Kouluttaja();
 					
-					if(HSSFCell.CELL_TYPE_NUMERIC==cell.getCellType())
-						kouluttaja.setOpiskelijanro(String.valueOf((int)cell.getNumericCellValue()));
-					
-					else if(HSSFCell.CELL_TYPE_STRING==cell.getCellType()){
-						String kokonimi = cell.getStringCellValue();
-						String[] nimi = kokonimi.split(" ");
-						kouluttaja.setEtunimi(nimi[0]);
-						kouluttaja.setSukunimi(nimi[nimi.length - 1]);
+					for(int i = 0; i < 2; i++){
+						HSSFCell cell = (HSSFCell) cells.next();
+						
+						if(HSSFCell.CELL_TYPE_NUMERIC==cell.getCellType())
+							kouluttaja.setOpiskelijanro(String.valueOf((int)cell.getNumericCellValue()));
+						
+						else if(HSSFCell.CELL_TYPE_STRING==cell.getCellType()){
+							String kokonimi = cell.getStringCellValue();
+							String[] nimi = kokonimi.split(" ");
+							kouluttaja.setEtunimi(nimi[0]);
+							kouluttaja.setSukunimi(nimi[nimi.length - 1]);
+						}
+						else if(HSSFCell.CELL_TYPE_BOOLEAN==cell.getCellType())
+							System.out.print(cell.getBooleanCellValue()+" ");
+						
+						else if(HSSFCell.CELL_TYPE_BLANK==cell.getCellType())
+							System.out.print("BLANK ");
+						
+						else
+							System.out.print("Unknown cell type");
+						
 					}
-					else if(HSSFCell.CELL_TYPE_BOOLEAN==cell.getCellType())
-						System.out.print(cell.getBooleanCellValue()+" ");
-					
-					else if(HSSFCell.CELL_TYPE_BLANK==cell.getCellType())
-						System.out.print("BLANK ");
-					
-					else
-						System.out.print("Unknown cell type");
-					
+					lista.add(kouluttaja);
 				}
-				lista.add(kouluttaja);
+				
+			}else{
+				XSSFWorkbook wb = new XSSFWorkbook(input);
+				XSSFSheet sheet = wb.getSheetAt(0);
+				Iterator rows = sheet.rowIterator();
+				
+				while(rows.hasNext()){
+					XSSFRow row = (XSSFRow) rows.next();
+					Iterator cells = row.cellIterator();
+					Kouluttaja kouluttaja = new Kouluttaja();
+					
+					for(int i = 0; i < 2; i++){
+						XSSFCell cell = (XSSFCell) cells.next();
+						
+						if(XSSFCell.CELL_TYPE_NUMERIC==cell.getCellType())
+							kouluttaja.setOpiskelijanro(String.valueOf((int)cell.getNumericCellValue()));
+						
+						else if(XSSFCell.CELL_TYPE_STRING==cell.getCellType()){
+							String kokonimi = cell.getStringCellValue();
+							String[] nimi = kokonimi.split(" ");
+							kouluttaja.setEtunimi(nimi[0]);
+							kouluttaja.setSukunimi(nimi[nimi.length - 1]);
+						}
+						else if(XSSFCell.CELL_TYPE_BOOLEAN==cell.getCellType())
+							System.out.print(cell.getBooleanCellValue()+" ");
+						
+						else if(XSSFCell.CELL_TYPE_BLANK==cell.getCellType())
+							System.out.print("BLANK ");
+						
+						else
+							System.out.print("Unknown cell type");
+						
+					}
+					lista.add(kouluttaja);
+				}
 			}
+			
+			
+			
 		}catch(IOException e){
 			e.printStackTrace();
 		}

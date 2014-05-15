@@ -64,9 +64,8 @@ public class KouluttajienLisaysDAOSpringJdbcImpl implements KouluttajienLisaysDA
 
 	public void kouluttajanLisays(Kouluttaja k) {
 		final String sql = "insert into henkilo(henkilotunnus, rooli, etunimi, sukunimi, salasana, suola) values(?,?,?,?,?,?)";
-
-		// anonyymi sis‰luokka tarvitsee vakioina v‰litett‰v‰t arvot,
-		// jotta roskien keruu onnistuu t‰m‰n metodin suorituksen p‰‰ttyess‰.
+		
+		//helpottaa editoimista
 		final String opiskelijanro = k.getOpiskelijanro();
 		final String rooli = "kouluttaja";
 		final String etunimi = FormatoiNimi.isoAlkukirjain(k.getEtunimi());
@@ -74,24 +73,9 @@ public class KouluttajienLisaysDAOSpringJdbcImpl implements KouluttajienLisaysDA
 		final String salasana = k.getSalasana();
 		final String suola = "suola!";
 		
+		Object[] parametrit = new Object[] {opiskelijanro,rooli,etunimi,sukunimi,salasana,suola};
 		
-		//jdbc pist‰‰ generoidun id:n t‰nne talteen
-		KeyHolder idHolder = new GeneratedKeyHolder();
-			    
-		//suoritetaan p‰ivitys itse m‰‰ritellyll‰ PreparedStatementCreatorilla ja KeyHolderilla
-		jdbcTemplate.update(
-    	    new PreparedStatementCreator() {
-    	        public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-    	            PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
-    	            ps.setString(1, opiskelijanro);
-    	            ps.setString(2, rooli);
-    	            ps.setString(3, etunimi);
-    	            ps.setString(4, sukunimi);
-    	            ps.setString(5, salasana);
-    	            ps.setString(6, suola);
-    	            return ps;
-    	        }
-    	    }, idHolder);
+		jdbcTemplate.update(sql , parametrit);
 				
 				
 	}

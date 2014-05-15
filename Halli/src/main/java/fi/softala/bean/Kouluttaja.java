@@ -2,19 +2,16 @@ package fi.softala.bean;
 
 import javax.validation.constraints.*;
 
-import org.hibernate.validator.constraints.NotBlank;
-
-import fi.softala.funktiot.FormatoiNimi;
 
 public class Kouluttaja {
 	
-	@Pattern(regexp = "\\d{7}", message="Opiskelijanumeron tulee koostua seitsemästä numerosta")
+	@Pattern(regexp = "\\d{7}", message="Opiskelijanumeron tulee koostua seitsemästä numerosta.")
 	private String opiskelijanro;
 	
-	@Size(min = 2, max = 50, message="Etunimen tulee olla 2-50 merkkiä pitkä")
+	@Size(min = 2, max = 50, message="Etunimen tulee olla 2-50 merkkiä pitkä.")
 	private String etunimi;
 	
-	@Size(min = 2, max = 50, message="Sukunimen tulee olla 2-50 merkkiä pitkä")
+	@Size(min = 2, max = 50, message="Sukunimen tulee olla 2-50 merkkiä pitkä.")
 	private String sukunimi;
 	
 	private String salasana;

@@ -68,6 +68,7 @@ public class KouluttajaKontrolleri {
 		if(result.hasErrors()){
 			List<Kouluttaja> kouluttajat = dao.kouluttajienHaku();
 			
+			model.addAttribute("virhe","Syöttödata on virheellistä.");
 			model.addAttribute("kouluttajat", kouluttajat);
 			return polku;
 		}
@@ -110,40 +111,47 @@ public class KouluttajaKontrolleri {
 	
 	@RequestMapping(value="lisaaLista", method=RequestMethod.POST)
 	public String lisaaKouluttajat(@RequestParam("kouluttajaLista") MultipartFile file, Model model){
-		
-		//Lista, johon haetaan excelistä kouluttajat
-		List<Kouluttaja> kouluttajat = ExcelParseri.parseta(file);
-		
-		
-		//Kouluttajat, jotka eivät ole jo systeemissä, menevät "lisataan" listaan
-		//Kouluttajat, jotka ovat jo systeemissä, menevät "eiLisata" listaan
-		List<Kouluttaja> lisataan = new ArrayList<Kouluttaja>();
-		List<Kouluttaja> eiLisata = new ArrayList<Kouluttaja>();
-		
-		//Tarkistetaan systeemistä listan opiskelijat
-		for (int i = 0; i < kouluttajat.size(); i++){
-			if(dao.kouluttajanHaku(kouluttajat.get(i).getOpiskelijanro()) == null ){
-				lisataan.add(kouluttajat.get(i));
-				lisataan.get(lisataan.size()-1).setSalasana(SalasanaGeneraattori.generoiSalasana());
-			}else{
-				eiLisata.add(kouluttajat.get(i));
+		System.out.println(file.getOriginalFilename());
+		if (file.getOriginalFilename().substring(file.getOriginalFilename().length()-3).equals("xls")
+		|| file.getOriginalFilename().substring(file.getOriginalFilename().length()-4).equals("xlsx")){
+				
+			//Lista, johon haetaan excelistä kouluttajat
+			List<Kouluttaja> kouluttajat = ExcelParseri.parseta(file);
+			
+			
+			//Kouluttajat, jotka eivät ole jo systeemissä, menevät "lisataan" listaan
+			//Kouluttajat, jotka ovat jo systeemissä, menevät "eiLisata" listaan
+			List<Kouluttaja> lisataan = new ArrayList<Kouluttaja>();
+			List<Kouluttaja> eiLisata = new ArrayList<Kouluttaja>();
+			
+			//Tarkistetaan systeemistä listan opiskelijat
+			for (int i = 0; i < kouluttajat.size(); i++){
+				if(dao.kouluttajanHaku(kouluttajat.get(i).getOpiskelijanro()) == null ){
+					lisataan.add(kouluttajat.get(i));
+					lisataan.get(lisataan.size()-1).setSalasana(SalasanaGeneraattori.generoiSalasana());
+				}else{
+					eiLisata.add(kouluttajat.get(i));
+				}
 			}
+			
+			//Lisätään "lisataan" listan kouluttajat kantaan
+			for (int i = 0; i < lisataan.size(); i++){
+				dao.kouluttajanLisays(lisataan.get(i));
+			}
+			
+			//Annetaan modelille listat lisätyistä ja ei lisätyistä kouluttajista
+			model.addAttribute("lisatyt", lisataan);
+			model.addAttribute("eiLisatyt", eiLisata);
+			
+		}else{
+			model.addAttribute("virhe","Tiedostomuodoto on virheellinen. Yritä Excel-tiedostoa (.xls tai .xlsx)");
 		}
 		
-		//Lisätään "lisataan" listan kouluttajat kantaan
-		for (int i = 0; i < lisataan.size(); i++){
-			dao.kouluttajanLisays(lisataan.get(i));
-		}
-		
-		//Annetaan modelille listat lisätyistä ja ei lisätyistä kouluttajista
-		model.addAttribute("lisatyt", lisataan);
-		model.addAttribute("eiLisatyt", eiLisata);
 		Kouluttaja kouluttaja = new Kouluttaja();
 		model.addAttribute("kouluttaja", kouluttaja);
 		
-		kouluttajat = dao.kouluttajienHaku();
+		List<Kouluttaja> kouluttajat = dao.kouluttajienHaku();
 		model.addAttribute("kouluttajat", kouluttajat);
-		
 		
 		return polku;
 	}
