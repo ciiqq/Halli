@@ -55,6 +55,7 @@ public class PalauteServiceImpl implements PalauteService {
 	
 	public static void printList(List<Palaute> palautteet) {
 		System.out.println(">>>>>>>>> debug palautteet (SERVICE)");
+		System.out.println("palautteet.size(): " + palautteet.size());
 		for (Palaute palaute : palautteet) {
 			System.out.println(palaute.toString());
 		}

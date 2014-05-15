@@ -7,7 +7,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.junit.Before;
-import org.junit.Ignore;
 // import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -74,8 +73,8 @@ public class PalauteDAOTest {
 		palauteService.tallenna(palaute, koulutusId);
 		
 		List<Palaute> list = palauteService.haeIdlla(palaute.getPalaute_id());
-		System.out.println("TEST tallennapalaute: " + list.get(1).getOpiskelijanro());
-		String opiskelijanro = list.get(1).getOpiskelijanro();
+		
+		String opiskelijanro = list.get(0).getOpiskelijanro();
 		
 		assertEquals("7654321", opiskelijanro);
 	}
