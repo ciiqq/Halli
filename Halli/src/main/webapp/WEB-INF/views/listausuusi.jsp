@@ -1,5 +1,3 @@
-
-
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -9,7 +7,7 @@
 
 <!doctype html>
 
-<html lang="en">
+<html lang="fi">
 <head>
 
 <meta charset="utf-8">
@@ -78,22 +76,11 @@
 			</div>
 			<div class="fifty tiedot">
 				<div class="table-container">
-					<c:choose>
-						<c:when test="${viesti==null}">
 							<span
 								style="display: block; text-align: center; margin-top: 96px; margin-bottom: 96px;">Tervetuloa
 								HAAGA-HELIA ammattikorkeakoulun ilmoittautumisjärjestelmään!
 								Tarvitset opiskelijatunnuksen. Valitse koulutukset vasemmalta.</span>
 							<br />
-						</c:when>
-
-						<c:otherwise>
-							<span
-								style="display: block; text-align: center; margin-top: 96px; margin-bottom: 96px; color:green; font-size:30px;">
-								Kiitos ilmoittautumisesta!</span>
-							<br />
-						</c:otherwise>
-					</c:choose>
 				</div>
 				<c:forEach items="${koulutukset}" var="k">
 					<input type="hidden" name="aihe" value="${k.aihe}" />
@@ -190,7 +177,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Ilmoittaudu koulutuksiin</h4>
+        <h4 class="modal-title" id="myModalLabel">Koulutuksiin ilmoittautuminen</h4>
       </div>
       <div class="modal-body">
         				<p>Olet valinnut seuraavat koulutukset:</p>
@@ -217,7 +204,7 @@
 </div>
 <div class="form-group">
 <label for="opiskelijanumero" class="bootstrap">Opiskelijanumero</label>
-<input type="text" name="opiskelijanro" class="form-control" id="opiskelijanumero">
+<input type="text" name="opiskelijanro" class="form-control" id="opiskelijanumero" autocomplete="off">
 </div>
 
       </div>
@@ -231,19 +218,39 @@
     </div>
   </div>
 </div>
-	
+
+<div class="modal" id="kiitos">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Koulutuksiin ilmoittautuminen</h4>
+      </div>
+      <div class="modal-body">
+        <p>Ilmoittatumisesi on vastaanotettu. Kiitos!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Sulje ikkuna</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->		
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-		
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
-
 	<script
 		src="<%=request.getContextPath()%>/resources/js/additional-methods.js"></script>
 	<script type="application/javascript"
 		src="<%=request.getContextPath()%>/resources/js/script.js"></script>
+		
+								<c:if test="${viesti!=null}">
+						<script>$( document ).ready(function() {
+							$('#kiitos').modal('show');
+						});</script>
+						</c:if>
 </body>
 </html>
 
