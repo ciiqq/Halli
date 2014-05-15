@@ -2,7 +2,6 @@ package fi.softala.koulutus;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -35,6 +34,7 @@ public class PalauteDAOTest {
 	
 	private final String palauteteksti = "Paras koulutus";
 	private Palaute palaute;
+	private int koulutusId;
 	
 	@Inject
 	private PalauteDAO dao;
@@ -64,12 +64,13 @@ public class PalauteDAOTest {
 		palaute.setArvosana(4);
 		palaute.setOpiskelijanro("7654321");
 		palaute.setPalauteteksti(palauteteksti);
+		koulutusId = 4;
 	}
 	
 	@Test
 	@Transactional(readOnly = false)
 	public void tallennaPalaute() {
-		dao.talletaPalaute(palaute);
+		dao.talletaPalaute(palaute, koulutusId);
 		System.out.println(palaute.getPalaute_id());
 		
 		String sql = "select osallistujan_opiskelijanro "

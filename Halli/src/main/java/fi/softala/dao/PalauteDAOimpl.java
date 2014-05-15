@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
@@ -31,21 +30,20 @@ public class PalauteDAOimpl implements PalauteDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public void talletaPalaute(Palaute palaute) {
-		final String sqlPalaute = "insert into palaute(arvosana, palauteteksti) values (?, ?)";
-		final String sqlIlmoittautuminen = "update ilmoittautuminen set palaute_id = ? where osallistujan_opiskelijanro = ?";
-		
+	public void talletaPalaute(Palaute palaute, int koulutus_id) {
+		final String sql = "insert into palaute(arvosana, palauteteksti) values(?,?)";
+		final String sql2 = "update ilmoittautuminen set palaute_id = ? where osallistujan_opiskelijanro = ? and koulutus_id = ?";
 		final int arvosana = palaute.getArvosana();
 		final String palauteteksti = palaute.getPalauteteksti();
 		final String opiskelijanro = palaute.getOpiskelijanro();
+		final int koulutusid = koulutus_id;
 
 		KeyHolder idHolder = new GeneratedKeyHolder();
-
+		
 		jdbcTemplate.update(new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(Connection connection) 
-					throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sqlPalaute,
-						new String[] { "palaute_id" });
+			public PreparedStatement createPreparedStatement(
+					Connection connection) throws SQLException {
+				PreparedStatement ps = connection.prepareStatement(sql, new String[] { "palaute_id" });
 				ps.setInt(1, arvosana);
 				ps.setString(2, palauteteksti);
 				return ps;
@@ -53,19 +51,19 @@ public class PalauteDAOimpl implements PalauteDAO {
 		}, idHolder);
 		
 		palaute.setPalaute_id(idHolder.getKey().intValue());
-		final int palauteId = palaute.getPalaute_id();
+
+		final int palauteid = palaute.getPalaute_id();
 		
 		jdbcTemplate.update(new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(Connection connection)
-					throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sqlIlmoittautuminen);
-				ps.setInt(1, palauteId);
-				ps.setString(2, opiskelijanro);
-				return ps;
+			public PreparedStatement createPreparedStatement(
+					Connection connection2) throws SQLException {
+				PreparedStatement ps2 = connection2.prepareStatement(sql2);
+				ps2.setInt(1, palauteid);
+				ps2.setString(2, opiskelijanro);
+				ps2.setInt(3, koulutusid);
+				return ps2;
 			}
 		});
-		
-		
 	}
 	
 	public List<Palaute> haePalautteet(String opiskelijanro) {

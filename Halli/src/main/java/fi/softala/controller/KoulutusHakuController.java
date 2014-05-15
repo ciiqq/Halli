@@ -66,29 +66,33 @@ public class KoulutusHakuController {
 		this.muutosservice = muutosservice;
 	}
 	
+	@RequestMapping(value="palaute", method=RequestMethod.POST)
+	public String create(@ModelAttribute(value="palaute") Palaute palaute, Model model, ServletRequest request, RedirectAttributes redirectAttrs) {
+				try {
+					int koulutus_id = Integer.parseInt(request.getParameter("koulutus_id"));
+					palauteservice.tallenna(palaute, koulutus_id);
+					redirectAttrs.addFlashAttribute("viesti", "Palautteen lähetys onnistui. Kiitos palautteesta!");
+					redirectAttrs.addAttribute("opiskelijanumero", palaute.getOpiskelijanro());
+					return "redirect:palaute?opiskelijanumero={opiskelijanumero}";				
+				} catch (Exception e) {
+					redirectAttrs.addFlashAttribute("virheviesti", "Palautteen lähetys ei onnistunut.");
+					return "redirect:palaute";
+				}	
+	}
 	@RequestMapping(value="palaute", method=RequestMethod.GET)
-	public String getCreateForm(Model model) {
-		Palaute tyhjaPalaute = new Palaute();
-		model.addAttribute("palaute", tyhjaPalaute);
+	public String getCreateForm2(Model model, ServletRequest request) {
+		String opiskelijanro = request.getParameter("opiskelijanumero");
+		Palaute palaute = new Palaute(opiskelijanro);
+		List<Koulutustilaisuus> koulutukset = hakuservice.haePalauteKelpoiset(palaute.getOpiskelijanro());
+		model.addAttribute("koulutukset", koulutukset);		
+		model.addAttribute("palaute", palaute);
 		return "palaute";
 	}
-	
-	@RequestMapping(value="palaute", method=RequestMethod.POST)
-	public String create(@ModelAttribute(value="palaute") Palaute palaute, Model model) {	
-				String opiskelijanumero = palaute.getOpiskelijanro();
-				//Koulutus_id jostain listasta?
-				String koulutus_id = "";
-				opiskelijanumero = muutosservice.OpiskelijanumeronMuotoilu(opiskelijanumero);
-				if (palauteservice.tarkistaOpiskelijanumero(opiskelijanumero) == false && palauteservice.tarkistaOsallistuja(opiskelijanumero, koulutus_id) == true) {
-					palauteservice.tallenna(palaute);
-					model.addAttribute("onnistunutviesti", "Palautteen lähetys onnistui");	
-					return "palaute";
-				}
-				else {
-					model.addAttribute("virheviesti", "Palautteen lähetys ei onnistunut");
-					return "palaute";
-				}
-		
+	@RequestMapping(value="anna_palautetta", method=RequestMethod.POST)
+	public String getCreateForm(Model model, ServletRequest request, RedirectAttributes redirectAttrs) {
+		String opiskelijanro = request.getParameter("opiskelijanumero");
+		redirectAttrs.addAttribute("opiskelijanumero", opiskelijanro);
+		return "redirect:palaute";
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)

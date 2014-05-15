@@ -10,7 +10,7 @@ public interface PalauteDAO {
 	
 	public abstract List<Palaute> haeIdlla();
 	
-	public abstract void talletaPalaute(Palaute palaute);
+	public abstract void talletaPalaute(Palaute palaute, int koulutus_id);
 	
 	public abstract List<Palaute> haePalautteet(String opiskelijanumero);
 
