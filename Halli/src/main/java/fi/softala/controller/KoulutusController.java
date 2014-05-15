@@ -53,7 +53,7 @@ public class KoulutusController {
 	public String getCreateForm(Model model) {
 		Koulutustilaisuus kt = new Koulutustilaisuus();
 		List<Kouluttaja> kouluttajat = new LinkedList<Kouluttaja>();
-		kouluttajat.add(new Kouluttaja("1000001", "Kimmo", "Kouluttaja", "salasana", "suola"));
+		//kouluttajat.add(new Kouluttaja("1000001", "Kimmo", "Kouluttaja", "salasana", "suola"));
 		kt.setKouluttajat(kouluttajat);
 		model.addAttribute("koulutustilaisuus", kt);
 		model.addAttribute("kouluttajat", kouluttajaService.haeKouluttajat());
