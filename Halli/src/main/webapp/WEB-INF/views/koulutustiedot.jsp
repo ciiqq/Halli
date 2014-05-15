@@ -237,7 +237,7 @@ pageEncoding="UTF-8"%>
 		<div class="control-group">
       			<form:label path="kuvaus" name="kuvaus" class="control-label">Kuvaus</form:label> 
       		<div class="controls">		  
-			  	<form:textarea id="kuvaus" name="kuvaus" type="text" minlength="10" path="aihe" required="" data-validation-minlength-message="Vähintään 10 kirjainta" data-validation-required-message="Kenttä ei saa olla tyhjä" value="${ks.kuvaus}"/>   
+			  	<form:textarea id="kuvaus" name="kuvaus" path="kuvaus" type="text" minlength="10" required="" data-validation-minlength-message="Vähintään 10 kirjainta" data-validation-required-message="Kenttä ei saa olla tyhjä" value="${ks.kuvaus}"/>   
 			  	<form:errors path="kuvaus"></form:errors>
 			  	<p class="help-block"></p>
 			 </div>
@@ -258,29 +258,6 @@ pageEncoding="UTF-8"%>
            <table class="table">
            
            
-        
-			  <%-- <tr>
-			   
-			  	<th><form:label path="aihe" name="aihe" class="control-label">Aihe</form:label></th>	 		  
-			  	<td><form:input id="aihe" name="aihe" type="text" minlength="5" path="aihe" required="required" data-validation-minlength-message="Liian vähän kirjaimia" value="${ks.aihe}"/>  </td> 
-			  	<td><form:errors path="aihe"></form:errors></td>
-			  	
-			  	
-			  	
-			  </tr>  
-			  
-			  <tr>
-			  	<th><form:label path="kuvaus" name="kuvaus">Kuvaus</form:label></th>
-			  	<td><form:textarea id="kuvaus" class="kuvaus" path="kuvaus" style="resize:none;" value="${ks.kuvaus}" cols="40" rows="5"/> </td>
-			  	<td><form:errors id="kuvaus-error" path="kuvaus"></form:errors></td>
-			  	
-			  </tr>    
-			  
-			   <tr>
-			    <th><form:label path="lahtotaso" >Lähtötaso</form:label></th>
-			  	<td><form:input path="lahtotaso" value="${ks.lahtotaso}"/> </td>
-			  	<td><form:errors path="lahtotaso"></form:errors></td>
-			    </tr> --%>
 			  
 			 <tr>
 			    <th><form:label path="aikaslotti.pvm">Päivämäärä</form:label></th>
