@@ -9,13 +9,13 @@
 	<context:property-placeholder location="./db_connection.properties" />
 	
 	<!-- Omat DAO-beanit näiden tilalle -->
-	<bean id="haeKaikkiPalautteet" class="fi.softala.dao.palauteDAOimpl">
+	<bean id="PalauteDAOimpl" class="fi.softala.dao.PalauteDAOimpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 	
-	<bean id="PalauteDAO" class="fi.softala.dao.PalauteDAO">
+<!--  	<bean id="PalauteDAO" class="fi.softala.dao.PalauteDAO">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
-	</bean>
+	</bean>-->
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${db.driver}" />
