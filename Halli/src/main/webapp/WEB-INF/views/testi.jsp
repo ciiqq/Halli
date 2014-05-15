@@ -36,7 +36,8 @@
         </div>
     </nav>
     <div class="container">
-        <a class="btn btn-primary" href="koulutus/uusi">Lisää koulutus!</a>
+        <a class="btn btn-primary" href="opettaja/aikataulut">Kirjaudu sisään opettajana</a>
+        <a class="btn btn-primary" href="kouluttaja/koulutus/">Kirjaudu sisään kouluttajana</a>
     </div>
     <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
