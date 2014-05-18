@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ page session="false" %>
@@ -50,7 +51,7 @@
                 <label>Koulutuksen aihe</label>
                 <form:input class="form-control" path="aihe" placeholder="Anna koulutukselle aihe" maxlength="50"></form:input>
                     <div class="row">   
-                        <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="col-xs-12 col-sm-4 col-md-4">
                              <label>Opiskelijanumero</label>
                             <div class="">
                             	<form:input id="kouluttaja_input" placeholder="Anna opiskelijanumerosi" class="form-control" path=""></form:input>
@@ -82,7 +83,7 @@
                     <div class="input-group">
                         <form:input id="ajankohta_input" class="form-control" disabled="true" path="aikaPaiva"></form:input>
                         <span class="input-group-btn">
-                            <input id="aikavalinta_nappula" class="btn btn-default" type="button" data-toggle="modal" data-target="#aikavalinta" value="Lisää ajankohta"/>
+                            <input id="aikavalinta_nappula" class="btn btn-default" type="button"/>
                         </span>
                     </div>
                     <div class="row">
