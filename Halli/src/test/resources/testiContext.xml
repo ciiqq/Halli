@@ -1,5 +1,4 @@
 
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -10,12 +9,6 @@
 	<context:property-placeholder location="./db_connection.properties" />
 	
 	<context:component-scan base-package="fi.softala" />
-	
-	<!-- Omat DAO-beanit näiden tilalle -->
-	<bean id="koulutusDao" class="fi.softala.dao.KoulutusDAOImpl">
-		<property name="jdbcTemplate" ref="jdbcTemplate" />
-	</bean>
-	
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${db.driver}" />

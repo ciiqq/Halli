@@ -124,7 +124,7 @@
 							</tr>
 							<tr>
 								<td class="bold">Kouluttajat</td>
-								<td><c:forEach items="${k.kouluttajat}" var="koul"
+								<td><c:forEach items="${k.kouluttajat2}" var="koul"
 										varStatus="loopStatus">
 										<c:out value="${koul.etunimi} " />
 										<c:out value="${koul.sukunimi}" />
@@ -144,7 +144,7 @@
 							</tr>
 							<tr>
 								<td class="bold">Avainsanat</td>
-								<td><c:forEach items="${k.avainsanat}" var="a">
+								<td><c:forEach items="${k.avainsanat2}" var="a">
 										<span class="tagi"><a href="avainsana?avainsana=${a}"
 											class="tagi"><c:out value="${a}" /></a></span>
 									</c:forEach></td>

@@ -43,7 +43,7 @@ public class KoulutusHakuDAOTest {
 	@Test
 	public void haeMenneetKoulutukset() {
 		List<Koulutustilaisuus> koulutukset = dao.haeMenneet();
-		assertEquals("Java-ohjelmointi", koulutukset.get(0).getAihe());
+		assertEquals("Scrum", koulutukset.get(0).getAihe());
 	}
 	
 	@Test
