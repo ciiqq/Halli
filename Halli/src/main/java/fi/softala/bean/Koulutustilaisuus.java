@@ -27,13 +27,18 @@ public class Koulutustilaisuus {
 	
 	private boolean nakyvyys;
 	private String suomiPvm;
+	private String suomiLoppuKlo;
 	private String suomiKlo;
 	private List<Henkilo> kouluttajat = new ArrayList<Henkilo>();
 	private List<Henkilo> opettajat = new ArrayList<Henkilo>();
 	private List<Avainsana> avainsanat = new ArrayList<Avainsana>();
 	private Aikatauluslotti aikaslotti;
+	private String koulutusmenetelmat;
+	private String paikka;
 	
-	
+	//Ryhmä 3 -versio
+	private List<Kouluttaja> kouluttajat2 = new ArrayList<Kouluttaja>();
+	private List<String> avainsanat2 = new ArrayList<String>();
 	
 	public Aikatauluslotti getAikaslotti() {
 		return aikaslotti;
@@ -105,6 +110,16 @@ public class Koulutustilaisuus {
 	public void setSuomiKlo(Time suomiKlo) {
 		this.suomiKlo = suomiKloMuotoilu.format(suomiKlo);
 	}
+	
+	public String getSuomiLoppuKlo() {
+		return suomiLoppuKlo;
+	}
+
+	// Käytetään SQL kellonajan muuttamisessa suomalaiseksi
+	// Hyödyntämällä java.sql.Time -kirjastoa
+	public void setSuomiLoppuKlo(Time suomiLoppuKlo) {
+		this.suomiLoppuKlo = suomiKloMuotoilu.format(suomiLoppuKlo);
+	}
 
 
 	public List<Henkilo> getOpettajat() {
@@ -130,6 +145,26 @@ public class Koulutustilaisuus {
 	public void setAvainsanat(List<Avainsana> avainsanat) {
 		this.avainsanat = avainsanat;
 	}
+	
+	
+
+	public List<Kouluttaja> getKouluttajat2() {
+		return kouluttajat2;
+	}
+
+	public void setKouluttajat2(List<Kouluttaja> kouluttajat2) {
+		this.kouluttajat2 = kouluttajat2;
+	}
+	
+	
+
+	public List<String> getAvainsanat2() {
+		return avainsanat2;
+	}
+
+	public void setAvainsanat2(List<String> avainsanat2) {
+		this.avainsanat2 = avainsanat2;
+	}
 
 	@Override
 	public String toString() {
@@ -144,5 +179,23 @@ public class Koulutustilaisuus {
 
 
 
+	public String getKoulutusmenetelmat() {
+		return koulutusmenetelmat;
+	}
 
+	public void setKoulutusmenetelmat(String koulutusmenetelmat) {
+		this.koulutusmenetelmat = koulutusmenetelmat;
+	}
+
+	public String getPaikka() {
+		return paikka;
+	}
+
+	public void setPaikka(String paikka) {
+		this.paikka = paikka;
+	}
+	
+	
+	
+	
 }
