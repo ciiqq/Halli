@@ -133,6 +133,7 @@ $().ready(function() {
     
     // Koulutuslomake validointi ennen tietojen viemistï¿½ kantaan
     // HUOM!! Tarkastettava sallitut pituus yms. arvot kannasta!
+    
     var $koulutusformi = $('#koulutus_formi'); 
     
     $koulutusformi.validate({
@@ -142,7 +143,7 @@ $().ready(function() {
                 maxlength: 50,  
                 required: true,
             },
-            opiskelijanro: {
+            'kouluttajat1[0].opiskelijanro': {
                 minlength: 7,
                 digits: true,
                 required: true,
@@ -167,19 +168,19 @@ $().ready(function() {
 			aihe: {
 				required: "Aihe on pakollinen tieto!",
 				minlength: "Aihe on liian lyhyt!",
-				maxlenght: "Aihe on liian pitkä! (max 50 merkkiä)",
+				maxlenght: "Aihe on liian pitkï¿½! (max 50 merkkiï¿½)",
 			},
-			opiskelijanro: {
+			'kouluttajat1[0].opiskelijanro': {    	    
 				required: "Opiskelijanumero on annettava!",
-				minlength: "Opiskelijanumero on 7 merkkiä pitkä!",
-				digits: "Anna opiskelijanumero vain numeroina (7 merkkiä)",
+				minlength: "Anna opiskelijanumeron 7 numeroa",
+				digits: "Anna opiskelijanumero vain numeroina",
 			},
 			kuvaus: {
 				minlength: "Kuvaus on liian lyhyt",
 			},
 			koulutusmenetelmat: {
 				minlength: "Kuvaus on liian lyhyt",
-			}
+			},
 		},   
         highlight: function(element) {
             $(element).closest('.form-group').addClass('has-error');
