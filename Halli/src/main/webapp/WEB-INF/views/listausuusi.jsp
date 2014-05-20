@@ -94,7 +94,7 @@
 						<c:out value="Koulutuksia ei löytynyt hakusanan perusteella" />
 					</c:if>
 					<c:forEach items="${koulutukset}" var="k">
-						<li divid="<c:out value="${k.id}"/>" class="aihe"><input
+						<li data-kohde="<c:out value="${k.id}"/>" class="aihe"><input
 							type="checkbox" name="box" class="box" value="${k.id}" id="checkboxi" disabled />
 							<label for="checkboxi"></label>
 							<c:out value="${k.aihe}" /> <span class="pvm"><c:out
