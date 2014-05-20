@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 
 import fi.softala.bean.Aikatauluslotti;
-import fi.softala.DAO.AikatauluslottiDAO;
+import fi.softala.dao.AikatauluslottiDAO;
 
 import javax.inject.Inject;
 

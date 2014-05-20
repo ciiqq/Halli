@@ -19,8 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 
-import fi.softala.DAO.KouluttajienLisaysDAO;
 import fi.softala.bean.Kouluttaja;
+import fi.softala.dao.KouluttajienLisaysDAO;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

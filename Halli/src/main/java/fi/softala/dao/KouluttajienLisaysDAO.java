@@ -1,4 +1,4 @@
-package fi.softala.DAO;
+package fi.softala.dao;
 
 import java.util.List;
 

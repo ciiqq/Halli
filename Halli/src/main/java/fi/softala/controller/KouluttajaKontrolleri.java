@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import fi.softala.DAO.KouluttajienLisaysDAO;
 import fi.softala.bean.Kouluttaja;
+import fi.softala.dao.KouluttajienLisaysDAO;
 import fi.softala.funktiot.ExcelParseri;
 import fi.softala.funktiot.SalasanaGeneraattori;
 

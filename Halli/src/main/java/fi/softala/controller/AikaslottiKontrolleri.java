@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import fi.softala.DAO.AikatauluslottiDAO;
 import fi.softala.bean.Aikatauluslotti;
 import fi.softala.bean.Kouluttaja;
+import fi.softala.dao.AikatauluslottiDAO;
 
 @Controller
 @RequestMapping (value="/")
