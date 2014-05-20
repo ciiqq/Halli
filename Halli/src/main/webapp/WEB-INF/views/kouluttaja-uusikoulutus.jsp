@@ -78,10 +78,11 @@
             					</div>
             				</div> 
                         	<div class="col-xs-12 col-sm-6 col-md-4">
-                   				<label>Opiskelijanumero</label>
-                       			<form:input id="kouluttaja_input" placeholder="Anna opiskelijanumerosi" class="form-control" path="kouluttajat[0].opiskelijanro"></form:input>
-                           		<form:hidden id="kouluttaja0" class="form-control" disabled="true" path="kouluttajat[0].etunimi" ></form:hidden>     
-								<label>Lisäkouluttajat</label>
+                        		<div class="form-group">
+                   					<label>Opiskelijanumero</label>
+                       				<form:input id="kouluttaja_input" name="kouluttaja1" placeholder="Anna opiskelijanumerosi" class="form-control" path="kouluttajat[0].opiskelijanro"></form:input>
+                           		</div>
+                           		<label>Lisäkouluttajat</label>
                             	<div class="input-group">
                                 	<form:input id="kouluttaja1_input" class="form-control" disabled="true" path=""></form:input>
                                 	<span class="input-group-btn">
