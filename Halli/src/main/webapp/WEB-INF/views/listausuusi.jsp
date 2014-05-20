@@ -27,6 +27,15 @@
 <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
+<style>
+.error {
+	color: red;
+}
+
+.valid {
+	color: green;
+}
+</style>
 </head>
 
 <body>
@@ -67,9 +76,9 @@
 						<form action="anna_palautetta" id="opiskelijanumeroForm"
 							method="post">
 							<br>
-							<label for="opiskelijanumero" style="color:grey;">Anna opiskelijanumerosi</label>
+							<label for="palauteopiskelijanumero" style="color:grey;">Anna opiskelijanumerosi</label>
 							<br>
-							<input type="text" id="opiskelijanumero" name="opiskelijanumero"
+							<input type="text" name="palauteopiskelijanumero"
 								placeholder="a1234567" class="form-control" maxlength="8" />
 							<br>
 							<input type="submit" value="Jatka" class="form-control btn btn-primary"></input>
@@ -280,6 +289,7 @@
 		src="<%=request.getContextPath()%>/resources/js/additional-methods.js"></script>
 	<script type="application/javascript"
 		src="<%=request.getContextPath()%>/resources/js/script.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/opiskelijanumeroValidate.js"></script>
 		
 								<c:if test="${viesti!=null}">
 						<script>$( document ).ready(function() {

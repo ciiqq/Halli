@@ -63,8 +63,8 @@ public class KoulutusHakuController {
 					int koulutus_id = Integer.parseInt(request.getParameter("koulutus_id"));
 					palauteservice.tallenna(palaute, koulutus_id);
 					redirectAttrs.addFlashAttribute("viesti", "Palautteen lähetys onnistui. Kiitos palautteesta!");
-					redirectAttrs.addAttribute("opiskelijanumero", palaute.getOpiskelijanro());
-					return "redirect:palaute?opiskelijanumero={opiskelijanumero}";				
+					redirectAttrs.addAttribute("palauteopiskelijanumero", palaute.getOpiskelijanro());
+					return "redirect:palaute?opiskelijanumero={palauteopiskelijanumero}";				
 				} catch (Exception e) {
 					redirectAttrs.addFlashAttribute("virheviesti", "Palautteen lähetys ei onnistunut.");
 					return "redirect:palaute";
@@ -72,7 +72,7 @@ public class KoulutusHakuController {
 	}
 	@RequestMapping(value="palaute", method=RequestMethod.GET)
 	public String getCreateForm2(Model model, ServletRequest request) {
-		String opiskelijanro = request.getParameter("opiskelijanumero");
+		String opiskelijanro = request.getParameter("palauteopiskelijanumero");
 		Palaute palaute = new Palaute(opiskelijanro);
 		List<Koulutustilaisuus> koulutukset = hakuservice.haePalauteKelpoiset(palaute.getOpiskelijanro());
 		model.addAttribute("koulutukset", koulutukset);		
@@ -81,8 +81,8 @@ public class KoulutusHakuController {
 	}
 	@RequestMapping(value="anna_palautetta", method=RequestMethod.POST)
 	public String getCreateForm(Model model, ServletRequest request, RedirectAttributes redirectAttrs) {
-		String opiskelijanro = request.getParameter("opiskelijanumero");
-		redirectAttrs.addAttribute("opiskelijanumero", opiskelijanro);
+		String opiskelijanro = request.getParameter("palauteopiskelijanumero");
+		redirectAttrs.addAttribute("palauteopiskelijanumero", opiskelijanro);
 		return "redirect:palaute";
 	}
 

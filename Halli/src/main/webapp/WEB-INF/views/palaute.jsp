@@ -68,9 +68,9 @@
 						<form action="anna_palautetta" id="opiskelijanumeroForm"
 							method="post">
 							<br>
-							<label for="opiskelijanumero" style="color:grey;">Anna opiskelijanumerosi</label>
+							<label for="palauteopiskelijanumero" style="color:grey;">Anna opiskelijanumerosi</label>
 							<br>
-							<input type="text" id="opiskelijanumero" name="opiskelijanumero"
+							<input type="text" name="palauteopiskelijanumero"
 								placeholder="a1234567" class="form-control" maxlength="8" />
 							<br>
 							<input type="submit" value="Jatka" class="form-control btn btn-primary"></input>
@@ -173,8 +173,11 @@
 
 	<script
 		src="<%=request.getContextPath()%>/resources/js/additional-methods.js"></script>
+		<script type="application/javascript" src="<%=request.getContextPath()%>/resources/js/palauteValidate.js"></script>
 	<script type="application/javascript"
 		src="<%=request.getContextPath()%>/resources/js/script.js"></script>
+	
+		
 	
 </body>
 </html>
