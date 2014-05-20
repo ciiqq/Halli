@@ -15,7 +15,7 @@
 <a href="testaus/uusi">testi</a><br>
 <a href="palaute/palautteet">Katso halutun koulutustilaisuuden palautteet</a><br>
 
-<a href="palaute/kaikkikoulutukset">Katso kaikki palautteet</a><br>
+<a href="palaute/kaikkikoulutukset">Katso kaikki koulutustilaisuudet, joista on annettu palautetta</a><br>
 
 </body>
 </html>

@@ -39,7 +39,7 @@ public class Testi {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		jdbcTemplate.setDataSource(new SingleConnectionDataSource(jdbcConnection, false));
 		dao.setJdbcTemplate(jdbcTemplate);
-		List<Palaute> palautteet = dao.haeKaikkiPalautteet();
+		List<Palaute> palautteet = dao.haeKaikki();
 		
 		System.out.print(testidata.getTable("palaute").getValue(0, "arvosana"));
 		System.out.print(testidata.getTable("palaute").getValue(0, "palauteteksti"));

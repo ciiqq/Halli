@@ -35,8 +35,8 @@ public class PalauteDAOHakuTest {
 	
 	@Test
 	public void haeKaikkiPalalautteet() {
-		List<Palaute> palautteet = dao.haeKaikki();
-		assertEquals("paras koulutus", palautteet.get(0).getPalauteteksti());
+		List<Palaute> palautteet = dao.haeIdlla();
+		assertEquals("Jooooh...", palautteet.get(0).getPalauteteksti());
 	}
 
 }
