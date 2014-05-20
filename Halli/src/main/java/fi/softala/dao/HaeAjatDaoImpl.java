@@ -27,8 +27,8 @@ public class HaeAjatDaoImpl implements HaeAjatDao {
 
 	public List<Aikatauluslotti> haeVapaatAjat() {
 		
-		String sql = "SELECT aika_id, pvm, alkukello, loppukello, koulutustila FROM aikatauluslotti WHERE koulutus_id IS NULL";
-		return jdbcTemplate.query(sql, new HaeAjatRowMapper());
+		String sql = "SELECT aika_id, pvm, alkukello, loppukello, koulutustila FROM aikatauluslotti WHERE koulutus_id IS NULL;";
+		return jdbcTemplate.query(sql, new AikatauluslottiRowMapper());
 	}
 
 }

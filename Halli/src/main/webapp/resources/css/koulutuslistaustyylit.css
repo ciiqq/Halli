@@ -1,0 +1,11 @@
+body {
+	text-align: center;
+	margin: 0 auto;
+}
+
+
+/*Tuo JavaScriptin Bootstrapin Modalin p‰‰lle*/
+zDepth{
+	position: relative;
+	z-index: 100000;
+}

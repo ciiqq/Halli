@@ -22,7 +22,7 @@ public class KoulutustilaisuusServiceImpl implements KoulutustilaisuusService {
 	public void tallennaUusiKoulutustilaisuus(Koulutustilaisuus koulutustilaisuus) {
 		koulutustilaisuus.setNakyvyys(false);
 		koulutusDao.tallennaKoulussuunnitelma(koulutustilaisuus);
-		koulutusDao.tallennaKoulutuksenKouluttaja(koulutustilaisuus.getId(), koulutustilaisuus.getKouluttajat().get(0).getOpiskelijanro());
+		koulutusDao.tallennaKoulutuksenKouluttaja(koulutustilaisuus.getId(), koulutustilaisuus.getKouluttajat1().get(0).getOpiskelijanro());
 
 		pilkoJaTallennaKoulutuksenAvainsanat(koulutustilaisuus);
 	}
@@ -37,7 +37,7 @@ public class KoulutustilaisuusServiceImpl implements KoulutustilaisuusService {
 			return;			
 		}
 		
-		List<String> sanat = koulutustilaisuus.getAvainsanat();
+		List<String> sanat = koulutustilaisuus.getAvainsanat1();
 		if (!sanat.isEmpty() && sanat.size() == 1) {
 			
 			String[] splitatutSanat = sanat.get(0).split(AVAINSANA_EROTIN);

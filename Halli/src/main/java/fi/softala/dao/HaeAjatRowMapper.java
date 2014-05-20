@@ -24,12 +24,8 @@ public class HaeAjatRowMapper implements RowMapper<Aikatauluslotti> {
 		
 		try {
 			a.setId(rs.getInt("aika_id"));
-			try {
-				a.setPvm(merkkijonostaDateen.parse(rs.getString("pvm")));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			a.setPvm(rs.getString("pvm"));
+
 			a.setAlkukello(rs.getString("alkukello"));
 			a.setLoppukello(rs.getString("loppukello"));
 			a.setKoulutustila(rs.getString("koulutustila"));

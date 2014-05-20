@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/style.css">
+	href="<%=request.getContextPath()%>/resources/css/admintyylit.css">
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -30,7 +30,7 @@
 					<li><a href="<%=request.getContextPath()%>/kouluttaja/palaute">Palaute</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="logout">Kirjaudu ulos</a></li>
+					<li><a href="<%=request.getContextPath()%>">Kirjaudu ulos</a></li>
 				</ul>
 			</div>
 		</div>
@@ -72,15 +72,15 @@
  									<div class="col-xs-6 col-sm-8 col-md-8">
  										<div class="form-group">
                 							<label>Avainsanat</label>
-											<form:input placeholder="Avainsanat pilkulla eroteltuina" class="form-control" maxlength="50" path="avainsanat[0]"></form:input>
+											<form:input placeholder="Avainsanat pilkulla eroteltuina" class="form-control" maxlength="50" path="avainsanat1[0]"></form:input>
             							</div>
             						</div> 
             					</div>
             				</div> 
                         	<div class="col-xs-12 col-sm-6 col-md-4">
                    				<label>Opiskelijanumero</label>
-                       			<form:input id="kouluttaja_input" placeholder="Anna opiskelijanumerosi" class="form-control" path="kouluttajat[0].opiskelijanro"></form:input>
-                           		<form:hidden id="kouluttaja0" class="form-control" disabled="true" path="kouluttajat[0].etunimi" ></form:hidden>     
+                       			<form:input id="kouluttaja_input" placeholder="Anna opiskelijanumerosi" class="form-control" path="kouluttajat1[0].opiskelijanro"></form:input>
+                           		<form:hidden id="kouluttaja0" class="form-control" disabled="true" path="kouluttajat1[0].etunimi" ></form:hidden>     
 								<label>Lisäkouluttajat</label>
                             	<div class="input-group">
                                 	<form:input id="kouluttaja1_input" class="form-control" disabled="true" path=""></form:input>
@@ -102,7 +102,7 @@
                         			</span>
                     			</div>
                             	<label>Ohjaaja</label>
-                            	<form:input id="ohjaaja_input" class="form-control" disabled="true" path="ope"></form:input>                           
+                            	<form:input id="ohjaaja_input" class="form-control" disabled="true" path=""></form:input> <!-- Ei käytössä -->                           
                             	<label>Luokkatila</label>
                             	<form:input id="luokkatila_input" class="form-control" disabled="true" path="paikka"></form:input>                           		
 									<div class="row col-xs-12 col-sm-12 col-md-12" style="color:#ffffff;-webkit-user-select: none;-moz-user-select: none;user-select: none;">.</div>
@@ -137,7 +137,7 @@
                     		<tbody>
                         		<c:forEach items="${vapaatajat}" var="aika" varStatus="status">
 								<tr class="ajankohta" style="cursor:pointer;" >
-									<td><fmt:formatDate pattern="dd.MM.yyyy" value="${aika.pvm}" /></td>
+									<td><c:out value="${aika.pvm}"/></td>
 									<td><c:out value="${aika.alkukello}"/></td>
 									<td><c:out value="${aika.loppukello}"/></td>
 									<td><c:out value="${aika.koulutustila}"/></td>
@@ -228,7 +228,7 @@
   		</div>
 	</div>
 
-    <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
     <script src="<%=request.getContextPath()%>/resources/js/koulutuslomake.js"></script>

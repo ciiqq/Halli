@@ -1,4 +1,4 @@
 language: java
-script: mvn test --file Halli/travispom.xml
+script: mvn -X test --file Halli/travispom.xml
 after_success:
   - mvn clean --file Halli/travispom.xml cobertura:cobertura coveralls:cobertura

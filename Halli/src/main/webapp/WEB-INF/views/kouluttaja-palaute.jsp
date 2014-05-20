@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/style.css">
+	href="<%=request.getContextPath()%>/resources/css/admintyylit.css">
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -27,7 +27,7 @@
 					<li class="active"><a href="<%=request.getContextPath()%>/kouluttaja/palaute">Palaute</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="logout">Kirjaudu ulos</a></li>
+					<li><a href="<%=request.getContextPath()%>">Kirjaudu ulos</a></li>
 				</ul>
 			</div>
 		</div>

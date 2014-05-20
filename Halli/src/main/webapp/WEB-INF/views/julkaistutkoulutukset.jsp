@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -7,7 +10,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/style.css">
+	href="<%=request.getContextPath()%>/resources/css/admintyylit.css">
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -29,7 +32,7 @@
 					<li><a href="<%=request.getContextPath()%>/opettaja/palautteet">Palautteet</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="logout">Kirjaudu ulos</a></li>
+					<li><a href="<%=request.getContextPath()%>">Kirjaudu ulos</a></li>
 				</ul>
 			</div>
 		</div>
@@ -49,24 +52,34 @@
 							<tr>
 								<th>Aika</th>
 								<th>Aihe</th>
+								<th>Kouluttaja(t)</th>
+								<th>Arvioiva opettaja</th>
 								<th></th>
 							</tr>
+							<c:forEach var="ks" items="${koulutukset}">
 							<tr>
-								<td>1.1.2012&nbsp;12:32</td>
-								<td class="pitka">Access uimarata adipisicing ut tietokanta ut tempor</td>
-								<td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#koulutuksentiedot">Koulutuksen tiedot</button></td>
+								<td><c:out value="${ks.aikaslotti.pvm}" />&nbsp;<c:out value="${ks.aikaslotti.alkukello}" />-<c:out value="${ks.aikaslotti.loppukello}" /></td>
+								<td class="pitka"><c:out value="${ks.aihe}" /></td>
+								<td>
+									<c:forEach var="k" items="${ks.kouluttajat}">
+										<c:out value="${k.etunimi }" /> <c:out value="${k.sukunimi }" /> 
+									</c:forEach>
+								</td>
+								<td>
+									<c:forEach var="k" items="${ks.opettajat}">
+										<c:out value="${k.etunimi }" /> <c:out value="${k.sukunimi }" /> 
+									</c:forEach>
+								</td>
 							</tr>
-							<tr>
-								<td>1.1.2012&nbsp;12:32</td>
-								<td class="pitka">SQL Server dolore anim WinhaWille adipisicing aliqua officia Spring</td>
-								<td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#koulutuksentiedot">Koulutuksen tiedot</button></td>
-							</tr>
-							<tr>
-								<td>1.1.2012&nbsp;12:32</td>
-								<td class="pitka">WinhaWille MariaDB velit consequat dolor elit SQL Server et pariatur do Visio fugiat magna sint qui ut fugiat eiusmod</td>
-								<td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#koulutuksentiedot">Koulutuksen tiedot</button></td>
-							</tr>
+							</c:forEach>
 						</table>
+						
+						<c:if test="${julkaisuvahvistus != null}">
+							<p id="vahvistusilmoitus" class="text-success bg-success">
+								<c:out value="${julkaisuvahvistus}" />
+							</p>
+						</c:if>
+						
 					</div>
 				</div>
 			</div>

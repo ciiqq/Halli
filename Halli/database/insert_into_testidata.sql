@@ -27,3 +27,5 @@ VALUES (1,1), (2,2), (3,3), (4,4), (5,5);
 
 INSERT INTO koulutuksenKouluttaja (opiskelijanro, koulutus_id)
 VALUES (1201234,1), (1204321,2), (1202341,3), (1234567,4), (1202342,5);
+
+/* Testings */

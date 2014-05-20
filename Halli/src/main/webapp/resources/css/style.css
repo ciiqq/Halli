@@ -1,217 +1,369 @@
+/* html5doctor.com Reset v1.6.1 - http://cssreset.com */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}
+
+/* http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+html, body {
+	height: 100%;
+}
+
 body {
-	background-color: #f4f4f4;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
 }
 
-.panel {
-	background-color: white;
-	border: 0;
-	-webkit-box-shadow: 0 2px 0 0 #e6e6e6;
-	-moz-box-shadow:    0 2px 0 0 #e6e6e6;
-	box-shadow:         0 2px 0 0 #e6e6e6;
+.container {
+	background-color: #EDF1F2;
+	height: 100%;
 }
 
-.panel-default .panel-heading {
-	background-color:white;
-	border:0;
+.fifty {
+	width: 50%;
+	float: left;
+	padding: 8px;
 }
 
-.navbar-default {
-	background-color: #009a99;
-	border: 0;
-}
-
-.navbar-default .navbar-nav li a,
-.navbar-default .navbar-nav li a:hover,
-.navbar-default .navbar-nav li a:focus,
-.navbar-default .navbar-nav li a:active {
-	color: white;
-	-webkit-transition: background-color 0.5s ease;
-	-moz-transition: background-color 0.5s ease;
-	-o-transition: background-color 0.5s ease;
-	transition: background-color 0.5s ease;
-}
-
-.navbar-default .navbar-nav li a:hover{
-	background-color: #26a9a8;
-}
-
-.navbar-default .navbar-nav .active a {
-	color: black !important;
-	background-color: #f4f4f4 !important;
-}
-
-.navbar-default .navbar-brand,
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:active,
-.navbar-default .navbar-brand:focus {
-	color: white;
-}
-
-.table tbody tr td, .table tbody tr th {
-	border: 0;
-}
-
-.table-striped tbody tr:nth-child(even) td {
-	background-color: #f9f9f9;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-.table-striped tbody tr:nth-child(odd) td {
-	background-color: white;
-}
-
-.table-striped tbody tr:nth-child(odd) th {
-	background-color: white;
-}
-
-.table-striped tbody tr th {
-	opacity: 0.8;
-	text-transform: uppercase;
-	font-size: 14px;
-}
-
-.btn {
-	border: 0;
-}
-
-.btn-primary {
-	color: white;
-	background-color: #009a99;
-	border: none;
-	-webkit-transition: background-color 0.5s ease;
-	-moz-transition: background-color 0.5s ease;
-	-o-transition: background-color 0.5s ease;
-	transition: background-color 0.5s ease;
-}
-
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active {
-	background-color: #008e8d;
-}
-
-.btn-default {
-	color: white;
-	background-color: #787878;
-	border: none;
-	-webkit-transition: background-color 0.5s ease;
-	-moz-transition: background-color 0.5s ease;
-	-o-transition: background-color 0.5s ease;
-	transition: background-color 0.5s ease;
-}
-
-.btn-default:hover,
-.btn-default:focus,
-.btn-default:active {
-	color: white;
-	background-color: #6c6c6c;
-}
-
-.modal-content {
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	border: none;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-.nav-pills li.active a,
-.nav-pills li.active a:hover,
-.nav-pills li.active a:focus,
-.nav-pills li.active a:active {
-	background-color: #00b4cd;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-.nav-pills li a {
-	color: black;
-}
-
-.panel-heading {
-	padding-bottom:0;
-}
-
-.panel-body {
-	padding-top: 8px;
-}
-
-.panel-title{
-	font-size: 22px;
-	font-weight: normal;
-}
-
-.modal-footer {
-	border: 0;
-	background-color: #f4f4f4;
-	-webkit-border-radius: 0 0 3px 3px;
-	-moz-border-radius: 0 0 3px 3px;
-	border-radius: 0 0 3px 3px;
-}
-
-.modal-header {
-	border: 0;
-}
-
-.alert {
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	border:0;
-	color:white;
-	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-}
-
-.alert-danger {
-	background-color:#d62f31;
-}
-
-.alert-warning {
-	background-color:#f0c954;
-}
-
-.alert-success {
-	background-color:#60a756;
-}
-
-.pitka {
-	max-width: 1px;
+label.error {
+	background-color: #eda234;
 	width: 100%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-.palaute tr td {
+	display: block !important;
 	padding: 4px;
-	vertical-align:top;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	color: white;
+	border-radius: 2px;
 }
 
-.palaute .otsikko {
+#ilmoittautuminen table {
+
+}
+
+#valitut li {
+	margin-left: 16px;
+}
+
+#haku {
+	height:32px;
+	border-radius: 2px;
+	border:0px;
+	background: #FFFFFF;
+	-moz-box-shadow:    0px 2px 0px 0px rgba(0,0,0,0.05);
+	box-shadow:         0px 2px 0px 0px rgba(0,0,0,0.05);
+	margin-bottom: 6px;
+	position:relative;
+	padding-left: 8px;
+}
+
+#haku input[type="text"] {
+	border:0;
+	//background-color: red;
+	width: 100%;
+	height:32px;
+	font-size: 16px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+#haku input[type="submit"] {
+	background-color: white;
+	width: 20px;
+	height: 20px;
+	border: 0;
+	background-image:url('../images/haku.png');
+	background-size: 20px;
+	background-repeat: no-repeat;
+	position:absolute;
+	right:0;
+	margin:6px;
+}
+
+.sulkemisnappi {
+	background-color: white;
+	display:inline-block;
+	width: 20px;
+	height: 20px;
+	border: 0;
+	background-image:url('../images/sulkemisnappula.png');
+	background-size: 20px;
+	background-repeat: no-repeat;
+	position:absolute;
+	right:26px;
+	margin:6px;
+}
+
+#haku input[type="text"]:focus {
+	outline: 0;
+}
+
+#ilmoittautuminen table tr td {
+	padding: 4px;
+}
+
+.sivumenu {
+	background-color: #2C3B41;
+	float: left;
+	width: 100px;
+	left: 100px;
+	margin-left: -100px;
+	overflow-y: auto;
+	position: relative;
+	color: white;
+	height: 100%;
+}
+
+.mainwrapper {
+	width: 100%;
+}
+
+.pvm {
+	float:right;
+	font-weight:bold;
+}
+
+.main {
+	margin-left: 100px;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lista {
+	color: black;
+	padding-right: 4px;
+	overflow: auto;
+}
+
+.lista .active {
+	background-color: #00B3D0;
+	color: white;
+	border-radius: 3px;
+}
+
+.lista .active:hover {
+	background-color: #00B3D0;
+}
+
+.lista ul li {
+	height: 32px;
+	line-height: 32px;
+	padding-left: 8px;
+	padding-right: 8px;
+	list-style: none;
+	cursor:pointer;
+	margin-bottom: 4px;
+}
+
+.lista ul li:hover {
+	background-color: #76D2E0;
+	border-radius: 3px;
+}
+
+.tiedot {
+	overflow-y: scroll;
+	padding-left: 4px;
+}
+
+.tiedot button {
+	background-color: #009999;
+	border: 0;
+	padding: 8px;
+	border-radius: 3px;
+	color: white;
+	width: 128px;
+	cursor:pointer;
+}
+
+.table-container {
+	background-color: white;
+	padding: 4px;
+	border-radius: 3px;
+	-moz-box-shadow:    0px 2px 0px 0px rgba(0,0,0,0.05);
+	-webkit-box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.05);
+	box-shadow:         0px 2px 0px 0px rgba(0,0,0,0.05);
+}
+
+.tiedot table {
+	width: 100%;
+	//table-layout: fixed;
+}
+
+.tiedot table tr td {
+	padding: 8px;
+}
+
+input[type="checkbox"] {
+	display:none;
+	vertical-align: middle;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.active input[type="checkbox"] {
+	display:none;
+	vertical-align: middle;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+input[type="checkbox"] + label {    
+	    min-height: 18px;
+	    min-width: 19px;
+	    display: inline-block;
+	    background-size: contain;
+	    background-repeat: no-repeat;
+	    margin-left: auto;
+    	margin-right: auto;
+    	vertical-align: -12%;
+}
+
+input[type="checkbox"]:checked + label {
+		background-image:url('../images/checkmark.png');
+}
+
+.active input[type="checkbox"]:checked + label {
+		background-image:url('../images/checkmark-white.png');
+}
+
+.alapalkki {
+	height: 48px;
+	line-height: 48px;
+	background-color: #009999;
+	display:block;
+	width: 100%;
+	float:left;
+}
+
+.alapalkki button {
+	background-color: white;
+	border: 0;
+	color: black;
+	margin-left: auto;
+	margin-right: auto;
+	display:block;
+	height: 32px;
+	margin-top: 8px;
+	border-radius: 3px;
+	padding-left: 16px;
+	padding-right: 16px;
+	cursor:pointer;
+}
+
+.alapalkki button:disabled {
+	background-color: #80CCCC;
+	color: #004C4C;
+	cursor:default;
+}
+
+.bold {
 	font-weight: bold;
 }
 
-.well {
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	padding: 8px;
-	border: 0;
-	background-color: #fafafa;
+.koulutus-otsikko {
+	font-weight: normal;
+	color:black;
+	padding:15px;
+	font-size: 20px;
 }
 
-.form-control,
-.form-control:focus,
-.form-control:active {
-	border: 2px solid #C8C8C8;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
+.nav-item {
+	padding: 8px;
+	margin: 8px;
+}
+
+.nav-text {
+	text-align: center;
+}
+
+.nav-icon {
+	height: 45px;
+	width: 45px;
+	margin: 0 auto;
+	margin-bottom: 8px;
+}
+
+.tulevat {
+	background-image: url("../images/tulevat.png");
+}
+
+.menneet {
+	background-image: url("../images/menneet.png");
+}
+
+.palaute {
+	background-image: url("../images/palaute.png");
+}
+
+.yla2-icon {
+	height: 21px;
+	margin-top:12px;
+	margin-right:10px;
+	width: 16px;
+	float:left;
+}
+.admin {
+	background-image: url("../images/lukkokuvake.png");
+}
+
+.ylapalkit {
+	height: 48px;
+	line-height: 48px;
+	background-color: #009999;
+	color:white;
+	padding-left: 16px;
+	float:left;
+	display:block;
+	width:100%;
+}
+
+.yla1 {
+	height: 48px;
+	line-height: 48px;
+	background-color: #009999;
+	color:white;
+	padding-left: 16px;
+	float:left;
+}
+
+.yla2{
+	height: 48px;
+	line-height: 48px;
+	background-color: #009999;
+	color:white;
+	padding-left: 16px;
+	padding-right: 12px;
+	float:right;
+}
+
+.tagi {
+	background-color: #0080C7;
+	color: white;
+	padding: 4px;
+	font-size: 14px;
+	border-radius: 2px;
+}
+
+#tagi a:link,
+#tagi a:visited,
+#tagi a:hover {
+	text-decoration:none;
+    color: white;
+}
+a:link,
+a:visited,
+a:hover {
+	text-decoration:none;
+    color: white;
+}
+p {
+	line-height: 120%;
 }
 
 .form-control:focus,
@@ -220,4 +372,39 @@ body {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
+}
+
+#vahvistusilmoitus, #peruutusvahvistus {
+	padding: 20px;
+}
+
+.modal-varjo {
+	box-shadow: 0px 0px 18px gray;
+}
+
+#kuvaus-error {
+	
+}
+.aktiivinen {
+	background-color: #00B3D0;
+	margin: 8px;
+	border-radius: 4px;
+}
+
+.modal-body {
+	padding-top:8px;
+	padding-bottom:8px;
+}
+
+.modal-title {
+	font-weight: bold;
+}
+
+.modal-body p, .modal-body li {
+	margin-bottom: 8px;
+}
+
+.annatiedot {
+	padding-top: 12px;
+	padding-bottom: 12px;
 }
