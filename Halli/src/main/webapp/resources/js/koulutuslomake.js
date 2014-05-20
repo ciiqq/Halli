@@ -2,7 +2,7 @@ $().ready(function() {
     
 	// Javascript Kooditus koulutuslomakkeelle
 	// Ilkka K
-	// Muokattu: 18.5.2014
+	// Muokattu viimeksi: 20.5.2014
 	
     // Oletusarvot on-load
     var $tallenna_nappula = $('#tallenna_nappula');	
@@ -144,8 +144,7 @@ $().ready(function() {
             },
             opiskelijanro: {
                 minlength: 7,
-                maxlength: 8,
-                
+                digits: true,
                 required: true,
             },
             kuvaus: {
@@ -154,7 +153,7 @@ $().ready(function() {
             },
             koulutusmenetelmat: {
                 minlength: 3,
-                maxlength: 15,
+                maxlength: 255,
                 required: false,
             },
             lahtotaso: {
@@ -168,10 +167,19 @@ $().ready(function() {
 			aihe: {
 				required: "Aihe on pakollinen tieto!",
 				minlength: "Aihe on liian lyhyt!",
+				maxlenght: "Aihe on liian pitk�! (max 50 merkki�)",
+			},
+			opiskelijanro: {
+				required: "Opiskelijanumero on annettava!",
+				minlength: "Opiskelijanumero on 7 merkki� pitk�!",
+				digits: "Anna opiskelijanumero vain numeroina (7 merkki�)",
 			},
 			kuvaus: {
 				minlength: "Kuvaus on liian lyhyt",
 			},
+			koulutusmenetelmat: {
+				minlength: "Kuvaus on liian lyhyt",
+			}
 		},   
         highlight: function(element) {
             $(element).closest('.form-group').addClass('has-error');
@@ -202,72 +210,4 @@ $().ready(function() {
     
 });
 
-    /*
-    
-    var $tallenna_nappula = $('#tallenna_nappula');
-    var $aikavalinta_nappula = $('#aikavalinta_nappula');    
-    var $kouluttajavalinta_nappula = $('#kouluttajavalinta_nappula');
-    var $lahtotaso = $('#lahtotaso_valinta');
-    var $koulutuslomake = $('#koulutus_formi');
-    var $kouluttaja1 = $('#kouluttaja1');
-    var $kouluttaja2 = $('#kouluttaja2');
-    var $kouluttaja1_nappula =('#kouluttaja1_nappula');
-    var $kouluttaja2_nappula =('#kouluttaja2_nappula');
-    var $lisaakouluttaja_nappula =('#lisaakouluttaja_nappula');
-    var $kouluttajalista =('#kouluttajalista'); 
-*/
-	/*
- // Kouluttajan lisäys nappula kouluttaja modaalissa
-    $("#lisaakouluttaja_nappula").click(function(e) {
-        e.preventDefault();
-    	console.log('Lisätään');
-      
-        var valittu = $('#kouluttajalista').find('tr.active').find('td');
-        if(valittu[0]){ 
-           // $lisaakouluttaja_nappula.prop('disabled', false);        	
-            $("#kouluttaja1").val($valittu[0].innerHTML+' '+$valittu[1].innerHTML);
-        }
-    });*/
-  
-	/*
-    // Oletusarvot on-load
-    $tallenna_nappula.prop("disabled",true); // 
-    $aikavalinta_nappula.prop("disabled",true); // Aikarivi täytyy valita, muuten nappula ei käytössä
-    $kouluttajavalinta_nappula.prop("disabled",true); // Kouluttajarivi täytyy valita, muuten nappula ei käytössä
-    $lahtotaso.prop("selectedIndex", -1); // = Lähtotaso oletuksena tyhjä
-    $lisaakouluttaja_nappula.prop("disabled",true); // Kouluttajan valinta modaalin lisäys nappula poissa käytöstä kunnes rivi valittu    
-*/
-  
-    
-
-	
-	/*
-	// Koulutuslomake validointi
-	$koulutuslomake.validate({
-		rules: {
-			aihe: {
-				required: true,
-				minlength: 2,
-			},
-		},
-		messages: {
-			aihe: {
-				required: "Aihe on annettava",
-				minlength: "Aihe on liian lyhyt!"
-			}
-		}
-	});
-
-	// Vapautetaan "Tallenna" nappula jos tiedot validoitu
-    $('#koulutus_formi input').on('keyup blur', function () {
-        if ($koulutuslomake.valid()) {
-            $tallenna_nappula.prop('disabled', false);
-        } else {
-            $tallenna_nappula.prop('disabled', 'disabled');
-        }
-    });
-  
-
- 
-});*/
 	
