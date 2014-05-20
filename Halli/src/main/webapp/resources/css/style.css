@@ -403,3 +403,8 @@ p {
 .modal-body p, .modal-body li {
 	margin-bottom: 8px;
 }
+
+.annatiedot {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
