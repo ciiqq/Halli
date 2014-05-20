@@ -1,11 +1,14 @@
 package fi.softala.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.log4j.helpers.DateTimeDateFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,19 +41,76 @@ public class AikaslottiKontrolleri {
 		
 	}
 	
+	public String getformat(String input)
+	{
+		int c;
+		String result,substring;
+		
+		result="";
+		for(c=0;c<input.length();c++) {
+			substring=input.substring(c,c+1);
+			if(substring.equals("0") ||
+			   substring.equals("1") ||
+			   substring.equals("2") ||
+			   substring.equals("3") ||
+			   substring.equals("4") ||
+			   substring.equals("5") ||
+			   substring.equals("6") ||
+			   substring.equals("7") ||
+			   substring.equals("8") ||
+			   substring.equals("9")) {
+				result=result+"9";
+			} else {
+				result=result+"9";			
+			}
+		}
+		return(result);
+	}
+
+	private String pvmmuutos(String pvms)
+	{
+		SimpleDateFormat sdf1 = new SimpleDateFormat("dd.MM.yy");
+		Date tempd = new Date();
+		try {
+			tempd = sdf1.parse(pvms);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+	    String temps2=sdf2.format(tempd);
+	    return(temps2);
+	}
+
+	private String aikamuutos(String aikas)
+	{
+		SimpleDateFormat sdf1 = new SimpleDateFormat("hh.mm");
+		Date tempd = new Date();
+		try {
+			tempd = sdf1.parse(aikas);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	    SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm:ss");
+	    String temps2=sdf2.format(tempd);
+	    return(temps2);
+	}
+
 	@RequestMapping(value="opettaja/aikataulut/lisaa", method=RequestMethod.POST)
 	public String lisaaSlotti(HttpServletRequest request, Model model) {
+
 		Aikatauluslotti a = new Aikatauluslotti();
-//		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
-//		String date = DATE_FORMAT.format(request.getParameter("paivamaara"));
-		a.setPvm(request.getParameter("paivamaara"));
-		a.setAlkukello(request.getParameter("alkuaika"));
-		a.setLoppukello(request.getParameter("loppuaika"));
+
+		a.setPvm(pvmmuutos(request.getParameter("paivamaara")));
+		
+		a.setAlkukello(aikamuutos(request.getParameter("alkuaika")));
+		
+		a.setLoppukello(aikamuutos(request.getParameter("loppuaika")));
+
 		a.setKoulutustila(request.getParameter("tila"));
 		
 		dao.talleta(a);
 		
-		return "testi";
+		return "aikataulut";
 		
 	}
 
