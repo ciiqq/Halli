@@ -389,5 +389,17 @@ p {
 	background-color: #00B3D0;
 	margin: 8px;
 	border-radius: 4px;
+}
 
+.modal-body {
+	padding-top:8px;
+	padding-bottom:8px;
+}
+
+.modal-title {
+	font-weight: bold;
+}
+
+.modal-body p, .modal-body li {
+	margin-bottom: 8px;
 }
