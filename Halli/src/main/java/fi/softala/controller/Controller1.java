@@ -37,16 +37,6 @@ public class Controller1 {
 		this.dao = dao;
 	}
 	
-	@RequestMapping(value="opettaja/aikataulut", method=RequestMethod.GET)
-	public String getCreateForm() {
-		return "aikataulut";
-	}
-	
-	@RequestMapping(value="opettaja/kouluttajat", method=RequestMethod.GET)
-	public String getCreateForm2() {
-		return "kouluttajat";
-	}
-	
 	@RequestMapping(value="opettaja/koulutukset/julkaisemattomat", method=RequestMethod.GET)
 	public String haeJulkaisemattomat(Model model) {
 		List<Koulutustilaisuus> koulutuslista = dao.haeKoulutukset(false);

@@ -26,12 +26,13 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Koulutukset</a></li>
-					<li class="active"><a href="#">Kouluttajat</a></li>
-					<li><a href="#">Palautteet</a></li>
+				<li class="active"><a href="<%=request.getContextPath()%>/opettaja/kouluttajat">Kouluttajat</a></li>
+					<li><a href="<%=request.getContextPath()%>/opettaja/aikataulut">Aikataulut</a></li>
+					<li><a href="<%=request.getContextPath()%>/opettaja/koulutukset/julkaisemattomat">Koulutukset</a></li>
+					<li><a href="<%=request.getContextPath()%>/opettaja/palautteet">Palautteet</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Kirjaudu ulos</a></li>
+					<li><a href="<%=request.getContextPath()%>">Kirjaudu ulos</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
@@ -115,7 +116,7 @@
 						      </div>
 						      
 						      
-						      <form:form action="/koulutusjarjestelma/opettaja/kouluttajat/lisaaKouluttaja" modelAttribute="kouluttaja" method="post">
+						      <form:form action="/Halli/opettaja/kouluttajat/lisaaKouluttaja" modelAttribute="kouluttaja" method="post">
 						      <div class="modal-body">
 															
 										<p>
@@ -151,7 +152,7 @@
 						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						        <h4 class="modal-title" id="myModalLabel">Kouluttajalistan lisäys</h4>
 						      </div>
-						      <form action="/koulutusjarjestelma/opettaja/kouluttajat/lisaaLista" method="post" enctype="multipart/form-data">
+						      <form action="/Halli/opettaja/kouluttajat/lisaaLista" method="post" enctype="multipart/form-data">
 						      <div class="modal-body">
 
 									<p>
@@ -176,10 +177,11 @@
 	</div>
 	
 	
-	<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 	<script src="twitter-bootstrap-v2/docs/assets/js/jquery.js"></script>  
-	<script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-alert.js"></script>  
+	<script src="twitter-bootstrap-v2/docs/assets/js/bootstrap-alert.js"></script>
+	
 
 </body>
 </html>
