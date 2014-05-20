@@ -118,6 +118,29 @@ public class KoulutusDAOImpl implements KoulutusDAO {
 		
 	}
 	
+	public void tallennaKoulutuksenKouluttaja(int koulutusId, String opiskelijanumero) {
+		
+		final String sql = "insert into koulutuksenkouluttaja(kouluttajatunnus, koulutus_id) values (?,?)";
+		
+		final int koulutus = koulutusId;
+		final String opno = opiskelijanumero;
+		
+KeyHolder idHolder = new GeneratedKeyHolder();
+		
+		
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(
+					Connection connection) throws SQLException {
+				PreparedStatement ps = connection.prepareStatement(sql,
+						new String[] { "id" });
+				ps.setString(1, opno);
+				ps.setInt(2, koulutus);
+				return ps;
+			}
+		}, idHolder);
+		
+	}
+	
 	
 
 

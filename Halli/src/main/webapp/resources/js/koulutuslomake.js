@@ -6,7 +6,7 @@ $().ready(function() {
 	
     // Oletusarvot on-load
     var $tallenna_nappula = $('#tallenna_nappula');	
-    $tallenna_nappula.prop("disabled",true); // Estetään tyhjän lomakkeen tallennus oletuksena
+    $tallenna_nappula.prop("disabled",true); // Estetï¿½ï¿½n tyhjï¿½n lomakkeen tallennus oletuksena
     
 	// Aikavalinta modaali ja nappuloiden toiminta ---------------------------------------------------------------
 	
@@ -33,28 +33,28 @@ $().ready(function() {
 		}
 	});
 	
-	 // Valitun ajan lisäys nappula aikavalinta modaalissa
+	 // Valitun ajan lisï¿½ys nappula aikavalinta modaalissa
     $valitseaika_nappula.click(function(e) {
         e.preventDefault();
-    	console.log('Lisätään');
+    	console.log('Lisï¿½tï¿½ï¿½n');
       
         var $valittu_aika = $aikalistaus.find('tr.active').find('td');
         if($valittu_aika[0]){       	
             $ajankohta_input.val($valittu_aika[0].innerHTML+' Klo: '+$valittu_aika[1].innerHTML+' - '+$valittu_aika[2].innerHTML);
             $luokkatila_input.val($valittu_aika[3].innerHTML);
-           // $ohjaaja_input.val($valittu_aika[4].innerHTML); Ei käytössä, koska ohjaajaa ei ole yhdistetty aikaslottiin!
+           // $ohjaaja_input.val($valittu_aika[4].innerHTML); Ei kï¿½ytï¿½ssï¿½, koska ohjaajaa ei ole yhdistetty aikaslottiin!
             $aikavalinta_nappula.attr('value', 'Poista');
             
         }
     });
     
-    // Aikainputtien tyhjennus, mikäli aika on haettu lomakkeelle ja halutaan valita uusi aika
+    // Aikainputtien tyhjennus, mikï¿½li aika on haettu lomakkeelle ja halutaan valita uusi aika
     $aikavalinta_nappula.click(function(e){
         e.preventDefault();   	    		
     	if($(this).attr('value') == 'Poista'){ 
             $ajankohta_input.val('');
             $luokkatila_input.val('');
-            //$ohjaaja_input.val(''); Ei käytössä, koska ohjaajaa ei ole yhdistetty aikaslottiin!
+            //$ohjaaja_input.val(''); Ei kï¿½ytï¿½ssï¿½, koska ohjaajaa ei ole yhdistetty aikaslottiin!
             $(this).attr('value', 'Valitse');         
     	}else
         	$aikavalinta.modal('show');   
@@ -89,10 +89,10 @@ $().ready(function() {
 		}
 	});
 	
-	 // Valitun kouluttajan lisäys nappula kouluttajavalinta modaalissa (input kohtainen)
+	 // Valitun kouluttajan lisï¿½ys nappula kouluttajavalinta modaalissa (input kohtainen)
     $lisaakouluttaja1_nappula.click(function(e) {
         e.preventDefault();
-    	console.log('Lisätään');
+    	console.log('Lisï¿½tï¿½ï¿½n');
       
         var $valittu_kouluttaja1 = $kouluttajalistaus1.find('tr.active').find('td');
         if($valittu_kouluttaja1[0]){ 
@@ -104,7 +104,7 @@ $().ready(function() {
     
     $lisaakouluttaja2_nappula.click(function(e) {
         e.preventDefault();
-    	console.log('Lisätään');
+    	console.log('Lisï¿½tï¿½ï¿½n');
       
         var $valittu_kouluttaja2 = $kouluttajalistaus2.find('tr.active').find('td');
         if($valittu_kouluttaja2[0]){ 
@@ -131,7 +131,7 @@ $().ready(function() {
         	$kouluttajavalinta2.modal('show');       
     });
     
-    // Koulutuslomake validointi ennen tietojen viemistä kantaan
+    // Koulutuslomake validointi ennen tietojen viemistï¿½ kantaan
     // HUOM!! Tarkastettava sallitut pituus yms. arvot kannasta!
     var $koulutusformi = $('#koulutus_formi'); 
     
@@ -207,7 +207,6 @@ $().ready(function() {
             $tallenna_nappula.prop('disabled', 'disabled');
         }
     });
-    
 });
 
 	
