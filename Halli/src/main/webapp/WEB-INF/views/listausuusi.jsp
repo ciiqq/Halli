@@ -219,7 +219,7 @@
 
 				<ul id="valitut"></ul>
 
-				<p>Anna vielä tietosi ilmoittautumista varten:</p>
+				<p class="annatiedot">Anna vielä tietosi ilmoittautumista varten:</p>
 
 				
 								<form id="ilmoittautuminen" method="post" action="ilmoittaudu"
