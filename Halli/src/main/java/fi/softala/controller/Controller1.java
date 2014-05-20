@@ -20,11 +20,35 @@ import fi.softala.bean.Avainsana;
 import fi.softala.bean.Henkilo;
 import fi.softala.bean.Koulutustilaisuus;
 import fi.softala.dao.KoulutusDAO;
+import fi.softala.service.AikatauluslottiService;
+import fi.softala.service.KouluttajaService;
+import fi.softala.service.KoulutustilaisuusService;
 
 
 @Controller
 @RequestMapping (value="/")
 public class Controller1 {
+
+	@Inject
+	private KoulutustilaisuusService koulutustilaisuusService;
+	@Inject
+	private KouluttajaService kouluttajaService;
+	@Inject
+	private AikatauluslottiService aikatauluslottiService;
+
+	public void setKoulutustilaisuusService(
+			KoulutustilaisuusService koulutustilaisuusService) {
+		this.koulutustilaisuusService = koulutustilaisuusService;
+	}
+
+	public void setKouluttajaService(KouluttajaService kouluttajaService) {
+		this.kouluttajaService = kouluttajaService;
+	}
+	
+	public void setAikatauluslottiService(AikatauluslottiService aikatauluslottiService) {
+		this.aikatauluslottiService = aikatauluslottiService;
+	}
+
 	
 	@Inject
 	private KoulutusDAO dao;
@@ -180,8 +204,21 @@ public class Controller1 {
 	}
 	
 	@RequestMapping(value="kouluttaja/koulutus", method=RequestMethod.GET)
-	public String getCreateForm9() {
+	public String getCreateForm9(Model model) {
+		Koulutustilaisuus kt = new Koulutustilaisuus();
+		//List<Kouluttaja> kouluttajat = new LinkedList<Kouluttaja>();
+		//kouluttajat.add(new Kouluttaja("1000001", "Kimmo", "Kouluttaja", "salasana", "suola"));
+		//kt.setKouluttajat(kouluttajat);
+		model.addAttribute("koulutustilaisuus", kt);
+		model.addAttribute("kouluttajat", kouluttajaService.haeKouluttajat());
+		model.addAttribute("vapaatajat", aikatauluslottiService.haeVapaatAjat());
 		return "kouluttaja-uusikoulutus";
+	}
+	
+	@RequestMapping (value="kouluttaja/koulutus", method=RequestMethod.POST)
+	public String saveCreateForm9( @ModelAttribute(value="koulutustilaisuus") Koulutustilaisuus koulutustilaisuus, Model model) {
+		koulutustilaisuusService.tallennaUusiKoulutustilaisuus(koulutustilaisuus);
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="kouluttaja/koulutus/muokkaa", method=RequestMethod.GET)

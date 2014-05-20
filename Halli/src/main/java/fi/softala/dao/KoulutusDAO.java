@@ -1,13 +1,24 @@
 package fi.softala.dao;
 
 import java.util.List;
-
 import fi.softala.bean.Aikatauluslotti;
 import fi.softala.bean.Avainsana;
 import fi.softala.bean.Henkilo;
 import fi.softala.bean.Koulutustilaisuus;
 
 public interface KoulutusDAO {
+	
+	public abstract void tallennaVaraus(Koulutustilaisuus koulutus);
+
+	public abstract Koulutustilaisuus etsi(int id);
+
+	public abstract List<Koulutustilaisuus> haeKaikki();
+	
+	public void tallennaKoulussuunnitelma(Koulutustilaisuus koulutustilaisuus);
+	
+	public void tallennaAvainsana(String avainsana, int koulutustilaisuusId);
+	
+	public void tallennaKoulutuksenKouluttaja(int koulutusId, String opiskelijanumero);
 	
 	public List<Koulutustilaisuus> haeKoulutukset(boolean julkaistu);
 

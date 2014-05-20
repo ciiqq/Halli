@@ -1,5 +1,6 @@
 package fi.softala.bean;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -33,6 +34,7 @@ public class Aikatauluslotti {
 
 
 
+
 	public Aikatauluslotti(int id, String pvm, String alkukello,
 			String loppukello, String koulutustila) {
 		super();
@@ -50,6 +52,7 @@ public class Aikatauluslotti {
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public String getPvm() {
 		return pvm;
