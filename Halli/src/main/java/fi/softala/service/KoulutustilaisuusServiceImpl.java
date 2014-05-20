@@ -22,6 +22,7 @@ public class KoulutustilaisuusServiceImpl implements KoulutustilaisuusService {
 	public void tallennaUusiKoulutustilaisuus(Koulutustilaisuus koulutustilaisuus) {
 		koulutustilaisuus.setNakyvyys(false);
 		koulutusDao.tallennaKoulussuunnitelma(koulutustilaisuus);
+		koulutusDao.tallennaKoulutuksenKouluttaja(koulutustilaisuus.getId(), koulutustilaisuus.getKouluttajat().get(0).getOpiskelijanro());
 
 		pilkoJaTallennaKoulutuksenAvainsanat(koulutustilaisuus);
 	}

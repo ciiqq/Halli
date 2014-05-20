@@ -15,5 +15,7 @@ public interface KoulutusDAO {
 	public void tallennaKoulussuunnitelma(Koulutustilaisuus koulutustilaisuus);
 	
 	public void tallennaAvainsana(String avainsana, int koulutustilaisuusId);
+	
+	public void tallennaKoulutuksenKouluttaja(int koulutusId, String opiskelijanumero);
 
 }
