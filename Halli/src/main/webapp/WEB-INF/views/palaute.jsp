@@ -82,7 +82,7 @@
 		<div class="ylapalkit">
 			<div class="yla1">Halli: Koulutusten hallinta- ja
 				ilmoittautumisjärjestelmä</div>
-			<div class="yla2"><div class="yla2-icon admin"></div><a href="./admin">Kirjaudu sisään järjestelmänvalvojana</a></div>
+			<div class="yla2"><div class="yla2-icon admin"></div><a href="./login">Kirjaudu sisään järjestelmänvalvojana</a></div>
 		</div>
 			<div class="fifty lista">
 				

@@ -40,12 +40,12 @@ public class KoulutusHakuRsExtractor implements
 			}
 			int kouluttaja_true = rs.getInt("kouluttaja_true");
 			if (kouluttaja_true == 1) {
-				List<Kouluttaja> kouluttajat = koulutus.getKouluttajat();
+				List<Kouluttaja> kouluttajat = koulutus.getKouluttajat2();
 				Kouluttaja kouluttaja = kouluttajaMapper.mapRow(rs, id);
 				kouluttajat.add(kouluttaja);
 
 			} else if (kouluttaja_true == 0) {
-				List<String> avainsanat = koulutus.getAvainsanat();
+				List<String> avainsanat = koulutus.getAvainsanat2();
 				String avainsana = rs.getString("avainsana");
 				avainsanat.add(avainsana);
 				Collections.sort(avainsanat);

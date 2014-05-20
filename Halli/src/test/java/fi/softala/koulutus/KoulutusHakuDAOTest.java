@@ -37,13 +37,13 @@ public class KoulutusHakuDAOTest {
 	@Test
 	public void haeTulevatKoulutukset() {
 		List<Koulutustilaisuus> koulutukset = dao.haeTulevat();
-		assertEquals("Java-ohjelmointi", koulutukset.get(0).getAihe());
+		assertEquals("jQueryn alkeet", koulutukset.get(0).getAihe());
 	}
 	
 	@Test
 	public void haeMenneetKoulutukset() {
 		List<Koulutustilaisuus> koulutukset = dao.haeMenneet();
-		assertEquals("Windows XP - Legenda elää", koulutukset.get(0).getAihe());
+		assertEquals("Scrum", koulutukset.get(0).getAihe());
 	}
 	
 	@Test
@@ -55,6 +55,6 @@ public class KoulutusHakuDAOTest {
 	@Test
 	public void haeAvainsanalla() {
 		List<Koulutustilaisuus> koulutukset = dao.haeAvainsanalla("ohjelmointi");
-		assertEquals("Futaba channel", koulutukset.get(0).getAihe());
+		assertEquals("Teknologia ja anime", koulutukset.get(0).getAihe());
 	}
 }

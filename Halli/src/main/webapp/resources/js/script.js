@@ -124,7 +124,7 @@ $(document).ready(function() {
 	$(".aihe").click(function() {
 		$(".aihe").removeClass("active");
 		$(this).addClass("active");
-		var divId = $(this).attr("divId");
+		var divId = $(this).data("kohde");
 		$("#" + divId).show(); //näytetään valitun koulutuksen tiedot
 		$("#" + divId).siblings().hide(); //piilotetaan muut kuin valitun koulutuksen tiedot
 	});

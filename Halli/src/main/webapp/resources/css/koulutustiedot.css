@@ -1,0 +1,15 @@
+.form-horizontal label {
+	float: left;
+}
+
+.control-label {
+	margin-left: 9px;
+}
+
+#lahtotaso {
+	margin-right: 33px;
+}
+
+#aihe {
+	margin-left: 5px;
+}

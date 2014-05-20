@@ -1,74 +1,74 @@
 package fi.softala.bean;
 
 public class Kouluttaja {
-	
-	private String opiskelijanro;
-	private String etunimi;
-	private String sukunimi;
-	private String salasana;
-	private String suola;
-	
-	public Kouluttaja() {
-		opiskelijanro = null;
-		etunimi = null;
-		sukunimi = null;
-		salasana = null;
-		suola = null;
-	}
-	
-	public Kouluttaja(String onro, String enimi, String snimi, String ssana, String suola) {
-		this.opiskelijanro = onro;
-		this.etunimi = enimi;
-		this.sukunimi = snimi;
-		this.salasana = ssana;
-		this.suola = suola;
-	}
 
-	public String getOpiskelijanro() {
-		return opiskelijanro;
-	}
+private String opiskelijanro;
+private String etunimi;
+private String sukunimi;
+private String salasana;
+private String suola;
 
-	public void setOpiskelijanro(String opiskelijanro) {
-		this.opiskelijanro = opiskelijanro;
-	}
+public Kouluttaja() {
+opiskelijanro = null;
+etunimi = null;
+sukunimi = null;
+salasana = null;
+suola = null;
+}
 
-	public String getEtunimi() {
-		return etunimi;
-	}
+public Kouluttaja(String onro, String enimi, String snimi, String ssana, String suola) {
+this.opiskelijanro = onro;
+this.etunimi = enimi;
+this.sukunimi = snimi;
+this.salasana = ssana;
+this.suola = suola;
+}
 
-	public void setEtunimi(String etunimi) {
-		this.etunimi = etunimi;
-	}
+public String getOpiskelijanro() {
+return opiskelijanro;
+}
 
-	public String getSukunimi() {
-		return sukunimi;
-	}
+public void setOpiskelijanro(String opiskelijanro) {
+this.opiskelijanro = opiskelijanro;
+}
 
-	public void setSukunimi(String sukunimi) {
-		this.sukunimi = sukunimi;
-	}
+public String getEtunimi() {
+return etunimi;
+}
 
-	public String getSalasana() {
-		return salasana;
-	}
+public void setEtunimi(String etunimi) {
+this.etunimi = etunimi;
+}
 
-	public void setSalasana(String salasana) {
-		this.salasana = salasana;
-	}
+public String getSukunimi() {
+return sukunimi;
+}
 
-	public String getSuola() {
-		return suola;
-	}
+public void setSukunimi(String sukunimi) {
+this.sukunimi = sukunimi;
+}
 
-	public void setSuola(String suola) {
-		this.suola = suola;
-	}
+public String getSalasana() {
+return salasana;
+}
 
-	@Override
-	public String toString() {
-		return "KouluttajaImpl [opiskelijanro=" + opiskelijanro + ", etunimi="
-				+ etunimi + ", sukunimi=" + sukunimi + ", salasana=" + salasana
-				+ ", suola=" + suola + "]";
-	}
+public void setSalasana(String salasana) {
+this.salasana = salasana;
+}
+
+public String getSuola() {
+return suola;
+}
+
+public void setSuola(String suola) {
+this.suola = suola;
+}
+
+@Override
+public String toString() {
+return "KouluttajaImpl [opiskelijanro=" + opiskelijanro + ", etunimi="
++ etunimi + ", sukunimi=" + sukunimi + ", salasana=" + salasana
++ ", suola=" + suola + "]";
+}
 
 }

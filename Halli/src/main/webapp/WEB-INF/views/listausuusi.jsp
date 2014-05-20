@@ -95,7 +95,7 @@
 			<div class="fifty lista">
 				<form id="haku" action="hakutulokset">
 					<input type="text" name="haku" autocomplete="off"
-						placeholder="Suodata koulutuksia hakusanan perusteella"
+						placeholder="Suodata koulutuksia hakusanalla, esim. &quot;Ohjelmointi&quot;"
 						value="${hakusana}"><input type="submit" value=" "><c:if test="${!empty hakusana}"><c:out escapeXml="false" value="<a class='sulkemisnappi' href='./'></a>" /></c:if>
 				</form>
 				<ul>
@@ -103,7 +103,7 @@
 						<c:out value="Koulutuksia ei löytynyt hakusanan perusteella" />
 					</c:if>
 					<c:forEach items="${koulutukset}" var="k">
-						<li divid="<c:out value="${k.id}"/>" class="aihe"><input
+						<li data-kohde="<c:out value="${k.id}"/>" class="aihe"><input
 							type="checkbox" name="box" class="box" value="${k.id}" id="checkboxi" disabled />
 							<label for="checkboxi"></label>
 							<c:out value="${k.aihe}" /> <span class="pvm"><c:out
@@ -133,7 +133,7 @@
 							</tr>
 							<tr>
 								<td class="bold">Kouluttajat</td>
-								<td><c:forEach items="${k.kouluttajat}" var="koul"
+								<td><c:forEach items="${k.kouluttajat2}" var="koul"
 										varStatus="loopStatus">
 										<c:out value="${koul.etunimi} " />
 										<c:out value="${koul.sukunimi}" />
@@ -153,7 +153,7 @@
 							</tr>
 							<tr>
 								<td class="bold">Avainsanat</td>
-								<td><c:forEach items="${k.avainsanat}" var="a">
+								<td><c:forEach items="${k.avainsanat2}" var="a">
 										<span class="tagi"><a href="avainsana?avainsana=${a}"
 											class="tagi"><c:out value="${a}" /></a></span>
 									</c:forEach></td>
@@ -228,7 +228,7 @@
 
 				<ul id="valitut"></ul>
 
-				<p>Anna vielä tietosi ilmoittautumista varten:</p>
+				<p class="annatiedot">Anna vielä tietosi ilmoittautumista varten:</p>
 
 				
 								<form id="ilmoittautuminen" method="post" action="ilmoittaudu"
@@ -253,9 +253,9 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Sulje ikkuna</button>
         				<button type="submit" class="btn btn-primary" id="ilmoittaudu" disabled>
-					Ilmoittaudu koulutuksiin</button>
+					Vahvista ilmoittautuminen</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Sulje ikkuna</button>
 					
 					</form>
       </div>

@@ -40,7 +40,7 @@ public class KoulutusHakuControllerTest {
 	public void haeTulevatKoulutukset() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.model().size(1))
+				.andExpect(MockMvcResultMatchers.model().size(2))
 				.andExpect(MockMvcResultMatchers.view().name("listausuusi"));
 		verify(service, times(1)).haeTulevat();
 	}
@@ -49,7 +49,7 @@ public class KoulutusHakuControllerTest {
 	public void haeMenneetKoulutukset() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/menneet"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.model().size(1))
+				.andExpect(MockMvcResultMatchers.model().size(2))
 				.andExpect(MockMvcResultMatchers.view().name("listausuusi"));
 		verify(service, times(1)).haeMenneet();
 	}
