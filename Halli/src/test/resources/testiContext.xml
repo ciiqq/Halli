@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -8,7 +8,6 @@
 	<!-- Käyttää src/test/resources -kansion db_connection.properties -tiedostoa -->
 	<context:property-placeholder location="./db_connection.properties" />
 	
-	<!-- Omat DAO-beanit näiden tilalle -->
 	<context:component-scan base-package="fi.softala" />
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -25,5 +24,6 @@
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+
 
 </beans>

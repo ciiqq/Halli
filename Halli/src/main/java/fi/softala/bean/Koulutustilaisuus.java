@@ -6,23 +6,48 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
 public class Koulutustilaisuus {
 	
 	private SimpleDateFormat suomiPvmMuotoilu = new SimpleDateFormat("dd.MM.yyyy");
 	private SimpleDateFormat suomiKloMuotoilu = new SimpleDateFormat("HH.mm");
 	
 	private int id;
+	
+	@Size(min=5, max=50, message="Aiheen t‰ytyy olla v‰hint‰‰n 5 merkki‰ pitk‰")
 	private String aihe;
+	
+	@Size(min=5)
 	private String kuvaus;
+	
+	@Size(min=5)
 	private String lahtotaso;
+	
 	private boolean nakyvyys;
 	private String suomiPvm;
+	private String suomiLoppuKlo;
 	private String suomiKlo;
+	private List<Henkilo> kouluttajat = new ArrayList<Henkilo>();
+	private List<Henkilo> opettajat = new ArrayList<Henkilo>();
+	private List<Avainsana> avainsanat = new ArrayList<Avainsana>();
+	private Aikatauluslotti aikaslotti;
+	private String koulutusmenetelmat;
 	private String paikka;
-	private Opettaja ope; // opettajabean tähän
-	private List<Kouluttaja> kouluttajat = new ArrayList<Kouluttaja>();
-	private List<String> avainsanat = new ArrayList<String>();
 	
+	//Ryhm‰ 3 -versio
+	private List<Kouluttaja> kouluttajat2 = new ArrayList<Kouluttaja>();
+	private List<String> avainsanat2 = new ArrayList<String>();
+	
+	public Aikatauluslotti getAikaslotti() {
+		return aikaslotti;
+	}
+
+	public void setAikaslotti(Aikatauluslotti aikaslotti) {
+		this.aikaslotti = aikaslotti;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -58,7 +83,7 @@ public class Koulutustilaisuus {
 	}
 
 
-	public boolean isNakyvyys() {
+	public boolean getNakyvyys() {
 		return nakyvyys;
 	}
 
@@ -85,36 +110,81 @@ public class Koulutustilaisuus {
 	public void setSuomiKlo(Time suomiKlo) {
 		this.suomiKlo = suomiKloMuotoilu.format(suomiKlo);
 	}
-
-	public Opettaja getOpe() {
-		return ope;
+	
+	public String getSuomiLoppuKlo() {
+		return suomiLoppuKlo;
 	}
 
-	public void setOpe(Opettaja ope) {
-		this.ope = ope;
+	// K‰ytet‰‰n SQL kellonajan muuttamisessa suomalaiseksi
+	// Hyˆdynt‰m‰ll‰ java.sql.Time -kirjastoa
+	public void setSuomiLoppuKlo(Time suomiLoppuKlo) {
+		this.suomiLoppuKlo = suomiKloMuotoilu.format(suomiLoppuKlo);
 	}
 
-	public List<Kouluttaja> getKouluttajat() {
+
+	public List<Henkilo> getOpettajat() {
+		return opettajat;
+	}
+
+	public void setOpettajat(List<Henkilo> opettajat) {
+		this.opettajat = opettajat;
+	}
+
+	public List<Henkilo> getKouluttajat() {
 		return kouluttajat;
 	}
 
-	public void setKouluttajat(List<Kouluttaja> kouluttajat) {
+	public void setKouluttajat(List<Henkilo> kouluttajat) {
 		this.kouluttajat = kouluttajat;
 	}
 
-	public List<String> getAvainsanat() {
+	public List<Avainsana> getAvainsanat() {
 		return avainsanat;
 	}
 
-	public void setAvainsanat(List<String> avainsanat) {
+	public void setAvainsanat(List<Avainsana> avainsanat) {
 		this.avainsanat = avainsanat;
+	}
+	
+	
+
+	public List<Kouluttaja> getKouluttajat2() {
+		return kouluttajat2;
+	}
+
+	public void setKouluttajat2(List<Kouluttaja> kouluttajat2) {
+		this.kouluttajat2 = kouluttajat2;
+	}
+	
+	
+
+	public List<String> getAvainsanat2() {
+		return avainsanat2;
+	}
+
+	public void setAvainsanat2(List<String> avainsanat2) {
+		this.avainsanat2 = avainsanat2;
 	}
 
 	@Override
 	public String toString() {
-		return "KoulutustilaisuusImpl [id=" + id + ", aihe=" + aihe
-				+ ", kuvaus=" + kuvaus + ", lahtotaso=" + lahtotaso
-				+ ", nakyvyys=" + nakyvyys + ", ope=" + ope + "]";
+		return "Koulutustilaisuus [suomiPvmMuotoilu=" + suomiPvmMuotoilu
+				+ ", suomiKloMuotoilu=" + suomiKloMuotoilu + ", id=" + id
+				+ ", aihe=" + aihe + ", kuvaus=" + kuvaus + ", lahtotaso="
+				+ lahtotaso + ", nakyvyys=" + nakyvyys + ", suomiPvm="
+				+ suomiPvm + ", suomiKlo=" + suomiKlo + ", kouluttajat="
+				+ kouluttajat + ", opettajat=" + opettajat + ", avainsanat="
+				+ avainsanat + ", aikaslotti=" + aikaslotti + "]";
+	}
+
+
+
+	public String getKoulutusmenetelmat() {
+		return koulutusmenetelmat;
+	}
+
+	public void setKoulutusmenetelmat(String koulutusmenetelmat) {
+		this.koulutusmenetelmat = koulutusmenetelmat;
 	}
 
 	public String getPaikka() {
@@ -124,4 +194,8 @@ public class Koulutustilaisuus {
 	public void setPaikka(String paikka) {
 		this.paikka = paikka;
 	}
+	
+	
+	
+	
 }

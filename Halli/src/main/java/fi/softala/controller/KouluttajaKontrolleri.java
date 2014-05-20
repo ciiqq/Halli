@@ -26,7 +26,7 @@ import fi.softala.funktiot.SalasanaGeneraattori;
 @RequestMapping (value="/opettaja/kouluttajat")
 public class KouluttajaKontrolleri {
 	
-	private final String polku = "kouluttajien_lisays/lista";
+	private final String polku = "kouluttajat";
 	
 	@Inject
 	private KouluttajienLisaysDAO dao;
