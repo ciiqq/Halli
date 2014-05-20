@@ -25,7 +25,7 @@ import fi.softala.service.PalauteService;
  * @author Timo Kottonen
  * @author Teemu Kälviäinen
  * @author Henna Kiiveri
- *
+ * @author Mikko Savinainen
  */
 
 @Controller
@@ -64,7 +64,7 @@ public class KoulutusHakuController {
 					palauteservice.tallenna(palaute, koulutus_id);
 					redirectAttrs.addFlashAttribute("viesti", "Palautteen lähetys onnistui. Kiitos palautteesta!");
 					redirectAttrs.addAttribute("palauteopiskelijanumero", palaute.getOpiskelijanro());
-					return "redirect:palaute?opiskelijanumero={palauteopiskelijanumero}";				
+					return "redirect:palaute?palauteopiskelijanumero={palauteopiskelijanumero}";				
 				} catch (Exception e) {
 					redirectAttrs.addFlashAttribute("virheviesti", "Palautteen lähetys ei onnistunut.");
 					return "redirect:palaute";
