@@ -28,4 +28,5 @@
 	<!-- location of static content (images, js and css files) -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
+
 </beans>
