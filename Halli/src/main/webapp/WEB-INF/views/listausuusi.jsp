@@ -86,7 +86,7 @@
 			<div class="fifty lista">
 				<form id="haku" action="hakutulokset">
 					<input type="text" name="haku" autocomplete="off"
-						placeholder="Suodata koulutuksia hakusanan perusteella"
+						placeholder="Suodata koulutuksia hakusanalla, esim. &quot;Ohjelmointi&quot;"
 						value="${hakusana}"><input type="submit" value=" "><c:if test="${!empty hakusana}"><c:out escapeXml="false" value="<a class='sulkemisnappi' href='./'></a>" /></c:if>
 				</form>
 				<ul>
@@ -244,9 +244,9 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Sulje ikkuna</button>
         				<button type="submit" class="btn btn-primary" id="ilmoittaudu" disabled>
-					Ilmoittaudu koulutuksiin</button>
+					Vahvista ilmoittautuminen</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Sulje ikkuna</button>
 					
 					</form>
       </div>
