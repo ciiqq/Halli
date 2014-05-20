@@ -25,7 +25,7 @@ import fi.softala.service.PalauteService;
  * @author Timo Kottonen
  * @author Teemu Kälviäinen
  * @author Henna Kiiveri
- * @author Mikko Savinainen
+ * @author Mikko Savinaine
  */
 
 @Controller
