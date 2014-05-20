@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
+
   <koulutustilaisuus koulutus_id="1" aihe="Scrum" kuvaus="- Product Owner&#xD;&#xA;- Scrum Master&#xD;&#xA;- ITIL" lahtotaso="Helppo" nakyvyys="1"/>
   <koulutustilaisuus koulutus_id="2" aihe="jQueryn alkeet" kuvaus="jQuery on kaikille selaimille tarkoitettu ilmainen, avoimen l&#228;hdekoodin JavaScript-kirjasto. jQueryn syntaksi on tehty mahdollisimman helposti ymm&#228;rrett&#228;v&#228;ksi, mik&#228; tekeekin kirjastosta eritt&#228;in suositun. &#xA;});" lahtotaso="Alkeet" nakyvyys="1" koulutusmenetelmat="luento"/>
   <koulutustilaisuus koulutus_id="3" aihe="Git-versionhallinta: mik&#228; se on?" kuvaus="Git tutuksi" lahtotaso="Alkeet" nakyvyys="1" koulutusmenetelmat="paja"/>
