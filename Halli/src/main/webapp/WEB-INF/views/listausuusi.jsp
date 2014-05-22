@@ -27,15 +27,7 @@
 <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
-<style>
-.error {
-	color: red;
-}
 
-.valid {
-	color: green;
-}
-</style>
 </head>
 
 <body>
